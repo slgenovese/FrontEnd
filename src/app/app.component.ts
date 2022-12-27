@@ -7,6 +7,7 @@ import { Chart } from 'chart.js/auto';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   title = 'FrontEnd';
   canvas: any;
   ctx: any;
@@ -93,7 +94,6 @@ export class AppComponent {
     
       });
     };
-  
 
 }
 
