@@ -8,22 +8,13 @@ import { Chart } from 'chart.js';
 })
 export class AppComponent {
   title = 'FrontEnd';
-}
-
-
-export class DashboardComponent {
   canvas: any;
   ctx: any;
 
   constructor() {}
-}
 
-window.onload = function inicializar(){
-  datos();
-  document.getElementById('btn_Login')!.innerText="Login";
-  ocultar_Botones();
-  iniciar_Lista();
-  
+
+  ngOnInit(): void {
   // Las etiquetas son las porciones de la gráfica
   var etiquetas = ["C/C++", "VB/.Net","Assembler","HTML/CSS/JavaScript"]
   // Podemos tener varios conjuntos de datos. Comencemos con uno
@@ -45,8 +36,9 @@ window.onload = function inicializar(){
   ],// Color del borde
     borderWidth: 0,// Ancho del borde
   };
-  grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart1");
-  
+  this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart1");
+
+
   // Las etiquetas son las porciones de la gráfica
   var etiquetas = ["Escritura", "Hablado","Lectura"]
   // Podemos tener varios conjuntos de datos. Comencemos con uno
@@ -66,7 +58,57 @@ window.onload = function inicializar(){
   ],// Color del borde
     borderWidth: 0,// Ancho del borde
   };
-  grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart2");
+    this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart2");
+  //    this.grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string);
+   }
+  
+  
+  
+  grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string){
+    // Obtener una referencia al elemento canvas del DOM
+    this.canvas = document.getElementById(objeto)!;
+    this.ctx = this.canvas.getContext('2d')!;
+  
+    const myChart = new Chart (this.ctx,{
+      type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
+      data: {
+        datasets: [
+              datosIngresos,
+              // Aquí más datos...
+            ],
+            labels: etiquetas,
+        },
+        options: {
+/*
+          title: {
+              display: true,
+              text: titulo,
+          },
+
+          legend: {
+            position: "left",
+          },
+*/    
+      },
+    
+      });
+    };
+  
+
+}
+
+
+
+
+
+
+window.onload = function inicializar(){
+  datos();
+  document.getElementById('btn_Login')!.innerText="Login";
+  ocultar_Botones();
+  iniciar_Lista();
+  
+  
   
   };
 
@@ -158,30 +200,3 @@ function boton_Login(event: any){
   }
 };
 
-function grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string){
-  // Obtener una referencia al elemento canvas del DOM
-  this.canvas = document.getElementById(objeto)!;
-  this.ctx = this.canvas.getContext('2d')!;
-
-  const myChart = new Chart (this.ctx,{
-    type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
-    data: {
-      datasets: [
-            datosIngresos,
-            // Aquí más datos...
-          ],
-          labels: etiquetas,
-      },
-      options: {
-        title: {
-            display: true,
-            text: titulo,
-        },
-        legend: {
-          position: "left",
-        },
-  
-    },
-  
-    });
-  };
