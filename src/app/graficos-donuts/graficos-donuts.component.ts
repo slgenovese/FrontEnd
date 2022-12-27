@@ -40,7 +40,7 @@ export class GraficosDonutsComponent implements OnInit{
 
 
   // Las etiquetas son las porciones de la gráfica
-  var etiquetas = ["Escritura", "Hablado","Lectura"]
+  var etiquetas = ["Escritura", "Hablado","Lectura                        "]
   // Podemos tener varios conjuntos de datos. Comencemos con uno
   var titulo ="Ingles Técnico"
   var datosIngresos = {
@@ -77,19 +77,29 @@ export class GraficosDonutsComponent implements OnInit{
               // Aquí más datos...
             ],
             labels: etiquetas,
-        },
-        options: {
-/*
+          },
+
+      options: {
+        plugins:{
           title: {
               display: true,
               text: titulo,
-          },
-
+              align: 'center',
+              font: {
+                size: 18,
+              }, 
+           },
           legend: {
             position: "left",
+            labels:{
+              font: {
+                size: 12,
+              }
+            }
           },
-*/    
-      },
+        },
+    
+        },
     
       });
     };
