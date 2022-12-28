@@ -27,10 +27,10 @@ window.onload = function inicializar(){
   };
 
 function ocultar_Botones(){
-  for(var i=0;i<12;i++){
+  for(var i=0;i<8;i++){
     document.getElementById('btnEdicion_'+i)!.style.display='none';
   }
-  for(i=0;i<9;i++){
+  for(i=0;i<5;i++){
     document.getElementById('btnBorrado_'+i)!.style.display='none';
   }
 };
@@ -99,11 +99,16 @@ for (var i=0;i<4; i++){
   document.getElementById('exp_imagen_'+i)!.setAttribute("src",experiencia[i].imagen );
   document.getElementById('exp_texto_'+i)!.innerHTML=experiencia[i].texto + experiencia[i].institucion + experiencia[i].periodo + experiencia[i].provincia + experiencia[i].pais;
 }
+
+/*
 for (i=0;i<4; i++){
   document.getElementById('edu_imagen_'+i)!.setAttribute("src",educacion[i].imagen );
   document.getElementById('edu_texto_'+i)!.innerHTML=educacion[i].institucion + educacion[i].titulo + educacion[i].periodo;
 }
+*/
+
 };
+
 function boton_Login(event: any){
   if(document.getElementById('btn_Login')!.textContent == 'Login'){
     document.getElementById("login")!.style.display="block";

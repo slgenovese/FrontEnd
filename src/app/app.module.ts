@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { GraficosDonutsComponent } from './graficos-donuts/graficos-donuts.component';
+import { EducacionComponent } from './educacion/educacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GraficosDonutsComponent
+    GraficosDonutsComponent,
+    EducacionComponent
   ],
   imports: [
     BrowserModule
