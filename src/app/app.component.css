@@ -27,9 +27,7 @@
     border: 2px;
     border-style: solid;
 }
-.texto_Pie{
-    color: white;
-};
+
 
 .modal {
     display: none; /* Por defecto, estará oculto */

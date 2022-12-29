@@ -94,13 +94,13 @@ function iniciar_Lista(){
     periodo:" 2022 - 2023 ",
 }];
 
-  
+/*  
 for (var i=0;i<4; i++){
   document.getElementById('exp_imagen_'+i)!.setAttribute("src",experiencia[i].imagen );
   document.getElementById('exp_texto_'+i)!.innerHTML=experiencia[i].texto + experiencia[i].institucion + experiencia[i].periodo + experiencia[i].provincia + experiencia[i].pais;
 }
 
-/*
+
 for (i=0;i<4; i++){
   document.getElementById('edu_imagen_'+i)!.setAttribute("src",educacion[i].imagen );
   document.getElementById('edu_texto_'+i)!.innerHTML=educacion[i].institucion + educacion[i].titulo + educacion[i].periodo;
