@@ -8,6 +8,7 @@ import { ExperienciaComponent } from './experiencia/experiencia.component';
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { RedesComponent } from './redes/redes.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RedesComponent } from './redes/redes.component';
     ExperienciaComponent,
     AcercaDeComponent,
     PiePaginaComponent,
-    RedesComponent
+    RedesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule
