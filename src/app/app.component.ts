@@ -16,7 +16,7 @@ export class AppComponent {
 
 window.onload = function inicializar(){
   document.getElementById('btn_Login')!.innerText="Login";
-  ocultar_Botones();
+  //ocultar_Botones();
    
   };
 

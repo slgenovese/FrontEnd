@@ -9,6 +9,7 @@ import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { RedesComponent } from './redes/redes.component';
 import { LoginComponent } from './login/login.component';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     AcercaDeComponent,
     PiePaginaComponent,
     RedesComponent,
-    LoginComponent
+    LoginComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule
