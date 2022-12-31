@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraficosDonutsComponent } from './graficos-donuts/graficos-donuts.component';
 import { EducacionComponent } from './educacion/educacion.component';
@@ -24,7 +25,8 @@ import { BannerComponent } from './banner/banner.component';
     BannerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
