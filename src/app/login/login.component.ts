@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  email='';
+  password='';
 
-}
-function boton_Login(event: any){
-  if(document.getElementById('btn_Login')!.textContent == 'Login'){
-    document.getElementById("login")!.style.display="block";
-  }else{
-    document.getElementById('btn_Login')!.innerText="Login";
-    //ocultar_Botones();
-    event.preventDefault();
+  constructor(public authService: AuthService){}
+  Login(){
+    this.authService.login(this.email, this.password)
   }
-};
+
+  ngOnInit(): void {}
+}
+

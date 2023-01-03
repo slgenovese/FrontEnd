@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
+import{HttpClientModule, HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  uri ='http://localhost:4200/api';
+  token: any;
 
-  isLoggedIn() {
-    const token = localStorage.getItem('token'); // get token from local storage
-    const payload = atob(token.split('.')[1]); // decode payload of token
-    const parsedPayload = JSON.parse(payload); // convert payload into an Object
+  constructor(private http: HttpClient, private router: Router) { }
 
-    return parsedPayload.exp > Date.now() / 1000; // check if token is expired
-
+  login(email:string, password: string){
+    this.http.post(this.uri + '/authenticate',{email:email, password: password} )
+        .subscribe((resp:any)=>{
+          this.router.navigate(['profile']);
+          localStorage.setItem('auth_token',resp.token);
+        })
+    }
+  public logout(){
+    localStorage.removeItem('token');
+  }
+  public get logIn(): boolean{
+    return (localStorage.getItem('token') !==null);
   }
 
-}
+  }
