@@ -13,13 +13,13 @@ export class AppComponent {
 
 }
 
-
+/*
 window.onload = function inicializar(){
   document.getElementById('btn_Login')!.innerText="Login";
   //ocultar_Botones();
    
   };
-
+*/
 function ocultar_Botones(){
   for(var i=0;i<8;i++){
     document.getElementById('btnEdicion_'+i)!.style.display='none';

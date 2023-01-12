@@ -34,9 +34,15 @@ export class LoginComponent {
     });
   }
 
-  public ingreso(correo: string, palabraSecreta: string){
+  public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
     console.log(correo);
     console.log(palabraSecreta);
+    if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
+      btnlogin.innerText ='Logout';
+      //mostrar_Botones();
+    }
+  
+    return;
   }
   /**
    * Write code on Method
@@ -47,10 +53,8 @@ export class LoginComponent {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      console.log('Mundo');
       return 'by clicking on a backdrop';
     } else {
-      console.log('Hola');
       return  `with: ${reason}`;
     }
   }

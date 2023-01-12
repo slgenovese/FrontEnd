@@ -1,5 +1,5 @@
 
-<button class="btn btn-lg btn-dark" (click)="open(login)">Login</button>
+<button class="btn btn-lg btn-dark" #btnlogin (click)="open(login)">Login</button>
 
 <ng-template #login let-modal>
   <div class="modal-header">
@@ -25,8 +25,6 @@
 
   </div>
   <div class="modal-footer">
-<!--    <button type="button" class="btn btn-dark" (click)="modal.close('Save click')">Ok</button>-->
-    <button type="button" class="btn btn-dark" (click)="ingreso(correo.value, palabraSecreta.value)" (click)="modal.close('Save click')">Ok</button>
-    
+    <button type="button" class="btn btn-dark" (click)="ingreso(correo.value, palabraSecreta.value, btnlogin)" (click)="modal.close('Save click')">Aceptar</button>
   </div>
 </ng-template>
