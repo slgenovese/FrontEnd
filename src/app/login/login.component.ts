@@ -28,12 +28,25 @@ export class LoginComponent {
    */
   open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+      if (result==='Save click'){
+
+        const mail = document.getElementById('correo')!;
+        const $clave = document.getElementById('palabraSecreta')!;
+        console.log("correo");
+        if($clave.nodeValue =='42247476' && mail.nodeValue=='sgenovese@gmail.com'){
+          console.log('Cruel');
+
+            }
+          }
+            this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
+  public ingreso(correo: string){
+    console.log(correo);
+  }
   /**
    * Write code on Method
    *
@@ -43,12 +56,13 @@ export class LoginComponent {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      console.log('Mundo');
       return 'by clicking on a backdrop';
     } else {
+      console.log('Hola');
       return  `with: ${reason}`;
     }
   }
-
 
 
 
