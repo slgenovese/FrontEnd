@@ -46,6 +46,7 @@ export class LoginComponent {
 
   public ingreso(correo: string){
     console.log(correo);
+    this.modalService.activeInstances.closed
   }
   /**
    * Write code on Method
