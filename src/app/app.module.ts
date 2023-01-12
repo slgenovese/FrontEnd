@@ -11,6 +11,7 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { RedesComponent } from './redes/redes.component';
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BannerComponent } from './banner/banner.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
