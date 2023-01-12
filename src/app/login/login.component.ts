@@ -35,8 +35,8 @@ export class LoginComponent {
   }
 
   public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
-    console.log(correo);
-    console.log(palabraSecreta);
+//    console.log(correo);
+//    console.log(palabraSecreta);
     if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
       btnlogin.innerText ='Logout';
       //mostrar_Botones();
