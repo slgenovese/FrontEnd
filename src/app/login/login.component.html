@@ -3,15 +3,29 @@
 
 <ng-template #login let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <h4 class="modal-title" id="modal-basic-title">Modo de Edición</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <div class="modal-body">
-    This is example from Codequs.com
+
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input #correo name="correo"
+          class="form-control" type="email"
+          placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+        <label for="palabraSecreta">Contraseña</label>
+        <input id="palabraSecreta" name="palabraSecreta"
+            class="form-control" type="password"
+            placeholder="Contraseña">
+    </div>
+
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-dark" (click)="modal.close('Save click')">Ok</button>
+<!--    <button type="button" class="btn btn-dark" (click)="modal.close('Save click')">Ok</button>-->
+    <button type="button" class="btn btn-dark" (click)="modal.close('Save click',correo.value)">Ok</button>
   </div>
 </ng-template>
