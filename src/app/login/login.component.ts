@@ -28,25 +28,15 @@ export class LoginComponent {
    */
   open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      if (result==='Save click'){
-
-        const mail = document.getElementById('correo')!;
-        const $clave = document.getElementById('palabraSecreta')!;
-        console.log("correo");
-        if($clave.nodeValue =='42247476' && mail.nodeValue=='sgenovese@gmail.com'){
-          console.log('Cruel');
-
-            }
-          }
             this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  public ingreso(correo: string){
+  public ingreso(correo: string, palabraSecreta: string){
     console.log(correo);
-    this.modalService.activeInstances.closed
+    console.log(palabraSecreta);
   }
   /**
    * Write code on Method
