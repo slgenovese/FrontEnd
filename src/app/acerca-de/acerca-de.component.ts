@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { acerca_de } from '../acerca-de';
 
 @Component({
@@ -8,4 +8,6 @@ import { acerca_de } from '../acerca-de';
 })
 export class AcercaDeComponent {
   acerca_de= acerca_de;
+  public show: boolean = false
+
 }

@@ -8,7 +8,7 @@
             <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}}{{acerca_de.pais}}</p>
         </div>
         <div class="col-2">
-            <button type="button" class="btn btn-default Nom_Edicion" id={{acerca_de.id}} style="display: block;">
+            <button type="button" class="btn btn-default Nom_Edicion" id={{acerca_de.id}} [hidden]= "!show" style="display: block;">
                 <i class="bi bi-pencil" [title]="'Editar los datos'"> </i> 
             </button>
         </div>
@@ -23,10 +23,10 @@
         </div>
         <div class="col">
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button type="button" class="btn btn-default ace_Edicion" id={{acerca_de.id}} style="display: none;">
+                <button type="button" class="btn btn-default ace_Edicion" id={{acerca_de.id}} [hidden]= "!show" style="display: block;">
                     <i class="bi bi-pencil"> </i>
                 </button>
-                <button type="button" class="btn btn-default ace_borrado" id={{acerca_de.id}} style="display: none;">
+                <button type="button" class="btn btn-default ace_borrado" id={{acerca_de.id}} [hidden]= "!show" style="display: block;">
                     <i class="bi bi-x-circle"> </i>
                 </button>
             </div>
