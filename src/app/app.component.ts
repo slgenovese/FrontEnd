@@ -9,6 +9,7 @@ export class AppComponent {
   
   title = 'FrontEnd';
   show=true;
+  pasa=2;
   
 
   constructor() {}

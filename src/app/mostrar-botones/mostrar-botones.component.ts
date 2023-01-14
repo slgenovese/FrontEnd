@@ -17,6 +17,6 @@ export class MostrarBotonesComponent {
   acerca_de= acerca_de;
   banner=banner;
   experiencia=experiencia;
-  AcercaDeComponent: AcercaDeComponent['show'];
+  AcercaDeComponent: AcercaDeComponent['show']=true;
   
 }
