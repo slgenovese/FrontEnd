@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {AppComponent} from '../app.component'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +15,10 @@ export class LoginComponent {
   title = 'appBootstrap';
 
   closeResult: string = '';
+
+  @Input() mostrar!: AppComponent;
+
+  
 
   /*------------------------------------------
   --------------------------------------------
@@ -35,10 +41,13 @@ export class LoginComponent {
   }
 
   public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
-//    console.log(correo);
-//    console.log(palabraSecreta);
+    console.log(correo);
+    console.log(palabraSecreta);
     if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
       btnlogin.innerText ='Logout';
+      this.mostrar.mostrar=2;
+      console.log(this.mostrar.mostrar);
+      ;
       //mostrar_Botones();
     }
   

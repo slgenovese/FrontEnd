@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,15 @@ export class AppComponent {
   
   title = 'FrontEnd';
   show=true;
-  pasa=2;
+  mostrar: number = 1;
   
+  
+  mostrar_Botones(valor: number){
+    this.mostrar = valor;
+    console.log(this.mostrar);
 
+  }
+ 
   constructor() {}
 
 }
