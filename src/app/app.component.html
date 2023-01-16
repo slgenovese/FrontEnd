@@ -6,7 +6,7 @@
               <section class="row">
                     <div class="col-3">
                         <img src="assets/Argentina_Programa.png" />
-                    </div> 
+                    </div>
 
                     <div class="col-6"></div>
 
@@ -15,21 +15,21 @@
                         <app-redes></app-redes>
                     </div>
                     <div class="col-1">
-                        <!--Boton Login --> 
-                    <!--    <app-login></app-login> -->
+                        <!--Boton Login -->
+                        <app-login></app-login>
                     </div>
-            </section>  
-              <!--Banner y Foto --> 
-          
+            </section>
+              <!--Banner y Foto -->
+
               <app-banner></app-banner>
           </header>
-  
-  
+
+
           <main class="container">
               <!-- Acerca de-->
 
-              <app-acerca-de></app-acerca-de>
-
+              <app-acerca-de *ngIf="mostrar==1" ></app-acerca-de>
+              <app-mostrar-botones *ngIf="mostrar==2"></app-mostrar-botones> 
               <!-- Experiencia-->
               <h4 class="subtitulo">Experiencia</h4>
 
@@ -39,19 +39,19 @@
               <h4 class="subtitulo">Educación</h4>
 
               <app-educacion></app-educacion>
-  
+
               <!-- Hard & Soft Skills-->
               <h4 class="subtitulo">Hard & Soft Skills</h4>
 
               <app-graficos-donuts></app-graficos-donuts>
-  
+
               <hr/>
-  
+
               <!-- Proyectos-->
               <h4 class="subtitulo">Proyectos</h4>
-  
+
               <hr/>
-  
+
 
           </main>
 
@@ -59,4 +59,3 @@
 
           <app-pie-pagina></app-pie-pagina>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  

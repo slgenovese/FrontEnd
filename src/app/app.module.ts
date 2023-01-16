@@ -11,6 +11,8 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { RedesComponent } from './redes/redes.component';
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MostrarBotonesComponent } from './mostrar-botones/mostrar-botones.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { BannerComponent } from './banner/banner.component';
     PiePaginaComponent,
     RedesComponent,
     LoginComponent,
-    BannerComponent
+    BannerComponent,
+    MostrarBotonesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

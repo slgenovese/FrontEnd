@@ -1,5 +1,30 @@
-<a routerLink="/" routerLinkActive="active"></a>
-<a routerLink="profile" routerLink="active" *ngIf="authService.logIn">Perfil</a>
-<a routerLink="login" routerLink="active" *ngIf="!authService.logIn">login</a>
-<!-- <a class="nav-link" (click)="logout()" href="#" *ngIf="authService.logIn">logout</a> -->
-Hola Mundo
+
+<button class="btn btn-lg btn-dark" #btnlogin (click)="open(login)">Login</button>
+
+<ng-template #login let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modo de Edición</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input #correo name="correo"
+          class="form-control" type="email"
+          placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+        <label for="palabraSecreta">Contraseña</label>
+        <input #palabraSecreta name="palabraSecreta"
+            class="form-control" type="password"
+            placeholder="Contraseña">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="ingreso(correo.value, palabraSecreta.value, btnlogin)" (click)="modal.close('Save click')">Aceptar</button>
+  </div>
+</ng-template>

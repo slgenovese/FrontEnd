@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,27 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent {
   
   title = 'FrontEnd';
+  show=true;
+  mostrar: number = 1;
+  
+  
+  mostrar_Botones(valor: number){
+    this.mostrar = valor;
+    console.log(this.mostrar);
 
+  }
+ 
   constructor() {}
 
 }
 
-
+/*
 window.onload = function inicializar(){
   document.getElementById('btn_Login')!.innerText="Login";
   //ocultar_Botones();
    
   };
-
+*/
 function ocultar_Botones(){
   for(var i=0;i<8;i++){
     document.getElementById('btnEdicion_'+i)!.style.display='none';
