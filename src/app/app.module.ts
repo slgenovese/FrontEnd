@@ -12,7 +12,6 @@ import { RedesComponent } from './redes/redes.component';
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MostrarBotonesComponent } from './mostrar-botones/mostrar-botones.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { MostrarBotonesComponent } from './mostrar-botones/mostrar-botones.compo
     RedesComponent,
     LoginComponent,
     BannerComponent,
-    MostrarBotonesComponent
   ],
   imports: [
     BrowserModule,

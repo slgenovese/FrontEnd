@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import {AppComponent} from '../app.component'
+import { Component } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { educacion } from '../educacion';
 import { experiencia } from '../experiencia';
@@ -18,7 +17,6 @@ export class LoginComponent {
 
   closeResult: string = '';
 
-  @Input() mostrar!: AppComponent;
 
 
 
@@ -34,7 +32,12 @@ export class LoginComponent {
    *
    * @return response()
    */
-  open(content:any) {
+  open(content:any, btnlogin: any) {
+    if (btnlogin.innerText=='Logout'){
+      this.Botones(false);
+      btnlogin.innerText ='Login';
+      return;
+    }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -46,32 +49,41 @@ export class LoginComponent {
     console.log(correo);
     console.log(palabraSecreta);
     if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
-      btnlogin.innerText ='Logout';
-      //this.mostrar.mostrar=2;
-      //console.log(this.mostrar.mostrar);
-      ;
-      //mostrar_Botones();
-      document.getElementById("ban_Edicion1")!.style.display='block';
-      document.getElementById("fot_Edicion1")!.style.display='block';
-      document.getElementById("nom_Edicion1")!.style.display='block';
-      document.getElementById("ace_Edicion1")!.style.display='block';
-      document.getElementById("ace_Borrado1")!.style.display='block';
-
-      var i=0;
-        for( let edu of educacion){
-          i++;
-          document.getElementById("edu_Edicion"+i)!.style.display='block';
-          document.getElementById("edu_Borrado"+i)!.style.display='block';
-        }
-        var i=0;
-        for( let exp of experiencia){
-          i++;
-          document.getElementById("exp_Edicion"+i)!.style.display='block';
-          document.getElementById("exp_Borrado"+i)!.style.display='block';
-        }
+      console.log(btnlogin.innerText );
+      if (btnlogin.innerText=='Login'){
+        this.Botones(true);
+        btnlogin.innerText ='Logout';
+      }
     }
 
     return;
+  }
+
+  Botones(mostrar: boolean){
+    let display: string;
+    if (mostrar){
+      display ='block';
+    }else{
+      display ='none';
+    }
+    document.getElementById("ban_Edicion-1")!.style.display=display;
+    document.getElementById("fot_Edicion-1")!.style.display=display;
+    document.getElementById("nom_Edicion-1")!.style.display=display;
+    document.getElementById("ace_Edicion-1")!.style.display=display;
+    document.getElementById("ace_Borrado-1")!.style.display=display;
+
+    var i=0;
+      for( let edu of educacion){
+        i++;
+        document.getElementById("edu_Edicion-"+i)!.style.display=display;
+        document.getElementById("edu_Borrado-"+i)!.style.display=display;
+      }
+      var i=0;
+      for( let exp of experiencia){
+        i++;
+        document.getElementById("exp_Edicion-"+i)!.style.display=display;
+        document.getElementById("exp_Borrado-"+i)!.style.display=display;
+      }
   }
   /**
    * Write code on Method
