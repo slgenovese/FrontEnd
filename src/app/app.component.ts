@@ -1,4 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
+import { MostrarBotonesComponent } from './mostrar-botones/mostrar-botones.component';
 
 @Component({
   selector: 'app-root',
@@ -6,27 +7,29 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   title = 'FrontEnd';
   show=true;
   mostrar: number = 1;
-  
-  
+
+
   mostrar_Botones(valor: number){
     this.mostrar = valor;
     console.log(this.mostrar);
 
   }
- 
+
   constructor() {}
 
 }
+
+
 
 /*
 window.onload = function inicializar(){
   document.getElementById('btn_Login')!.innerText="Login";
   //ocultar_Botones();
-   
+
   };
 */
 function ocultar_Botones(){

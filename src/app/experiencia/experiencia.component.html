@@ -2,20 +2,20 @@
     <section class="row">
         <div class="col-2">
             <img src={{experiencia.imagen}} />
-        </div> 
+        </div>
         <div class="col-8">
             {{ experiencia.texto}}<br>
-            <b>{{ experiencia.institucion}}</b><br> 
+            <b>{{ experiencia.institucion}}</b><br>
             {{ experiencia.periodo}}<br>
             {{ experiencia.provincia}}{{ experiencia.pais}}<br>
-        </div> 
+        </div>
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button type="button" class="btn btn-default Edu_Edicion"  id={{experiencia.id}} style="display: none;">
+                <button type="button" class="btn btn-default exp_Edicion"  id="exp_Edicion{{experiencia.id}}" style="display: none;">
                     <i class="bi bi-pencil"></i>
                 </button>
-                <button type="button" class="btn btn-default Edu_Borrado" id={{experiencia.id}} style="display: none;">
-                    <i class="bi bi-x-circle"></i>                    
+                <button type="button" class="btn btn-default exp_Borrado" id="exp_Borrado{{experiencia.id}}" style="display: none;">
+                    <i class="bi bi-x-circle"></i>
                 </button>
             </div>
         </div>

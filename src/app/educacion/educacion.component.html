@@ -3,19 +3,19 @@
     <section class="row">
         <div class="col-2">
             <img src={{educacion.imagen}} />
-        </div> 
+        </div>
         <div class="col-8">
-            <b>{{ educacion.institucion}}</b><br> 
+            <b>{{ educacion.institucion}}</b><br>
             {{ educacion.titulo}}<br>
             {{ educacion.periodo}}<br>
-        </div> 
+        </div>
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button type="button" class="btn btn-default Edu_Edicion" id={{educacion.id}} style="display: none;" >
+                <button type="button" class="btn btn-default edu_Edicion" id="edu_Edicion{{educacion.id}}" style="display: none;" >
                     <i class="bi bi-pencil"></i>
                 </button>
-                <button type="button" class="btn btn-default Edu_Borrado" id={{educacion.id}} style="display: none;">
-                    <i class="bi bi-x-circle"></i>                    
+                <button type="button" class="btn btn-default edu_Borrado" id="edu_Borrado{{educacion.id}}" style="display: none;">
+                    <i class="bi bi-x-circle"></i>
                 </button>
             </div>
         </div>
