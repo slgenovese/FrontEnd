@@ -12,6 +12,7 @@ import { RedesComponent } from './redes/redes.component';
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BorrarComponent } from './borrar/borrar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RedesComponent,
     LoginComponent,
     BannerComponent,
+    BorrarComponent,
   ],
   imports: [
     BrowserModule,
