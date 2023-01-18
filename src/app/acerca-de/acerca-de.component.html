@@ -27,7 +27,7 @@
                 <button type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
                     <i class="bi bi-pencil"> </i>
                 </button>
-                <button (click)="this.borrar.mensaje" type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
+                <button (click)="this.borrar.borrar_registro('acerca-de', acerca_de.id)" type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
                     <i class="bi bi-x-circle"> </i>
                 </button>
             </div>

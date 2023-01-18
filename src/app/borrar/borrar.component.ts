@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BorrarComponent {
 
-  mensaje(){
-    console.log("Hola");
+  borrar_registro(tabla: string, id: number){
+    console.log(tabla+"-"+id);
   }
 }
