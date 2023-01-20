@@ -33,6 +33,7 @@ export class LoginComponent {
    * @return response()
    */
   open(content:any, btnlogin: any) {
+    console.log(content);
     if (btnlogin.innerText=='Logout'){
       this.Botones(false);
       btnlogin.innerText ='Login';
