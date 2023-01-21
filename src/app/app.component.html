@@ -28,17 +28,21 @@
           <main class="container">
               <!-- Acerca de-->
 
-              <app-acerca-de [borrar]="borrar"></app-acerca-de>
+              <app-acerca-de [borrar]="borrar" [editar]="editar"></app-acerca-de>
               <app-borrar #borrar></app-borrar>
+              <app-editar #editar></app-editar>
+
               <!-- Experiencia-->
               <h4 class="subtitulo">Experiencia</h4>
 
-              <app-experiencia></app-experiencia>
+              <app-experiencia [borrar]="borrar"></app-experiencia>
+              <app-borrar #borrar></app-borrar>
 
               <!-- Educacion-->
               <h4 class="subtitulo">Educación</h4>
 
-              <app-educacion></app-educacion>
+              <app-educacion [borrar]="borrar"></app-educacion>
+              <app-borrar #borrar></app-borrar>
 
               <!-- Hard & Soft Skills-->
               <h4 class="subtitulo">Hard & Soft Skills</h4>

@@ -1,0 +1,21 @@
+<ng-template #mdl_editar let-modal >
+    <div class="modal-header">
+    <h4  class="modal-title" id="modal-basic-title"  ><b> {{titulo}}</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <p><b> {{texto}} </b></p>
+      <br>
+      <p>Esta por modificar el siguiente registro, ¿Esta seguro?</p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">Cancelar</span>
+    </button>
+    <button type="button" class="btn btn-dark" (click)="editar_registro()" (click)="modal.close('Save click')">Aceptar</button>
+  </div>
+</ng-template>
+

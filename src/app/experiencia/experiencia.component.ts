@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { experiencia } from '../experiencia';
-
+import { BorrarComponent } from '../borrar/borrar.component';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -8,4 +8,7 @@ import { experiencia } from '../experiencia';
 })
 export class ExperienciaComponent {
   experiencia=experiencia;
+
+  @Input()  borrar!: BorrarComponent;
+
 }

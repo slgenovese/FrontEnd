@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-default exp_Edicion"  id="exp_Edicion-{{experiencia.id}}" style="display: none;">
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
-                <button type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
+                <button (click)="borrar.pre_open('experiencia',experiencia.id,experiencia.texto)" type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
                     <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
                 </button>
             </div>

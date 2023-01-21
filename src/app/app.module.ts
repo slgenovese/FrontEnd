@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BorrarComponent } from './borrar/borrar.component';
+import { EditarComponent } from './editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BorrarComponent } from './borrar/borrar.component';
     LoginComponent,
     BannerComponent,
     BorrarComponent,
+    EditarComponent,
   ],
   imports: [
     BrowserModule,

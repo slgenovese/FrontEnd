@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { acerca_de } from '../acerca-de';
 import { BorrarComponent } from '../borrar/borrar.component';
+import { EditarComponent } from '../editar/editar.component';
 
 @Component({
   selector: 'app-acerca-de',
@@ -11,4 +12,5 @@ export class AcercaDeComponent {
   acerca_de= acerca_de;
 
   @Input()  borrar!: BorrarComponent;
+  @Input()  editar!: EditarComponent;
 }

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { educacion } from '../educacion';
+import { BorrarComponent } from '../borrar/borrar.component';
 
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
   styleUrls: ['./educacion.component.css']
 })
-export class EducacionComponent implements OnInit{
+export class EducacionComponent {
   educacion = educacion;
- 
-  ngOnInit(): void {
 
-  }
+  @Input()  borrar!: BorrarComponent;
+  
 }

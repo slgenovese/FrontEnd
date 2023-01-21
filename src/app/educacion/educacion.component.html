@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
-                <button type="button" class="btn btn-default edu_Borrado" id="edu_Borrado-{{educacion.id}}" style="display: none;">
+                <button (click)="borrar.pre_open('educacion',educacion.id,educacion.titulo)" type="button" class="btn btn-default edu_Borrado" id="edu_Borrado-{{educacion.id}}" style="display: none;">
                     <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
                 </button>
             </div>
@@ -23,4 +23,3 @@
     </section>
 </div>
 <hr>
-
