@@ -58,13 +58,13 @@ export class BorrarComponent {
     });
   }
 
-  
+  /*
   public ingreso(correo: string, palabraSecreta: string){
     console.log(correo);
     console.log(palabraSecreta);
     return;
   }
-
+*/
   /**
    * Write code on Method
    *

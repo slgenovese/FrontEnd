@@ -25,11 +25,11 @@
         <div class="col">
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
                 <button type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
-                    <i class="bi bi-pencil"> </i>
+                    <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
                 </button>
 <!--                <button (click)="this.borrar.borrar_registro('acerca-de', acerca_de.id)" type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">-->
                 <button (click)="this.borrar.pre_open('acerca-de', acerca_de.id)" type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
-                        <i class="bi bi-x-circle"> </i>
+                        <i class="bi bi-x-circle" [title]="'Borrar los datos'"> </i>
                 </button>
             </div>
         </div>
