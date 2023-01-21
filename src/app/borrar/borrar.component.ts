@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 //import { ContentRef } from '@ng-bootstrap/ng-bootstrap/util/popup';
-import { TemplateRef } from '@angular/core';
+import { TemplateRef, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-borrar',
@@ -9,7 +9,12 @@ import { TemplateRef } from '@angular/core';
   styleUrls: ['./borrar.component.css']
 })
 export class BorrarComponent {
-/*
+
+  closeResult: string = '';
+  
+  titulo!: string;
+  
+  /*
   borrar_registro(tabla: string, id: number){
     console.log(tabla+"-"+id);
   }
@@ -18,18 +23,17 @@ export class BorrarComponent {
     console.log("Se borro el registro");
   }
 
-   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
+
+
+  //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open() 
-
-
-  closeResult: string = '';
   @ViewChild('mdl_borrar', { read: TemplateRef }) mdl_borrar!:TemplateRef<any>;
 
   //Esta funcion es llamada desde otro componente, accede al 'content' y ejecuta la funcion open()
-  pre_open(){
-    this.open(this.mdl_borrar)
+  pre_open(tabla: string, id: number): void{
+    this.titulo = 'Area de Borrado '+ tabla;
+    this.open(this.mdl_borrar );
   }
-
 
 
   /*------------------------------------------

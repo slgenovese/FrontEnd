@@ -1,6 +1,7 @@
-<ng-template #mdl_borrar let-modal >
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Modo de Borrado</h4>
+
+  <ng-template #mdl_borrar let-modal >
+      <div class="modal-header">
+      <h4  class="modal-title" id="modal-basic-title"  ><b> {{titulo}}</b></h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -12,4 +13,4 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-dark" (click)="borrar_registro()" (click)="modal.close('Save click')">Aceptar</button>
     </div>
-  </ng-template>
+</ng-template>
