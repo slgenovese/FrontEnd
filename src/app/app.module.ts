@@ -14,6 +14,7 @@ import { BannerComponent } from './banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BorrarComponent } from './borrar/borrar.component';
 import { EditarComponent } from './editar/editar.component';
+import { PaisesComponent } from './paises/paises.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EditarComponent } from './editar/editar.component';
     BannerComponent,
     BorrarComponent,
     EditarComponent,
+    PaisesComponent,
   ],
   imports: [
     BrowserModule,
