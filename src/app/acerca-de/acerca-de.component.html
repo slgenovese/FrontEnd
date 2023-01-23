@@ -8,7 +8,7 @@
             <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}}{{acerca_de.pais}}</p>
         </div>
         <div class="col-2">
-            <button type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
+            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombre_apellido, acerca_de.cargo_actual, acerca_de.pais, acerca_de.provincia)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
               <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
             </button>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="col">
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button (click)="editar.pre_open('acerca-de',acerca_de.id, acerca_de.texto) "type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
+                <button (click)="editar.pre_open_acerca_de('acerca-de',acerca_de.id, acerca_de.texto)" type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
                     <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
                 </button>
                 <button (click)="borrar.pre_open('acerca-de',acerca_de.id, acerca_de.texto) " type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
