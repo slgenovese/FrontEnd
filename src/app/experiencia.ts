@@ -40,4 +40,12 @@ export interface Experincia{
     periodo:" De 1993 a 2002.",
     provincia:"Buenos Aires, ",
     pais:"Argentina."
+  },{
+    id: 5,
+    imagen: "assets/Datafox.png", 
+    texto:"Desarrollador - Analista Funcional - Lider de Proyecto - Gerente de Sistemas.",
+    institucion: "Datafox Informática S.A.", 
+    periodo:" De 1993 a 2002.",
+    provincia:"Buenos Aires, ",
+    pais:"Argentina."
   }];
