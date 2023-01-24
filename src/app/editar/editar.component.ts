@@ -21,7 +21,7 @@ export class EditarComponent {
   id!: number;
   nombre_apellido!: string;
   cargo_actual!: string;
-  pais!: string;
+  pais: string = 'Argentina';
   provincia!: string;
   texto_aux!: string;
   quien_llama!: string;
@@ -31,6 +31,7 @@ export class EditarComponent {
 
   }
 
+  
 
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
@@ -44,7 +45,6 @@ export class EditarComponent {
     this.texto_aux=texto;
     this.quien_llama='acerca_de'
     this.titulo = 'Area de Edición - '+ tabla;
-    console.log(this.texto_aux);
     this.open(this.mdl_editar );
   }
   pre_open_nombre(tabla: string, id: number, nombre_apellido: string, cargo_actual: string, pais: string, provincia: string): void{
@@ -56,7 +56,6 @@ export class EditarComponent {
     this.provincia=provincia;
     this.quien_llama='nombre'
     this.titulo = 'Area de Edición - '+ tabla;
-    console.log(this.texto_aux);
     this.open(this.mdl_editar );
   }
 
