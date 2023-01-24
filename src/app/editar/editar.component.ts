@@ -1,6 +1,7 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, Input, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
+import { PaisesComponent } from '../paises/paises.component';
 
 
 @Component({
@@ -11,6 +12,9 @@ import { TemplateRef } from '@angular/core';
 export class EditarComponent {
 
   closeResult: string = '';
+
+  @Input() paises!: PaisesComponent;
+//  @ViewChild('paises_2')paises_2!:ElementRef;
 
   titulo!: string;
   tabla!: string;
@@ -24,6 +28,7 @@ export class EditarComponent {
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+
   }
 
 
