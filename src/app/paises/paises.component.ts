@@ -9,9 +9,8 @@ import { EditarComponent } from '../editar/editar.component';
 export class PaisesComponent implements AfterViewInit {
 
   @ViewChild('paises') paises_aux!:ElementRef;
-  @Input() paises!: EditarComponent;
-  @ViewChild(EditarComponent) p!:EditarComponent ;
-
+  @Input() id_pais!: string;
+  
   elegido(pais: string){
     console.log(this.paises_aux);
   }
@@ -19,9 +18,9 @@ export class PaisesComponent implements AfterViewInit {
   ngAfterViewInit(): void {
 
     console.log(this.paises_aux.nativeElement.value);
-    this.p.editar_registro();
-  //  this.paises_aux.nativeElement.value= this.paises.pais;
-    
+    //this.p.editar_registro();
+    this.paises_aux.nativeElement.value= this.id_pais;
+    console.log(this.id_pais);
 
   }
 

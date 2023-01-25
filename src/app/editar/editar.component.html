@@ -28,14 +28,14 @@
         <br>
         <label for="texto"> <b> Pais: </b></label>
         <br>
-        <textarea name="texto" id="" cols="50" rows="1" value={{pais}}></textarea>
-        <app-editar [paises]="paises"></app-editar>
-        <app-paises #paises ></app-paises>
+        <textarea hidden value={{id_pais}}></textarea>
+        <app-paises [id_pais]="id_pais" ></app-paises>
         <br>
         <label for="texto"> <b> Provincia: </b></label>
         <br>
-        <textarea name="texto" id="provincia" cols="50" rows="1" value={{provincia}}></textarea>
-      </div>
+        <textarea hidden value={{id_provincia}}></textarea>
+        <app-provincias [id_provincia]="id_provincia" ></app-provincias>
+        </div>
     </ng-container>
     <br>
     <p>Esta por modificar el siguiente registro, ¿Esta seguro?</p>

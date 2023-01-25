@@ -8,7 +8,7 @@
             <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}}{{acerca_de.pais}}</p>
         </div>
         <div class="col-2">
-            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombre_apellido, acerca_de.cargo_actual, acerca_de.pais, acerca_de.provincia)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
+            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombre_apellido, acerca_de.cargo_actual, acerca_de.id_pais, acerca_de.pais, acerca_de.id_provincia, acerca_de.provincia)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
               <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
             </button>
         </div>

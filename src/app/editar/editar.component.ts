@@ -21,8 +21,10 @@ export class EditarComponent {
   id!: number;
   nombre_apellido!: string;
   cargo_actual!: string;
-  pais: string = 'Argentina';
+  pais!: string;
+  id_pais: string = 'AR'
   provincia!: string;
+  id_provincia: string = 'B'
   texto_aux!: string;
   quien_llama!: string;
 
@@ -47,12 +49,14 @@ export class EditarComponent {
     this.titulo = 'Area de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
-  pre_open_nombre(tabla: string, id: number, nombre_apellido: string, cargo_actual: string, pais: string, provincia: string): void{
+  pre_open_nombre(tabla: string, id: number, nombre_apellido: string, cargo_actual: string, id_pais: string, pais: string, id_provincia: string, provincia: string): void{
     this.tabla=tabla;
     this.id=id;
     this.nombre_apellido=nombre_apellido;
     this.cargo_actual=cargo_actual;
+    this.id_pais=id_pais;
     this.pais=pais;
+    this.id_provincia=id_provincia;
     this.provincia=provincia;
     this.quien_llama='nombre'
     this.titulo = 'Area de Edición - '+ tabla;
