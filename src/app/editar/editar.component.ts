@@ -27,6 +27,10 @@ export class EditarComponent {
   id_provincia: string = 'B'
   texto_aux!: string;
   quien_llama!: string;
+  imagen!: string;
+  institucion!: string;
+  periodo!: string;
+
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -59,6 +63,21 @@ export class EditarComponent {
     this.id_provincia=id_provincia;
     this.provincia=provincia;
     this.quien_llama='nombre'
+    this.titulo = 'Area de Edición - '+ tabla;
+    this.open(this.mdl_editar );
+  }
+
+  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, periodo: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
+    this.tabla=tabla;
+    this.imagen=imagen;
+    this.texto_aux=texto;
+    this.institucion=institucion;
+    this.periodo=periodo;
+    this.id_pais=id_pais;
+    this.pais=pais;
+    this.id_provincia=id_provincia;
+    this.provincia=provincia;
+    this.quien_llama='experiencia'
     this.titulo = 'Area de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }

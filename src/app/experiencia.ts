@@ -16,7 +16,7 @@ export interface Experincia{
     texto:"Desarrollador Visual Basic - Jefe de Desarrollo - Jefe de Tecnología - Responsable del Area de Sistemas de información de la Dirección Nacional de Medicamentos y Tecnología Sanitaria.",
     institucion: "Ministerio de Salud de la Nación.",
     periodo:" Del 2002 a la actualidad.",
-    id_provincia:"BA",
+    id_provincia:"B",
     provincia:"Buenos Aires, ",
     id_pais:"AR",
     pais:"Argentina."
@@ -26,7 +26,7 @@ export interface Experincia{
     texto:"Docente en la cátedra de Algoritmos y Programación I - Lenguaje C++.",
     institucion: "Universidad Nacional de Quilmes.", 
     periodo:" De 1997 al 2012.",
-    id_provincia:"BA",
+    id_provincia:"B",
     provincia:"Buenos Aires, ",
     id_pais:"AR",
     pais:"Argentina."
@@ -36,7 +36,7 @@ export interface Experincia{
     texto:"Consultor en el Area de Informática.",
     institucion: "Comisión Nacional de Regulación del Transporte.", 
     periodo:" De 1997 a 1997.",
-    id_provincia:"BA",
+    id_provincia:"B",
     provincia:"Buenos Aires, ",
     id_pais:"AR",
     pais:"Argentina."
@@ -46,7 +46,7 @@ export interface Experincia{
     texto:"Desarrollador - Analista Funcional - Lider de Proyecto - Gerente de Sistemas.",
     institucion: "Datafox Informática S.A.", 
     periodo:" De 1993 a 2002.",
-    id_provincia:"BA",
+    id_provincia:"B",
     provincia:"Buenos Aires, ",
     id_pais:"AR",
     pais:"Argentina."

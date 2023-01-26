@@ -1,26 +1,32 @@
 <select #provincias name="provincia" id="provincias">
-<option value="B">Buenos Aires</option>
-<option value="C">CABA</option>
-<option value="K">Catamarca</option>
-<option value="H">Chaco</option>	
-<option value="U">Chubut</option>
-<option value="X">Córdoba</option>
-<option value="W">Corrientes</option>
-<option value="E">Entre Ríos</option>
-<option value="P">Formosa</option>	
-<option value="Y">Jujuy</option>	
-<option value="L">La Pampa</option>	
-<option value="F">La Rioja</option>	
-<option value="M">Mendoza</option>	
-<option value="N">Misiones</option>	
-<option value="Q">Neuquén</option>	
-<option value="R">Río Negro</option>	
-<option value="A">Salta</option>	
-<option value="J">San Juan</option>	
-<option value="D">San Luis</option>	
-<option value="Z">Santa Cruz</option>	
-<option value="S">Santa Fe</option>	
-<option value="G">Santiago del Estero</option>	
-<option value="V">Tierra del Fuego</option>	
-<option value="T">Tucumán</option>	
+    <ng-container *ngIf = "id_pais==='AR'">
+        <option value="B">Buenos Aires</option>
+        <option value="C">CABA</option>
+        <option value="K">Catamarca</option>
+        <option value="H">Chaco</option>	
+        <option value="U">Chubut</option>
+        <option value="X">Córdoba</option>
+        <option value="W">Corrientes</option>
+        <option value="E">Entre Ríos</option>
+        <option value="P">Formosa</option>	
+        <option value="Y">Jujuy</option>	
+        <option value="L">La Pampa</option>	
+        <option value="F">La Rioja</option>	
+        <option value="M">Mendoza</option>	
+        <option value="N">Misiones</option>	
+        <option value="Q">Neuquén</option>	
+        <option value="R">Río Negro</option>	
+        <option value="A">Salta</option>	
+        <option value="J">San Juan</option>	
+        <option value="D">San Luis</option>	
+        <option value="Z">Santa Cruz</option>	
+        <option value="S">Santa Fe</option>	
+        <option value="G">Santiago del Estero</option>	
+        <option value="V">Tierra del Fuego</option>	
+        <option value="T">Tucumán</option>	
+    </ng-container>
+    <ng-container *ngIf = "id_pais!='AR'">
+        <option value="0">No Aplica</option>	
+    </ng-container>
+
 </select>

@@ -10,6 +10,7 @@ import { EditarComponent } from '../editar/editar.component';
 export class ProvinciasComponent implements AfterViewInit{
   @ViewChild('provincias') provincias_aux!:ElementRef;
   @Input() id_provincia!: string;
+  @Input() id_pais!: string;
 
   ngAfterViewInit(): void {
   

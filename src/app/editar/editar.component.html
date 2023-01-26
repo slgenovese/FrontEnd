@@ -26,6 +26,11 @@
         <br>
         <textarea name="texto" id="" cols="100" rows="2" value={{cargo_actual}}></textarea>
         <br>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
+      <div class="form-group" >
         <label for="texto"> <b> Pais: </b></label>
         <br>
         <textarea hidden value={{id_pais}}></textarea>
@@ -34,10 +39,12 @@
         <label for="texto"> <b> Provincia: </b></label>
         <br>
         <textarea hidden value={{id_provincia}}></textarea>
-        <app-provincias [id_provincia]="id_provincia" ></app-provincias>
-        </div>
-    </ng-container>
-    <br>
+        <app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias>
+      </div>
+
+
+      </ng-container>
+      <br>
     <p>Esta por modificar el siguiente registro, ¿Esta seguro?</p>
 
   </div>
