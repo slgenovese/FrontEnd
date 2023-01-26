@@ -7,6 +7,7 @@
   </div>
   <div class="modal-body">
 
+    
     <ng-container *ngIf = "quien_llama==='acerca_de'" >
       <div class="form-group" >
         <label for="texto"> <b> Acerca de: </b></label>
@@ -28,6 +29,22 @@
         <br>
       </div>
     </ng-container>
+
+
+    <ng-container *ngIf = "quien_llama==='experiencia'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Tareas realizadas: </b></label>
+        <br>
+        <textarea name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <label for="texto"> <b> Institución: </b></label>
+        <br>
+        <textarea name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
+        <label for="texto"> <b> periodo: </b></label>
+        <br>
+        <textarea name="texto" id="" cols="100" rows="1" value={{periodo}}></textarea>
+      </div>
+    </ng-container>
+
 
     <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
       <div class="form-group" >
