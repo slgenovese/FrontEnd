@@ -15,9 +15,9 @@ export const acerca_de=[{
   imagen: "assets/MSAL.png", 
   nombre_apellido: "Sergio Lorenzo Genovese", 
   cargo_actual:"Responsable de Area de Sistemas de Información en el Ministerio de Salud de la Nación",
-  id_provincia:"C",
+  id_provincia:"0",
   provincia:"Buenos Aires, ",
-  id_pais:"AR",
+  id_pais:"NG",
   pais:"Argentina.",
   texto:"Técnico Universitario en Automatización y Control, Informático, Docente, MCP, CCNA, Full Stack Developer Jr.",
 }]

@@ -1,5 +1,5 @@
 import { Component,ViewChild, ElementRef, AfterViewInit, Input} from '@angular/core';
-import { EditarComponent } from '../editar/editar.component';
+//import { EditarComponent } from '../editar/editar.component';
 
 
 @Component({
@@ -15,7 +15,6 @@ export class ProvinciasComponent implements AfterViewInit{
   ngAfterViewInit(): void {
   
     console.log(this.provincias_aux.nativeElement.value);
-    //this.p.editar_registro();
     this.provincias_aux.nativeElement.value= this.id_provincia;
     console.log(this.id_provincia);
 

@@ -1,5 +1,5 @@
 import { Component,ViewChild, ElementRef, AfterViewInit, Input} from '@angular/core';
-import { EditarComponent } from '../editar/editar.component';
+//import { EditarComponent } from '../editar/editar.component';
 
 @Component({
   selector: 'app-paises',
@@ -12,15 +12,11 @@ export class PaisesComponent implements AfterViewInit {
   @Input() id_pais!: string;
   
   elegido(pais: string){
-    console.log(this.paises_aux);
   }
 
   ngAfterViewInit(): void {
 
-    console.log(this.paises_aux.nativeElement.value);
-    //this.p.editar_registro();
     this.paises_aux.nativeElement.value= this.id_pais;
-    console.log(this.id_pais);
 
   }
 

@@ -16,6 +16,7 @@ import { BorrarComponent } from './borrar/borrar.component';
 import { EditarComponent } from './editar/editar.component';
 import { PaisesComponent } from './paises/paises.component';
 import { ProvinciasComponent } from './provincias/provincias.component';
+import { AniosComponent } from './anios/anios.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProvinciasComponent } from './provincias/provincias.component';
     EditarComponent,
     PaisesComponent,
     ProvinciasComponent,
+    AniosComponent,
   ],
   imports: [
     BrowserModule,

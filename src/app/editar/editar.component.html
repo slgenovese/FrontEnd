@@ -8,6 +8,17 @@
   <div class="modal-body">
 
     
+    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Imagen: </b></label>
+        <br>
+        <img class="img-thumbnail"src={{imagen}} />
+        <br>
+        <input name="texto" id="" cols="50" rows="1" value={{imagen}}> 
+      </div>
+      <hr>
+    </ng-container>
+
     <ng-container *ngIf = "quien_llama==='acerca_de'" >
       <div class="form-group" >
         <label for="texto"> <b> Acerca de: </b></label>
@@ -21,7 +32,7 @@
       <div class="form-group" >
         <label for="texto"> <b> Nombre y Apellido: </b></label>
         <br>
-        <textarea name="texto" id="" cols="50" rows="1" value={{nombre_apellido}}></textarea>
+        <input name="texto" id="" cols="50" rows="1" value={{nombre_apellido}}>
         <br>
         <label for="texto"> <b> Cargo Actual: </b></label>
         <br>
@@ -39,6 +50,7 @@
         <label for="texto"> <b> Institución: </b></label>
         <br>
         <textarea name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
+        <app-anios></app-anios>
         <label for="texto"> <b> periodo: </b></label>
         <br>
         <textarea name="texto" id="" cols="100" rows="1" value={{periodo}}></textarea>
