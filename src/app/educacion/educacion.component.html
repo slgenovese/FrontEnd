@@ -7,11 +7,11 @@
         <div class="col-8">
             <b>{{ educacion.institucion}}</b><br>
             {{ educacion.titulo}}<br>
-            {{ educacion.periodo}}<br>
+            {{ educacion.desde}} - {{ educacion.hasta}}<br>
         </div>
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
+                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.imagen, educacion.titulo, educacion.institucion, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
                 <button (click)="borrar.pre_open('educacion',educacion.id,educacion.titulo)" type="button" class="btn btn-default edu_Borrado" id="edu_Borrado-{{educacion.id}}" style="display: none;">

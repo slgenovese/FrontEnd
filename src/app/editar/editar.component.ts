@@ -30,6 +30,9 @@ export class EditarComponent {
   imagen!: string;
   institucion!: string;
   periodo!: string;
+  desde!: string;
+  hasta!: string;
+  titulo_aux!: string;
 
 
   editar_registro(){
@@ -69,12 +72,13 @@ export class EditarComponent {
     this.open(this.mdl_editar );
   }
 
-  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, periodo: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
+  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
     this.tabla=tabla;
     this.imagen=imagen;
     this.texto_aux=texto;
     this.institucion=institucion;
-    this.periodo=periodo;
+    this.desde=desde;
+    this.hasta=hasta;
     this.id_pais=id_pais;
     this.pais=pais;
     this.id_provincia=id_provincia;
@@ -84,6 +88,17 @@ export class EditarComponent {
     this.open(this.mdl_editar );
   }
 
+  pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+    this.tabla=tabla;
+    this.imagen=imagen;
+    this.titulo_aux=titulo;
+    this.institucion=institucion;
+    this.desde=desde;
+    this.hasta=hasta;
+    this.quien_llama='educacion'
+    this.titulo = 'Area de Edición - '+ tabla;
+    this.open(this.mdl_editar );
+  }
 
   /*------------------------------------------
   --------------------------------------------

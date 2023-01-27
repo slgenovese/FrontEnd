@@ -1,6 +1,6 @@
 <ng-template #mdl_editar let-modal >
     <div class="modal-header">
-    <h4  class="modal-title" id="modal-basic-title"  ><b> {{titulo}}</b></h4>
+    <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
@@ -8,13 +8,12 @@
   <div class="modal-body">
 
     
-    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
+    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia' || quien_llama==='educacion'" >
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
         <img class="img-thumbnail"src={{imagen}} />
-        <br>
-        <input name="texto" id="" cols="50" rows="1" value={{imagen}}> 
+        <label style="text-indent: 20pt;"><textarea name="texto" id="" cols="50" rows="1" value={{imagen}}></textarea>  </label>
       </div>
       <hr>
     </ng-container>
@@ -42,39 +41,51 @@
     </ng-container>
 
 
+    <ng-container *ngIf = "quien_llama==='educacion'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Titulo realizadas: </b></label>
+        <textarea name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <br>
+      </div>
+    </ng-container>
+
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="texto"> <b> Tareas realizadas: </b></label>
-        <br>
         <textarea name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <br>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'" >
+      <div class="form-group" >
         <label for="texto"> <b> Institución: </b></label>
         <br>
         <textarea name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
-        <app-anios></app-anios>
-        <label for="texto"> <b> periodo: </b></label>
+        <label for="texto"> <b> Periodo: </b></label>
         <br>
-        <textarea name="texto" id="" cols="100" rows="1" value={{periodo}}></textarea>
+        <label for="texto"> <b> Desde</b></label>
+        <label for="texto" style="text-indent: 50pt;"> <b> Hasta </b></label>
+        <br>
+        <app-anios [anio]="desde"></app-anios>
+        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta"></app-anios></label>
+        <br>
       </div>
     </ng-container>
 
 
     <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
       <div class="form-group" >
-        <label for="texto"> <b> Pais: </b></label>
+        <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
-        <textarea hidden value={{id_pais}}></textarea>
-        <app-paises [id_pais]="id_pais" ></app-paises>
-        <br>
-        <label for="texto"> <b> Provincia: </b></label>
-        <br>
-        <textarea hidden value={{id_provincia}}></textarea>
-        <app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias>
+        <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
+        <app-paises [id_pais]="id_pais" ></app-paises> 
+        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias></label>
       </div>
-
-
       </ng-container>
       <br>
-    <p>Esta por modificar el siguiente registro, ¿Esta seguro?</p>
+
+      <p id="alerta"> <b> Esta por modificar el siguiente registro, ¿Esta seguro?</b></p>
 
   </div>
   <div class="modal-footer">

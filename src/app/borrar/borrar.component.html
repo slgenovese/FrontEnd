@@ -1,7 +1,7 @@
 
   <ng-template #mdl_borrar let-modal >
       <div class="modal-header">
-      <h4  class="modal-title" id="modal-basic-title"  ><b> {{titulo}}</b></h4>
+      <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase" ><b> {{titulo}}</b></h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -9,7 +9,7 @@
     <div class="modal-body">
         <p><b> {{texto}} </b></p>
         <br>
-        <p>Esta por borrar el siguiente registro, ¿Esta seguro?</p>
+        <p id="alerta"> <b> Esta por borrar el siguiente registro, ¿Esta seguro? </b></p>
 
     </div>
     <div class="modal-footer">
