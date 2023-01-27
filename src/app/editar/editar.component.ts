@@ -100,6 +100,11 @@ export class EditarComponent {
     this.open(this.mdl_editar );
   }
 
+  cambiar_imagen(imagen: string){
+    //this.img.nativeElement.value=document.getElementById('imagen');
+    console.log(imagen);
+    this.imagen= imagen;
+  }
   /*------------------------------------------
   --------------------------------------------
   Created constructor

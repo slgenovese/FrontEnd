@@ -8,4 +8,7 @@ import { redes } from '../redes';
 })
 export class RedesComponent {
   redes = redes;
+  irEnlace(link: string){
+    window.open(link);
+  }
 }
