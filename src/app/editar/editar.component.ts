@@ -47,6 +47,25 @@ export class EditarComponent {
   //de la funcion open()
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
 
+
+  pre_open_banner(tabla: string, id: number, banner: string){
+    this.tabla=tabla;
+    this.id=id;
+    this.imagen=banner;
+    this.quien_llama='banner'
+    this.titulo = 'Area de Edición - banner';
+    this.open(this.mdl_editar );
+  }
+
+  pre_open_foto(tabla: string, id: number, foto: string){
+    this.tabla=tabla;
+    this.id=id;
+    this.imagen=foto;
+    this.quien_llama='foto'
+    this.titulo = 'Area de Edición - foto';
+    this.open(this.mdl_editar );
+  }
+
   //Esta funcion es llamada desde otro componente, accede al 'content' y ejecuta la funcion open()
   pre_open_acerca_de(tabla: string, id: number, texto: string): void{
     this.tabla=tabla;
