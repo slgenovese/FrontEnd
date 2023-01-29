@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { grafico } from '../grafico'; 
 
 @Component({
   selector: 'app-graficos-donuts',
@@ -10,9 +11,22 @@ export class GraficosDonutsComponent implements OnInit{
   title = 'FrontEnd';
   canvas: any;
   ctx: any;
+  
+  grafico=grafico;
 
   constructor() {}
 
+  graficar(id: string, titulo: string, etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[],){
+    console.log(titulo);
+    var datosIngresos = {
+      data: porcentaje, 
+      backgroundColor: color_Fondo,
+      borderColor: color_Fondo,
+      borderWidth: 0,// Ancho del borde
+    };
+      
+      this.grafico_Donut(datosIngresos, etiqueta, titulo, "chart"+id);
+  }
 
   ngOnInit(): void {
   // Las etiquetas son las porciones de la gráfica
@@ -36,7 +50,7 @@ export class GraficosDonutsComponent implements OnInit{
   ],// Color del borde
     borderWidth: 0,// Ancho del borde
   };
-  this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart1");
+  this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart4");
 
 
   // Las etiquetas son las porciones de la gráfica
@@ -58,7 +72,7 @@ export class GraficosDonutsComponent implements OnInit{
   ],// Color del borde
     borderWidth: 0,// Ancho del borde
   };
-    this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart2");
+    this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart5");
   //    this.grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string);
    }
   
