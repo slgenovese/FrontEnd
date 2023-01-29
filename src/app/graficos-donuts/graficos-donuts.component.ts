@@ -18,6 +18,10 @@ export class GraficosDonutsComponent implements OnInit{
 
   graficar(id: string, titulo: string, etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[],){
     console.log(titulo);
+
+  //  let graf= document.getElementById('charts');
+  //  graf!.id = 'charts1';
+
     var datosIngresos = {
       data: porcentaje, 
       backgroundColor: color_Fondo,
@@ -25,7 +29,9 @@ export class GraficosDonutsComponent implements OnInit{
       borderWidth: 0,// Ancho del borde
     };
       
+    console.log(id);
       this.grafico_Donut(datosIngresos, etiqueta, titulo, "chart"+id);
+    return;
   }
 
   ngOnInit(): void {
@@ -117,5 +123,4 @@ export class GraficosDonutsComponent implements OnInit{
     
       });
     };
-
 }
