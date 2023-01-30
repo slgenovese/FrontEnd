@@ -16,9 +16,16 @@ export interface Grafico {
     color_Borde: ['red', 'green', 'blue', 'orange'],
   },{
     id: "2",
-    titulo: "Ingles Técnico", 
+    titulo: "Inglés Técnico", 
     etiqueta: ["Escritura", "Hablado","Lectura                        "],
     porcentaje: [10, 10, 80],
     color_Fondo: ['red', 'green', 'blue'],
     color_Borde: ['red', 'green', 'blue'],
-  }]
+  },{
+    id: "3",
+  titulo: "Frances", 
+  etiqueta: ["Escritura", "Hablado","Lectura                        "],
+  porcentaje: [10, 10, 80],
+  color_Fondo: ['red', 'green', 'blue'],
+  color_Borde: ['red', 'green', 'blue'],
+}]

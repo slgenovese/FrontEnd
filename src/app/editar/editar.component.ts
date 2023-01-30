@@ -33,6 +33,10 @@ export class EditarComponent {
   desde!: string;
   hasta!: string;
   titulo_aux!: string;
+  etiqueta!: string[];
+  porcentaje!: number[];
+  color_Fondo!: string[];
+  color_Borde!: string[];
 
 
   editar_registro(){
@@ -115,6 +119,18 @@ export class EditarComponent {
     this.desde=desde;
     this.hasta=hasta;
     this.quien_llama='educacion'
+    this.titulo = 'Area de Edición - '+ tabla;
+    this.open(this.mdl_editar );
+  }
+
+  pre_open_grafico(tabla: string, id: string, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
+    this.tabla=tabla;
+    this.titulo_aux=titulo;
+    this.etiqueta=etiqueta;
+    this.porcentaje=porcentaje;
+    this.color_Fondo=color_Fondo;
+    this.color_Borde=color_Borde;
+    this.quien_llama='grafico'
     this.titulo = 'Area de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }

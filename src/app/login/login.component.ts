@@ -69,6 +69,39 @@ export class LoginComponent {
     document.getElementById("ace_Edicion-1")!.style.display=display;
     document.getElementById("ace_Borrado-1")!.style.display=display;
 
+    if (document.getElementById("grafico1")!.style.display==="block"){
+      document.getElementById("gra_Borrado-1")!.style.display=display;
+      document.getElementById("gra_Edicion-1")!.style.display=display;
+    }
+    if (document.getElementById("grafico2")!.style.display==="block"){
+      document.getElementById("gra_Borrado-2")!.style.display=display;
+      document.getElementById("gra_Edicion-2")!.style.display=display;
+    }
+    if (document.getElementById("grafico3")!.style.display==="block"){
+      document.getElementById("gra_Borrado-3")!.style.display=display;
+      document.getElementById("gra_Edicion-3")!.style.display=display;
+    }
+    if (document.getElementById("grafico4")!.style.display==="block"){
+      document.getElementById("gra_Borrado-4")!.style.display=display;
+      document.getElementById("gra_Edicion-4")!.style.display=display;
+    }
+    if (document.getElementById("grafico5")!.style.display==="block"){
+      document.getElementById("gra_Borrado-5")!.style.display=display;
+      document.getElementById("gra_Edicion-5")!.style.display=display;
+    }
+    if (document.getElementById("grafico6")!.style.display==="block"){
+      document.getElementById("gra_Borrado-6")!.style.display=display;
+      document.getElementById("gra_Edicion-6")!.style.display=display;
+    }
+    if (document.getElementById("grafico7")!.style.display==="block"){
+      document.getElementById("gra_Borrado-7")!.style.display=display;
+      document.getElementById("gra_Edicion-7")!.style.display=display;
+    }
+    if (document.getElementById("grafico8")!.style.display==="block"){
+      document.getElementById("gra_Borrado-8")!.style.display=display;
+      document.getElementById("gra_Edicion-8")!.style.display=display;
+    }
+    
     var i=0;
       for( let edu of educacion){
         i++;

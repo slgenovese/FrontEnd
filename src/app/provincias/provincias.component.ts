@@ -14,9 +14,7 @@ export class ProvinciasComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
   
-    console.log(this.provincias_aux.nativeElement.value);
     this.provincias_aux.nativeElement.value= this.id_provincia;
-    console.log(this.id_provincia);
 
   }
 }
