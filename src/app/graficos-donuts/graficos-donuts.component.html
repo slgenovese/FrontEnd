@@ -12,13 +12,11 @@
 
 
 <div class="row">
-    <div *ngFor="let grafico of grafico; " style="display: inline;">
-<!--            <div [class.selected]="graficar(grafico.id, grafico.titulo, grafico.etiqueta, grafico.porcentaje, grafico.color_Fondo, grafico.color_Borde)"></div>-->
-        {{this.graficar(grafico.id, grafico.titulo, grafico.etiqueta, grafico.porcentaje, grafico.color_Fondo, grafico.color_Borde)}}    
-        {{grafico.id}}
-        <div class="col-2">
-            <div ng-show = "grafico.id=='2'"><canvas id="chart1" ></canvas></div>
-                 
+    <div class="col-5">
+        <div *ngFor="let grafico of grafico; " style="display: inline;">
+            <canvas id="chart{{grafico.id}}" ></canvas>
+            {{this.graficar(grafico.id, grafico.titulo, grafico.etiqueta, grafico.porcentaje, grafico.color_Fondo, grafico.color_Borde)}}    
         </div>
     </div>
+
 </div>
