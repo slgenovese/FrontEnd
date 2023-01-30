@@ -8,7 +8,8 @@ import { grafico } from '../grafico';
   styleUrls: ['./graficos-donuts.component.css']
 })
 export class GraficosDonutsComponent implements OnInit{
-  title = 'FrontEnd';
+//export class GraficosDonutsComponent {
+    title = 'FrontEnd';
   canvas: any;
   ctx: any;
   
@@ -16,26 +17,24 @@ export class GraficosDonutsComponent implements OnInit{
 
   constructor() {}
 
-  graficar(id: string, titulo: string, etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[],){
-    console.log(titulo);
-
-  //  let graf= document.getElementById('charts');
-  //  graf!.id = 'charts1';
-
-    var datosIngresos = {
-      data: porcentaje, 
-      backgroundColor: color_Fondo,
-      borderColor: color_Fondo,
-      borderWidth: 0,// Ancho del borde
-    };
-      
-    console.log(id);
-      this.grafico_Donut(datosIngresos, etiqueta, titulo, "chart"+id);
-    return;
-  }
-
   ngOnInit(): void {
-  // Las etiquetas son las porciones de la gráfica
+
+    for(let grafico of this.grafico){
+
+      console.log(grafico.titulo);
+
+      var datosIngresos = {
+        data: grafico.porcentaje, 
+        backgroundColor: grafico.color_Fondo,
+        borderColor: grafico.color_Fondo,
+        borderWidth: 0,// Ancho del borde
+      };
+  
+      this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id);
+    }
+
+/*
+   // Las etiquetas son las porciones de la gráfica
   var etiquetas = ["C/C++", "VB/.Net","Assembler","HTML/CSS/JavaScript"]
   // Podemos tener varios conjuntos de datos. Comencemos con uno
   var titulo ="Lenguajes de Programación"
@@ -62,7 +61,7 @@ export class GraficosDonutsComponent implements OnInit{
   // Las etiquetas son las porciones de la gráfica
   var etiquetas = ["Escritura", "Hablado","Lectura                        "]
   // Podemos tener varios conjuntos de datos. Comencemos con uno
-  var titulo ="Ingles Técnico"
+  var titulo ="Inglés Técnico"
   var datosIngresos = {
     data: [10, 10, 80], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     // Ahora debería haber tantos background colors como datos, es decir, para este ejemplo, 4
@@ -80,7 +79,8 @@ export class GraficosDonutsComponent implements OnInit{
   };
     this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart5");
   //    this.grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string);
-   }
+*/  
+}
   
   
   
