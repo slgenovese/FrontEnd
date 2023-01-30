@@ -1,28 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { grafico } from '../grafico'; 
+import { BorrarComponent } from '../borrar/borrar.component';
+import { EditarComponent } from '../editar/editar.component';
 
 @Component({
   selector: 'app-graficos-donuts',
   templateUrl: './graficos-donuts.component.html',
   styleUrls: ['./graficos-donuts.component.css']
 })
+
+
+
 export class GraficosDonutsComponent implements OnInit{
-//export class GraficosDonutsComponent {
-    title = 'FrontEnd';
+
+  title = 'FrontEnd';
   canvas: any;
   ctx: any;
-  
+    
+  id!: string;
+  titulo!: string;
+  etiqueta!: string[];
+  porcentaje!: number[];
+  color_Fondo!: string[];
+  color_Borde!: string[];
+
   grafico=grafico;
+
+  @Input()  borrar!: BorrarComponent;
+  @Input()  editar!: EditarComponent;
+
+  datos!: Graficos[];
 
   constructor() {}
 
   ngOnInit(): void {
 
+    let i=1;
     for(let grafico of this.grafico){
 
-      console.log(grafico.titulo);
-
+      this.datos[i].id=grafico.id;
+      this.datos[i].titulo =grafico.titulo;
+      this.datos[i].etiqueta =grafico.etiqueta;
+      this.datos[i].porcentaje =grafico.porcentaje;
+      this.datos[i].color_Fondo =grafico.color_Fondo;
+      this.datos[i].color_Borde =grafico.color_Borde;
+      this.id=grafico.id; 
+      this.titulo =grafico.titulo;
+      this.etiqueta =grafico.etiqueta;
+      this.porcentaje =grafico.porcentaje;
+      this.color_Fondo =grafico.color_Fondo;
+      this.color_Borde =grafico.color_Borde;
+      //console.log(this.datos[i].titulo);
+      ++i;
       var datosIngresos = {
         data: grafico.porcentaje, 
         backgroundColor: grafico.color_Fondo,
@@ -32,63 +62,15 @@ export class GraficosDonutsComponent implements OnInit{
   
       this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
     }
-
-/*
-   // Las etiquetas son las porciones de la gráfica
-  var etiquetas = ["C/C++", "VB/.Net","Assembler","HTML/CSS/JavaScript"]
-  // Podemos tener varios conjuntos de datos. Comencemos con uno
-  var titulo ="Lenguajes de Programación"
-  var datosIngresos = {
-    data: [35, 35, 10, 15], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    // Ahora debería haber tantos background colors como datos, es decir, para este ejemplo, 4
-    backgroundColor: [
-      'red',
-      'green',
-      'blue',
-      'orange',
-  ],// Color de fondo
-    borderColor: [
-      'red',
-      'green',
-      'blue',
-      'orange',
-  ],// Color del borde
-    borderWidth: 0,// Ancho del borde
-  };
-  this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart4");
-
-
-  // Las etiquetas son las porciones de la gráfica
-  var etiquetas = ["Escritura", "Hablado","Lectura                        "]
-  // Podemos tener varios conjuntos de datos. Comencemos con uno
-  var titulo ="Inglés Técnico"
-  var datosIngresos = {
-    data: [10, 10, 80], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    // Ahora debería haber tantos background colors como datos, es decir, para este ejemplo, 4
-    backgroundColor: [
-      'red',
-      'green',
-      'blue',
-  ],// Color de fondo
-    borderColor: [
-      'red',
-      'green',
-      'blue',
-  ],// Color del borde
-    borderWidth: 0,// Ancho del borde
-  };
-    this.grafico_Donut(datosIngresos, etiquetas, titulo, "donut-chart5");
-  //    this.grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string);
-*/  
+    
 }
-  
-  
   
   grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
     // Obtener una referencia al elemento canvas del DOM
     this.canvas = document.getElementById(objeto)!;
     this.ctx = this.canvas.getContext('2d')!;
 
+    //Se muestra el selector 'canvas' donde se va a graficar
     document.getElementById(grafico_id)!.style.display="block";
   
     const myChart = new Chart (this.ctx,{
@@ -125,4 +107,13 @@ export class GraficosDonutsComponent implements OnInit{
     
       });
     };
+}
+
+class Graficos{
+  id!: string;
+  titulo!: string;
+  etiqueta!: string[];
+  porcentaje!: number[];
+  color_Fondo!: string[];
+  color_Borde!: string[];
 }
