@@ -15,7 +15,6 @@ export class BorrarComponent {
   tabla!: string;
   id!: number;
   texto!: string;
-  grafico_id!: string;
 
   borrar_registro(){
     console.log("Se borro el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -37,14 +36,6 @@ export class BorrarComponent {
     this.open(this.mdl_borrar );
   }
 
-  pre_open_grafico(tabla: string, id: string, texto: string): void{
-
-    this.tabla=tabla;
-    this.grafico_id=id;
-    this.texto=texto;
-    this.titulo = 'Area de Borrado - '+ tabla;
-    this.open(this.mdl_borrar );
-  }
 
 
   /*------------------------------------------

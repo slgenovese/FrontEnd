@@ -123,7 +123,7 @@ export class EditarComponent {
     this.open(this.mdl_editar );
   }
 
-  pre_open_grafico(tabla: string, id: string, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
+  pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     this.tabla=tabla;
     this.titulo_aux=titulo;
     this.etiqueta=etiqueta;
