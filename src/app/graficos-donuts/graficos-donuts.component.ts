@@ -30,9 +30,20 @@ export class GraficosDonutsComponent implements OnInit{
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarComponent;
 
-  datos!: Graficos[];
+  datos:  Graficos[] =[
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+    new Graficos(),
+  ] 
 
-  constructor() {}
+  //https://www.sneppets.com/angular/how-to-declare-model-class-and-use-in-angular-component-typescript/
+
+constructor() {}
 
   ngOnInit(): void {
 
@@ -45,6 +56,7 @@ export class GraficosDonutsComponent implements OnInit{
       this.datos[i].porcentaje =grafico.porcentaje;
       this.datos[i].color_Fondo =grafico.color_Fondo;
       this.datos[i].color_Borde =grafico.color_Borde;
+      console.log(this.datos[i]);
       this.id=grafico.id; 
       this.titulo =grafico.titulo;
       this.etiqueta =grafico.etiqueta;
@@ -109,11 +121,14 @@ export class GraficosDonutsComponent implements OnInit{
     };
 }
 
-class Graficos{
-  id!: string;
-  titulo!: string;
-  etiqueta!: string[];
-  porcentaje!: number[];
-  color_Fondo!: string[];
-  color_Borde!: string[];
-}
+
+export class Graficos{
+    public id!: string;
+    public titulo!: string;
+    public etiqueta!: string[];
+    public porcentaje!: number[];
+    public color_Fondo!: string[];
+    public color_Borde!: string[];
+    constructor() {};
+  }
+
