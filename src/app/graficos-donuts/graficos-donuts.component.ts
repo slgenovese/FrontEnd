@@ -18,19 +18,13 @@ export class GraficosDonutsComponent implements OnInit{
   canvas: any;
   ctx: any;
     
-  id!: string;
-  titulo!: string;
-  etiqueta!: string[];
-  porcentaje!: number[];
-  color_Fondo!: string[];
-  color_Borde!: string[];
-
   grafico=grafico;
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarComponent;
 
   datos:  Graficos[] =[
+    new Graficos(),
     new Graficos(),
     new Graficos(),
     new Graficos(),
@@ -47,24 +41,15 @@ constructor() {}
 
   ngOnInit(): void {
 
-    let i=1;
     for(let grafico of this.grafico){
 
-      this.datos[i].id=grafico.id;
-      this.datos[i].titulo =grafico.titulo;
-      this.datos[i].etiqueta =grafico.etiqueta;
-      this.datos[i].porcentaje =grafico.porcentaje;
-      this.datos[i].color_Fondo =grafico.color_Fondo;
-      this.datos[i].color_Borde =grafico.color_Borde;
-      console.log(this.datos[i]);
-      this.id=grafico.id; 
-      this.titulo =grafico.titulo;
-      this.etiqueta =grafico.etiqueta;
-      this.porcentaje =grafico.porcentaje;
-      this.color_Fondo =grafico.color_Fondo;
-      this.color_Borde =grafico.color_Borde;
-      //console.log(this.datos[i].titulo);
-      ++i;
+      this.datos[grafico.id].id=grafico.id;
+      this.datos[grafico.id].titulo =grafico.titulo;
+      this.datos[grafico.id].etiqueta =grafico.etiqueta;
+      this.datos[grafico.id].porcentaje =grafico.porcentaje;
+      this.datos[grafico.id].color_Fondo =grafico.color_Fondo;
+      this.datos[grafico.id].color_Borde =grafico.color_Borde;
+
       var datosIngresos = {
         data: grafico.porcentaje, 
         backgroundColor: grafico.color_Fondo,
@@ -73,8 +58,7 @@ constructor() {}
       };
   
       this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
-    }
-    
+     }
 }
   
   grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
@@ -121,9 +105,8 @@ constructor() {}
     };
 }
 
-
 export class Graficos{
-    public id!: string;
+    public id!: number;
     public titulo!: string;
     public etiqueta!: string[];
     public porcentaje!: number[];
