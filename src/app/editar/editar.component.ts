@@ -2,19 +2,23 @@ import { Component, ViewChild, Input, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
 import { PaisesComponent } from '../paises/paises.component';
-
+import { AniosComponent } from '../anios/anios.component';
 
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.css']
 })
+
 export class EditarComponent {
 
   closeResult: string = '';
 
-  @Input() paises!: PaisesComponent;
-//  @ViewChild('paises_2')paises_2!:ElementRef;
+//  @Input() paises!: PaisesComponent;
+
+//@ViewChild('Paises', {read: true, static: true}) pais_elegido!:PaisesComponent;
+//@ViewChild(AniosComponent) anios_elegidos!:AniosComponent;
+
 
   titulo!: string;
   tabla!: string;
@@ -40,11 +44,18 @@ export class EditarComponent {
 
 
   editar_registro(){
-    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+  //  console.log(this.anios_elegidos);
+  
+  //console.log(this.pais_elegido.prueba);
+
+  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
   }
 
-  
+  recibe_dato(id_pais: string){
+    console.log(id_pais);
+    
+  }
 
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
@@ -96,6 +107,7 @@ export class EditarComponent {
   }
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
+    this.id=id; 
     this.tabla=tabla;
     this.imagen=imagen;
     this.texto_aux=texto;
@@ -112,6 +124,7 @@ export class EditarComponent {
   }
 
   pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+    this.id=id; 
     this.tabla=tabla;
     this.imagen=imagen;
     this.titulo_aux=titulo;
@@ -123,7 +136,8 @@ export class EditarComponent {
     this.open(this.mdl_editar );
   }
 
-  pre_open_grafico(tabla: string, id: string, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
+  pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
+    this.id=id; 
     this.tabla=tabla;
     this.titulo_aux=titulo;
     this.etiqueta=etiqueta;
@@ -174,8 +188,5 @@ export class EditarComponent {
       return  `with: ${reason}`;
     }
   }
-
-
-
 }
 

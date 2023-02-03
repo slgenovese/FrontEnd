@@ -18,7 +18,7 @@ export class GraficosDonutsComponent implements OnInit{
   canvas: any;
   ctx: any;
     
-  id!: string;
+  id!: number;
   titulo!: string;
   etiqueta!: string[];
   porcentaje!: number[];
@@ -47,24 +47,23 @@ constructor() {}
 
   ngOnInit(): void {
 
-    let i=1;
+//    let i=1;
     for(let grafico of this.grafico){
 
-      this.datos[i].id=grafico.id;
-      this.datos[i].titulo =grafico.titulo;
-      this.datos[i].etiqueta =grafico.etiqueta;
-      this.datos[i].porcentaje =grafico.porcentaje;
-      this.datos[i].color_Fondo =grafico.color_Fondo;
-      this.datos[i].color_Borde =grafico.color_Borde;
-      console.log(this.datos[i]);
+      this.datos[grafico.id].id=grafico.id;
+      this.datos[grafico.id].titulo =grafico.titulo;
+      this.datos[grafico.id].etiqueta =grafico.etiqueta;
+      this.datos[grafico.id].porcentaje =grafico.porcentaje;
+      this.datos[grafico.id].color_Fondo =grafico.color_Fondo;
+      this.datos[grafico.id].color_Borde =grafico.color_Borde;
+
       this.id=grafico.id; 
       this.titulo =grafico.titulo;
       this.etiqueta =grafico.etiqueta;
       this.porcentaje =grafico.porcentaje;
       this.color_Fondo =grafico.color_Fondo;
       this.color_Borde =grafico.color_Borde;
-      //console.log(this.datos[i].titulo);
-      ++i;
+//      ++i;
       var datosIngresos = {
         data: grafico.porcentaje, 
         backgroundColor: grafico.color_Fondo,
@@ -123,7 +122,7 @@ constructor() {}
 
 
 export class Graficos{
-    public id!: string;
+    public id!: number;
     public titulo!: string;
     public etiqueta!: string[];
     public porcentaje!: number[];

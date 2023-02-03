@@ -80,7 +80,7 @@
         <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
         <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
-        <app-paises [id_pais]="id_pais" ></app-paises> 
+        <app-paises [id_pais]="id_pais" (valueChange)='recibe_dato($event)'></app-paises> 
         <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias></label>
       </div>
       </ng-container>
