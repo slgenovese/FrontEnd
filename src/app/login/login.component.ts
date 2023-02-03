@@ -33,7 +33,7 @@ export class LoginComponent {
    * @return response()
    */
   open(content:any, btnlogin: any) {
-    if (btnlogin.innerText=='Logout'){
+    if (btnlogin.innerText=='Logout' || btnlogin.innerText=='Cerrar sesión'){
       this.Botones(false);
       btnlogin.innerText ='Login';
       return;
@@ -47,7 +47,7 @@ export class LoginComponent {
 
   public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
     if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
-      if (btnlogin.innerText=='Login'){
+      if (btnlogin.innerText=='Login' || btnlogin.innerText=='Acceso'){
         this.Botones(true);
         btnlogin.innerText ='Logout';
       }

@@ -15,7 +15,6 @@ export class BorrarComponent {
   tabla!: string;
   id!: number;
   texto!: string;
-  grafico_id!: string;
 
   borrar_registro(){
     console.log("Se borro el registro N°:" + this.id + " de la tabla:" + this.tabla);

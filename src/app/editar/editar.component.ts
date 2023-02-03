@@ -145,7 +145,7 @@ export class EditarComponent {
     this.color_Fondo=color_Fondo;
     this.color_Borde=color_Borde;
     this.quien_llama='grafico'
-    this.titulo = 'Area de Edición - '+ tabla;
+    this.titulo = 'Area de Edición - Hard & Soft Skills';
     this.open(this.mdl_editar );
   }
 

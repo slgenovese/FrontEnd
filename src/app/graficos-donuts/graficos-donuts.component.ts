@@ -39,6 +39,7 @@ export class GraficosDonutsComponent implements OnInit{
     new Graficos(),
     new Graficos(),
     new Graficos(),
+    new Graficos(),
   ] 
 
   //https://www.sneppets.com/angular/how-to-declare-model-class-and-use-in-angular-component-typescript/
@@ -47,7 +48,7 @@ constructor() {}
 
   ngOnInit(): void {
 
-//    let i=1;
+    let i=1;
     for(let grafico of this.grafico){
 
       this.datos[grafico.id].id=grafico.id;
@@ -57,13 +58,6 @@ constructor() {}
       this.datos[grafico.id].color_Fondo =grafico.color_Fondo;
       this.datos[grafico.id].color_Borde =grafico.color_Borde;
 
-      this.id=grafico.id; 
-      this.titulo =grafico.titulo;
-      this.etiqueta =grafico.etiqueta;
-      this.porcentaje =grafico.porcentaje;
-      this.color_Fondo =grafico.color_Fondo;
-      this.color_Borde =grafico.color_Borde;
-//      ++i;
       var datosIngresos = {
         data: grafico.porcentaje, 
         backgroundColor: grafico.color_Fondo,
@@ -72,8 +66,7 @@ constructor() {}
       };
   
       this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
-    }
-    
+     }
 }
   
   grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
@@ -119,7 +112,6 @@ constructor() {}
       });
     };
 }
-
 
 export class Graficos{
     public id!: number;

@@ -28,4 +28,25 @@ export interface Grafico {
   porcentaje: [10, 10, 80],
   color_Fondo: ['red', 'green', 'blue'],
   color_Borde: ['red', 'green', 'blue'],
+},{
+  id: 4,
+titulo: "Frances", 
+etiqueta: ["Escritura", "Hablado","Lectura                        "],
+porcentaje: [10, 10, 80],
+color_Fondo: ['red', 'green', 'blue'],
+color_Borde: ['red', 'green', 'blue'],
+},{
+  id: 5,
+titulo: "Frances", 
+etiqueta: ["Escritura", "Hablado","Lectura                        "],
+porcentaje: [10, 10, 80],
+color_Fondo: ['red', 'green', 'blue'],
+color_Borde: ['red', 'green', 'blue'],
+},{
+  id: 6,
+titulo: "Frances", 
+etiqueta: ["Escritura", "Hablado","Lectura                        "],
+porcentaje: [10, 10, 80],
+color_Fondo: ['red', 'green', 'blue'],
+color_Borde: ['red', 'green', 'blue'],
 }]
