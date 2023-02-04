@@ -16,10 +16,6 @@ export class EditarComponent {
 
 //  @Input() paises!: PaisesComponent;
 
-//@ViewChild('Paises', {read: true, static: true}) pais_elegido!:PaisesComponent;
-//@ViewChild(AniosComponent) anios_elegidos!:AniosComponent;
-
-
   titulo!: string;
   tabla!: string;
   id!: number;
@@ -52,9 +48,22 @@ export class EditarComponent {
 
   }
 
-  recibe_dato(id_pais: string){
+  recibe_pais(id_pais: string){
     console.log(id_pais);
     
+  }
+
+  recibe_provincia(id_provincia: string){
+    console.log(id_provincia);
+    
+  }
+
+  recibe_desde(anio_desde: string){
+    console.log("desde: "+anio_desde);
+  }
+
+  recibe_hasta(anio_hasta: string){
+    console.log("hasta: "+anio_hasta);
   }
 
 

@@ -32,7 +32,11 @@ export class BorrarComponent {
     this.tabla=tabla;
     this.id=id;
     this.texto=texto;
-    this.titulo = 'Area de Borrado - '+ tabla;
+    if(tabla==='grafico'){
+      this.titulo = 'Area de Borrado - Hard & Soft Skills';
+    }else{
+      this.titulo = 'Area de Borrado - '+ tabla;
+    }
     this.open(this.mdl_borrar );
   }
 

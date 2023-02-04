@@ -68,8 +68,8 @@
         <label for="texto"> <b> Desde</b></label>
         <label for="texto" style="text-indent: 50pt;"> <b> Hasta </b></label>
         <br>
-        <app-anios [anio]="desde"></app-anios>
-        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta"></app-anios></label>
+        <app-anios [anio]="desde" (valueChange)='recibe_desde($event)'></app-anios>
+        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta" (valueChange)='recibe_hasta($event)'></app-anios></label>
         <br>
       </div>
     </ng-container>
@@ -80,8 +80,8 @@
         <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
         <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
-        <app-paises [id_pais]="id_pais" (valueChange)='recibe_dato($event)'></app-paises> 
-        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias></label>
+        <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
       </div>
       </ng-container>
       <br>
