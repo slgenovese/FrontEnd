@@ -17,7 +17,8 @@ export interface Educacion {
     hasta: "1997",
   },{
     id: 2,
-    imagen: "assets/Cisco.png", 
+//    imagen: "assets/Cisco.png", 
+    imagen: "https://i.postimg.cc/FKs4Pjb6/Cisco.png", 
     titulo:"Cisco Certified Network Associate (CCNA).",
     institucion: "Instituto Perpetuo Socorro.", 
     desde: "2001",

@@ -14,6 +14,7 @@ export class EditarComponent {
 
   closeResult: string = '';
 
+  
 //  @Input() paises!: PaisesComponent;
 
   titulo!: string;
@@ -40,9 +41,7 @@ export class EditarComponent {
 
 
   editar_registro(){
-  //  console.log(this.anios_elegidos);
-  
-  //console.log(this.pais_elegido.prueba);
+    window.open('https://postimg.cc/gallery/g3T3TT4');
 
   console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
@@ -50,12 +49,10 @@ export class EditarComponent {
 
   recibe_pais(id_pais: string){
     console.log(id_pais);
-    
   }
 
   recibe_provincia(id_provincia: string){
     console.log(id_provincia);
-    
   }
 
   recibe_desde(anio_desde: string){
@@ -116,8 +113,8 @@ export class EditarComponent {
   }
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
-    this.id=id; 
     this.tabla=tabla;
+    this.id=id; 
     this.imagen=imagen;
     this.texto_aux=texto;
     this.institucion=institucion;
@@ -133,8 +130,8 @@ export class EditarComponent {
   }
 
   pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
-    this.id=id; 
     this.tabla=tabla;
+    this.id=id; 
     this.imagen=imagen;
     this.titulo_aux=titulo;
     this.institucion=institucion;
@@ -146,8 +143,8 @@ export class EditarComponent {
   }
 
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
-    this.id=id; 
     this.tabla=tabla;
+    this.id=id; 
     this.titulo_aux=titulo;
     this.etiqueta=etiqueta;
     this.porcentaje=porcentaje;
@@ -159,7 +156,6 @@ export class EditarComponent {
   }
 
   cambiar_imagen(imagen: string){
-    //this.img.nativeElement.value=document.getElementById('imagen');
     console.log(imagen);
     this.imagen= imagen;
   }
