@@ -46,9 +46,8 @@ export class GraficosDonutsComponent implements OnInit{
 
 constructor() {}
 
-  ngOnInit(): void {
+ngOnInit(): void {
 
-    let i=1;
     for(let grafico of this.grafico){
 
       this.datos[grafico.id].id=grafico.id;

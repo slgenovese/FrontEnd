@@ -12,7 +12,6 @@ export interface Acerca_de {
 
 export const acerca_de=[{
   id: 1,
-//  imagen: "assets/MSAL.png", 
   imagen: "https://i.postimg.cc/mtp6pFBx/MSAL.png",
   nombre_apellido: "Sergio Lorenzo Genovese", 
   cargo_actual:"Responsable de Area de Sistemas de Información en el Ministerio de Salud de la Nación",

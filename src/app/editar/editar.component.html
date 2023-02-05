@@ -16,6 +16,10 @@
         <label style="text-indent: 20pt;">
           <textarea (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
         </label>
+        <button (click)="mostrar_servidor_img()"type="button" class="btn btn-default img_Edicion" id="img_Edicion-1" style="display: block;">
+          <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la imagen'"></i> </span>
+        </button>
+
       </div>
       <hr>
     </ng-container>

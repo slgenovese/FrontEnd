@@ -8,17 +8,22 @@
                         <img class="img-thumbnail" src="assets/Argentina_Programa.png" width="70%" />
                     </div>
 
-                    <div class="col-6"></div>
+                    <div class="col-5"></div>
 
                     <div class="col-3" >
                         <!-- Redes Sociales -->
                         <app-redes></app-redes>
                     </div>
                     <div class="col-1">
+                        <button id="configurar" target="_blank" type="button" class="btn btn-default" style="display: none;">
+                        <span style="font-size: 120%;">  <i class= 'bi bi-gear-fill' title= 'Configurar' ></i></span>
+                      </button>
+                    </div>
+                    <div class="col-1">
                         <!--Boton Login -->
                         <app-login></app-login>
                     </div>
-            </section>
+                </section>
               <!--Banner y Foto -->
 
               <app-banner [editar]="editar"></app-banner>

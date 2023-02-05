@@ -3,6 +3,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
 import { PaisesComponent } from '../paises/paises.component';
 import { AniosComponent } from '../anios/anios.component';
+import { LoginComponent } from '../login/login.component';
+import { login } from '../Login';
 
 @Component({
   selector: 'app-editar',
@@ -41,11 +43,17 @@ export class EditarComponent {
 
 
   editar_registro(){
-    window.open('https://postimg.cc/gallery/g3T3TT4');
 
   console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
   }
+
+  @ViewChild(LoginComponent)login!: LoginComponent;
+
+  mostrar_servidor_img(){
+    window.open('https://postimg.cc/gallery/g3T3TT4');
+//    window.open( this.login.servidor_img);
+}
 
   cambiar_imagen(nueva_imagen: string){
     this.mdl_editar.elementRef.nativeElement.value=nueva_imagen;
