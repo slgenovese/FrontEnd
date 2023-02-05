@@ -47,6 +47,11 @@ export class EditarComponent {
 
   }
 
+  cambiar_imagen(nueva_imagen: string){
+    this.mdl_editar.elementRef.nativeElement.value=nueva_imagen;
+    this.imagen= nueva_imagen;
+    console.log(nueva_imagen);
+  }
   recibe_pais(id_pais: string){
     console.log(id_pais);
   }
@@ -154,11 +159,12 @@ export class EditarComponent {
     this.titulo = 'Area de Edición - Hard & Soft Skills';
     this.open(this.mdl_editar );
   }
-
+/*
   cambiar_imagen(imagen: string){
     console.log(imagen);
     this.imagen= imagen;
   }
+  */
   /*------------------------------------------
   --------------------------------------------
   Created constructor

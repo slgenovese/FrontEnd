@@ -12,9 +12,10 @@
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
-        <img (click)="cambiar_imagen(imagen_seleccionada.value)" class="img-thumbnail" id="imagen" src={{imagen}} />
-        <input accept="image/png, image/jpg," type="file" #imagen_seleccionada >
-        <label style="text-indent: 20pt;"><textarea name="texto" id="" cols="50" rows="1" value={{imagen}}></textarea>  </label>
+        <img class="img-thumbnail" id="imagen" src={{imagen}} />
+        <label style="text-indent: 20pt;">
+          <textarea (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
+        </label>
       </div>
       <hr>
     </ng-container>
