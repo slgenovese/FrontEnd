@@ -50,8 +50,7 @@ export class EditarComponent implements OnInit{
 
 
   mostrar_servidor_img(){
-    window.open('https://postimg.cc/gallery/g3T3TT4');
-//    window.open( this.login.servidor_img);
+    window.open( this.servidor_img);
 }
 
   cambiar_imagen(nueva_imagen: string){
