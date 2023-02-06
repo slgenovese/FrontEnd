@@ -6,6 +6,6 @@ export interface Banner {
 
   export const banner = [{
     id: 1,
-    banner: "assets/Banner.png", 
-    foto: "assets/Foto_Fondo_Gris.png",
+    banner: "https://i.postimg.cc/FKKMbhN5/Banner.png", 
+    foto: "https://i.postimg.cc/W4WPxhX1/Foto-Fondo-Gris.png",
   }]

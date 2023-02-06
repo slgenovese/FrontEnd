@@ -1,4 +1,4 @@
-import { Component,ViewChild, ElementRef, AfterViewInit, Input} from '@angular/core';
+import { Component,ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-anios',
@@ -9,8 +9,10 @@ export class AniosComponent  implements AfterViewInit {
 
   @ViewChild('anios') anios_aux!:ElementRef;
   @Input() anio!: string;
-  
+  @Output() valueChange= new EventEmitter<string>();
+
   elegido(anio: string){
+    this.valueChange.emit(anio);
   }
 
   ngAfterViewInit(): void {

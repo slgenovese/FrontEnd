@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { educacion } from '../educacion';
 import { experiencia } from '../experiencia';
+import { login } from '../Login';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,24 @@ import { experiencia } from '../experiencia';
 
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-
+  login = login;
   title = 'appBootstrap';
 
   closeResult: string = '';
 
+  password!: string;
+  mail!: string;
+  servidor_img!: string; 
 
+  ngOnInit(): void {
+    for(let login of this.login){
+      this.password = login.clave
+      this.mail = login.usuario
+      this.servidor_img = login.servidor_img ; 
+        }
+  }
 
 
   /*------------------------------------------
@@ -46,7 +57,7 @@ export class LoginComponent {
   }
 
   public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
-    if(palabraSecreta=='42247476' && correo=='sgenovese@gmail.com'){
+    if(palabraSecreta== this.password && correo==this.mail){
       if (btnlogin.innerText=='Login' || btnlogin.innerText=='Acceso'){
         this.Botones(true);
         btnlogin.innerText ='Logout';
@@ -63,6 +74,8 @@ export class LoginComponent {
     }else{
       display ='none';
     }
+
+    document.getElementById("configurar")!.style.display=display;
     document.getElementById("ban_Edicion-1")!.style.display=display;
     document.getElementById("fot_Edicion-1")!.style.display=display;
     document.getElementById("nom_Edicion-1")!.style.display=display;

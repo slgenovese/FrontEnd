@@ -1,5 +1,4 @@
-import { Component,ViewChild, ElementRef, AfterViewInit, Input} from '@angular/core';
-//import { EditarComponent } from '../editar/editar.component';
+import { Component,ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-paises',
@@ -10,8 +9,11 @@ export class PaisesComponent implements AfterViewInit {
 
   @ViewChild('paises') paises_aux!:ElementRef;
   @Input() id_pais!: string;
+  @Output() valueChange= new EventEmitter<string>();
+
   
   elegido(pais: string){
+    this.valueChange.emit(pais);
   }
 
   ngAfterViewInit(): void {

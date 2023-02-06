@@ -12,9 +12,14 @@
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
-        <img (click)="cambiar_imagen(imagen_seleccionada.value)" class="img-thumbnail" id="imagen" src={{imagen}} />
-        <input accept="image/png, image/jpg," type="file" #imagen_seleccionada>
-        <label style="text-indent: 20pt;"><textarea name="texto" id="" cols="50" rows="1" value={{imagen}}></textarea>  </label>
+        <img class="img-thumbnail" id="imagen" src={{imagen}} />
+        <label style="text-indent: 20pt;">
+          <textarea (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
+        </label>
+        <button (click)="mostrar_servidor_img()"type="button" class="btn btn-default img_Edicion" id="img_Edicion-1" style="display: block;">
+          <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la imagen'"></i> </span>
+        </button>
+
       </div>
       <hr>
     </ng-container>
@@ -68,8 +73,8 @@
         <label for="texto"> <b> Desde</b></label>
         <label for="texto" style="text-indent: 50pt;"> <b> Hasta </b></label>
         <br>
-        <app-anios [anio]="desde"></app-anios>
-        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta"></app-anios></label>
+        <app-anios [anio]="desde" (valueChange)='recibe_desde($event)'></app-anios>
+        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta" (valueChange)='recibe_hasta($event)'></app-anios></label>
         <br>
       </div>
     </ng-container>
@@ -80,8 +85,8 @@
         <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
         <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
-        <app-paises [id_pais]="id_pais" ></app-paises> 
-        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" ></app-provincias></label>
+        <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
       </div>
       </ng-container>
       <br>

@@ -18,6 +18,13 @@ export class GraficosDonutsComponent implements OnInit{
   canvas: any;
   ctx: any;
     
+  id!: number;
+  titulo!: string;
+  etiqueta!: string[];
+  porcentaje!: number[];
+  color_Fondo!: string[];
+  color_Borde!: string[];
+
   grafico=grafico;
 
   @Input()  borrar!: BorrarComponent;
@@ -39,7 +46,7 @@ export class GraficosDonutsComponent implements OnInit{
 
 constructor() {}
 
-  ngOnInit(): void {
+ngOnInit(): void {
 
     for(let grafico of this.grafico){
 

@@ -2,19 +2,22 @@ import { Component, ViewChild, Input, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
 import { PaisesComponent } from '../paises/paises.component';
-
+import { AniosComponent } from '../anios/anios.component';
+import { LoginComponent } from '../login/login.component';
+import { login } from '../Login';
 
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.css']
 })
+
 export class EditarComponent {
 
   closeResult: string = '';
 
-  @Input() paises!: PaisesComponent;
-//  @ViewChild('paises_2')paises_2!:ElementRef;
+  
+//  @Input() paises!: PaisesComponent;
 
   titulo!: string;
   tabla!: string;
@@ -40,14 +43,37 @@ export class EditarComponent {
 
 
   editar_registro(){
-    this.controlar_datos_ingresados();
-    console.log(this.pais+ " - "+ this.provincia );
-    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+
+  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
   }
 
-  controlar_datos_ingresados(){
+  @ViewChild(LoginComponent)login!: LoginComponent;
 
+  mostrar_servidor_img(){
+    window.open('https://postimg.cc/gallery/g3T3TT4');
+//    window.open( this.login.servidor_img);
+}
+
+  cambiar_imagen(nueva_imagen: string){
+    this.mdl_editar.elementRef.nativeElement.value=nueva_imagen;
+    this.imagen= nueva_imagen;
+    console.log(nueva_imagen);
+  }
+  recibe_pais(id_pais: string){
+    console.log(id_pais);
+  }
+
+  recibe_provincia(id_provincia: string){
+    console.log(id_provincia);
+  }
+
+  recibe_desde(anio_desde: string){
+    console.log("desde: "+anio_desde);
+  }
+
+  recibe_hasta(anio_hasta: string){
+    console.log("hasta: "+anio_hasta);
   }
 
 
@@ -101,6 +127,7 @@ export class EditarComponent {
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
     this.tabla=tabla;
+    this.id=id; 
     this.imagen=imagen;
     this.texto_aux=texto;
     this.institucion=institucion;
@@ -117,6 +144,7 @@ export class EditarComponent {
 
   pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
     this.tabla=tabla;
+    this.id=id; 
     this.imagen=imagen;
     this.titulo_aux=titulo;
     this.institucion=institucion;
@@ -129,6 +157,7 @@ export class EditarComponent {
 
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     this.tabla=tabla;
+    this.id=id; 
     this.titulo_aux=titulo;
     this.etiqueta=etiqueta;
     this.porcentaje=porcentaje;
@@ -138,12 +167,12 @@ export class EditarComponent {
     this.titulo = 'Area de Edición - Hard & Soft Skills';
     this.open(this.mdl_editar );
   }
-
+/*
   cambiar_imagen(imagen: string){
-    //this.img.nativeElement.value=document.getElementById('imagen');
     console.log(imagen);
     this.imagen= imagen;
   }
+  */
   /*------------------------------------------
   --------------------------------------------
   Created constructor
@@ -178,8 +207,5 @@ export class EditarComponent {
       return  `with: ${reason}`;
     }
   }
-
-
-
 }
 
