@@ -7,14 +7,37 @@
   </div>
   <div class="modal-body">
 
+    <ng-container *ngIf = "quien_llama==='configurar'" >
+      <div class="form-group" >
+       
+          <label for="correo">Correo</label>
+          <input #correo name="correo"
+              class="form-control" type="email"
+              placeholder="Correo electrónico">
+          <label for="palabraSecreta">Contraseña</label>
+          <input #palabraSecreta_1 name="palabraSecreta"
+              class="form-control" type="password"
+              placeholder="Contraseña">
+        <label for="palabraSecreta">Reingrese la contraseña</label>
+        <input #palabraSecreta_2 name="palabraSecreta"
+            class="form-control" type="password"
+            placeholder="Contraseña">
+        <label for="texto" >URL del servidor de imagenes</label>
+        <br>
+        <textarea (input) ="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen class="form-control" id="path_imagen" cols="60" rows="1" value={{servidor_img}} ></textarea>  
+  
+      </div>
+      <hr>
+    </ng-container>
     
+    <!-- Muestra y permite cambiar las imagenes -->
     <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia' || quien_llama==='educacion' || quien_llama==='foto' || quien_llama==='banner'" >
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
         <img class="img-thumbnail" id="imagen" src={{imagen}} />
         <label style="text-indent: 20pt;">
-          <textarea (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
+          <textarea class="form-control" (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
         </label>
         <button (click)="mostrar_servidor_img()"type="button" class="btn btn-default img_Edicion" id="img_Edicion-1" style="display: block;">
           <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la imagen'"></i> </span>
@@ -28,7 +51,7 @@
       <div class="form-group" >
         <label for="texto"> <b> Acerca de: </b></label>
         <br>
-        <textarea name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
       </div>
     </ng-container>
 
@@ -37,11 +60,11 @@
       <div class="form-group" >
         <label for="texto"> <b> Nombre y Apellido: </b></label>
         <br>
-        <input name="texto" id="" cols="50" rows="1" value={{nombre_apellido}}>
+        <input class="form-control" name="texto" id="" cols="50" rows="1" value={{nombre_apellido}}>
         <br>
         <label for="texto"> <b> Cargo Actual: </b></label>
         <br>
-        <textarea name="texto" id="" cols="100" rows="2" value={{cargo_actual}}></textarea>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="2" value={{cargo_actual}}></textarea>
         <br>
       </div>
     </ng-container>
@@ -50,7 +73,7 @@
     <ng-container *ngIf = "quien_llama==='educacion'" >
       <div class="form-group" >
         <label for="texto"> <b> Titulo: </b></label>
-        <textarea name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
         <br>
       </div>
     </ng-container>
@@ -58,7 +81,7 @@
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="texto"> <b> Tareas realizadas: </b></label>
-        <textarea name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
         <br>
       </div>
     </ng-container>
@@ -67,7 +90,7 @@
       <div class="form-group" >
         <label for="texto"> <b> Institución: </b></label>
         <br>
-        <textarea name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
         <label for="texto"> <b> Periodo: </b></label>
         <br>
         <label for="texto"> <b> Desde</b></label>

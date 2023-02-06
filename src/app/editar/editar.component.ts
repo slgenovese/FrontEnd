@@ -1,9 +1,6 @@
-import { Component, ViewChild, Input, ElementRef} from '@angular/core';
+import { Component, ViewChild, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
-import { PaisesComponent } from '../paises/paises.component';
-import { AniosComponent } from '../anios/anios.component';
-import { LoginComponent } from '../login/login.component';
 import { login } from '../Login';
 
 @Component({
@@ -12,10 +9,10 @@ import { login } from '../Login';
   styleUrls: ['./editar.component.css']
 })
 
-export class EditarComponent {
+export class EditarComponent implements OnInit{
 
   closeResult: string = '';
-
+  login=login;
   
 //  @Input() paises!: PaisesComponent;
 
@@ -40,6 +37,9 @@ export class EditarComponent {
   porcentaje!: number[];
   color_Fondo!: string[];
   color_Borde!: string[];
+  password!: string;
+  mail!: string;
+  servidor_img!: string; 
 
 
   editar_registro(){
@@ -48,7 +48,6 @@ export class EditarComponent {
 
   }
 
-  @ViewChild(LoginComponent)login!: LoginComponent;
 
   mostrar_servidor_img(){
     window.open('https://postimg.cc/gallery/g3T3TT4');
@@ -87,7 +86,7 @@ export class EditarComponent {
     this.id=id;
     this.imagen=banner;
     this.quien_llama='banner'
-    this.titulo = 'Area de Edición - banner';
+    this.titulo = 'Área de Edición - banner';
     this.open(this.mdl_editar );
   }
 
@@ -96,7 +95,7 @@ export class EditarComponent {
     this.id=id;
     this.imagen=foto;
     this.quien_llama='foto'
-    this.titulo = 'Area de Edición - foto';
+    this.titulo = 'Área de Edición - foto';
     this.open(this.mdl_editar );
   }
 
@@ -106,7 +105,7 @@ export class EditarComponent {
     this.id=id;
     this.texto_aux=texto;
     this.quien_llama='acerca_de'
-    this.titulo = 'Area de Edición - '+ tabla;
+    this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
   pre_open_nombre(tabla: string, id: number, nombre_apellido: string, cargo_actual: string, id_pais: string, pais: string, id_provincia: string, provincia: string, imagen: string): void{
@@ -119,7 +118,7 @@ export class EditarComponent {
     this.id_provincia=id_provincia;
     this.provincia=provincia;
     this.quien_llama='nombre'
-    this.titulo = 'Area de Edición - '+ tabla;
+    this.titulo = 'Área de Edición - '+ tabla;
     this.imagen=imagen;
   
     this.open(this.mdl_editar );
@@ -138,7 +137,7 @@ export class EditarComponent {
     this.id_provincia=id_provincia;
     this.provincia=provincia;
     this.quien_llama='experiencia'
-    this.titulo = 'Area de Edición - '+ tabla;
+    this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
 
@@ -151,7 +150,7 @@ export class EditarComponent {
     this.desde=desde;
     this.hasta=hasta;
     this.quien_llama='educacion'
-    this.titulo = 'Area de Edición - '+ tabla;
+    this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
 
@@ -164,15 +163,25 @@ export class EditarComponent {
     this.color_Fondo=color_Fondo;
     this.color_Borde=color_Borde;
     this.quien_llama='grafico'
-    this.titulo = 'Area de Edición - Hard & Soft Skills';
+    this.titulo = 'Área de Edición - Hard & Soft Skills';
     this.open(this.mdl_editar );
   }
-/*
-  cambiar_imagen(imagen: string){
-    console.log(imagen);
-    this.imagen= imagen;
+  pre_open_configurar(tabla: string, id: number){
+    this.tabla=tabla;
+    this.id=id; 
+    this.quien_llama='configurar'
+    this.titulo = 'Área de Edición - configurar';
+    this.open(this.mdl_editar );
   }
-  */
+
+  ngOnInit(): void {
+    for(let login of this.login){
+      this.password = login.clave
+      this.mail = login.usuario
+      this.servidor_img = login.servidor_img ; 
+    }
+  }
+
   /*------------------------------------------
   --------------------------------------------
   Created constructor

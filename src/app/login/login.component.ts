@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit{
       display ='none';
     }
 
-    document.getElementById("configurar")!.style.display=display;
+    document.getElementById("con_Edicion-1")!.style.display=display;
     document.getElementById("ban_Edicion-1")!.style.display=display;
     document.getElementById("fot_Edicion-1")!.style.display=display;
     document.getElementById("nom_Edicion-1")!.style.display=display;

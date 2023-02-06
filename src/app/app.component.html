@@ -15,9 +15,8 @@
                         <app-redes></app-redes>
                     </div>
                     <div class="col-1">
-                        <button id="configurar" target="_blank" type="button" class="btn btn-default" style="display: none;">
-                        <span style="font-size: 120%;">  <i class= 'bi bi-gear-fill' title= 'Configurar' ></i></span>
-                      </button>
+                      <app-configurar [editar]="editar"></app-configurar>
+                      <app-editar #editar ></app-editar>
                     </div>
                     <div class="col-1">
                         <!--Boton Login -->
