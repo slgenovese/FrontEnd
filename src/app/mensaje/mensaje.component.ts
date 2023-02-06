@@ -1,13 +1,13 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'app-borrar',
-  templateUrl: './borrar.component.html',
-  styleUrls: ['./borrar.component.css']
+  selector: 'app-mensaje',
+  templateUrl: './mensaje.component.html',
+  styleUrls: ['./mensaje.component.css']
 })
-export class BorrarComponent {
+export class MensajeComponent {
 
   closeResult: string = '';
   
@@ -24,7 +24,7 @@ export class BorrarComponent {
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open() 
-  @ViewChild('mdl_borrar', { read: TemplateRef }) mdl_borrar!:TemplateRef<any>;
+  @ViewChild('mdl_mensaje', { read: TemplateRef }) mdl_mensaje!:TemplateRef<any>;
 
   //Esta funcion es llamada desde otro componente, accede al 'content' y ejecuta la funcion open()
   pre_open(tabla: string, id: number, texto: string): void{
@@ -32,12 +32,8 @@ export class BorrarComponent {
     this.tabla=tabla;
     this.id=id;
     this.texto=texto;
-    if (tabla==='grafico'){
-      this.titulo = 'Area de Borrado - Hard & Soft Skills';
-    }else{
-      this.titulo = 'Area de Borrado - ' + tabla;
-    }
-    this.open(this.mdl_borrar );
+    this.titulo = 'Area de Borrado - Hard & Soft Skills';
+    this.open(this.mdl_mensaje );
   }
 
 
@@ -80,6 +76,12 @@ export class BorrarComponent {
 
 
 }
+
+
+
+
+
+
 
 
 

@@ -40,11 +40,15 @@ export class EditarComponent {
 
 
   editar_registro(){
+    this.controlar_datos_ingresados();
+    console.log(this.pais+ " - "+ this.provincia );
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
   }
 
-  
+  controlar_datos_ingresados(){
+
+  }
 
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'

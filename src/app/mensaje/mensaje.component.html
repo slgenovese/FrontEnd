@@ -1,0 +1,23 @@
+
+  <ng-template #mdl_mensaje let-modal >
+    <div class="modal-header">
+    <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase" ><b> Mensaje del Sistema</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+<!--      <p><b> {{texto}} </b></p>-->
+      <br>
+      <p id="alerta"> <b> Esta por borrar el siguiente registro, ¿Esta seguro? </b></p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">Cancelar</span>
+    </button>
+<!--    <button type="button" class="btn btn-dark" (click)="borrar_registro()" (click)="modal.close('Save click')">Borrar</button>-->
+    <button type="button" class="btn btn-dark" >Aceptar</button>
+</div>
+</ng-template>
+
