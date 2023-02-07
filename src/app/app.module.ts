@@ -19,6 +19,7 @@ import { ProvinciasComponent } from './provincias/provincias.component';
 import { AniosComponent } from './anios/anios.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { ConfigurarComponent } from './configurar/configurar.component';
+import { HabilitarComponent } from './habilitar/habilitar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ConfigurarComponent } from './configurar/configurar.component';
     AniosComponent,
     MensajeComponent,
     ConfigurarComponent,
+    HabilitarComponent,
   ],
   imports: [
     BrowserModule,

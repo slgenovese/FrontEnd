@@ -8,14 +8,21 @@
                         <img class="img-thumbnail" src="assets/Argentina_Programa.png" width="70%" />
                     </div>
 
-                    <div class="col-5"></div>
+                    <div class="col-3"></div>
 
-                    <div class="col-3" >
+                    <div class="col-1">
+                        <button (click)="editar.pre_open_redes('redes')" id="red_Edicion-1" target="_blank" type="button" class="btn btn-default"  style="display: none;">
+                            <span style="font-size: 120%;"><i class= 'bi bi-pencil' title= 'Editar Redes' ></i></span>
+                        </button>
+                    </div>
+                    <div class="col-4" >
                         <!-- Redes Sociales -->
-                        <app-redes></app-redes>
+                        <app-redes [editar]="editar"></app-redes>
+                        <app-editar #editar ></app-editar>
                     </div>
                     <div class="col-1">
-                      <app-configurar [editar]="editar"></app-configurar>
+                        <!-- Configuracion de usuario, clave y servidor de imagenes -->
+                        <app-configurar [editar]="editar"></app-configurar>
                       <app-editar #editar ></app-editar>
                     </div>
                     <div class="col-1">

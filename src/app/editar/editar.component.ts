@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
 import { login } from '../Login';
+import { redes }  from '../redes';
 
 @Component({
   selector: 'app-editar',
@@ -13,7 +14,7 @@ export class EditarComponent implements OnInit{
 
   closeResult: string = '';
   login=login;
-  
+  redes=redes;
 //  @Input() paises!: PaisesComponent;
 
   titulo!: string;
@@ -40,6 +41,7 @@ export class EditarComponent implements OnInit{
   password!: string;
   mail!: string;
   servidor_img!: string; 
+  habilitado!: string;
 
 
   editar_registro(){
@@ -47,7 +49,6 @@ export class EditarComponent implements OnInit{
   console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
 
   }
-
 
   mostrar_servidor_img(){
     window.open( this.servidor_img);
@@ -58,6 +59,11 @@ export class EditarComponent implements OnInit{
     this.imagen= nueva_imagen;
     console.log(nueva_imagen);
   }
+
+  recibe_habilitado(habilitado: string){
+    console.log(habilitado);
+  }
+
   recibe_pais(id_pais: string){
     console.log(id_pais);
   }
@@ -78,6 +84,13 @@ export class EditarComponent implements OnInit{
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
+
+  pre_open_redes(tabla: string){
+    this.tabla=tabla;
+    this.quien_llama='redes'
+    this.titulo = 'Área de Edición - '+ tabla;
+    this.open(this.mdl_editar );
+  }
 
 
   pre_open_banner(tabla: string, id: number, banner: string){
