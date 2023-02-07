@@ -58,6 +58,6 @@ export interface Redes{
     id: 9,
     icon: "bi bi-snapchat",
     link:"1563031216",
-    nombre: "Youtube",
+    nombre: "Snapchat",
     habilitado: "SI",
   }];
