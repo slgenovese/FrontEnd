@@ -2,15 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { grafico } from '../grafico'; 
 import { BorrarComponent } from '../borrar/borrar.component';
-import { EditarComponent } from '../editar/editar.component';
-
+import { EditarGraficosComponent } from '../editar-graficos/editar-graficos.component';
 @Component({
   selector: 'app-graficos-donuts',
   templateUrl: './graficos-donuts.component.html',
   styleUrls: ['./graficos-donuts.component.css']
 })
-
-
 
 export class GraficosDonutsComponent implements OnInit{
 
@@ -28,7 +25,7 @@ export class GraficosDonutsComponent implements OnInit{
   grafico=grafico;
 
   @Input()  borrar!: BorrarComponent;
-  @Input()  editar!: EditarComponent;
+  @Input()  editar!: EditarGraficosComponent;
 
   datos:  Graficos[] =[
     new Graficos(),
@@ -68,48 +65,50 @@ ngOnInit(): void {
      }
 }
   
-  grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
-    // Obtener una referencia al elemento canvas del DOM
-    this.canvas = document.getElementById(objeto)!;
-    this.ctx = this.canvas.getContext('2d')!;
+grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
+  // Obtener una referencia al elemento canvas del DOM
+  this.canvas = document.getElementById(objeto)!;
+  this.ctx = this.canvas.getContext('2d')!;
+  console.log("objeto: " +objeto);  
+  console.log("grafico id: " +grafico_id);  
 
-    //Se muestra el selector 'canvas' donde se va a graficar
-    document.getElementById(grafico_id)!.style.display="block";
-  
-    const myChart = new Chart (this.ctx,{
-      type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
-      data: {
-        datasets: [
-              datosIngresos,
-              // Aquí más datos...
-            ],
-            labels: etiquetas,
-          },
+  //Se muestra el selector 'canvas' donde se va a graficar
+  document.getElementById(grafico_id)!.style.display="block";
 
-      options: {
-        plugins:{
-          title: {
-              display: true,
-              text: titulo,
-              align: 'center',
-              font: {
-                size: 18,
-              }, 
-           },
-          legend: {
-            position: "left",
-            labels:{
-              font: {
-                size: 12,
-              }
+  const myChart = new Chart (this.ctx,{
+    type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
+    data: {
+      datasets: [
+            datosIngresos,
+            // Aquí más datos...
+          ],
+          labels: etiquetas,
+        },
+
+    options: {
+      plugins:{
+        title: {
+            display: true,
+            text: titulo,
+            align: 'center',
+            font: {
+              size: 18,
+            }, 
+         },
+        legend: {
+          position: "left",
+          labels:{
+            font: {
+              size: 12,
             }
-          },
+          }
         },
-    
-        },
-    
-      });
-    };
+      },
+  
+      },
+  
+    });
+  };
 }
 
 export class Graficos{

@@ -1,6 +1,5 @@
-import { Component, ViewChild, OnInit} from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { TemplateRef } from '@angular/core';
 import { login } from '../Login';
 import { redes }  from '../redes';
 
@@ -15,7 +14,6 @@ export class EditarComponent implements OnInit{
   closeResult: string = '';
   login=login;
   redes=redes;
-//  @Input() paises!: PaisesComponent;
 
   titulo!: string;
   tabla!: string;
@@ -34,10 +32,10 @@ export class EditarComponent implements OnInit{
   desde!: string;
   hasta!: string;
   titulo_aux!: string;
-  etiqueta!: string[];
-  porcentaje!: number[];
-  color_Fondo!: string[];
-  color_Borde!: string[];
+//  etiqueta!: string[];
+//  porcentaje!: number[];
+//  color_Fondo!: string[];
+//  color_Borde!: string[];
   password!: string;
   mail!: string;
   servidor_img!: string; 
@@ -45,11 +43,9 @@ export class EditarComponent implements OnInit{
 
 
   editar_registro(){
-
-  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-
+    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   }
-
+  
   mostrar_servidor_img(){
     window.open( this.servidor_img);
 }
@@ -165,7 +161,7 @@ export class EditarComponent implements OnInit{
     this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
-
+/*
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     this.tabla=tabla;
     this.id=id; 
@@ -178,6 +174,7 @@ export class EditarComponent implements OnInit{
     this.titulo = 'Área de Edición - Hard & Soft Skills';
     this.open(this.mdl_editar );
   }
+*/  
   pre_open_configurar(tabla: string, id: number){
     this.tabla=tabla;
     this.id=id; 

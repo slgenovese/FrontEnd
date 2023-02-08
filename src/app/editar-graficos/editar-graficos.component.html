@@ -1,0 +1,89 @@
+<ng-template #mdl_editar let-modal >
+    <div class="modal-header">
+        <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+              <section class="row">
+                <div class="col-4">
+                    {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
+                    <div id="grafico">
+                        <canvas id="donut-chart"></canvas>
+                    </div>
+                </div>
+      
+                <div class="col-2">
+                    <p><b> Colores:</b></p>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                    <br>
+                    <br>
+                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+                  </div>
+                  <div class="col-2">
+                    <label for="texto"> <b> Etiquetas: </b></label>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+                    <br>
+                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+
+                    <br>
+                  </div >
+              <br>
+              <br>
+              </section>  
+      
+
+
+    </div>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">Cancelar</span>
+        </button>
+        <button type="button" class="btn btn-dark" (click)="editar_registro()" (click)="modal.close('Save click')">Modificar</button>
+    </div>
+</ng-template>
+    

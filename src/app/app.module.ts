@@ -20,6 +20,8 @@ import { AniosComponent } from './anios/anios.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { ConfigurarComponent } from './configurar/configurar.component';
 import { HabilitarComponent } from './habilitar/habilitar.component';
+import { EditarGraficosComponent } from './editar-graficos/editar-graficos.component';
+import { ColorComponent } from './color/color.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { HabilitarComponent } from './habilitar/habilitar.component';
     MensajeComponent,
     ConfigurarComponent,
     HabilitarComponent,
+    EditarGraficosComponent,
+    ColorComponent,
   ],
   imports: [
     BrowserModule,

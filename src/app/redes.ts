@@ -60,4 +60,10 @@ export interface Redes{
     link:"1563031216",
     nombre: "Snapchat",
     habilitado: "SI",
+  },{
+    id: 10,
+    icon: "bi bi-pinterest",
+    link:"1563031216",
+    nombre: "Pinterest",
+    habilitado: "SI",
   }];
