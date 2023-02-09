@@ -118,11 +118,24 @@
         <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
         <label for="texto"> <b> Periodo: </b></label>
         <br>
-        <label for="texto"> <b> Desde</b></label>
-        <label for="texto" style="text-indent: 50pt;"> <b> Hasta </b></label>
-        <br>
-        <app-anios [anio]="desde" (valueChange)='recibe_desde($event)'></app-anios>
-        <label style="text-indent: 40pt;"> <app-anios [anio]="hasta" (valueChange)='recibe_hasta($event)'></app-anios></label>
+
+        <section class="row">
+          <div class="col-2">
+            <label for="texto"> <b> Desde</b></label>
+          </div >
+          <div class="col-2">
+            <label for="texto"> <b> Hasta </b></label>
+          </div >
+        </section>  
+
+        <section class="row">
+          <div class="col-2">
+            <app-anios [anio]="desde" (valueChange)='recibe_desde($event)'></app-anios>
+          </div >
+          <div class="col-2">
+            <app-anios [anio]="hasta" (valueChange)='recibe_hasta($event)'></app-anios>
+          </div >
+        </section>  
         <br>
       </div>
     </ng-container>
@@ -130,11 +143,36 @@
 
     <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia'" >
       <div class="form-group" >
+
+
+        <section class="row">
+          <div class="col-4">
+            <label for="texto"> <b> Pais</b></label>
+          </div >
+          <div class="col-4">
+            <label for="texto"> <b> Provincia </b></label>
+          </div >
+        </section>  
+
+        <section class="row">
+          <div class="col-4">
+            <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
+            <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+          </div >
+          <div class="col-4">
+            <label ><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+          </div >
+        </section>  
+        <br>
+
+
+<!--
         <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
         <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
         <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
         <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+-->
       </div>
       </ng-container>
       <br>

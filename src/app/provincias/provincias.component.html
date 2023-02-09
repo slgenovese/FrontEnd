@@ -1,4 +1,4 @@
-<select #provincias name="provincia" id="provincias" (change)="elegido(provincias.value)">
+<select #provincias name="provincia" id="provincias" (change)="elegido(provincias.value)" class="form-select">
     <ng-container *ngIf = "id_pais==='AR'">
         <option value="B">Buenos Aires</option>
         <option value="C">CABA</option>

@@ -8,72 +8,141 @@
 
     <div class="modal-body">
 
-              <section class="row">
-                <div class="col-4">
-                    {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
-                    <div id="grafico">
-                        <canvas id="donut-chart"></canvas>
-                    </div>
-                </div>
-      
-                <div class="col-2">
-                    <p><b> Colores:</b></p>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                    <br>
-                    <br>
-                    <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-                  </div>
-                  <div class="col-2">
-                    <label for="texto"> <b> Etiquetas: </b></label>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-                    <br>
-                    <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+      <section class="row">
+        <div class="col-4">
+            {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
+            <div id="grafico">
+                <canvas id="donut-chart"></canvas>
+            </div>
+        </div>
 
-                    <br>
-                  </div >
-              <br>
-              <br>
-              </section>  
+        <div class="col-8">
+          <section class="row">
+            <div class="col-3">
+              <p><b> Colores:</b></p>
+            </div >
+            <div class="col-4">
+              <label for="texto"> <b> Etiquetas: </b></label>
+            </div >
+            <div class="col-2">
+              <p><b> Porcentajes:</b></p>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+          <section class="row">
+            <div class="col-3">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+            <div class="col-4">
+            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+            </div >
+            <div class="col-2">
+              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+            </div >
+          </section>  
+
+        </div>
+        <br>
+        <br>
+      </section>  
       
 
 

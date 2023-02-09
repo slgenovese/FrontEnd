@@ -65,5 +65,11 @@ export interface Redes{
     icon: "bi bi-pinterest",
     link:"1563031216",
     nombre: "Pinterest",
-    habilitado: "SI",
+    habilitado: "NO",
+  },{
+    id: 11,
+    icon: "bi bi-reddit",
+    link:"1563031216",
+    nombre: "Reddit",
+    habilitado: "NO",
   }];
