@@ -37,6 +37,10 @@ export class EditarGraficosComponent {
     console.log(color);
   }
 
+  recibe_porcentaje(porcentaje: string){
+    console.log(porcentaje);
+  }
+
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     console.log(titulo);
     this.tabla=tabla;

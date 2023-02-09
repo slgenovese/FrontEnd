@@ -22,6 +22,7 @@ import { ConfigurarComponent } from './configurar/configurar.component';
 import { HabilitarComponent } from './habilitar/habilitar.component';
 import { EditarGraficosComponent } from './editar-graficos/editar-graficos.component';
 import { ColorComponent } from './color/color.component';
+import { PorcentajeComponent } from './porcentaje/porcentaje.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ColorComponent } from './color/color.component';
     HabilitarComponent,
     EditarGraficosComponent,
     ColorComponent,
+    PorcentajeComponent,
   ],
   imports: [
     BrowserModule,

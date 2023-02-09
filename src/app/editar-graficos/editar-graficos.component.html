@@ -22,122 +22,26 @@
               <p><b> Colores:</b></p>
             </div >
             <div class="col-4">
-              <label for="texto"> <b> Etiquetas: </b></label>
+              <p> <b> Etiquetas: </b></p>
             </div >
             <div class="col-2">
               <p><b> Porcentajes:</b></p>
             </div >
           </section>  
+
+        <div *ngFor="let etiqueta of etiqueta; let i=index" >
           <section class="row">
             <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+              <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event)'></app-color>
             </div >
             <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
+              <textarea class="form-control" name="texto" id="" cols="50" rows="1" value={{etiqueta}}></textarea>
             </div >
             <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
+              <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event)'></app-porcentaje>
             </div >
           </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
-          <section class="row">
-            <div class="col-3">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-            <div class="col-4">
-            <textarea class="form-control" name="texto" id="" cols="50" rows="1" ></textarea>
-            </div >
-            <div class="col-2">
-              <app-color [color]="color" (valueChange)='recibe_color($event)'></app-color>
-            </div >
-          </section>  
+        </div>  
 
         </div>
         <br>
