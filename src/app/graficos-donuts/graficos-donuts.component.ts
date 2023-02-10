@@ -69,8 +69,6 @@ grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string
   // Obtener una referencia al elemento canvas del DOM
   this.canvas = document.getElementById(objeto)!;
   this.ctx = this.canvas.getContext('2d')!;
-  console.log("objeto: " +objeto);  
-  console.log("grafico id: " +grafico_id);  
 
   //Se muestra el selector 'canvas' donde se va a graficar
   document.getElementById(grafico_id)!.style.display="block";

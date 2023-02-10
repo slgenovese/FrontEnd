@@ -10,7 +10,7 @@
 
       <section class="row">
         <div class="col-4">
-          {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
+<!--          {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}-->
           <div id="grafico">
                 <canvas id="donut-chart"></canvas>
             </div>
@@ -30,8 +30,10 @@
           </section>  
 
         <div *ngFor="let etiqueta of etiqueta; let i=index" >
-          <section class="row">
-            <div class="col-3">
+          <div *ngIf="color_Fondo[i]=='white'" > {{invisibilizar(i)}} </div>
+          <section class="row"  >
+            <div class="col-3" >
+          <!--    <button id="boton1"> Hola</button>-->
               <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event)'></app-color>
             </div >
             <div class="col-4">

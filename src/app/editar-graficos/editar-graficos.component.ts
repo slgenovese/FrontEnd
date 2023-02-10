@@ -42,6 +42,12 @@ export class EditarGraficosComponent {
     this.i=i;
   }
 
+  invisibilizar(i: number){
+/*    console.log("Paso Hola!!!");
+//    console.log("Paso: "+i as string)
+    document.getElementById("boton1")!.style.display="none";
+*/
+  }
   agregar(){
     console.log("Hola: "+this.i);
     this.etiqueta[this.i+1]=" ";
@@ -64,7 +70,6 @@ export class EditarGraficosComponent {
   }
 
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
-    console.log(titulo);
     this.tabla=tabla;
     this.id=id; 
     this.titulo_aux=titulo;
@@ -104,7 +109,6 @@ export class EditarGraficosComponent {
    * @return response()
    */
   open(content:any) {
-    console.log("paso")
     this.modalService.open(content, {size: 'xl', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
