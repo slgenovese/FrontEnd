@@ -26,6 +26,7 @@ export class EditarGraficosComponent {
   color_Borde!: string[];
   datosIngresos!: any;
   color!: string;
+  i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
 
@@ -35,6 +36,27 @@ export class EditarGraficosComponent {
 
   recibe_color(color: string){
     console.log(color);
+  }
+
+  guardar_indice(i: number){
+    this.i=i;
+  }
+
+  agregar(){
+    console.log("Hola: "+this.i);
+    this.etiqueta[this.i+1]=" ";
+    this.color_Borde[this.i+1]="N/A";
+    this.color_Fondo[this.i+1]="N/A";
+    this.porcentaje[this.i+1]=1;
+    var datosIngresos = {
+      data: this.porcentaje, 
+      backgroundColor: this.color_Fondo,
+      borderColor: this.color_Fondo,
+      borderWidth: 0,// Ancho del borde
+    };
+
+    this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
+
   }
 
   recibe_porcentaje(porcentaje: string){

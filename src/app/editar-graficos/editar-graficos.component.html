@@ -10,8 +10,8 @@
 
       <section class="row">
         <div class="col-4">
-            {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
-            <div id="grafico">
+          {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}
+          <div id="grafico">
                 <canvas id="donut-chart"></canvas>
             </div>
         </div>
@@ -41,8 +41,9 @@
               <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event)'></app-porcentaje>
             </div >
           </section>  
+          {{guardar_indice(i)}}
         </div>  
-
+        <button (click)="agregar()">Agregar</button>
         </div>
         <br>
         <br>
