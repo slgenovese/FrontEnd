@@ -17,7 +17,6 @@ export class ColorComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.color);
     this.color_aux.nativeElement.value= this.color;
 
   }

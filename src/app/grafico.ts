@@ -10,10 +10,10 @@ export interface Grafico {
   export const grafico = [{
     id: 1,
     titulo: "Lenguajes de Programación", 
-    etiqueta: ["C/C++", "VB/.Net","Assembler","HTML/CSS/JavaScript","","","","","",""],
-    porcentaje: [35, 35, 10, 15,0,0,0,0,0,0],
-    color_Fondo: ['red', 'green', 'blue', 'orange', 'white', 'white', 'white', 'white', 'white', 'white'],
-    color_Borde: ['red', 'green', 'blue', 'orange', 'white', 'white', 'white', 'white', 'white', 'white'],
+    etiqueta: ["C/C++", "VB/.Net","Assembler","HTML/CSS/JavaScript"],
+    porcentaje: [35, 35, 10, 15],
+    color_Fondo: ['red', 'green', 'blue', 'orange'],
+    color_Borde: ['red', 'green', 'blue', 'orange'],
   },{
     id: 2,
     titulo: "Inglés Técnico", 

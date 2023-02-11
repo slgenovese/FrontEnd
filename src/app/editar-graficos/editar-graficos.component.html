@@ -10,8 +10,8 @@
 
       <section class="row">
         <div class="col-4">
-<!--          {{this.grafico_Donut(datosIngresos, etiqueta, this.titulo_aux, "donut-chart", "grafico")}}-->
-          <div id="grafico">
+              <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
+            <div id="grafico">
                 <canvas id="donut-chart"></canvas>
             </div>
         </div>
@@ -30,14 +30,12 @@
           </section>  
 
         <div *ngFor="let etiqueta of etiqueta; let i=index" >
-          <div *ngIf="color_Fondo[i]=='white'" > {{invisibilizar(i)}} </div>
           <section class="row"  >
             <div class="col-3" >
-          <!--    <button id="boton1"> Hola</button>-->
               <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event)'></app-color>
             </div >
             <div class="col-4">
-              <textarea class="form-control" name="texto" id="" cols="50" rows="1" value={{etiqueta}}></textarea>
+              <textarea (input)="recibe_etiqueta()"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
             </div >
             <div class="col-2">
               <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event)'></app-porcentaje>
@@ -45,9 +43,9 @@
           </section>  
           {{guardar_indice(i)}}
         </div>  
-        <button (click)="agregar()">Agregar</button>
-        </div>
         <br>
+        <button class="btn btn-primary" (click)="graficar('agregar')">Agregar</button>
+        </div>
         <br>
       </section>  
       

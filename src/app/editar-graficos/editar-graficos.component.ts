@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
 import { redes }  from '../redes';
@@ -9,11 +9,13 @@ import { redes }  from '../redes';
   templateUrl: './editar-graficos.component.html',
   styleUrls: ['./editar-graficos.component.css']
 })
-export class EditarGraficosComponent {
 
+export class EditarGraficosComponent {
   redes=redes;
   canvas: any;
   ctx: any;
+  myChart: any;
+  testigo: boolean=true;
 
   titulo!: string;
   tabla!: string;
@@ -29,45 +31,63 @@ export class EditarGraficosComponent {
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
+  @ViewChild('textArea') textArea!: ElementRef<any>; 
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   }
 
   recibe_color(color: string){
+    if (color!='N/A'){
+      this.color_Borde[this.i]=color;
+      this.color_Fondo[this.i]=color;
+      this.graficar('nuevo_grafico');
+    }
     console.log(color);
+  }
+
+  recibe_porcentaje(porcentaje: string){
+    this.porcentaje[this.i]=Number(porcentaje);
+    this.graficar('nuevo_grafico');
+    console.log(porcentaje);
+}
+
+  recibe_etiqueta(){
+
+    console.log('textArea'+this.i);
+    const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
+
+    this.etiqueta[this.i]= texto.value;
+    this.graficar('nuevo_grafico');
+    console.log(this.etiqueta[this.i]);
+    console.log(texto.value);
+    texto.value= 'Zorete' +texto.value;
   }
 
   guardar_indice(i: number){
     this.i=i;
   }
 
-  invisibilizar(i: number){
-/*    console.log("Paso Hola!!!");
-//    console.log("Paso: "+i as string)
-    document.getElementById("boton1")!.style.display="none";
-*/
-  }
-  agregar(){
-    console.log("Hola: "+this.i);
-    this.etiqueta[this.i+1]=" ";
-    this.color_Borde[this.i+1]="N/A";
-    this.color_Fondo[this.i+1]="N/A";
-    this.porcentaje[this.i+1]=1;
+  graficar(modo: string){
+    if(modo==='agregar'){
+      console.log("Hola: "+this.i);
+      this.etiqueta[this.i+1]=" ";
+      this.color_Borde[this.i+1]="N/A";
+      this.color_Fondo[this.i+1]="N/A";
+      this.porcentaje[this.i+1]=1;
+    }
     var datosIngresos = {
       data: this.porcentaje, 
       backgroundColor: this.color_Fondo,
       borderColor: this.color_Fondo,
       borderWidth: 0,// Ancho del borde
     };
-
-    this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
-
+    if(modo==='primera_vez' || modo==='nuevo_grafico'){
+      this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
+    }
+    this.testigo=false;
   }
 
-  recibe_porcentaje(porcentaje: string){
-    console.log(porcentaje);
-  }
 
   pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     this.tabla=tabla;
@@ -114,6 +134,7 @@ export class EditarGraficosComponent {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    this.testigo=true;
   }
 
   /**
@@ -139,10 +160,13 @@ export class EditarGraficosComponent {
 
     //Se muestra el selector 'canvas' donde se va a graficar
     document.getElementById(grafico_id)!.style.display="block";
-  
-
-    const myChart = new Chart (this.ctx,{
-      type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
+    if (this.myChart){
+      this.myChart.destroy();
+    }
+    console.log('paso_2');
+//    const myChart = new Chart (this.ctx,{
+      this.myChart = new Chart (this.ctx,{
+        type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
       data: {
         datasets: [
               datosIngresos,
@@ -175,8 +199,4 @@ export class EditarGraficosComponent {
     
       });
     };
-
-
-
-
 }
