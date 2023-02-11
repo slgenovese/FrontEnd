@@ -31,7 +31,7 @@ export class EditarGraficosComponent {
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
-  @ViewChild('textArea') textArea!: ElementRef<any>; 
+//  @ViewChild('textArea') textArea!: ElementRef<any>; 
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -52,16 +52,13 @@ export class EditarGraficosComponent {
     console.log(porcentaje);
 }
 
-  recibe_etiqueta(){
+  recibe_etiqueta(event: KeyboardEvent){
 
-    console.log('textArea'+this.i);
-    const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
-
-    this.etiqueta[this.i]= texto.value;
-    this.graficar('nuevo_grafico');
-    console.log(this.etiqueta[this.i]);
-    console.log(texto.value);
-    texto.value= 'Zorete' +texto.value;
+    if(event.key=='Enter'){    
+      const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
+      this.etiqueta[this.i]= texto.value;
+      this.graficar('nuevo_grafico');
+    }
   }
 
   guardar_indice(i: number){
