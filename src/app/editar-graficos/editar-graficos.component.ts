@@ -52,14 +52,21 @@ export class EditarGraficosComponent {
     console.log(porcentaje);
 }
 
-  recibe_etiqueta(event: KeyboardEvent){
-
-    if(event.key=='Enter'){    
-      const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
-      this.etiqueta[this.i]= texto.value;
-      this.graficar('nuevo_grafico');
-    }
+recibe_etiqueta(event: KeyboardEvent){
+  if(event.key=='Enter'){    
+    const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
+    this.etiqueta[this.i]= texto.value;
+    this.graficar('nuevo_grafico');
   }
+}
+
+recibe_titulo_aux(event: KeyboardEvent){
+  if(event.key=='Enter'){    
+    const texto = document.getElementById('titulo') as HTMLTextAreaElement;
+    this.titulo_aux= texto.value;
+    this.graficar('nuevo_grafico');
+  }
+}
 
   guardar_indice(i: number){
     this.i=i;

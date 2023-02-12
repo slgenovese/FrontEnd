@@ -4,6 +4,10 @@
     color: red;
  }
 
-textarea{
-    background-color:rgb(220, 231, 235); 
+ textarea{
+    background-color:rgb(220, 231, 235);
+    resize: none; 
+}
+input{
+    background-color:rgb(220, 231, 235);
 }

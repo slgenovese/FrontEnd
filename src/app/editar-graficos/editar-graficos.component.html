@@ -10,10 +10,13 @@
 
       <section class="row">
         <div class="col-4">
-              <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
-            <div id="grafico">
-                <canvas id="donut-chart"></canvas>
-            </div>
+          <p> <b>Titulo: </b> </p>
+<!--          <textarea (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}></textarea>-->
+          <input (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}>
+        <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
+          <div id="grafico">
+              <canvas id="donut-chart"></canvas>
+          </div>
         </div>
 
         <div class="col-8">
