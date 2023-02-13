@@ -43,6 +43,11 @@
             <div class="col-2">
               <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event, i)'></app-porcentaje>
             </div >
+            <div class="col-1">
+              <button (click)="borrar(i)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
+                <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
+              </button>
+            </div >
           </section>  
           {{guardar_indice(i)}}
         </div>  

@@ -76,6 +76,16 @@ recibe_titulo_aux(event: KeyboardEvent){
   }
 }
 
+borrar(i: number){
+  this.color_Fondo.splice(i,1,);
+  this.color_Borde.splice(i,1,);
+  this.etiqueta.splice(i,1,);
+  this.porcentaje.splice(i,1,);
+  this.graficar('nuevo_grafico');
+
+}
+
+
   guardar_indice(i: number){
     this.i=i;
   }
