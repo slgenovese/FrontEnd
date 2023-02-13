@@ -48,12 +48,13 @@ export class EditarGraficosComponent {
 
   recibe_porcentaje(porcentaje: string, i: number){
     this.i=i;
-    let suma = this.porcentaje.reduce(function (a, b) {return a + b;}, 0);
+    let suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
     if (suma<100){
       if (Number(porcentaje)+suma<=100){
         this.porcentaje[i]=Number(porcentaje);
       }else{
         this.porcentaje[i]=100-suma;
+        this.graficar('nuevo_grafico');
       }
     }
     console.log("porcentaje: "+i);
