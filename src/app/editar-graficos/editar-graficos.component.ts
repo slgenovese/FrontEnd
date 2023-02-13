@@ -37,23 +37,31 @@ export class EditarGraficosComponent {
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   }
 
-  recibe_color(color: string){
+  recibe_color(color: string, i: number ){
     if (color!='N/A'){
+      this.i=i;
+      this.color_Borde[i]=color;
+      this.color_Fondo[i]=color;
+/*
       this.color_Borde[this.i]=color;
       this.color_Fondo[this.i]=color;
+*/
+      console.log("color: " +i);
       this.graficar('nuevo_grafico');
     }
-    console.log(color);
   }
 
-  recibe_porcentaje(porcentaje: string){
-    this.porcentaje[this.i]=Number(porcentaje);
+  recibe_porcentaje(porcentaje: string, i: number){
+    this.i=i;
+    this.porcentaje[i]=Number(porcentaje);
+//    this.porcentaje[this.i]=Number(porcentaje);
+    console.log("porcentaje: "+i);
     this.graficar('nuevo_grafico');
-    console.log(porcentaje);
 }
 
-recibe_etiqueta(event: KeyboardEvent){
-  if(event.key=='Enter'){    
+recibe_etiqueta(event: KeyboardEvent, i: number){
+  if(event.key=='Enter'){  
+    this.i=i;  
     const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
     this.etiqueta[this.i]= texto.value;
     this.graficar('nuevo_grafico');
@@ -167,7 +175,7 @@ recibe_titulo_aux(event: KeyboardEvent){
     if (this.myChart){
       this.myChart.destroy();
     }
-    console.log('paso_2');
+//    console.log('paso_2');
 //    const myChart = new Chart (this.ctx,{
       this.myChart = new Chart (this.ctx,{
         type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie

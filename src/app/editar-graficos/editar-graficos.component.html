@@ -35,13 +35,13 @@
         <div *ngFor="let etiqueta of etiqueta; let i=index" >
           <section class="row"  >
             <div class="col-3" >
-              <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event)'></app-color>
+              <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event, i)'></app-color>
             </div >
             <div class="col-4">
-              <textarea (keypress) ="recibe_etiqueta($event)"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
+              <textarea (keypress) ="recibe_etiqueta($event, i)"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
             </div >
             <div class="col-2">
-              <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event)'></app-porcentaje>
+              <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event, i)'></app-porcentaje>
             </div >
           </section>  
           {{guardar_indice(i)}}
