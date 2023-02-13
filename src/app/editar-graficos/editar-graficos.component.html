@@ -41,7 +41,7 @@
               <textarea (keypress) ="recibe_etiqueta($event, i)"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
             </div >
             <div class="col-2">
-              <app-porcentaje [porcentaje]=porcentaje[i] (valueChange)='recibe_porcentaje($event, i)'></app-porcentaje>
+              <app-porcentaje  (valueChange)='recibe_porcentaje($event, i)' [porcentaje]=porcentaje[i]  ></app-porcentaje>
             </div >
             <div class="col-1">
               <button (click)="borrar(i)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">

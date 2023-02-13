@@ -31,7 +31,6 @@ export class EditarGraficosComponent {
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
-//  @ViewChild('textArea') textArea!: ElementRef<any>; 
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -42,10 +41,6 @@ export class EditarGraficosComponent {
       this.i=i;
       this.color_Borde[i]=color;
       this.color_Fondo[i]=color;
-/*
-      this.color_Borde[this.i]=color;
-      this.color_Fondo[this.i]=color;
-*/
       console.log("color: " +i);
       this.graficar('nuevo_grafico');
     }
@@ -53,8 +48,14 @@ export class EditarGraficosComponent {
 
   recibe_porcentaje(porcentaje: string, i: number){
     this.i=i;
-    this.porcentaje[i]=Number(porcentaje);
-//    this.porcentaje[this.i]=Number(porcentaje);
+    let suma = this.porcentaje.reduce(function (a, b) {return a + b;}, 0);
+    if (suma<100){
+      if (Number(porcentaje)+suma<=100){
+        this.porcentaje[i]=Number(porcentaje);
+      }else{
+        this.porcentaje[i]=100-suma;
+      }
+    }
     console.log("porcentaje: "+i);
     this.graficar('nuevo_grafico');
 }
@@ -92,11 +93,10 @@ borrar(i: number){
 
   graficar(modo: string){
     if(modo==='agregar'){
-      console.log("Hola: "+this.i);
       this.etiqueta[this.i+1]=" ";
       this.color_Borde[this.i+1]="N/A";
       this.color_Fondo[this.i+1]="N/A";
-      this.porcentaje[this.i+1]=1;
+      this.porcentaje[this.i+1]=0;
     }
     var datosIngresos = {
       data: this.porcentaje, 
