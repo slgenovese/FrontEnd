@@ -1,11 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Acerca_de } from '../app/modelo/acerca-de';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AcercaDeService {
 
   constructor(private http: HttpClient) { }

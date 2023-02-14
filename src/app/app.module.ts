@@ -23,6 +23,7 @@ import { HabilitarComponent } from './habilitar/habilitar.component';
 import { EditarGraficosComponent } from './editar-graficos/editar-graficos.component';
 import { ColorComponent } from './color/color.component';
 import { PorcentajeComponent } from './porcentaje/porcentaje.component';
+import { AcercaDeService } from 'src/servicios/acerca-de.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { PorcentajeComponent } from './porcentaje/porcentaje.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [AcercaDeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
