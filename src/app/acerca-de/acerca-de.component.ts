@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 //import { acerca_de } from '../acerca-de';
 import { Acerca_de } from '../modelo/acerca-de';
-import { AcercaDeService } from 'src/servicios/acerca-de.service';
+import { AcercaDeService } from '../servicios/acerca-de.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
 
