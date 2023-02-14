@@ -1,5 +1,5 @@
-{
-    "id": "1",
+[{
+    "id": 1,
     "imagen": "https://i.postimg.cc/mtp6pFBx/MSAL.png",
     "nombre_apellido": "Sergio Lorenzo Genovese", 
     "cargo_actual":"Responsable de Area de Sistemas de Información en el Ministerio de Salud de la Nación",
@@ -8,4 +8,4 @@
     "id_pais":"NG",
     "pais":"Argentina.",
     "texto":"Técnico Universitario en Automatización y Control, Informático, Docente, MCP, CCNA, Full Stack Developer Jr."
-  }
+  }]

@@ -13,7 +13,7 @@ import { EditarComponent } from '../editar/editar.component';
 export class AcercaDeComponent implements OnInit {
 //  acerca_de= acerca_de;
 
-  acerca_de: Acerca_de[] =[];
+acerca_de: Acerca_de[] =[];
 
   constructor(private acercaDeService: AcercaDeService) {}
 
@@ -21,6 +21,8 @@ export class AcercaDeComponent implements OnInit {
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
+    console.log("Paso Get");
     this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de=data});
+    console.log(this.acerca_de);
   }
 }

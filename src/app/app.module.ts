@@ -24,6 +24,7 @@ import { EditarGraficosComponent } from './editar-graficos/editar-graficos.compo
 import { ColorComponent } from './color/color.component';
 import { PorcentajeComponent } from './porcentaje/porcentaje.component';
 import { AcercaDeService } from 'src/servicios/acerca-de.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,11 +48,13 @@ import { AcercaDeService } from 'src/servicios/acerca-de.service';
     EditarGraficosComponent,
     ColorComponent,
     PorcentajeComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
   providers: [AcercaDeService],
   bootstrap: [AppComponent]
