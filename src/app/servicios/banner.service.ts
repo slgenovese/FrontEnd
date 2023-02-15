@@ -1,9 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Banner } from '../modelo/banner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BannerService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  public getBanner():  Observable<Banner[]>{
+    return this.http.get<Banner[]>("./assets/banner.json");
+
+  }
 }

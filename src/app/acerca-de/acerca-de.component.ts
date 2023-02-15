@@ -21,8 +21,6 @@ acerca_de: Acerca_de[] =[];
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    console.log("Paso Get");
     this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de=data});
-    console.log(this.acerca_de);
   }
 }
