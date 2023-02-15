@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { grafico } from '../grafico'; 
+//import { grafico } from '../grafico'; 
+import { Grafico } from '../modelo/grafico';
+import { GraficoService } from '../servicios/grafico.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarGraficosComponent } from '../editar-graficos/editar-graficos.component';
+
 @Component({
   selector: 'app-graficos-donuts',
   templateUrl: './graficos-donuts.component.html',
@@ -22,7 +25,8 @@ export class GraficosDonutsComponent implements OnInit{
   color_Fondo!: string[];
   color_Borde!: string[];
 
-  grafico=grafico;
+//  grafico= grafico;
+  grafico: Grafico[]=[];
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarGraficosComponent;
@@ -41,9 +45,13 @@ export class GraficosDonutsComponent implements OnInit{
 
   //https://www.sneppets.com/angular/how-to-declare-model-class-and-use-in-angular-component-typescript/
 
-constructor() {}
+  constructor(private graficoService: GraficoService) {}
 
 ngOnInit(): void {
+
+  // Leo, mediante un servicio, del archivo JSON los datos para hacer el grafico
+  this.graficoService.getGrafico().subscribe(data=>{this.grafico=data});
+
 
     for(let grafico of this.grafico){
 
