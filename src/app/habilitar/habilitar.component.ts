@@ -18,7 +18,6 @@ export class HabilitarComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.habilitado);
     this.habilitado_aux.nativeElement.value= this.habilitado;
 
   }

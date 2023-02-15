@@ -15,7 +15,7 @@ export class AcercaDeComponent implements OnInit {
 
 acerca_de: Acerca_de[] =[];
 
-  constructor(private acercaDeService: AcercaDeService) {}
+constructor(private acercaDeService: AcercaDeService) {}
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarComponent;

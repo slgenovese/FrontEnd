@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { educacion } from '../educacion';
 import { experiencia } from '../experiencia';
-import { login } from '../Login';
+//import { login } from '../Login';
+import { Login } from '../modelo/Login';
+import { LoginService } from '../servicios/login.service'; 
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,8 @@ import { login } from '../Login';
 
 export class LoginComponent implements OnInit{
 
-  login = login;
+//  login = login;
+//  login!: Login;
   title = 'appBootstrap';
 
   closeResult: string = '';
@@ -21,22 +24,26 @@ export class LoginComponent implements OnInit{
   password!: string;
   mail!: string;
   servidor_img!: string; 
-
-  ngOnInit(): void {
-    for(let login of this.login){
-      this.password = login.clave
-      this.mail = login.usuario
-      this.servidor_img = login.servidor_img ; 
-        }
-  }
-
-
   /*------------------------------------------
   --------------------------------------------
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService) {}
+
+  
+  ngOnInit(): void {
+
+    this.loginService.getLogin().subscribe(data=>{
+      this.password = data.clave;
+      this.mail = data.usuario;
+      this.servidor_img = data.servidor_img ;
+    });
+
+  }
+
+
+
 
   /**
    * Write code on Method
