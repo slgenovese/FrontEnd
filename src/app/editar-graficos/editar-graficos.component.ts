@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
-import { redes }  from '../redes';
+import { redes }  from '../Para-borrar/redes';
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { login } from '../Login';
-import { redes }  from '../redes';
+import { login } from '../Para-borrar/Login';
+import { redes }  from '../Para-borrar/redes';
 
 @Component({
   selector: 'app-editar',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { educacion } from '../educacion';
-import { experiencia } from '../experiencia';
+import { educacion } from '../Para-borrar/educacion';
+import { experiencia } from '../Para-borrar/experiencia';
 //import { login } from '../Login';
 import { Login } from '../modelo/Login';
 import { LoginService } from '../servicios/login.service'; 
