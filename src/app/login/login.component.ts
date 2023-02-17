@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { educacion } from '../Para-borrar/educacion';
-import { experiencia } from '../Para-borrar/experiencia';
-//import { login } from '../Login';
+import { Educacion } from '../modelo/educacion';
+import { EducacionService } from '../servicios/educacion.service';
+import { Experiencia } from '../modelo/experiencia';
+import { ExperienciaService } from '../servicios/experiencia.service';
 import { Login } from '../modelo/Login';
 import { LoginService } from '../servicios/login.service'; 
 
@@ -15,8 +16,6 @@ import { LoginService } from '../servicios/login.service';
 
 export class LoginComponent implements OnInit{
 
-//  login = login;
-//  login!: Login;
   title = 'appBootstrap';
 
   closeResult: string = '';
@@ -24,12 +23,16 @@ export class LoginComponent implements OnInit{
   password!: string;
   mail!: string;
   servidor_img!: string; 
+
+  educacion: Educacion[] =[];
+  experiencia: Experiencia[] =[];
+
   /*------------------------------------------
   --------------------------------------------
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private educacionService: EducacionService, private experienciaService: ExperienciaService) {}
 
   
   ngOnInit(): void {
@@ -40,10 +43,10 @@ export class LoginComponent implements OnInit{
       this.servidor_img = data.servidor_img ;
     });
 
+    this.educacionService.getAcercaDe().subscribe(data=>{this.educacion=data});
+    this.experienciaService.getAcercaDe().subscribe(data=>{this.experiencia=data});
+
   }
-
-
-
 
   /**
    * Write code on Method
@@ -124,13 +127,13 @@ export class LoginComponent implements OnInit{
     }
     
     var i=0;
-      for( let edu of educacion){
+      for( let edu of this.educacion){
         i++;
         document.getElementById("edu_Edicion-"+i)!.style.display=display;
         document.getElementById("edu_Borrado-"+i)!.style.display=display;
       }
       var i=0;
-      for( let exp of experiencia){
+      for( let exp of this.experiencia){
         i++;
         document.getElementById("exp_Edicion-"+i)!.style.display=display;
         document.getElementById("exp_Borrado-"+i)!.style.display=display;

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { redes } from '../redes';
 import { Redes } from '../modelo/redes';
 import { RedesService } from '../servicios/redes.service';
 import { EditarComponent } from '../editar/editar.component';
@@ -11,7 +10,6 @@ import { EditarComponent } from '../editar/editar.component';
 })
 
 export class RedesComponent implements OnInit{
-//  redes = redes;
 
   redes: Redes[] =[];
 

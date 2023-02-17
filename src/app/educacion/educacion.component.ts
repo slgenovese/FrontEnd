@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { educacion } from '../educacion';
 import { Educacion } from '../modelo/educacion';
 import { EducacionService } from '../servicios/educacion.service';
 import { BorrarComponent } from '../borrar/borrar.component';
@@ -12,7 +11,6 @@ import { EditarComponent } from '../editar/editar.component';
 })
 export class EducacionComponent implements OnInit{
 
-  //  educacion = educacion;
   educacion: Educacion[] =[];
 
   constructor(private educacionService: EducacionService) {}

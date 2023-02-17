@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { acerca_de } from '../acerca-de';
 import { Acerca_de } from '../modelo/acerca-de';
 import { AcercaDeService } from '../servicios/acerca-de.service';
 import { BorrarComponent } from '../borrar/borrar.component';
@@ -11,7 +10,6 @@ import { EditarComponent } from '../editar/editar.component';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-//  acerca_de= acerca_de;
 
 acerca_de: Acerca_de[] =[];
 

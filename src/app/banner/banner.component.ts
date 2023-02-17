@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { banner } from '../banner';
 import { Banner } from '../modelo/banner';
 import { BannerService } from '../servicios/banner.service';
 import { EditarComponent } from '../editar/editar.component';
@@ -11,7 +10,6 @@ import { EditarComponent } from '../editar/editar.component';
 })
 
 export class BannerComponent implements OnInit{
-  //banner=banner;
   banner: Banner[] =[];
 
   constructor(private bannerService: BannerService) {}

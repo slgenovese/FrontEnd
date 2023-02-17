@@ -1,8 +1,9 @@
 import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { login } from '../Para-borrar/Login';
-import { redes }  from '../Para-borrar/redes';
-
+import { Login } from '../modelo/Login';
+import { LoginService } from '../servicios/login.service'; 
+import { Redes } from '../modelo/redes';
+import { RedesService } from '../servicios/redes.service';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -12,8 +13,9 @@ import { redes }  from '../Para-borrar/redes';
 export class EditarComponent implements OnInit{
 
   closeResult: string = '';
-  login=login;
-  redes=redes;
+
+  redes: Redes[] =[];
+
 
   titulo!: string;
   tabla!: string;
@@ -32,10 +34,6 @@ export class EditarComponent implements OnInit{
   desde!: string;
   hasta!: string;
   titulo_aux!: string;
-//  etiqueta!: string[];
-//  porcentaje!: number[];
-//  color_Fondo!: string[];
-//  color_Borde!: string[];
   password!: string;
   mail!: string;
   servidor_img!: string; 
@@ -161,20 +159,7 @@ export class EditarComponent implements OnInit{
     this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
-/*
-  pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
-    this.tabla=tabla;
-    this.id=id; 
-    this.titulo_aux=titulo;
-    this.etiqueta=etiqueta;
-    this.porcentaje=porcentaje;
-    this.color_Fondo=color_Fondo;
-    this.color_Borde=color_Borde;
-    this.quien_llama='grafico'
-    this.titulo = 'Área de Edición - Hard & Soft Skills';
-    this.open(this.mdl_editar );
-  }
-*/  
+
   pre_open_configurar(tabla: string, id: number){
     this.tabla=tabla;
     this.id=id; 
@@ -184,11 +169,15 @@ export class EditarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    for(let login of this.login){
-      this.password = login.clave
-      this.mail = login.usuario
-      this.servidor_img = login.servidor_img ; 
-    }
+  
+    this.loginService.getLogin().subscribe(data=>{
+      this.password = data.clave;
+      this.mail = data.usuario;
+      this.servidor_img = data.servidor_img ;
+    });
+
+    this.redesService.getRedes().subscribe(data=>{this.redes=data});
+
   }
 
   /*------------------------------------------
@@ -196,7 +185,7 @@ export class EditarComponent implements OnInit{
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService) {}
 
   /**
    * Write code on Method

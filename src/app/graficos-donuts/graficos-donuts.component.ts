@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-//import { grafico } from '../grafico'; 
 import { Grafico } from '../modelo/grafico';
 import { GraficoService } from '../servicios/grafico.service';
 import { BorrarComponent } from '../borrar/borrar.component';
@@ -25,7 +24,6 @@ export class GraficosDonutsComponent implements OnInit{
   color_Fondo!: string[];
   color_Borde!: string[];
 
-//  grafico= grafico;
   grafico: Grafico[]=[];
 
   @Input()  borrar!: BorrarComponent;
@@ -50,10 +48,16 @@ export class GraficosDonutsComponent implements OnInit{
 ngOnInit(): void {
 
   // Leo, mediante un servicio, del archivo JSON los datos para hacer el grafico
-  this.graficoService.getGrafico().subscribe(data=>{this.grafico=data});
+  this.graficoService.getGrafico().subscribe(data=>{
+    this.grafico=data
+  // La llamada a la funcion se hace dentro del "subscribe" para esperar los datos que se leen de forma
+  // asincronica
+    this.procesar(this.grafico);
+  });
+}
+  procesar(graficos: Graficos[]){
 
-
-    for(let grafico of this.grafico){
+    for(let grafico of graficos){
 
       this.datos[grafico.id].id=grafico.id;
       this.datos[grafico.id].titulo =grafico.titulo;
@@ -70,9 +74,22 @@ ngOnInit(): void {
       };
   
       this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
-     }
-}
   
+    }
+}
+
+pre_grafico( id: number, etiqueta: string[], titulo: string, porcentaje: number[], color_Fondo: string[]){
+
+  var datosIngresos = {
+    data: porcentaje, 
+    backgroundColor: color_Fondo,
+    borderColor: color_Fondo,
+    borderWidth: 0,// Ancho del borde
+  };
+this.grafico_Donut(datosIngresos, etiqueta, titulo, "donut-chart"+id, "grafico"+id);
+
+}
+
 grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
   // Obtener una referencia al elemento canvas del DOM
   this.canvas = document.getElementById(objeto)!;

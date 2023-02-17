@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
-import { redes }  from '../Para-borrar/redes';
 
 
 @Component({
@@ -11,7 +10,7 @@ import { redes }  from '../Para-borrar/redes';
 })
 
 export class EditarGraficosComponent {
-  redes=redes;
+
   canvas: any;
   ctx: any;
   myChart: any;
@@ -84,9 +83,7 @@ borrar(i: number){
   this.etiqueta.splice(i,1,);
   this.porcentaje.splice(i,1,);
   this.graficar('nuevo_grafico');
-
 }
-
 
   guardar_indice(i: number){
     this.i=i;
@@ -186,8 +183,6 @@ borrar(i: number){
     if (this.myChart){
       this.myChart.destroy();
     }
-//    console.log('paso_2');
-//    const myChart = new Chart (this.ctx,{
       this.myChart = new Chart (this.ctx,{
         type: 'doughnut',// Tipo de gráfica. Puede ser doughnut o pie
       data: {
