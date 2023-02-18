@@ -25,6 +25,7 @@ import { ColorComponent } from './color/color.component';
 import { PorcentajeComponent } from './porcentaje/porcentaje.component';
 import { AcercaDeService } from './servicios/acerca-de.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProyectosComponent } from './proyectos/proyectos.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     EditarGraficosComponent,
     ColorComponent,
     PorcentajeComponent,
+    ProyectosComponent,
   
   ],
   imports: [

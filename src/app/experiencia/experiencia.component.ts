@@ -20,6 +20,6 @@ export class ExperienciaComponent implements OnInit {
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    this.experienciaService.getAcercaDe().subscribe(data=>{this.experiencia=data});
+    this.experienciaService.getExperiencia().subscribe(data=>{this.experiencia=data});
   }
 }

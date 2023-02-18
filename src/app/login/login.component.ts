@@ -4,7 +4,9 @@ import { Educacion } from '../modelo/educacion';
 import { EducacionService } from '../servicios/educacion.service';
 import { Experiencia } from '../modelo/experiencia';
 import { ExperienciaService } from '../servicios/experiencia.service';
-import { Login } from '../modelo/Login';
+import { Proyectos } from '../modelo/proyectos';
+import { ProyectosService } from '../servicios/proyectos.service';
+//import { Login } from '../modelo/Login';
 import { LoginService } from '../servicios/login.service'; 
 
 @Component({
@@ -26,13 +28,14 @@ export class LoginComponent implements OnInit{
 
   educacion: Educacion[] =[];
   experiencia: Experiencia[] =[];
+  proyectos: Proyectos[] =[];
 
   /*------------------------------------------
   --------------------------------------------
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService, private educacionService: EducacionService, private experienciaService: ExperienciaService) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private educacionService: EducacionService, private experienciaService: ExperienciaService, private proyectosService: ProyectosService) {}
 
   
   ngOnInit(): void {
@@ -43,8 +46,9 @@ export class LoginComponent implements OnInit{
       this.servidor_img = data.servidor_img ;
     });
 
-    this.educacionService.getAcercaDe().subscribe(data=>{this.educacion=data});
-    this.experienciaService.getAcercaDe().subscribe(data=>{this.experiencia=data});
+    this.educacionService.getEducacion().subscribe(data=>{this.educacion=data});
+    this.experienciaService.getExperiencia().subscribe(data=>{this.experiencia=data});
+    this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data});
 
   }
 
@@ -137,6 +141,12 @@ export class LoginComponent implements OnInit{
         i++;
         document.getElementById("exp_Edicion-"+i)!.style.display=display;
         document.getElementById("exp_Borrado-"+i)!.style.display=display;
+      }
+      var i=0;
+      for( let pro of this.proyectos){
+        i++;
+        document.getElementById("pro_Edicion-"+i)!.style.display=display;
+        document.getElementById("pro_Borrado-"+i)!.style.display=display;
       }
   }
   /**

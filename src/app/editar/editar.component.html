@@ -56,7 +56,7 @@
     </ng-container>
     
     <!-- Muestra y permite cambiar las imagenes -->
-    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia' || quien_llama==='educacion' || quien_llama==='foto' || quien_llama==='banner'" >
+    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia' || quien_llama==='educacion' || quien_llama==='foto' || quien_llama==='banner'  || quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
@@ -95,7 +95,7 @@
     </ng-container>
 
 
-    <ng-container *ngIf = "quien_llama==='educacion'" >
+    <ng-container *ngIf = "quien_llama==='educacion' || quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Titulo: </b></label>
         <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
@@ -111,7 +111,7 @@
       </div>
     </ng-container>
     
-    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'" >
+    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'  || quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Institución: </b></label>
         <br>

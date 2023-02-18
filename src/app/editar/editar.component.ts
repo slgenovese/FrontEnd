@@ -160,6 +160,19 @@ export class EditarComponent implements OnInit{
     this.open(this.mdl_editar );
   }
 
+  pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+    this.tabla=tabla;
+    this.id=id; 
+    this.imagen=imagen;
+    this.titulo_aux=titulo;
+    this.institucion=institucion;
+    this.desde=desde;
+    this.hasta=hasta;
+    this.quien_llama='proyectos'
+    this.titulo = 'Área de Edición - '+ tabla;
+    this.open(this.mdl_editar );
+  }
+
   pre_open_configurar(tabla: string, id: number){
     this.tabla=tabla;
     this.id=id; 

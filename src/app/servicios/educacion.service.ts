@@ -11,7 +11,7 @@ export class EducacionService {
 
   constructor(private http: HttpClient) { }
 
-  public getAcercaDe():  Observable<Educacion[]>{
+  public getEducacion():  Observable<Educacion[]>{
     return this.http.get<Educacion[]>("./assets/educacion.json");
 
   }
