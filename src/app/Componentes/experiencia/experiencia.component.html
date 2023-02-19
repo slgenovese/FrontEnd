@@ -1,25 +1,32 @@
-<div *ngFor="let experiencia of experiencia">
-  <section class="row">
-    <div class="col-2">
-        <img class="img-thumbnail"src={{experiencia.imagen}} />
-        </div>
-        <div class="col-8">
-            {{ experiencia.texto}}<br>
-            <b>{{ experiencia.institucion}}</b><br>
-            {{ experiencia.desde}} - {{ experiencia.hasta}}<br>
-            {{ experiencia.provincia}}{{ experiencia.pais}}<br>
-        </div>
-        <div class="col" >
-            <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button (click)="editar.pre_open_experiencia('experiencia',experiencia.id, experiencia.imagen, experiencia.texto, experiencia.institucion, experiencia.desde, experiencia.hasta, experiencia.id_pais, experiencia.pais, experiencia.id_provincia, experiencia.provincia)" type="button" class="btn btn-default exp_Edicion"  id="exp_Edicion-{{experiencia.id}}" style="display: none;">
-                    <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
-                </button>
-                <button (click)="borrar.pre_open('experiencia',experiencia.id,experiencia.texto)" type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
-                    <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
-                </button>
+
+<div class="card" >
+
+    <h4 class="subtitulo">Experiencia</h4>
+    <br>
+    <div *ngFor="let experiencia of experiencia">
+      <section class="row">
+        <div class="col-2">
+            <img class="img-thumbnail"src={{experiencia.imagen}} />
             </div>
-        </div>
-        <div class="col-12" id="separador"><p></p></div>
-    </section>
+            <div class="col-8">
+                {{ experiencia.texto}}<br>
+                <b>{{ experiencia.institucion}}</b><br>
+                {{ experiencia.desde}} - {{ experiencia.hasta}}<br>
+                {{ experiencia.provincia}}{{ experiencia.pais}}<br>
+            </div>
+            <div class="col" >
+                <div class="btn-group" role="group" aria-label="Horizontal Button Group">
+                    <button (click)="editar.pre_open_experiencia('experiencia',experiencia.id, experiencia.imagen, experiencia.texto, experiencia.institucion, experiencia.desde, experiencia.hasta, experiencia.id_pais, experiencia.pais, experiencia.id_provincia, experiencia.provincia)" type="button" class="btn btn-default exp_Edicion"  id="exp_Edicion-{{experiencia.id}}" style="display: none;">
+                        <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
+                    </button>
+                    <button (click)="borrar.pre_open('experiencia',experiencia.id,experiencia.texto)" type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
+                        <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12" id="separador"><p></p></div>
+        </section>
+    </div>
+
 </div>
 <hr>
