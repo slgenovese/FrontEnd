@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Proyectos } from '../modelo/proyectos';
-import { ProyectosService } from '../servicios/proyectos.service';
+import { Proyectos } from '../../modelos/proyectos';
+import { ProyectosService } from '../../servicios/proyectos.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
 @Component({

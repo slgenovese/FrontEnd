@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Educacion } from '../modelo/educacion';
-import { EducacionService } from '../servicios/educacion.service';
+import { Educacion } from '../../modelos/educacion';
+import { EducacionService } from '../../servicios/educacion.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
 

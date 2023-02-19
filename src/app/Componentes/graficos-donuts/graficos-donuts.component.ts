@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { Grafico } from '../modelo/grafico';
-import { GraficoService } from '../servicios/grafico.service';
+import { Grafico } from '../../modelos/grafico';
+import { GraficoService } from '../../servicios/grafico.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarGraficosComponent } from '../editar-graficos/editar-graficos.component';
 

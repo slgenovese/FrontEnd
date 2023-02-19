@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Educacion } from '../modelo/educacion';
-import { EducacionService } from '../servicios/educacion.service';
-import { Experiencia } from '../modelo/experiencia';
-import { ExperienciaService } from '../servicios/experiencia.service';
-import { Proyectos } from '../modelo/proyectos';
-import { ProyectosService } from '../servicios/proyectos.service';
+import { Educacion } from '../../modelos/educacion';
+import { EducacionService } from '../../servicios/educacion.service';
+import { Experiencia } from '../../modelos/experiencia';
+import { ExperienciaService } from '../../servicios/experiencia.service';
+import { Proyectos } from '../../modelos/proyectos';
+import { ProyectosService } from '../../servicios/proyectos.service';
 //import { Login } from '../modelo/Login';
-import { LoginService } from '../servicios/login.service'; 
+import { LoginService } from '../../servicios/login.service'; 
 
 @Component({
   selector: 'app-login',

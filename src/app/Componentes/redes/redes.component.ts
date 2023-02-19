@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Redes } from '../modelo/redes';
-import { RedesService } from '../servicios/redes.service';
+import { Redes } from '../../modelos/redes';
+import { RedesService } from '../../servicios/redes.service';
 import { EditarComponent } from '../editar/editar.component';
 
 @Component({

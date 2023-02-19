@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Redes } from '../modelo/redes';
+import { Redes } from '../modelos/redes';
 
 @Injectable({
   providedIn: 'root'

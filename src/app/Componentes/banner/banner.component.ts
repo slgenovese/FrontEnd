@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Banner } from '../modelo/banner';
-import { BannerService } from '../servicios/banner.service';
+import { Banner } from '../../modelos/banner';
+import { BannerService } from '../../servicios/banner.service';
 import { EditarComponent } from '../editar/editar.component';
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Login } from '../modelo/Login';
-import { LoginService } from '../servicios/login.service'; 
-import { Redes } from '../modelo/redes';
-import { RedesService } from '../servicios/redes.service';
+import { Login } from '../../modelos/Login';
+import { LoginService } from '../../servicios/login.service'; 
+import { Redes } from '../../modelos/redes';
+import { RedesService } from '../../servicios/redes.service';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
