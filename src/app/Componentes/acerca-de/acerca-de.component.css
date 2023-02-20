@@ -1,1 +1,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+img{
+    background-color: rgb(220, 231, 235);
+}
+.card{
+    background-color: rgb(220, 231, 235);
+    box-shadow: 2px 2px 5px #999;
+}
+
