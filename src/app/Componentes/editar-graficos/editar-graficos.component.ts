@@ -174,6 +174,19 @@ borrar(i: number){
 
 
   grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
+
+  // Se calcula el porcentaje faltante para el 100%
+  let suma = (datosIngresos.data.reduce(function (a: any, b: any) {return a + b;}, 0));
+
+  if (suma<100){
+    datosIngresos.data.push(100-suma);
+    datosIngresos.backgroundColor.push('black'); 
+    datosIngresos.borderColor.push('black'); 
+    etiquetas.push('Sin Definir'); 
+  }
+  //**********/
+
+
     // Obtener una referencia al elemento canvas del DOM
     this.canvas = document.getElementById(objeto)!;
     this.ctx = this.canvas.getContext('2d')!;

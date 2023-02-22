@@ -16,7 +16,7 @@
     "id": 3,
   "titulo": "Frances", 
   "etiqueta": ["Escritura", "Hablado","Lectura                        "],
-  "porcentaje": [30, 30, 40],
+  "porcentaje": [30, 10, 40],
   "color_Fondo": ["red", "green", "blue"],
   "color_Borde": ["red", "green", "blue"]
 }]

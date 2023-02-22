@@ -58,7 +58,16 @@ ngOnInit(): void {
   procesar(graficos: Graficos[]){
 
     for(let grafico of graficos){
+/*
+      let suma = (grafico.porcentaje.reduce(function (a, b) {return a + b;}, 0));
 
+      if (suma<100){
+        grafico.porcentaje.push(100-suma);
+        grafico.color_Borde.push('black'); 
+        grafico.color_Fondo.push('black'); 
+        grafico.etiqueta.push('Sin Definir'); 
+      }
+*/
       this.datos[grafico.id].id=grafico.id;
       this.datos[grafico.id].titulo =grafico.titulo;
       this.datos[grafico.id].etiqueta =grafico.etiqueta;
@@ -69,16 +78,20 @@ ngOnInit(): void {
       var datosIngresos = {
         data: grafico.porcentaje, 
         backgroundColor: grafico.color_Fondo,
-        borderColor: grafico.color_Fondo,
+        borderColor: grafico.color_Borde,
         borderWidth: 0,// Ancho del borde
       };
-  
+
       this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
   
     }
 }
 
 pre_grafico( id: number, etiqueta: string[], titulo: string, porcentaje: number[], color_Fondo: string[]){
+
+  console.log("hola")
+  let suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0));
+  console.log("resultado: "+suma);
 
   var datosIngresos = {
     data: porcentaje, 
@@ -91,6 +104,19 @@ this.grafico_Donut(datosIngresos, etiqueta, titulo, "donut-chart"+id, "grafico"+
 }
 
 grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
+
+  // Se calcula el porcentaje faltante para el 100%
+  let suma = (datosIngresos.data.reduce(function (a: any, b: any) {return a + b;}, 0));
+
+  if (suma<100){
+    datosIngresos.data.push(100-suma);
+    datosIngresos.backgroundColor.push('black'); 
+    datosIngresos.borderColor.push('black'); 
+    etiquetas.push('Sin Definir'); 
+  }
+  //**********/
+
+
   // Obtener una referencia al elemento canvas del DOM
   this.canvas = document.getElementById(objeto)!;
   this.ctx = this.canvas.getContext('2d')!;
