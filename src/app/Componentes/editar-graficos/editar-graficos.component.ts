@@ -47,16 +47,26 @@ export class EditarGraficosComponent {
 
   recibe_porcentaje(porcentaje: string, i: number){
     this.i=i;
-    let suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
+    let suma=0;
+
+    let indice=this.etiqueta.indexOf('Sin Definir')
+    if(indice!=-1){
+      suma = ((this.porcentaje.reduce(function (a, b) {return a + b;}, 0))- this.porcentaje[indice]) - this.porcentaje[i];
+      this.porcentaje[indice]=this.porcentaje[indice]-Number(porcentaje);
+    }else{
+      suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
+    }
+
     if (suma<100){
       if (Number(porcentaje)+suma<=100){
         this.porcentaje[i]=Number(porcentaje);
       }else{
         this.porcentaje[i]=100-suma;
-        this.graficar('nuevo_grafico');
       }
     }
-    console.log("porcentaje: "+i);
+
+    // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
+    this.borrar(indice)
     this.graficar('nuevo_grafico');
 }
 
@@ -177,13 +187,23 @@ borrar(i: number){
 
   // Se calcula el porcentaje faltante para el 100%
   let suma = (datosIngresos.data.reduce(function (a: any, b: any) {return a + b;}, 0));
-
+    console.log('Suma: '+suma);
   if (suma<100){
-    datosIngresos.data.push(100-suma);
-    datosIngresos.backgroundColor.push('black'); 
-    datosIngresos.borderColor.push('black'); 
-    etiquetas.push('Sin Definir'); 
+    let indice=etiquetas.indexOf('Sin Definir')
+    console.log("Indice: "+indice);
+    if(indice!=-1){
+      datosIngresos.data[indice]= datosIngresos.data[indice]+(100-suma);
+    }else{
+      console.log("paso 1");
+      datosIngresos.data.push(100-suma);
+      datosIngresos.backgroundColor.push('black'); 
+      datosIngresos.borderColor.push('black'); 
+      etiquetas.push('Sin Definir'); 
+    }
+  //  this.porcentaje[this.porcentaje.length]=100-suma;
+
   }
+
   //**********/
 
 
