@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
+import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class EditarGraficosComponent {
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
+  @ViewChild(PorcentajeComponent, {static: true}) hijo!: PorcentajeComponent;
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -52,22 +54,27 @@ export class EditarGraficosComponent {
     let indice=this.etiqueta.indexOf('Sin Definir')
     if(indice!=-1){
       suma = ((this.porcentaje.reduce(function (a, b) {return a + b;}, 0))- this.porcentaje[indice]) - this.porcentaje[i];
-      this.porcentaje[indice]=this.porcentaje[indice]-Number(porcentaje);
+    //  this.porcentaje[indice]=this.porcentaje[indice]-Number(porcentaje);
     }else{
       suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
     }
 
     if (suma<100){
+      console.log("paso 1");
       if (Number(porcentaje)+suma<=100){
+        console.log("paso 2: "+Number(porcentaje));
         this.porcentaje[i]=Number(porcentaje);
       }else{
+        console.log("paso 3: "+(100-suma));
         this.porcentaje[i]=100-suma;
       }
     }
-
     // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
     this.borrar(indice)
     this.graficar('nuevo_grafico');
+    console.log("porcentaje: "+this.porcentaje[i])
+    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
+//    this.hijo.porcentaje_aux.nativeElement.value =this.porcentaje[i];  
 }
 
 recibe_etiqueta(event: KeyboardEvent, i: number){

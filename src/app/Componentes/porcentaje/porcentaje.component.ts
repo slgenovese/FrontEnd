@@ -6,7 +6,7 @@ import { Component,ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmi
   styleUrls: ['./porcentaje.component.css']
 })
 export class PorcentajeComponent implements AfterViewInit{
-  @ViewChild('porcentaje') porcentaje_aux!:ElementRef;
+  @ViewChild('porcentaje', {static: true}) porcentaje_aux!:ElementRef;
   @Input() porcentaje!: number;
   @Output() valueChange= new EventEmitter<string>();
 
@@ -14,7 +14,13 @@ export class PorcentajeComponent implements AfterViewInit{
     this.valueChange.emit(porcentaje);
   }
 
-  // Esto es para poner el valor de la provincia
+  public actualizar_porcentaje(porcentaje: number){
+    this.porcentaje=porcentaje;
+    this.porcentaje_aux.nativeElement.value= this.porcentaje;
+//    document.getElementById('porcentaje')!.setAttribute('value', porcentaje.toString(10) );
+  }
+
+  // Esto es para poner el valor del porcentaje
   ngAfterViewInit(): void {
   
     this.porcentaje_aux.nativeElement.value= this.porcentaje;
