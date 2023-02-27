@@ -15,6 +15,7 @@ export class PorcentajeComponent implements AfterViewInit{
   }
 
   public actualizar_porcentaje(porcentaje: number){
+    console.log("Llego a la funcion");
     this.porcentaje=porcentaje;
     this.porcentaje_aux.nativeElement.value= this.porcentaje;
 //    document.getElementById('porcentaje')!.setAttribute('value', porcentaje.toString(10) );
