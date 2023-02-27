@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef, ElementRef, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
@@ -10,7 +10,7 @@ import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
   styleUrls: ['./editar-graficos.component.css']
 })
 
-export class EditarGraficosComponent {
+export class EditarGraficosComponent implements AfterViewInit{
 
   canvas: any;
   ctx: any;
@@ -31,22 +31,13 @@ export class EditarGraficosComponent {
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
-  @ViewChild(PorcentajeComponent, {static: true}) hijo!: PorcentajeComponent;
+//  @ViewChild(PorcentajeComponent, {static: true}) hijo: PorcentajeComponent = new PorcentajeComponent;
+//  @ViewChild(PorcentajeComponent, {static: true}) hijo: PorcentajeComponent = {} as PorcentajeComponent;
+  @ViewChildren(PorcentajeComponent) hijo!: QueryList<PorcentajeComponent >; 
 
-  editar_registro(){
-    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-  }
 
-  recibe_color(color: string, i: number ){
-    if (color!='N/A'){
-      this.i=i;
-      this.color_Borde[i]=color;
-      this.color_Fondo[i]=color;
-      console.log("color: " +i);
-      this.graficar('nuevo_grafico');
-    }
-  }
-
+public ngAfterViewInit(): void {
+}  
   recibe_porcentaje(porcentaje: string, i: number){
     this.i=i;
     let suma=0;
@@ -60,12 +51,9 @@ export class EditarGraficosComponent {
     }
 
     if (suma<100){
-      console.log("paso 1");
       if (Number(porcentaje)+suma<=100){
-        console.log("paso 2: "+Number(porcentaje));
         this.porcentaje[i]=Number(porcentaje);
       }else{
-        console.log("paso 3: "+(100-suma));
         this.porcentaje[i]=100-suma;
       }
     }
@@ -73,9 +61,29 @@ export class EditarGraficosComponent {
     this.borrar(indice)
     this.graficar('nuevo_grafico');
     console.log("porcentaje: "+this.porcentaje[i])
-    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
+//    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
 //    this.hijo.porcentaje_aux.nativeElement.value =this.porcentaje[i];  
+    this.hijo.changes.subscribe((comp: QueryList<PorcentajeComponent>) =>{
+      let aux = comp.first;
+      aux.actualizar_porcentaje(this.porcentaje[i]);
+    } )
 }
+
+
+
+  editar_registro(){
+    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+  }
+
+  recibe_color(color: string, i: number ){
+    if (color!='N/A'){
+      this.i=i;
+      this.color_Borde[i]=color;
+      this.color_Fondo[i]=color;
+      this.graficar('nuevo_grafico');
+    }
+  }
+
 
 recibe_etiqueta(event: KeyboardEvent, i: number){
   if(event.key=='Enter'){  
@@ -190,18 +198,18 @@ borrar(i: number){
   }
 
 
+
+
+
   grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string, grafico_id: string){
 
   // Se calcula el porcentaje faltante para el 100%
   let suma = (datosIngresos.data.reduce(function (a: any, b: any) {return a + b;}, 0));
-    console.log('Suma: '+suma);
   if (suma<100){
     let indice=etiquetas.indexOf('Sin Definir')
-    console.log("Indice: "+indice);
     if(indice!=-1){
       datosIngresos.data[indice]= datosIngresos.data[indice]+(100-suma);
     }else{
-      console.log("paso 1");
       datosIngresos.data.push(100-suma);
       datosIngresos.backgroundColor.push('black'); 
       datosIngresos.borderColor.push('black'); 
@@ -257,4 +265,5 @@ borrar(i: number){
     
       });
     };
-}
+
+  }
