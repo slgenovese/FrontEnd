@@ -31,9 +31,6 @@ export class EditarGraficosComponent implements AfterViewInit{
   i!: number;
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
-//  @ViewChild(PorcentajeComponent, {static: true}) hijo: PorcentajeComponent = new PorcentajeComponent;
-//  @ViewChild(PorcentajeComponent, {static: true}) hijo: PorcentajeComponent = {} as PorcentajeComponent;
-  @ViewChildren(PorcentajeComponent) hijo!: QueryList<PorcentajeComponent >; 
 
 
 public ngAfterViewInit(): void {
@@ -61,12 +58,6 @@ public ngAfterViewInit(): void {
     this.borrar(indice)
     this.graficar('nuevo_grafico');
     console.log("porcentaje: "+this.porcentaje[i])
-//    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
-//    this.hijo.porcentaje_aux.nativeElement.value =this.porcentaje[i];  
-    this.hijo.changes.subscribe((comp: QueryList<PorcentajeComponent>) =>{
-      let aux = comp.first;
-      aux.actualizar_porcentaje(this.porcentaje[i]);
-    } )
 }
 
 
@@ -215,8 +206,6 @@ borrar(i: number){
       datosIngresos.borderColor.push('black'); 
       etiquetas.push('Sin Definir'); 
     }
-  //  this.porcentaje[this.porcentaje.length]=100-suma;
-
   }
 
   //**********/
