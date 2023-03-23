@@ -73,8 +73,9 @@ export class EditarGraficosComponent {
     this.borrar(indice)
     this.graficar('nuevo_grafico');
     console.log("porcentaje: "+this.porcentaje[i])
-    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
+//    this.hijo.actualizar_porcentaje(this.porcentaje[i]);
 //    this.hijo.porcentaje_aux.nativeElement.value =this.porcentaje[i];  
+    this.hijo.ngAfterViewInit();
 }
 
 recibe_etiqueta(event: KeyboardEvent, i: number){
