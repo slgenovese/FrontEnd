@@ -1,0 +1,29 @@
+[{
+    "id": 1,
+    "imagen": "https://i.postimg.cc/rmVnK4Fk/Unqui-modified.png", 
+    "titulo":"Técnico Universitario en Automatización y Control.",
+    "institucion": "Universidad Nacional de Quilmes.",
+    "desde": "1991",
+    "hasta": "1997"
+  },{
+    "id": 2,
+    "imagen": "https://i.postimg.cc/90SJ8NPm/Cisco-modified.png", 
+    "titulo": "Cisco Certified Network Associate (CCNA).",
+    "institucion": "Instituto Perpetuo Socorro.", 
+    "desde": "2001",
+    "hasta": "2002"
+  },{
+    "id": 3,
+    "imagen": "https://i.postimg.cc/SQtTxjBB/Microsoft-modified.png", 
+    "titulo":"Microsoft Certified Professional (MCP).",
+    "institucion": "BS Trainig.", 
+    "desde": "2004",
+    "hasta": "2005"
+  },{
+    "id": 4,
+    "imagen": "https://i.postimg.cc/T3cxqkbm/Argentina-Programa.png", 
+    "titulo":"Full Stack Developer Jr.",
+    "institucion": "Instituto Nacional de Tecnología Industrial.", 
+    "desde": "2022",
+    "hasta": "2023"
+}]

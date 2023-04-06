@@ -12,7 +12,8 @@ export class EducacionService {
   constructor(private http: HttpClient) { }
 
   public getEducacion():  Observable<Educacion[]>{
-    return this.http.get<Educacion[]>("./assets/educacion.json");
+//    return this.http.get<Educacion[]>("./assets/educacion.json");
+    return this.http.get<Educacion[]>("http://localhost:8080/portfolio/educacion/traer");
 
   }
 

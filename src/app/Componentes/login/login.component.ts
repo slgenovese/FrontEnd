@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Educacion } from '../../modelos/educacion';
+import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from '../../servicios/educacion.service';
 import { Experiencia } from '../../modelos/experiencia';
 import { ExperienciaService } from '../../servicios/experiencia.service';

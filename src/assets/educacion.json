@@ -1,29 +1,110 @@
-[{
-    "id": 1,
-    "imagen": "https://i.postimg.cc/rmVnK4Fk/Unqui-modified.png", 
-    "titulo":"Técnico Universitario en Automatización y Control.",
-    "institucion": "Universidad Nacional de Quilmes.",
-    "desde": "1991",
-    "hasta": "1997"
-  },{
-    "id": 2,
-    "imagen": "https://i.postimg.cc/90SJ8NPm/Cisco-modified.png", 
-    "titulo": "Cisco Certified Network Associate (CCNA).",
-    "institucion": "Instituto Perpetuo Socorro.", 
-    "desde": "2001",
-    "hasta": "2002"
-  },{
-    "id": 3,
-    "imagen": "https://i.postimg.cc/SQtTxjBB/Microsoft-modified.png", 
-    "titulo":"Microsoft Certified Professional (MCP).",
-    "institucion": "BS Trainig.", 
-    "desde": "2004",
-    "hasta": "2005"
-  },{
-    "id": 4,
-    "imagen": "https://i.postimg.cc/T3cxqkbm/Argentina-Programa.png", 
-    "titulo":"Full Stack Developer Jr.",
-    "institucion": "Instituto Nacional de Tecnología Industrial.", 
-    "desde": "2022",
-    "hasta": "2023"
-}]
+[
+    {
+        "id": 1,
+        "desde": "1991",
+        "hasta": "1997",
+        "n_orden": 1,
+        "institucion": [
+            {
+                "id": 1,
+                "institucion": "Universidad Nacional de Quilmes.",
+                "link_icono": "https://i.postimg.cc/rmVnK4Fk/Unqui-modified.png",
+                "titulo": [
+                    {
+                        "id": 1,
+                        "titulo": "Técnico Universitario en Automatización y Control."
+                    },
+                    {
+                        "id": 1,
+                        "titulo": "Técnico Universitario en Automatización y Control."
+                    }
+                ]
+            }
+        ],
+        "titulo": {
+            "id": 1,
+            "titulo": "Técnico Universitario en Automatización y Control."
+        }
+    },
+    {
+        "id": 2,
+        "desde": "2001",
+        "hasta": "2002",
+        "n_orden": 2,
+        "institucion": [
+            {
+                "id": 2,
+                "institucion": "Instituto Perpetuo Socorro.",
+                "link_icono": "https://i.postimg.cc/90SJ8NPm/Cisco-modified.png",
+                "titulo": [
+                    {
+                        "id": 2,
+                        "titulo": "Cisco Certified Network Associate (CCNA)."
+                    },
+                    {
+                        "id": 2,
+                        "titulo": "Cisco Certified Network Associate (CCNA)."
+                    }
+                ]
+            }
+        ],
+        "titulo": {
+            "id": 2,
+            "titulo": "Cisco Certified Network Associate (CCNA)."
+        }
+    },
+    {
+        "id": 3,
+        "desde": "2004",
+        "hasta": "2005",
+        "n_orden": 3,
+        "institucion": [
+            {
+                "id": 3,
+                "institucion": "BS Trainig.",
+                "link_icono": "https://i.postimg.cc/SQtTxjBB/Microsoft-modified.png",
+                "titulo": [
+                    {
+                        "id": 3,
+                        "titulo": "Microsoft Certified Professional (MCP)."
+                    },
+                    {
+                        "id": 3,
+                        "titulo": "Microsoft Certified Professional (MCP)."
+                    }
+                ]
+            }
+        ],
+        "titulo": {
+            "id": 3,
+            "titulo": "Microsoft Certified Professional (MCP)."
+        }
+    },
+    {
+        "id": 4,
+        "desde": "2022",
+        "hasta": "2023",
+        "n_orden": 4,
+        "institucion": [
+            {
+                "id": 4,
+                "institucion": "Instituto Nacional de Tecnología Industrial.",
+                "link_icono": "https://i.postimg.cc/T3cxqkbm/Argentina-Programa.png",
+                "titulo": [
+                    {
+                        "id": 4,
+                        "titulo": "Full Stack Developer Jr."
+                    },
+                    {
+                        "id": 4,
+                        "titulo": "Full Stack Developer Jr."
+                    }
+                ]
+            }
+        ],
+        "titulo": {
+            "id": 4,
+            "titulo": "Full Stack Developer Jr."
+        }
+    }
+]
