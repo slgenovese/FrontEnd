@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Experiencia } from '../../modelos/experiencia';
+import { Experiencia } from 'src/app/modelos/experiencia';
 import { ExperienciaService } from '../../servicios/experiencia.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
@@ -12,7 +12,8 @@ import { EditarComponent } from '../editar/editar.component';
 
 export class ExperienciaComponent implements OnInit {
 
-  experiencia: Experiencia[] =[];
+//  experiencia: Experiencia[] =[];
+  experiencia: Experiencia[]=[];
 
   constructor(private experienciaService: ExperienciaService) {}
 

@@ -131,7 +131,7 @@ export class EditarComponent implements OnInit{
   }
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
-    this.tabla=tabla;
+      this.tabla=tabla;
     this.id=id; 
     this.imagen=imagen;
     this.texto_aux=texto;
