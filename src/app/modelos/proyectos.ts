@@ -1,8 +1,15 @@
 export class Proyectos {
-    id!: number;
-    imagen!: string; 
-    titulo!: string;
-    institucion!: string;
-    desde!: string;
-    hasta!: string;
-  }
+  id!: number;
+  texto!: string;
+  desde!: string;
+  hasta!: string;
+  n_orden!: number;
+  institucion!: Institucion[];
+}
+
+export class Institucion {
+  id!: number;
+  institucion!: string;
+  link_icono!: string;
+  titulo!: any[];
+}

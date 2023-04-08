@@ -6,13 +6,13 @@
     <div *ngFor="let experiencia of experiencia">
       <section class="row">
         <div class="col-2">
-            <img class="img-thumbnail"src={{experiencia.institucion[0].link_icono }} />
+            <img class="img-thumbnail"src={{experiencia.institucion[0].link_icono}} />
             </div>
             <div class="col-8">
                 {{ experiencia.texto}}<br>
                 <b>{{ experiencia.institucion[0].institucion}}</b><br>
                 {{ experiencia.desde}} - {{ experiencia.hasta}}<br>
-                {{ experiencia.provincia}}{{ experiencia.pais}}<br>
+                {{ experiencia.provincia}} - {{ experiencia.pais}}<br>
             </div>
             <div class="col" >
                 <div class="btn-group" role="group" aria-label="Horizontal Button Group">
