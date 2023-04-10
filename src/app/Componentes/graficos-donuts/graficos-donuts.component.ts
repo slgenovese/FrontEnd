@@ -19,10 +19,10 @@ export class GraficosDonutsComponent implements OnInit{
     
   id!: number;
   titulo!: string;
-  etiqueta!: string[];
-  porcentaje!: number[];
-  color_Fondo!: string[];
-  color_Borde!: string[];
+  etiqueta: string[]=[];
+  porcentaje: number[]=[];
+  color_Fondo: string[]=[];
+  color_Borde: string[]=[];
 
   grafico: Grafico[]=[];
 
@@ -72,17 +72,18 @@ ngOnInit(): void {
       console.log("Hasta aca");
       let i=0;
       for(let vector of grafico.habilidadesDatos ){
-        console.log(vector.porcentaje);
-        console.log(vector.etiqueta);
-        console.log(vector.color);
-        /*        this.porcentaje[i] = vector.porcentaje;
-        console.log(vector.porcentaje);
-        this.etiqueta[i]=vector.etiqueta;
+        this.porcentaje.push(vector.porcentaje);
+        this.etiqueta.push(vector.etiqueta);
+        this.color_Fondo.push(vector.color);
+        this.color_Borde.push(vector.color);
+        i++;
+      }
+
+      i=1;
+      for(let vector of grafico.habilidadesDatos ){
+        console.log(this.porcentaje[i]);
         console.log(this.etiqueta[i]);
-        this.color_Fondo[i]=vector.color;
         console.log(this.color_Fondo[i]);
-        this.color_Borde[i]=vector.color;
-*/
         i++;
       }
 
