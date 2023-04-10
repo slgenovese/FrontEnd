@@ -58,31 +58,23 @@ ngOnInit(): void {
   procesar(graficos: Graficos[]){
 
     for(let grafico of graficos){
-/*
-      let suma = (grafico.porcentaje.reduce(function (a, b) {return a + b;}, 0));
 
-      if (suma<100){
-        grafico.porcentaje.push(100-suma);
-        grafico.color_Borde.push('black'); 
-        grafico.color_Fondo.push('black'); 
-        grafico.etiqueta.push('Sin Definir'); 
-      }
-*/
       this.datos[grafico.id].id=grafico.id;
       this.datos[grafico.id].titulo =grafico.titulo;
-      this.datos[grafico.id].etiqueta =grafico.etiqueta;
-      this.datos[grafico.id].porcentaje =grafico.porcentaje;
-      this.datos[grafico.id].color_Fondo =grafico.color_Fondo;
-      this.datos[grafico.id].color_Borde =grafico.color_Borde;
+
+      this.datos[grafico.id].habilidadesDatos[0].etiqueta =grafico.habilidadesDatos[0].etiqueta;
+      this.datos[grafico.id].habilidadesDatos[0].porcentaje =grafico.habilidadesDatos[0].porcentaje;
+      this.datos[grafico.id].habilidadesDatos[0].color =grafico.habilidadesDatos[0].color;
+
 
       var datosIngresos = {
-        data: grafico.porcentaje, 
-        backgroundColor: grafico.color_Fondo,
-        borderColor: grafico.color_Borde,
+        data: grafico.habilidadesDatos[0].porcentaje, 
+        backgroundColor: grafico.habilidadesDatos[0].color,
+        borderColor: grafico.habilidadesDatos[0].color,
         borderWidth: 0,// Ancho del borde
       };
 
-      this.grafico_Donut(datosIngresos, grafico.etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
+      this.grafico_Donut(datosIngresos, grafico.habilidadesDatos[0].etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
   
     }
 }
@@ -160,7 +152,7 @@ grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string
   };
 }
 
-export class Graficos{
+/*export class Graficos{
     public id!: number;
     public titulo!: string;
     public etiqueta!: string[];
@@ -168,5 +160,16 @@ export class Graficos{
     public color_Fondo!: string[];
     public color_Borde!: string[];
     constructor() {};
+  }*/
+  export class Graficos{
+    id!: number;
+    titulo!: string;
+    n_orden!: number;
+    habilidadesDatos!: HabilidadesDato[];
   }
-
+  export class HabilidadesDato {
+    id!: number;
+    color!: string;
+    etiqueta!: string;
+    porcentaje!: number;
+  }

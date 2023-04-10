@@ -1,10 +1,15 @@
 export class Grafico {
-    id!: number;
-    titulo!: string; 
-    etiqueta!: string[];
-    porcentaje!: number[];
-    color_Fondo!: string[];
-    color_Borde!: string[];
-  }
+  id!: number;
+  titulo!: string;
+  n_orden!: number;
+  habilidadesDatos!: HabilidadesDato[];
+}
+
+export class HabilidadesDato {
+  id!: number;
+  color!: string;
+  etiqueta!: string;
+  porcentaje!: number;
+}
 
   
