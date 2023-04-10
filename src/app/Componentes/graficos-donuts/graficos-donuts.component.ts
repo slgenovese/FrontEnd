@@ -58,19 +58,39 @@ ngOnInit(): void {
   procesar(graficos: Graficos[]){
 
     for(let grafico of graficos){
-
       this.datos[grafico.id].id=grafico.id;
+      console.log(grafico.id);
       this.datos[grafico.id].titulo =grafico.titulo;
+      console.log(grafico.titulo);
 
-      this.datos[grafico.id].habilidadesDatos[0].etiqueta =grafico.habilidadesDatos[0].etiqueta;
+      this.datos[grafico.id].habilidadesDatos =grafico.habilidadesDatos;
+      console.log(grafico.habilidadesDatos);
+/*      this.datos[grafico.id].habilidadesDatos[0].etiqueta =grafico.habilidadesDatos[0].etiqueta;
       this.datos[grafico.id].habilidadesDatos[0].porcentaje =grafico.habilidadesDatos[0].porcentaje;
       this.datos[grafico.id].habilidadesDatos[0].color =grafico.habilidadesDatos[0].color;
+*/
+      console.log("Hasta aca");
+      let i=0;
+      for(let vector of grafico.habilidadesDatos ){
+        console.log(vector.porcentaje);
+        console.log(vector.etiqueta);
+        console.log(vector.color);
+        /*        this.porcentaje[i] = vector.porcentaje;
+        console.log(vector.porcentaje);
+        this.etiqueta[i]=vector.etiqueta;
+        console.log(this.etiqueta[i]);
+        this.color_Fondo[i]=vector.color;
+        console.log(this.color_Fondo[i]);
+        this.color_Borde[i]=vector.color;
+*/
+        i++;
+      }
 
-
+      console.log(this.porcentaje);
       var datosIngresos = {
-        data: grafico.habilidadesDatos[0].porcentaje, 
-        backgroundColor: grafico.habilidadesDatos[0].color,
-        borderColor: grafico.habilidadesDatos[0].color,
+        data: this.porcentaje, 
+        backgroundColor: this.color_Fondo,
+        borderColor: this.color_Borde,
         borderWidth: 0,// Ancho del borde
       };
 
