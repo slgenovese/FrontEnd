@@ -25,6 +25,7 @@ export class GraficosDonutsComponent implements OnInit{
   color_Borde: string[]=[];
 
   grafico: Grafico[]=[];
+  habilidades: Habilidades[]=[];
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarGraficosComponent;
@@ -49,58 +50,43 @@ ngOnInit(): void {
 
   // Leo, mediante un servicio, del archivo JSON los datos para hacer el grafico
   this.graficoService.getGrafico().subscribe(data=>{
-    this.grafico=data
+    this.habilidades=data
   // La llamada a la funcion se hace dentro del "subscribe" para esperar los datos que se leen de forma
   // asincronica
-    this.procesar(this.grafico);
+    this.procesar(this.habilidades);
   });
 }
-  procesar(graficos: Graficos[]){
+  procesar(habilidades: Habilidades[]){
+    for(let habilidad of habilidades){
+      this.datos[habilidad.id].id=habilidad.id; // Falta analizar si corresponde este dato
+      console.log(habilidad.id);
+      this.datos[habilidad.id].titulo =habilidad.titulo;
+      console.log(habilidad.titulo);
 
-    for(let grafico of graficos){
-      this.datos[grafico.id].id=grafico.id;
-      console.log(grafico.id);
-      this.datos[grafico.id].titulo =grafico.titulo;
-      console.log(grafico.titulo);
-
-      this.datos[grafico.id].habilidadesDatos =grafico.habilidadesDatos;
-      console.log(grafico.habilidadesDatos);
-/*      this.datos[grafico.id].habilidadesDatos[0].etiqueta =grafico.habilidadesDatos[0].etiqueta;
-      this.datos[grafico.id].habilidadesDatos[0].porcentaje =grafico.habilidadesDatos[0].porcentaje;
-      this.datos[grafico.id].habilidadesDatos[0].color =grafico.habilidadesDatos[0].color;
-*/
-      console.log("Hasta aca");
-      let i=0;
-      for(let vector of grafico.habilidadesDatos ){
-        this.porcentaje.push(vector.porcentaje);
-        this.etiqueta.push(vector.etiqueta);
-        this.color_Fondo.push(vector.color);
-        this.color_Borde.push(vector.color);
-        i++;
-      }
-
-      i=1;
-      for(let vector of grafico.habilidadesDatos ){
-        console.log(this.porcentaje[i]);
-        console.log(this.etiqueta[i]);
-        console.log(this.color_Fondo[i]);
-        i++;
-      }
-
-      console.log(this.porcentaje);
+//      for(let vector of habilidades ){
+        let i=0;
+        for(let vectorDatos of habilidad.habilidadesDatos){
+          this.datos[habilidad.id].etiqueta[i] =vectorDatos.etiqueta;
+          this.datos[habilidad.id].porcentaje[i] =vectorDatos.porcentaje;
+          this.datos[habilidad.id].color_Fondo[i] =vectorDatos.color;
+          this.datos[habilidad.id].color_Borde[i] =vectorDatos.color;
+          i++;
+        }
+//      }
+      console.log(this.datos[habilidad.id].porcentaje);
+      console.log(this.datos[habilidad.id].color_Fondo);
       var datosIngresos = {
-        data: this.porcentaje, 
-        backgroundColor: this.color_Fondo,
-        borderColor: this.color_Borde,
+        data: this.datos[habilidad.id].porcentaje, 
+        backgroundColor: this.datos[habilidad.id].color_Fondo,
+        borderColor: this.datos[habilidad.id].color_Borde,
         borderWidth: 0,// Ancho del borde
       };
-
-      this.grafico_Donut(datosIngresos, grafico.habilidadesDatos[0].etiqueta, grafico.titulo, "donut-chart"+grafico.id, "grafico"+grafico.id);
+      this.grafico_Donut(datosIngresos, this.datos[habilidad.id].etiqueta, habilidad.titulo, "donut-chart"+habilidad.id, "grafico"+habilidad.id);
   
     }
 }
 
-pre_grafico( id: number, etiqueta: string[], titulo: string, porcentaje: number[], color_Fondo: string[]){
+pre_grafico( id: number, etiqueta: String[], titulo: string, porcentaje: number[], color_Fondo: string[]){
 
   console.log("hola")
   let suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0));
@@ -128,7 +114,6 @@ grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string
     etiquetas.push('Sin Definir'); 
   }
   //**********/
-
 
   // Obtener una referencia al elemento canvas del DOM
   this.canvas = document.getElementById(objeto)!;
@@ -173,16 +158,16 @@ grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string
   };
 }
 
-/*export class Graficos{
+  export class Graficos{
     public id!: number;
     public titulo!: string;
-    public etiqueta!: string[];
-    public porcentaje!: number[];
-    public color_Fondo!: string[];
-    public color_Borde!: string[];
+    public etiqueta: string[]=[];
+    public porcentaje: number[]=[];
+    public color_Fondo: string[]=[];
+    public color_Borde: string[]=[];
     constructor() {};
-  }*/
-  export class Graficos{
+  }
+  export class Habilidades{
     id!: number;
     titulo!: string;
     n_orden!: number;
