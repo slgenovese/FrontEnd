@@ -1,8 +1,8 @@
-export class Redes{
-    id!: number;
-    icon!: string; 
-    link!: string;
-    nombre!: string;
-    habilitado!: string;
-  }
+export class Redes {
+  id!: number;
+  nombre!: string;
+  icono!: string;
+  link!: string;
+}
+
 
