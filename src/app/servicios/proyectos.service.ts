@@ -12,7 +12,7 @@ export class ProyectosService {
   constructor(private http: HttpClient) { }
 
   public getProyectos():  Observable<Proyectos[]>{
-    return this.http.get<Proyectos[]>("http://localhost:8080/portfolio/proyectos/traer");
+    return this.http.get<Proyectos[]>("http://localhost:8080/portfolio/v1/proyectos");
 
   }
 }

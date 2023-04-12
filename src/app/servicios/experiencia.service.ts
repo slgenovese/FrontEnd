@@ -10,7 +10,7 @@ export class ExperienciaService {
   constructor(private http: HttpClient) { }
 
   public getExperiencia():  Observable<Experiencia[]>{
-    return this.http.get<Experiencia[]>("http://localhost:8080/portfolio/experiencia/traer");
+    return this.http.get<Experiencia[]>("http://localhost:8080/portfolio/v1/experiencias");
 //    return this.http.get<Experiencia[]>("./assets/experiencia.json");
 
   }

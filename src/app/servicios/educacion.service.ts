@@ -13,7 +13,7 @@ export class EducacionService {
 
   public getEducacion():  Observable<Educacion[]>{
 //    return this.http.get<Educacion[]>("./assets/educacion.json");
-    return this.http.get<Educacion[]>("http://localhost:8080/portfolio/educacion/traer");
+    return this.http.get<Educacion[]>("http://localhost:8080/portfolio/v1/estudios");
 
   }
 
