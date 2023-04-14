@@ -1,22 +1,18 @@
 
-
-
-<div *ngFor="let acerca_de of acerca_de">
-
     <section class="row">
         <div class="col-4">
-            <h4 style="margin-top:20px; margin-left: 30px; "><b>{{acerca_de.nombre_apellido}}</b></h4><br><br>
+            <h4 style="margin-top:20px; margin-left: 30px; "><b> {{acerca_de.nombres}} {{acerca_de.apellidos}}</b></h4><br><br>
             <p style="margin-top:-30px; margin-left: 30px; font-size: medium;">{{acerca_de.cargo_actual}}</p>
-            <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}}{{acerca_de.pais}}</p>
+            <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}} - {{acerca_de.pais}}</p>
         </div>
         <div class="col-2">
-            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombre_apellido, acerca_de.cargo_actual, acerca_de.id_pais, acerca_de.pais, acerca_de.id_provincia, acerca_de.provincia, acerca_de.imagen)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
+            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombres, acerca_de.apellidos, acerca_de.cargo_actual, acerca_de.id_pais, acerca_de.pais, acerca_de.id_provincia, acerca_de.provincia, acerca_de.link_icono)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
               <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
             </button>
         </div>
         <div class="col-4"></div>
         <div class="col-2">
-            <img class="img-thumbnail" src={{acerca_de.imagen}} style="margin-top: 70px"/>
+            <img class="img-thumbnail" src={{acerca_de.link_icono}} style="margin-top: 70px"/>
         </div>
         <hr/>
 <!--    <div class="card form-control shadow-lg p-3 mb-5 rounded" >-->
@@ -24,14 +20,14 @@
     <h4>Acerca de</h4>
         <br>
         <div class="col-10">
-            <p>{{acerca_de.texto}}</p>
+            <p>{{acerca_de.acerca_de}}</p>
         </div>
         <div class="col">
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button (click)="editar.pre_open_acerca_de('acerca-de',acerca_de.id, acerca_de.texto)" type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
+                <button (click)="editar.pre_open_acerca_de('acerca-de',acerca_de.id, acerca_de.acerca_de)" type="button" class="btn btn-default ace_Edicion" id="ace_Edicion-{{acerca_de.id}}" style="display: none;">
                     <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
                 </button>
-                <button (click)="borrar.pre_open('acerca-de',acerca_de.id, acerca_de.texto) " type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
+                <button (click)="borrar.pre_open('acerca-de',acerca_de.id, acerca_de.acerca_de) " type="button" class="btn btn-default ace_borrado" id="ace_Borrado-{{acerca_de.id}}" style="display: none;">
                         <i class="bi bi-x-circle" [title]="'Borrar los datos'"> </i>
                 </button>
             </div>
@@ -39,8 +35,5 @@
     </div>
 
     </section>
-</div>
-
-
 
 <hr/>

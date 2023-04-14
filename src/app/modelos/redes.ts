@@ -3,6 +3,7 @@ export class Redes {
   nombre!: string;
   icono!: string;
   link!: string;
+  habilitado!: String;
 }
 
 

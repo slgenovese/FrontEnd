@@ -7,16 +7,16 @@
     <section class="row">
         <div class="col-2">
 <!--            <img class="img-thumbnail" src={{educacion.imagen}} /> -->
-            <img class="img-thumbnail" src={{educacion.institucion[0].link_icono}} /> 
+            <img class="img-thumbnail" src={{educacion.instituciones[0].link_icono}} /> 
         </div>
         <div class="col-8">
-            <b>{{ educacion.institucion[0].institucion }}</b><br>
+            <b>{{ educacion.instituciones[0].institucion }}</b><br>
             {{ educacion.titulo.titulo }}<br>
             {{ educacion.desde}} - {{ educacion.hasta}}<br>
         </div>
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.institucion[0].link_icono, educacion.titulo.titulo, educacion.institucion[1].institucion, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
+                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.instituciones[0].link_icono, educacion.titulo.titulo, educacion.instituciones[1].institucion, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
                 <button (click)="borrar.pre_open('educacion',educacion.id,educacion.titulo.titulo)" type="button" class="btn btn-default edu_Borrado" id="edu_Borrado-{{educacion.id}}" style="display: none;">

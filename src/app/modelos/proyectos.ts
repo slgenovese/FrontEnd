@@ -4,12 +4,12 @@ export class Proyectos {
   desde!: string;
   hasta!: string;
   n_orden!: number;
-  institucion!: Institucion[];
+  instituciones!: Institucion[];
 }
 
 export class Institucion {
   id!: number;
   institucion!: string;
   link_icono!: string;
-  titulo!: any[];
+  titulos!: any[];
 }

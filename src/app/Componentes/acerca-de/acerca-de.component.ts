@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Acerca_de } from '../../modelos/acerca-de';
+import { Acerca_De } from '../../modelos/acerca-de';
 import { AcercaDeService } from '../../servicios/acerca-de.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
@@ -11,7 +11,7 @@ import { EditarComponent } from '../editar/editar.component';
 })
 export class AcercaDeComponent implements OnInit {
 
-acerca_de: Acerca_de[] =[];
+acerca_de!: Acerca_De;
 
 constructor(private acercaDeService: AcercaDeService) {}
 
@@ -19,6 +19,9 @@ constructor(private acercaDeService: AcercaDeService) {}
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de=data});
+    this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de=data
+    console.log(this.acerca_de);
+    
+    });
   }
 }

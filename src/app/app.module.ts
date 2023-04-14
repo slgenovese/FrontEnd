@@ -58,7 +58,7 @@ import { ProyectosComponent } from './Componentes/proyectos/proyectos.component'
     NgbModule,
     HttpClientModule,
   ],
-  providers: [AcercaDeService],
+  //providers: [AcercaDeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

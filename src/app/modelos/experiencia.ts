@@ -8,14 +8,14 @@ export class Experiencia {
   provincia!: string;
   pais!: string;
   n_orden!: number;
-  institucion!: Institucion[];
+  instituciones!: Institucion[];
 }
 
 export class Institucion {
   id!: number;
   institucion!: string;
   link_icono!: string;
-  titulo!: Titulo[];
+  titulos!: Titulo[];
 }
 
 export class Titulo {

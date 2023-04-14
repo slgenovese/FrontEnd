@@ -1,7 +1,6 @@
 
     <div *ngFor="let redes of redes" style="display: inline;">
-<!--        <div *ngIf="redes.habilitado==='SI'" style="display: inline;">-->
-        <div style="display: inline;">
+        <div *ngIf="redes.habilitado==='SI'" style="display: inline;">
             <button (click)= "irEnlace(redes.link)" target="_blank" type="button" class="btn btn-default" >
                 <span style="font-size: 120%;">  <i class= {{redes.icono}} title= {{redes.nombre}} ></i></span>
             </button>

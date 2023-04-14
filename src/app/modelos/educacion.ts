@@ -3,7 +3,7 @@ export class Educacion {
   desde!: string;
   hasta!: string;
   n_orden!: number;
-  institucion!: Institucion[];
+  instituciones!: Institucion[];
   titulo!: Titulo2;
 }
 
@@ -11,7 +11,7 @@ export class Institucion {
   id!: number;
   institucion!: string;
   link_icono!: string;
-  titulo!: Titulo[];
+  titulos!: Titulo[];
 }
 
 export class Titulo {
