@@ -9,12 +9,17 @@ import { Educacion } from '../modelos/educacion';
 })
 export class EducacionService {
 
+  status!: String;
+  
   constructor(private http: HttpClient) { }
 
   public getEducacion():  Observable<Educacion[]>{
-//    return this.http.get<Educacion[]>("./assets/educacion.json");
     return this.http.get<Educacion[]>("http://localhost:8080/portfolio/v1/estudios");
 
   }
 
+  public deleteEducacion(id: number) {
+    this.http.delete("http://localhost:8080/portfolio/v1/estudios/"+id)
+    .subscribe(() => this.status = 'Delete successful');
+  }
 }

@@ -8,11 +8,16 @@ import { Proyectos } from '../modelos/proyectos';
   providedIn: 'root'
 })
 export class ProyectosService {
+  status!: String;
 
   constructor(private http: HttpClient) { }
 
   public getProyectos():  Observable<Proyectos[]>{
     return this.http.get<Proyectos[]>("http://localhost:8080/portfolio/v1/proyectos");
 
+  }
+  public deleteProyectos(id: number) {
+    this.http.delete("http://localhost:8080/portfolio/v1/proyectos/"+id)
+    .subscribe(() => this.status = 'Delete successful');
   }
 }

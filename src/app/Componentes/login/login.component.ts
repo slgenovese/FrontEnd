@@ -130,23 +130,17 @@ export class LoginComponent implements OnInit{
       document.getElementById("gra_Edicion-8")!.style.display=display;
     }
     
-    var i=0;
       for( let edu of this.educacion){
-        i++;
-        document.getElementById("edu_Edicion-"+i)!.style.display=display;
-        document.getElementById("edu_Borrado-"+i)!.style.display=display;
+        document.getElementById("edu_Edicion-"+edu.id)!.style.display=display;
+        document.getElementById("edu_Borrado-"+edu.id)!.style.display=display;
       }
-      var i=0;
       for( let exp of this.experiencia){
-        i++;
-        document.getElementById("exp_Edicion-"+i)!.style.display=display;
-        document.getElementById("exp_Borrado-"+i)!.style.display=display;
+        document.getElementById("exp_Edicion-"+exp.id)!.style.display=display;
+        document.getElementById("exp_Borrado-"+exp.id)!.style.display=display;
       }
-      var i=0;
       for( let pro of this.proyectos){
-        i++;
-        document.getElementById("pro_Edicion-"+i)!.style.display=display;
-        document.getElementById("pro_Borrado-"+i)!.style.display=display;
+        document.getElementById("pro_Edicion-"+pro.id)!.style.display=display;
+        document.getElementById("pro_Borrado-"+pro.id)!.style.display=display;
       }
   }
   /**

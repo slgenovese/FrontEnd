@@ -14,4 +14,6 @@ export class RedesService {
     return this.http.get<Redes[]>("http://localhost:8080/portfolio/v1/redes");
 
   }
+
+
 }

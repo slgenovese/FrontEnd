@@ -1,6 +1,7 @@
 import { Component, ViewChild} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TemplateRef } from '@angular/core';
+import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 @Component({
   selector: 'app-borrar',
@@ -16,8 +17,15 @@ export class BorrarComponent {
   id!: number;
   texto!: string;
 
+  constructor(private modalService: NgbModal, private proyectosService: ProyectosService) {}
+    
   borrar_registro(){
-    console.log("Se borro el registro N°:" + this.id + " de la tabla:" + this.tabla);
+    switch(this.tabla){
+      case "proyecto":
+        this.proyectosService.deleteProyectos(this.id);
+        break;
+      default:
+      }
   }
 
 
@@ -46,7 +54,6 @@ export class BorrarComponent {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal) {}
 
   /**
    * Write code on Method
