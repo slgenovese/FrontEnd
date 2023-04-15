@@ -1,6 +1,6 @@
 
-  export class Banner{
-    id!: number;
-    banner!: string;
-    foto!: string;
-  }
+export class Banner {
+  id!: number;
+  link_banner!: string;
+  link_foto!: string;
+}

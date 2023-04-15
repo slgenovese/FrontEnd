@@ -10,8 +10,8 @@ export class BannerService {
 
   constructor(private http: HttpClient) { }
 
-  public getBanner():  Observable<Banner[]>{
-    return this.http.get<Banner[]>("./assets/banner.json");
+  public getBanner():  Observable<Banner>{
+    return this.http.get<Banner>("http://localhost:8080/portfolio/v1/personas/banner");
 
   }
 }

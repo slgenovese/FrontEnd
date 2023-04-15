@@ -10,7 +10,7 @@ import { EditarComponent } from '../editar/editar.component';
 })
 
 export class BannerComponent implements OnInit{
-  banner: Banner[] =[];
+  banner!: Banner;
 
   constructor(private bannerService: BannerService) {}
 

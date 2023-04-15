@@ -1,18 +1,17 @@
 
-<div *ngFor="let banner of banner" >
+
   <section class="row" >
     <div class="col-12" style="height: 500px"  >
-      <img class="img-thumbnail" src= {{banner.banner}}  style="margin-top: 0px " />
+      <img class="img-thumbnail" src= {{banner.link_banner}}  style="margin-top: 0px " />
 
-      <img id="foto" src={{banner.foto}} class="img-fluid rounded-circle" style="margin-top: -5.50rem !important;margin-left: 50px;" />
-      <button (click)="editar.pre_open_foto('banner',banner.id, banner.foto)"type="button" class="btn btn-default fot_Edicion" id="fot_Edicion-1" style="display: none; margin-top: -70px;margin-left: 200px;">
+      <img id="foto" src={{banner.link_foto}} class="img-fluid rounded-circle" style="margin-top: -5.50rem !important;margin-left: 50px;" />
+      <button (click)="editar.pre_open_foto('banner',banner.id, banner.link_foto)"type="button" class="btn btn-default fot_Edicion" id="fot_Edicion-1" style="display: none; margin-top: -70px;margin-left: 200px;">
         <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la Foto'"></i> </span>
       </button>
-      <button (click)="editar.pre_open_banner('banner',banner.id, banner.banner)" type="button" class="btn btn-default ban_Edicion" id="ban_Edicion-1" style="display: none; margin-top: -10.9rem !important; padding-right: 20px">
+      <button (click)="editar.pre_open_banner('banner',banner.id, banner.link_banner)" type="button" class="btn btn-default ban_Edicion" id="ban_Edicion-1" style="display: none; margin-top: -10.9rem !important; padding-right: 20px">
         <span style="font-size: 150%; color: white; ">  <i class="bi bi-camera-fill" [title]="'Cambiar el Banner'"></i> </span>
       </button>
 
     </div>
   </section>
-</div>
 <br>
