@@ -4,6 +4,7 @@ import { Login } from '../../modelos/Login';
 import { LoginService } from '../../servicios/login.service'; 
 import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
+import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -43,6 +44,12 @@ export class EditarComponent implements OnInit{
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+    switch (this.tabla){
+      case "acerca_de":
+        this.acercaDeService.putAcercaDe(this.id, this.texto_aux);
+      break;
+    default:
+    }
   }
   
   mostrar_servidor_img(){
@@ -200,7 +207,7 @@ export class EditarComponent implements OnInit{
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService ) {}
 
   /**
    * Write code on Method

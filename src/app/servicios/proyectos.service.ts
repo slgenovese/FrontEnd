@@ -16,6 +16,7 @@ export class ProyectosService {
     return this.http.get<Proyectos[]>("http://localhost:8080/portfolio/v1/proyectos");
 
   }
+  
   public deleteProyectos(id: number) {
     this.http.delete("http://localhost:8080/portfolio/v1/proyectos/"+id)
     .subscribe(() => this.status = 'Delete successful');

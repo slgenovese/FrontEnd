@@ -8,10 +8,18 @@ import { Grafico } from '../modelos/grafico';
 })
 export class GraficoService {
 
+  status!: String;
+  
   constructor(private http: HttpClient) { }
 
   public getGrafico():  Observable<Grafico[]>{
     return this.http.get<Grafico[]>("http://localhost:8080/portfolio/v1/habilidades");
 
   }
+    
+  public deleteGrafico(id: number) {
+    this.http.delete("http://localhost:8080/portfolio/v1/habilidades/"+id)
+    .subscribe(() => this.status = 'Delete successful');
+  }
+
 }

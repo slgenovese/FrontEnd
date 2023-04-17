@@ -19,7 +19,7 @@
                     <button (click)="editar.pre_open_experiencia('experiencia',experiencia.id, experiencia.instituciones[0].link_icono, experiencia.texto, experiencia.instituciones[0].institucion, experiencia.desde, experiencia.hasta, experiencia.id_pais, experiencia.pais, experiencia.id_provincia, experiencia.provincia)" type="button" class="btn btn-default exp_Edicion"  id="exp_Edicion-{{experiencia.id}}" style="display: none;">
                             <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                     </button>
-                    <button (click)="borrar.pre_open('experiencia',experiencia.id,experiencia.texto)" type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
+                    <button (click)="borrar.pre_open('experiencia',experiencia.id,experiencia.texto, experiencia)" type="button" class="btn btn-default exp_Borrado" id="exp_Borrado-{{experiencia.id}}" style="display: none;">
                         <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
                     </button>
                 </div>

@@ -9,10 +9,15 @@ export class ExperienciaService {
 
   constructor(private http: HttpClient) { }
 
+  status!: String;
+
   public getExperiencia():  Observable<Experiencia[]>{
     return this.http.get<Experiencia[]>("http://localhost:8080/portfolio/v1/experiencias");
-//    return this.http.get<Experiencia[]>("./assets/experiencia.json");
-
+  }
+  
+  public deleteExperiencia(id: number) {
+    this.http.delete("http://localhost:8080/portfolio/v1/experiencias/"+id)
+    .subscribe(() => this.status = 'Delete successful');
   }
 
 }

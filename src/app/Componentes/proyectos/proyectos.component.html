@@ -17,7 +17,7 @@
                 <button (click)="editar.pre_open_proyectos('proyectos',proyecto.id, proyecto.instituciones[0].link_icono, proyecto.texto, proyecto.instituciones[0].institucion, proyecto.desde, proyecto.hasta)" type="button" class="btn btn-default pro_Edicion" id="pro_Edicion-{{proyecto.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
-                <button (click)="borrar.pre_open('proyecto',proyecto.id,proyecto.texto)" type="button" class="btn btn-default pro_Borrado" id="pro_Borrado-{{proyecto.id}}" style="display: none;">
+                <button (click)="borrar.pre_open('proyecto',proyecto.id,proyecto.texto, proyecto)" type="button" class="btn btn-default pro_Borrado" id="pro_Borrado-{{proyecto.id}}" style="display: none;">
                     <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
                 </button>
             </div>
