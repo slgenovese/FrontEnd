@@ -5,6 +5,8 @@ import { LoginService } from '../../servicios/login.service';
 import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
 import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
+import { BannerService } from 'src/app/servicios/banner.service';
+
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -42,13 +44,25 @@ export class EditarComponent implements OnInit{
   habilitado!: string;
 
 
-  editar_registro(){
+  editar_registro(quien_llama: any){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-    switch (this.tabla){
-      case "acerca_de":
-        this.acercaDeService.putAcercaDe(this.id, this.texto_aux);
-      break;
-    default:
+    console.log("hola");
+    console.log(this.tabla);
+    console.log(quien_llama );
+    switch (quien_llama){
+      case "acerca-de":
+        var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
+        this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
+        break;
+        case "banner":
+          this.bannerService.putBanner(this.id, this.imagen);
+          break;
+        case "foto":
+          console.log("llego a foto");
+          this.bannerService.putFoto(this.id, this.imagen);
+          break;
+        default:
+      console.log("No llego!!!");
     }
   }
   
@@ -207,7 +221,7 @@ export class EditarComponent implements OnInit{
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService ) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService, private bannerService: BannerService ) {}
 
   /**
    * Write code on Method

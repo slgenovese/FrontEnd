@@ -59,11 +59,8 @@ ngOnInit(): void {
   procesar(habilidades: Habilidades[]){
     for(let habilidad of habilidades){
       this.datos[habilidad.id].id=habilidad.id; // Falta analizar si corresponde este dato
-      console.log(habilidad.id);
       this.datos[habilidad.id].titulo =habilidad.titulo;
-      console.log(habilidad.titulo);
 
-//      for(let vector of habilidades ){
         let i=0;
         for(let vectorDatos of habilidad.habilidadesDatos){
           this.datos[habilidad.id].etiqueta[i] =vectorDatos.etiqueta;
@@ -72,9 +69,6 @@ ngOnInit(): void {
           this.datos[habilidad.id].color_Borde[i] =vectorDatos.color;
           i++;
         }
-//      }
-      console.log(this.datos[habilidad.id].porcentaje);
-      console.log(this.datos[habilidad.id].color_Fondo);
       var datosIngresos = {
         data: this.datos[habilidad.id].porcentaje, 
         backgroundColor: this.datos[habilidad.id].color_Fondo,
@@ -88,9 +82,7 @@ ngOnInit(): void {
 
 pre_grafico( id: number, etiqueta: String[], titulo: string, porcentaje: number[], color_Fondo: string[]){
 
-  console.log("hola")
   let suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0));
-  console.log("resultado: "+suma);
 
   var datosIngresos = {
     data: porcentaje, 

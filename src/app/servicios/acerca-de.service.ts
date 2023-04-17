@@ -20,6 +20,5 @@ export class AcercaDeService {
   public putAcercaDe(id: number, acerca_de: String){
     this.http.put<any>('http://localhost:8080/portfolio/v1/personas/acercade/'+id, acerca_de)
     .subscribe(data => this.postId = data.id);
-    console.log ('http://localhost:8080/portfolio/v1/personas/'+id)
   }
 }

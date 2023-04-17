@@ -76,7 +76,7 @@
       <div class="form-group" >
         <label for="texto"> <b> Acerca de: </b></label>
         <br>
-        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="acerca_de" id="acerca" cols="100" rows="4" value={{texto_aux}}></textarea>
       </div>
     </ng-container>
 
@@ -184,7 +184,7 @@
     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">Cancelar</span>
     </button>
-    <button type="button" class="btn btn-dark" (click)="editar_registro()" (click)="modal.close('Save click')">Modificar</button>
+    <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" (click)="modal.close('Save click')">Modificar</button>
   </div>
 </ng-template>
 
