@@ -50,7 +50,7 @@ export class EditarComponent implements OnInit{
     console.log(this.tabla);
     console.log(quien_llama );
     switch (quien_llama){
-      case "acerca-de":
+      case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
         this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
         break;
