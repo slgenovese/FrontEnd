@@ -23,8 +23,8 @@ export class BannerService {
   }
 
   public putFoto(id: number, link_foto: String){
-    console.log(link_foto);
     this.http.put<any>('http://localhost:8080/portfolio/v1/personas/foto/'+id, link_foto)
     .subscribe(data => this.postId = data.id);
   }
+
 }
