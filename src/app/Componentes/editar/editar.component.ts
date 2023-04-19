@@ -6,6 +6,7 @@ import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
 import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 import { BannerService } from 'src/app/servicios/banner.service';
+import { Acerca_De } from 'src/app/modelos/acerca-de';
 
 @Component({
   selector: 'app-editar',
@@ -18,7 +19,7 @@ export class EditarComponent implements OnInit{
   closeResult: string = '';
 
   redes: Redes[] =[];
-
+  acerca_De: Acerca_De = new Acerca_De;
 
   titulo!: string;
   tabla!: string;
@@ -53,16 +54,33 @@ export class EditarComponent implements OnInit{
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
         this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
+        
         break;
-        case "banner":
-          this.bannerService.putBanner(this.id, this.imagen);
-          break;
-        case "foto":
-          console.log("llego a foto");
-          this.bannerService.putFoto(this.id, this.imagen);
-          break;
-        default:
-      console.log("No llego!!!");
+      case "banner":
+        this.bannerService.putBanner(this.id, this.imagen);
+        break;
+      case "foto":
+        this.bannerService.putFoto(this.id, this.imagen);
+        break;
+      case "nombre":
+
+        this.acerca_De.id=this.id;
+        var nombre = document.getElementById("imagen") as HTMLTextAreaElement;
+        this.acerca_De.link_icono=nombre.value;
+        this.acerca_De.nombres=this.nombres;
+        this.acerca_De.apellidos=this.apellidos;
+        var cargo = document.getElementById("cargo") as HTMLTextAreaElement;
+      //  console.log(cargo.value);
+      //  this.acerca_De.cargo_actual=cargo.value;
+        this.acerca_De.id_pais=this.id_pais;
+        this.acerca_De.pais=this.pais;
+        this.acerca_De.id_provincia=this.id_provincia;
+        this.acerca_De.provincia=this.provincia;
+        console.log(this.acerca_De);
+        this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+        break;
+      default:
+        console.log("No llego!!!");
     }
   }
   
@@ -82,10 +100,12 @@ export class EditarComponent implements OnInit{
 
   recibe_pais(id_pais: string){
     console.log(id_pais);
+    this.id_pais=id_pais;
   }
 
   recibe_provincia(id_provincia: string){
     console.log(id_provincia);
+    this.id_provincia=id_provincia;
   }
 
   recibe_desde(anio_desde: string){

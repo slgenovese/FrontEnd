@@ -21,4 +21,9 @@ export class AcercaDeService {
     this.http.put<any>('http://localhost:8080/portfolio/v1/personas/acercade/'+id, acerca_de)
     .subscribe(data => this.postId = data.id);
   }
+
+  public putAcercaDeFull(id: number, acerca_de: Acerca_De){
+    this.http.put<any>('http://localhost:8080/portfolio/v1/personas/datos/'+id, acerca_de)
+    .subscribe(data => this.postId = data.id);
+  }
 }
