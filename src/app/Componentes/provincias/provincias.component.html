@@ -1,5 +1,5 @@
 <select #provincias name="provincia" id="provincias" (change)="elegido(provincias.value)" class="form-select color">
-    <ng-container *ngIf = "id_pais==='AR'">
+    <ng-container *ngIf = "id_pais==='Argentina'">
         <option value="Buenos Aires">Buenos Aires</option>
         <option value="C.A.B.A.">C.A.B.A.</option>
         <option value="K">Catamarca</option>
@@ -25,7 +25,7 @@
         <option value="V">Tierra del Fuego</option>	
         <option value="T">Tucumán</option>	
     </ng-container>
-    <ng-container *ngIf = "id_pais!='AR'">
+    <ng-container *ngIf = "id_pais!='Argentina'">
         <option value="0">No Aplica</option>	
     </ng-container>
 

@@ -28,9 +28,9 @@ export class EditarComponent implements OnInit{
   apellidos!: string;
   cargo_actual!: string;
   pais!: string;
-  id_pais: string = 'AR'
+  id_pais!: string; 
   provincia!: string;
-  id_provincia: string = 'B'
+  id_provincia!: string;
   texto_aux!: string;
   quien_llama!: string;
   imagen!: string;
@@ -70,14 +70,15 @@ export class EditarComponent implements OnInit{
         this.acerca_De.nombres=this.nombres;
         this.acerca_De.apellidos=this.apellidos;
         var cargo = document.getElementById("cargo") as HTMLTextAreaElement;
-      //  console.log(cargo.value);
-      //  this.acerca_De.cargo_actual=cargo.value;
+        console.log("Cargo: "+cargo.value);
+        this.acerca_De.cargo_actual=cargo.value;
         this.acerca_De.id_pais=this.id_pais;
         this.acerca_De.pais=this.pais;
         this.acerca_De.id_provincia=this.id_provincia;
         this.acerca_De.provincia=this.provincia;
+        this.acerca_De.acerca_de=this.texto_aux;
         console.log(this.acerca_De);
-        this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+      //  this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
         break;
       default:
         console.log("No llego!!!");
