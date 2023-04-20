@@ -26,6 +26,7 @@ import { PorcentajeComponent } from './Componentes/porcentaje/porcentaje.compone
 import { AcercaDeService } from './servicios/acerca-de.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProyectosComponent } from './Componentes/proyectos/proyectos.component';
+import { InstitucionComponent } from './Componentes/institucion/institucion.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ProyectosComponent } from './Componentes/proyectos/proyectos.component'
     ColorComponent,
     PorcentajeComponent,
     ProyectosComponent,
+    InstitucionComponent,
   
   ],
   imports: [

@@ -18,7 +18,7 @@ export class EditarComponent implements OnInit{
 
   closeResult: string = '';
 
-  redes: Redes[] =[];
+  redes: Redes[]=[];
   acerca_De: Acerca_De = new Acerca_De;
 
   titulo!: string;
@@ -63,22 +63,23 @@ export class EditarComponent implements OnInit{
         this.bannerService.putFoto(this.id, this.imagen);
         break;
       case "nombre":
-
+        console.log(this.id);
         this.acerca_De.id=this.id;
-        var nombre = document.getElementById("imagen") as HTMLTextAreaElement;
-        this.acerca_De.link_icono=nombre.value;
-        this.acerca_De.nombres=this.nombres;
-        this.acerca_De.apellidos=this.apellidos;
-        var cargo = document.getElementById("cargo") as HTMLTextAreaElement;
-        console.log("Cargo: "+cargo.value);
-        this.acerca_De.cargo_actual=cargo.value;
+        var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
+        this.acerca_De.link_icono=auxiliar.value;
+        var auxiliar = document.getElementById("nombre_") as HTMLTextAreaElement;
+        this.acerca_De.nombres=auxiliar.value;
+        var auxiliar = document.getElementById("apellido_") as HTMLTextAreaElement;
+        this.acerca_De.apellidos=auxiliar.value;
+        var auxiliar = document.getElementById("cargo") as HTMLTextAreaElement;
+        this.acerca_De.cargo_actual=auxiliar.value;
         this.acerca_De.id_pais=this.id_pais;
         this.acerca_De.pais=this.pais;
         this.acerca_De.id_provincia=this.id_provincia;
         this.acerca_De.provincia=this.provincia;
-        this.acerca_De.acerca_de=this.texto_aux;
+        this.acerca_De.acerca_de= " ";
         console.log(this.acerca_De);
-      //  this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+        this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
         break;
       default:
         console.log("No llego!!!");
