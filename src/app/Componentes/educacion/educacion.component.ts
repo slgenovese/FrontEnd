@@ -11,7 +11,6 @@ import { EditarComponent } from '../editar/editar.component';
 })
 export class EducacionComponent implements OnInit{
 
-//  educacion: Educacion[] =[];
   educacion: Educacion[]=[];
 
   constructor(private educacionService: EducacionService) {}

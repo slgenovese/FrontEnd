@@ -53,8 +53,8 @@ ngOnInit(): void {
     this.habilidades=data
   // La llamada a la funcion se hace dentro del "subscribe" para esperar los datos que se leen de forma
   // asincronica
-    this.procesar(this.habilidades);
-  });
+  this.procesar(this.habilidades);
+});
 }
   procesar(habilidades: Habilidades[]){
     for(let habilidad of habilidades){

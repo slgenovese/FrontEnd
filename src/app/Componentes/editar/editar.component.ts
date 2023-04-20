@@ -118,6 +118,10 @@ export class EditarComponent implements OnInit{
     console.log("hasta: "+anio_hasta);
   }
 
+  recibe_institucion(institucion: string){
+    this.institucion=institucion;
+  }
+
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
@@ -193,6 +197,7 @@ export class EditarComponent implements OnInit{
   }
 
   pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+    console.log("llega a Educacion");
     this.tabla=tabla;
     this.id=id; 
     this.imagen=imagen;

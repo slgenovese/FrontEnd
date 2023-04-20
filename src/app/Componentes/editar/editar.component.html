@@ -117,7 +117,8 @@
       <div class="form-group" >
         <label for="texto"> <b> Institución: </b></label>
         <br>
-        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>
+        <app-institucion [id_institucion]="institucion" (valueChange)='recibe_institucion($event)'></app-institucion>
+<!--        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>-->
         <label for="texto"> <b> Periodo: </b></label>
         <br>
 
@@ -155,6 +156,7 @@
             <label for="texto"> <b> Provincia </b></label>
           </div >
         </section>  
+
 
         <section class="row">
           <div class="col-4">
