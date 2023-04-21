@@ -35,10 +35,12 @@ export class EditarComponent implements OnInit{
   quien_llama!: string;
   imagen!: string;
   institucion!: string;
+  id_institucion!: string;
   periodo!: string;
   desde!: string;
   hasta!: string;
   titulo_aux!: string;
+  id_titulo!: string;
   password!: string;
   mail!: string;
   servidor_img!: string; 
@@ -122,6 +124,10 @@ export class EditarComponent implements OnInit{
     this.institucion=institucion;
   }
 
+  recibe_titulo(titulo: string){
+    this.titulo=titulo;
+  }
+
 
   //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
@@ -179,12 +185,13 @@ export class EditarComponent implements OnInit{
     this.open(this.mdl_editar );
   }
 
-  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
+  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
       this.tabla=tabla;
     this.id=id; 
     this.imagen=imagen;
     this.texto_aux=texto;
     this.institucion=institucion;
+    this.id_institucion=String(id_institucion);
     this.desde=desde;
     this.hasta=hasta;
     this.id_pais=id_pais;
@@ -196,13 +203,15 @@ export class EditarComponent implements OnInit{
     this.open(this.mdl_editar );
   }
 
-  pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+  pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, id_titulo: number, institucion: string, id_institucion: number, desde: string, hasta: string){
     console.log("llega a Educacion");
     this.tabla=tabla;
     this.id=id; 
     this.imagen=imagen;
     this.titulo_aux=titulo;
+    this.id_titulo=String(id_titulo);
     this.institucion=institucion;
+    this.id_institucion=String(id_institucion);
     this.desde=desde;
     this.hasta=hasta;
     this.quien_llama='educacion'
@@ -210,12 +219,13 @@ export class EditarComponent implements OnInit{
     this.open(this.mdl_editar );
   }
 
-  pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, desde: string, hasta: string){
+  pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, id_institucion: number, desde: string, hasta: string){
     this.tabla=tabla;
     this.id=id; 
     this.imagen=imagen;
     this.titulo_aux=titulo;
     this.institucion=institucion;
+    this.id_institucion=String(id_institucion);
     this.desde=desde;
     this.hasta=hasta;
     this.quien_llama='proyectos'

@@ -97,7 +97,15 @@
     </ng-container>
 
 
-    <ng-container *ngIf = "quien_llama==='educacion' || quien_llama==='proyectos'" >
+    <ng-container *ngIf = "quien_llama==='educacion'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Titulo: </b></label>
+        <app-titulo [id_titulo]="id_titulo" (valueChange)='recibe_titulo($event)'></app-titulo>
+        <br>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf = "quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Titulo: </b></label>
         <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
@@ -117,7 +125,7 @@
       <div class="form-group" >
         <label for="texto"> <b> Institución: </b></label>
         <br>
-        <app-institucion [id_institucion]="institucion" (valueChange)='recibe_institucion($event)'></app-institucion>
+        <app-institucion [id_institucion]="id_institucion" (valueChange)='recibe_institucion($event)'></app-institucion>
 <!--        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{institucion}}></textarea>-->
         <label for="texto"> <b> Periodo: </b></label>
         <br>

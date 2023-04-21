@@ -17,7 +17,7 @@
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
 <!--                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.instituciones[0].link_icono, educacion.titulo.titulo, educacion.instituciones[1].institucion, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >-->
-                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.instituciones[0].link_icono, educacion.titulo.titulo, educacion.instituciones[0].institucion, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
+                <button (click)="editar.pre_open_educacion('educacion',educacion.id, educacion.instituciones[0].link_icono, educacion.titulo.titulo, educacion.titulo.id, educacion.instituciones[0].institucion, educacion.instituciones[0].id, educacion.desde, educacion.hasta)" type="button" class="btn btn-default edu_Edicion" id="edu_Edicion-{{educacion.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
                 <button (click)="borrar.pre_open('educacion',educacion.id,educacion.titulo.titulo, educacion)" type="button" class="btn btn-default edu_Borrado" id="edu_Borrado-{{educacion.id}}" style="display: none;">

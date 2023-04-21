@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output, ElementRef, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 import { Institucion } from 'src/app/modelos/institucion';
 import { InstitucionService} from 'src/app/servicios/institucion.service';
 @Component({
@@ -21,15 +21,10 @@ export class InstitucionComponent implements OnInit{
 
   constructor(private institucionService: InstitucionService) {}
 
-  ngAfterViewInit(): void {
-
-    this.institucion_aux.nativeElement.value= this.id_institucion;
-
-  }
-
   ngOnInit(): void {
     this.institucionService.getInstitucion().subscribe(data=>{this.institucion=data
       this.procesar(this.institucion);
+      this.institucion_aux.nativeElement.value= this.id_institucion;
     });
   }
 
@@ -38,7 +33,7 @@ export class InstitucionComponent implements OnInit{
     const select = document.getElementById("institucion");
     for(let inst of institucion){
       var option= document.createElement("option");
-      option.value = inst.institucion;
+      option.value = String(inst.id);
       option.text = inst.institucion;
       select?.appendChild(option);
     }
