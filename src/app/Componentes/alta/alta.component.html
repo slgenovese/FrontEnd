@@ -1,0 +1,121 @@
+<ng-template #mdl_alta let-modal >
+    <div class="modal-header">
+    <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    
+    <!-- Muestra y permite cambiar las imagenes -->
+    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'  || quien_llama==='proyectos'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Imagen: </b></label>
+        <br>
+        <img class="img-thumbnail" id="imagen" src={{imagen}} />
+<!--        <label style="text-indent: 20pt;">
+          <textarea class="form-control" (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
+        </label>
+        <button (click)="mostrar_servidor_img()"type="button" class="btn btn-default img_Edicion" id="img_Edicion-1" style="display: block;">
+          <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la imagen'"></i> </span>
+        </button>-->
+
+      </div>
+      <hr>
+    </ng-container>
+
+    <ng-container *ngIf = "quien_llama==='educacion'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Titulo: </b></label>
+        <app-titulo [id_titulo]="id_titulo" (valueChange)='recibe_titulo($event)'></app-titulo>
+        <br>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf = "quien_llama==='proyectos'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Titulo: </b></label>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <br>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf = "quien_llama==='experiencia'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Tareas realizadas: </b></label>
+        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <br>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'  || quien_llama==='proyectos'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Institución: </b></label>
+        <br>
+        <app-institucion [id_institucion]="id_institucion" (valueChange)='recibe_institucion($event)'></app-institucion>
+        <label for="texto"> <b> Periodo: </b></label>
+        <br>
+
+        <section class="row">
+          <div class="col-2">
+            <label for="texto"> <b> Desde</b></label>
+          </div >
+          <div class="col-2">
+            <label for="texto"> <b> Hasta </b></label>
+          </div >
+        </section>  
+
+        <section class="row">
+          <div class="col-2">
+            <app-anios [anio]="desde" (valueChange)='recibe_desde($event)'></app-anios>
+          </div >
+          <div class="col-2">
+            <app-anios [anio]="hasta" (valueChange)='recibe_hasta($event)'></app-anios>
+          </div >
+        </section>  
+        <br>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngIf = "quien_llama==='experiencia'" >
+      <div class="form-group" >
+
+
+        <section class="row">
+          <div class="col-4">
+            <label for="texto"> <b> Pais</b></label>
+          </div >
+          <div class="col-4">
+            <label for="texto"> <b> Provincia </b></label>
+          </div >
+        </section>  
+
+
+        <section class="row">
+          <div class="col-4">
+            <textarea id="id_pais"  hidden value={{id_pais}}></textarea> <textarea id="id_provincia" hidden value={{id_provincia}}></textarea>
+            <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+          </div >
+          <div class="col-4">
+            <label ><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+          </div >
+        </section>  
+        <br>
+      </div>
+      </ng-container>
+      <br>
+
+      <p id="alerta"> <b> Esta por dar de alta un registro, ¿Esta seguro?</b></p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">Cancelar</span>
+    </button>
+    <button type="button" class="btn btn-dark" (click)="alta_registro(quien_llama)" (click)="modal.close('Save click')">     Alta     </button>
+  </div>
+</ng-template>
+

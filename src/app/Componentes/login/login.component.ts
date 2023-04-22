@@ -130,10 +130,14 @@ export class LoginComponent implements OnInit{
       document.getElementById("gra_Edicion-8")!.style.display=display;
     }
     
+
       for( let edu of this.educacion){
         document.getElementById("edu_Edicion-"+edu.id)!.style.display=display;
         document.getElementById("edu_Borrado-"+edu.id)!.style.display=display;
       }
+
+      document.getElementById("exp_Alta")!.style.display=display;
+
       for( let exp of this.experiencia){
         document.getElementById("exp_Edicion-"+exp.id)!.style.display=display;
         document.getElementById("exp_Borrado-"+exp.id)!.style.display=display;

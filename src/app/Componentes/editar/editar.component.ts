@@ -92,11 +92,10 @@ export class EditarComponent implements OnInit{
     window.open( this.servidor_img);
 }
 
-  cambiar_imagen(nueva_imagen: string){
-    this.mdl_editar.elementRef.nativeElement.value=nueva_imagen;
-    this.imagen= nueva_imagen;
-    console.log(nueva_imagen);
-  }
+cambiar_imagen(nueva_imagen: string){
+  this.mdl_editar.elementRef.nativeElement.value=nueva_imagen;
+  this.imagen= nueva_imagen;
+}
 
   recibe_habilitado(habilitado: string){
     console.log(habilitado);
@@ -129,7 +128,7 @@ export class EditarComponent implements OnInit{
   }
 
 
-  //Esto trae el selector #mdl_borrar del archivo .html y me permite usarlo como parametro 'content'
+  //Esto trae el selector #mdl_editar del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
 
@@ -186,52 +185,52 @@ export class EditarComponent implements OnInit{
   }
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
-      this.tabla=tabla;
-    this.id=id; 
-    this.imagen=imagen;
-    this.texto_aux=texto;
-    this.institucion=institucion;
-    this.id_institucion=String(id_institucion);
-    this.desde=desde;
-    this.hasta=hasta;
-    this.id_pais=id_pais;
-    this.pais=pais;
-    this.id_provincia=id_provincia;
-    this.provincia=provincia;
-    this.quien_llama='experiencia'
-    this.titulo = 'Área de Edición - '+ tabla;
-    this.open(this.mdl_editar );
-  }
-
-  pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, id_titulo: number, institucion: string, id_institucion: number, desde: string, hasta: string){
-    console.log("llega a Educacion");
     this.tabla=tabla;
-    this.id=id; 
-    this.imagen=imagen;
-    this.titulo_aux=titulo;
-    this.id_titulo=String(id_titulo);
-    this.institucion=institucion;
-    this.id_institucion=String(id_institucion);
-    this.desde=desde;
-    this.hasta=hasta;
-    this.quien_llama='educacion'
-    this.titulo = 'Área de Edición - '+ tabla;
-    this.open(this.mdl_editar );
-  }
+  this.id=id; 
+  this.imagen=imagen;
+  this.texto_aux=texto;
+  this.institucion=institucion;
+  this.id_institucion=String(id_institucion);
+  this.desde=desde;
+  this.hasta=hasta;
+  this.id_pais=id_pais;
+  this.pais=pais;
+  this.id_provincia=id_provincia;
+  this.provincia=provincia;
+  this.quien_llama='experiencia'
+  this.titulo = 'Área de Edición - '+ tabla;
+  this.open(this.mdl_editar );
+}
 
-  pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, id_institucion: number, desde: string, hasta: string){
-    this.tabla=tabla;
-    this.id=id; 
-    this.imagen=imagen;
-    this.titulo_aux=titulo;
-    this.institucion=institucion;
-    this.id_institucion=String(id_institucion);
-    this.desde=desde;
-    this.hasta=hasta;
-    this.quien_llama='proyectos'
-    this.titulo = 'Área de Edición - '+ tabla;
-    this.open(this.mdl_editar );
-  }
+pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, id_titulo: number, institucion: string, id_institucion: number, desde: string, hasta: string){
+  console.log("llega a Educacion");
+  this.tabla=tabla;
+  this.id=id; 
+  this.imagen=imagen;
+  this.titulo_aux=titulo;
+  this.id_titulo=String(id_titulo);
+  this.institucion=institucion;
+  this.id_institucion=String(id_institucion);
+  this.desde=desde;
+  this.hasta=hasta;
+  this.quien_llama='educacion'
+  this.titulo = 'Área de Edición - '+ tabla;
+  this.open(this.mdl_editar );
+}
+
+pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, id_institucion: number, desde: string, hasta: string){
+  this.tabla=tabla;
+  this.id=id; 
+  this.imagen=imagen;
+  this.titulo_aux=titulo;
+  this.institucion=institucion;
+  this.id_institucion=String(id_institucion);
+  this.desde=desde;
+  this.hasta=hasta;
+  this.quien_llama='proyectos'
+  this.titulo = 'Área de Edición - '+ tabla;
+  this.open(this.mdl_editar );
+}
 
   pre_open_configurar(tabla: string, id: number){
     this.tabla=tabla;

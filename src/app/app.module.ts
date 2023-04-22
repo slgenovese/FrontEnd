@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProyectosComponent } from './Componentes/proyectos/proyectos.component';
 import { InstitucionComponent } from './Componentes/institucion/institucion.component';
 import { TituloComponent } from './Componentes/titulo/titulo.component';
+import { AltaComponent } from './Componentes/alta/alta.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TituloComponent } from './Componentes/titulo/titulo.component';
     ProyectosComponent,
     InstitucionComponent,
     TituloComponent,
+    AltaComponent,
   
   ],
   imports: [
