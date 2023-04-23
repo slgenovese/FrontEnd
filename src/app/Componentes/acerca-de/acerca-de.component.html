@@ -2,10 +2,10 @@
         <div class="col-4">
             <h4 style="margin-top:20px; margin-left: 30px; "><b> {{acerca_de.nombres}} {{acerca_de.apellidos}}</b></h4><br><br>
             <p style="margin-top:-30px; margin-left: 30px; font-size: medium;">{{acerca_de.cargo_actual}}</p>
-            <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.id_provincia}} - {{acerca_de.id_pais}}</p>
+            <p style="margin-top: -10px; margin-left: 30px; font-size: small;">{{acerca_de.provincia}} - {{acerca_de.pais}}</p>
         </div>
         <div class="col-2">
-            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombres, acerca_de.apellidos, acerca_de.cargo_actual, acerca_de.id_pais, acerca_de.pais, acerca_de.id_provincia, acerca_de.provincia, acerca_de.link_icono)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
+            <button (click)="editar.pre_open_nombre('acerca-de',acerca_de.id, acerca_de.nombres, acerca_de.apellidos, acerca_de.cargo_actual, acerca_de.pais, acerca_de.provincia, acerca_de.link_icono)" type="button" class="btn btn-default nom_Edicion" id="nom_Edicion-{{acerca_de.id}}" style="display: none;">
               <i class="bi bi-pencil" [title]="'Editar los datos'"> </i>
             </button>
         </div>

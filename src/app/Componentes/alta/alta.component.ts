@@ -17,9 +17,7 @@ export class AltaComponent implements OnInit{
   tabla!: string;
   id!: number;
   pais!: string;
-  id_pais!: string; 
   provincia!: string;
-  id_provincia!: string;
   texto_aux!: string;
   quien_llama!: string;
   imagen!: string;
@@ -46,14 +44,14 @@ export class AltaComponent implements OnInit{
     this.imagen= nueva_imagen;
   }
 
-  recibe_pais(id_pais: string){
-    console.log(id_pais);
-    this.id_pais=id_pais;
+  recibe_pais(pais: string){
+    console.log(pais);
+    this.pais=pais;
   }
 
-  recibe_provincia(id_provincia: string){
-    console.log(id_provincia);
-    this.id_provincia=id_provincia;
+  recibe_provincia(provincia: string){
+    console.log(provincia);
+    this.provincia=provincia;
   }
 
   recibe_desde(anio_desde: string){

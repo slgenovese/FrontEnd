@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Experiencia } from 'src/app/modelos/experiencia';
+import { Experiencia, Institucion } from 'src/app/modelos/experiencia';
 import { ExperienciaService } from '../../servicios/experiencia.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
@@ -14,7 +14,9 @@ import { AltaComponent } from '../alta/alta.component';
 export class ExperienciaComponent implements OnInit {
 
 //  experiencia: Experiencia[] =[];
-  experiencia: Experiencia[]=[];
+  experiencia: Experiencia[]= [];
+  exp: Experiencia = new Experiencia;
+  inst: Institucion = new Institucion;
 
   constructor(private experienciaService: ExperienciaService) {}
 
@@ -23,6 +25,8 @@ export class ExperienciaComponent implements OnInit {
   @Input()  alta!: AltaComponent;
 
   ngOnInit(): void {
-    this.experienciaService.getExperiencia().subscribe(data=>{this.experiencia=data});
+    this.experienciaService.getExperiencia().subscribe(data=>{
+      this.experiencia=data;
+    });
   }
 }

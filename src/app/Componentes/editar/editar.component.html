@@ -168,11 +168,11 @@
 
         <section class="row">
           <div class="col-4">
-            <textarea id="id_pais"  hidden value={{id_pais}}></textarea> <textarea id="id_provincia" hidden value={{id_provincia}}></textarea>
-            <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+            <textarea id="pais"  hidden value={{pais}}></textarea> <textarea id="provincia" hidden value={{provincia}}></textarea>
+            <app-paises [pais]="pais" (valueChange)='recibe_pais($event)' ></app-paises> 
           </div >
           <div class="col-4">
-            <label ><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+            <label ><app-provincias [provincia]="provincia" [pais]="pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
           </div >
         </section>  
         <br>
@@ -181,9 +181,9 @@
 <!--
         <label for="texto"> <b> Pais: </b></label> <label style="text-indent: 240pt;" for="texto"> <b> Provincia: </b></label>
         <br>
-        <textarea hidden value={{id_pais}}></textarea> <textarea hidden value={{id_provincia}}></textarea>
-        <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
-        <label style="text-indent: 40pt;"><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+        <textarea hidden value={{pais}}></textarea> <textarea hidden value={{provincia}}></textarea>
+        <app-paises [pais]="pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+        <label style="text-indent: 40pt;"><app-provincias [provincia]="provincia" [pais]="pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
 -->
       </div>
       </ng-container>

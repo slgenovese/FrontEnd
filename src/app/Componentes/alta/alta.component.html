@@ -96,11 +96,11 @@
 
         <section class="row">
           <div class="col-4">
-            <textarea id="id_pais"  hidden value={{id_pais}}></textarea> <textarea id="id_provincia" hidden value={{id_provincia}}></textarea>
-            <app-paises [id_pais]="id_pais" (valueChange)='recibe_pais($event)' ></app-paises> 
+            <textarea id="id_pais"  hidden value={{pais}}></textarea> <textarea id="provincia" hidden value={{provincia}}></textarea>
+            <app-paises [pais]="pais" (valueChange)='recibe_pais($event)' ></app-paises> 
           </div >
           <div class="col-4">
-            <label ><app-provincias [id_provincia]="id_provincia" [id_pais]="id_pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
+            <label ><app-provincias [provincia]="provincia" [pais]="pais" (valueChange)='recibe_provincia($event)'></app-provincias></label>
           </div >
         </section>  
         <br>

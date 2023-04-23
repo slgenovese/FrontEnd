@@ -9,8 +9,8 @@ import { Component,ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmi
 })
 export class ProvinciasComponent implements AfterViewInit{
   @ViewChild('provincias') provincias_aux!:ElementRef;
-  @Input() id_provincia!: string;
-  @Input() id_pais!: string;
+  @Input() provincia!: string;
+  @Input() pais!: string;
   @Output() valueChange= new EventEmitter<string>();
 
   elegido(provincia: string){
@@ -20,7 +20,7 @@ export class ProvinciasComponent implements AfterViewInit{
   // Esto es para poner el valor de la provincia
   ngAfterViewInit(): void {
   
-    this.provincias_aux.nativeElement.value= this.id_provincia;
+    this.provincias_aux.nativeElement.value= this.provincia;
 
   }
 }

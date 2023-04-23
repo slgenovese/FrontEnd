@@ -28,9 +28,7 @@ export class EditarComponent implements OnInit{
   apellidos!: string;
   cargo_actual!: string;
   pais!: string;
-  id_pais!: string; 
   provincia!: string;
-  id_provincia!: string;
   texto_aux!: string;
   quien_llama!: string;
   imagen!: string;
@@ -75,9 +73,7 @@ export class EditarComponent implements OnInit{
         this.acerca_De.apellidos=auxiliar.value;
         var auxiliar = document.getElementById("cargo") as HTMLTextAreaElement;
         this.acerca_De.cargo_actual=auxiliar.value;
-        this.acerca_De.id_pais=this.id_pais;
         this.acerca_De.pais=this.pais;
-        this.acerca_De.id_provincia=this.id_provincia;
         this.acerca_De.provincia=this.provincia;
         this.acerca_De.acerca_de= " ";
         console.log(this.acerca_De);
@@ -101,14 +97,14 @@ cambiar_imagen(nueva_imagen: string){
     console.log(habilitado);
   }
 
-  recibe_pais(id_pais: string){
-    console.log(id_pais);
-    this.id_pais=id_pais;
+  recibe_pais(pais: string){
+    console.log(pais);
+    this.pais=pais;
   }
 
-  recibe_provincia(id_provincia: string){
-    console.log(id_provincia);
-    this.id_provincia=id_provincia;
+  recibe_provincia(provincia: string){
+    console.log(provincia);
+    this.provincia=provincia;
   }
 
   recibe_desde(anio_desde: string){
@@ -167,15 +163,13 @@ cambiar_imagen(nueva_imagen: string){
     this.titulo = 'Área de Edición - '+ tabla;
     this.open(this.mdl_editar );
   }
-  pre_open_nombre(tabla: string, id: number, nombres: string, apellidos: string, cargo_actual: string, id_pais: string, pais: string, id_provincia: string, provincia: string, link_icono: string): void{
+  pre_open_nombre(tabla: string, id: number, nombres: string, apellidos: string, cargo_actual: string, pais: string, provincia: string, link_icono: string): void{
     this.tabla=tabla;
     this.id=id;
     this.nombres=nombres;
     this.apellidos=apellidos;
     this.cargo_actual=cargo_actual;
-    this.id_pais=id_pais;
     this.pais=pais;
-    this.id_provincia=id_provincia;
     this.provincia=provincia;
     this.quien_llama='nombre'
     this.titulo = 'Área de Edición - '+ tabla;
@@ -184,7 +178,7 @@ cambiar_imagen(nueva_imagen: string){
     this.open(this.mdl_editar );
   }
 
-  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
+  pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, pais: string, provincia: string){
     this.tabla=tabla;
   this.id=id; 
   this.imagen=imagen;
@@ -193,9 +187,7 @@ cambiar_imagen(nueva_imagen: string){
   this.id_institucion=String(id_institucion);
   this.desde=desde;
   this.hasta=hasta;
-  this.id_pais=id_pais;
   this.pais=pais;
-  this.id_provincia=id_provincia;
   this.provincia=provincia;
   this.quien_llama='experiencia'
   this.titulo = 'Área de Edición - '+ tabla;

@@ -8,7 +8,7 @@ import { Component,ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmi
 export class PaisesComponent implements AfterViewInit {
 
   @ViewChild('paises') paises_aux!:ElementRef;
-  @Input() id_pais!: string;
+  @Input() pais!: string;
   @Output() valueChange= new EventEmitter<string>();
 
   
@@ -18,7 +18,7 @@ export class PaisesComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.paises_aux.nativeElement.value= this.id_pais;
+    this.paises_aux.nativeElement.value= this.pais;
 
   }
 
