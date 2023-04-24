@@ -18,7 +18,11 @@ export class ProyectosComponent implements OnInit{
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data});
+    this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data
+      console.log(data);
+      console.log(this.proyectos);
+
+    });
   }
 
 }

@@ -7,6 +7,9 @@ import { RedesService } from '../../servicios/redes.service';
 import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 import { BannerService } from 'src/app/servicios/banner.service';
 import { Acerca_De } from 'src/app/modelos/acerca-de';
+import { Experiencia } from 'src/app/modelos/experiencia';
+import { Institucion } from 'src/app/modelos/institucion';
+import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 
 @Component({
   selector: 'app-editar',
@@ -20,6 +23,8 @@ export class EditarComponent implements OnInit{
 
   redes: Redes[]=[];
   acerca_De: Acerca_De = new Acerca_De;
+  experiencia: Experiencia = new Experiencia;
+  institucion_aux: Institucion = new Institucion;
 
   titulo!: string;
   tabla!: string;
@@ -43,7 +48,7 @@ export class EditarComponent implements OnInit{
   mail!: string;
   servidor_img!: string; 
   habilitado!: string;
-
+  link_icono!: string;
 
   editar_registro(quien_llama: any){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
@@ -62,8 +67,8 @@ export class EditarComponent implements OnInit{
       case "foto":
         this.bannerService.putFoto(this.id, this.imagen);
         break;
-      case "nombre":
-        console.log(this.id);
+        case "nombre":
+          console.log(this.id);
         this.acerca_De.id=this.id;
         var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
         this.acerca_De.link_icono=auxiliar.value;
@@ -78,6 +83,24 @@ export class EditarComponent implements OnInit{
         this.acerca_De.acerca_de= " ";
         console.log(this.acerca_De);
         this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+        break;
+      case "experiencia":
+        console.log(this.id);
+        this.experiencia.id=this.id;
+        this.experiencia.desde=this.desde;
+        this.experiencia.hasta=this.hasta;
+        this.experiencia.pais=this.pais;
+        this.experiencia.provincia=this.provincia;
+        var auxiliar = document.getElementById("tareas") as HTMLTextAreaElement;
+        this.experiencia.texto=auxiliar.value;
+        console.log(this.id_institucion);
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.experiencia.institucion=this.institucion_aux;
+        console.log(this.experiencia);
+        this.experienciaService.putExperiencia(this.id, this.experiencia);
+
         break;
       default:
         console.log("No llego!!!");
@@ -116,7 +139,13 @@ cambiar_imagen(nueva_imagen: string){
   }
 
   recibe_institucion(institucion: string){
-    this.institucion=institucion;
+    var parseado = institucion.split(",",3);
+    this.link_icono=parseado[0];
+    this.cambiar_imagen(parseado[0]);
+    this.id_institucion=parseado[1];
+    this.institucion=parseado[3];
+    console.log(parseado[0]);
+    console.log(parseado[1]);
   }
 
   recibe_titulo(titulo: string){
@@ -179,7 +208,7 @@ cambiar_imagen(nueva_imagen: string){
   }
 
   pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, pais: string, provincia: string){
-    this.tabla=tabla;
+  this.tabla=tabla;
   this.id=id; 
   this.imagen=imagen;
   this.texto_aux=texto;
@@ -249,7 +278,7 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService, private bannerService: BannerService ) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService, private bannerService: BannerService, private experienciaService: ExperienciaService ) {}
 
   /**
    * Write code on Method

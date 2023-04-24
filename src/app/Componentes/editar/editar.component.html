@@ -61,13 +61,6 @@
         <label for="texto"> <b> Imagen: </b></label>
         <br>
         <img class="img-thumbnail" id="imagen" src={{imagen}} />
-        <label style="text-indent: 20pt;">
-          <textarea class="form-control" (input)="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen id="path_imagen" cols="50" rows="1" value={{imagen}} ></textarea>  
-        </label>
-        <button (click)="mostrar_servidor_img()"type="button" class="btn btn-default img_Edicion" id="img_Edicion-1" style="display: block;">
-          <span style="font-size: 150%;" >  <i class="bi bi-camera-fill" [title]="'Cambiar la imagen'"></i> </span>
-        </button>
-
       </div>
       <hr>
     </ng-container>
@@ -85,7 +78,6 @@
       <div class="form-group" >
         <label for="texto"> <b> Nombre y Apellido: </b></label>
         <br>
-<!--        <input class="form-control" name="texto" id="" cols="50" rows="1" value={{nombres}}+{{apellidos}} >-->
         <textarea class="form-control" name="texto" id="nombre_" cols="10" rows="1" value={{nombres}}></textarea> 
         <textarea class="form-control" name="texto" id="apellido_" cols="10" rows="1" value={{apellidos}}></textarea>  
         <br>
@@ -116,7 +108,7 @@
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="texto"> <b> Tareas realizadas: </b></label>
-        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}}></textarea>
         <br>
       </div>
     </ng-container>

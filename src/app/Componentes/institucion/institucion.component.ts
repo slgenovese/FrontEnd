@@ -16,7 +16,8 @@ export class InstitucionComponent implements OnInit{
   elegido(institucion: string){
     for(let inst of this.institucion){
       if (inst.id==Number(institucion)){
-        this.valueChange.emit(inst.link_icono);
+        this.valueChange.emit(inst.link_icono+","+inst.id+","+inst.institucion);
+        console.log(inst.link_icono+","+inst.id+","+inst.institucion)
       }
     }
   }  

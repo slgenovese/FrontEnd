@@ -4,7 +4,7 @@ export class Proyectos {
   desde!: string;
   hasta!: string;
   n_orden!: number;
-  institucion!: Institucion;
+  institucion: Institucion = new Institucion;
 }
 
 export class Institucion {
