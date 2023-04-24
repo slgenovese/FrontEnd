@@ -19,7 +19,10 @@ export class EducacionComponent implements OnInit{
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    this.educacionService.getEducacion().subscribe(data=>{this.educacion=data});
+    this.educacionService.getEducacion().subscribe(data=>{this.educacion=data
+      console.log(data);
+      console.log(this.educacion);
+    });
   }
   
 }

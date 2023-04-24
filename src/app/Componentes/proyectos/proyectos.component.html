@@ -4,17 +4,17 @@
 <div *ngFor="let proyecto of proyectos" >
     <section class="row">
         <div class="col-2">
-            <img class="img-thumbnail" src={{proyecto.instituciones[0].link_icono}} />
+            <img class="img-thumbnail" src={{proyecto.institucion.link_icono}} />
         </div>
         <div class="col-8">
             <b>{{ proyecto.texto}}</b><br>
-            {{ proyecto.instituciones[0].institucion }}<br>
+            {{ proyecto.institucion.institucion }}<br>
         
             {{ proyecto.desde}} - {{ proyecto.hasta}}<br>
         </div>
         <div class="col" >
             <div class="btn-group" role="group" aria-label="Horizontal Button Group">
-                <button (click)="editar.pre_open_proyectos('proyectos',proyecto.id, proyecto.instituciones[0].link_icono, proyecto.texto, proyecto.instituciones[0].institucion, proyecto.instituciones[0].id, proyecto.desde, proyecto.hasta)" type="button" class="btn btn-default pro_Edicion" id="pro_Edicion-{{proyecto.id}}" style="display: none;" >
+                <button (click)="editar.pre_open_proyectos('proyectos',proyecto.id, proyecto.institucion.link_icono, proyecto.texto, proyecto.institucion.institucion, proyecto.institucion.id, proyecto.desde, proyecto.hasta)" type="button" class="btn btn-default pro_Edicion" id="pro_Edicion-{{proyecto.id}}" style="display: none;" >
                     <i class="bi bi-pencil" [title]="'Editar los datos'"></i>
                 </button>
                 <button (click)="borrar.pre_open('proyecto',proyecto.id,proyecto.texto, proyecto)" type="button" class="btn btn-default pro_Borrado" id="pro_Borrado-{{proyecto.id}}" style="display: none;">
