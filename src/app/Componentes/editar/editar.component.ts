@@ -4,13 +4,17 @@ import { Login } from '../../modelos/Login';
 import { LoginService } from '../../servicios/login.service'; 
 import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
-import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 import { BannerService } from 'src/app/servicios/banner.service';
 import { Acerca_De } from 'src/app/modelos/acerca-de';
+import { AcercaDeService } from 'src/app/servicios/acerca-de.service';
 import { Experiencia } from 'src/app/modelos/experiencia';
-import { Institucion } from 'src/app/modelos/institucion';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
-
+import { Institucion } from 'src/app/modelos/institucion';
+import { Proyectos } from 'src/app/modelos/proyectos';  
+import { ProyectosService } from 'src/app/servicios/proyectos.service';
+import { Educacion } from 'src/app/modelos/educacion';
+import { EducacionService } from 'src/app/servicios/educacion.service';
+import { Titulo } from 'src/app/modelos/titulo';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -25,6 +29,9 @@ export class EditarComponent implements OnInit{
   acerca_De: Acerca_De = new Acerca_De;
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
+  proyectos: Proyectos = new Proyectos;
+  educacion: Educacion = new Educacion;
+  titulo_obj: Titulo = new Titulo;
 
   titulo!: string;
   tabla!: string;
@@ -52,9 +59,6 @@ export class EditarComponent implements OnInit{
 
   editar_registro(quien_llama: any){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-    console.log("hola");
-    console.log(this.tabla);
-    console.log(quien_llama );
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
@@ -68,7 +72,6 @@ export class EditarComponent implements OnInit{
         this.bannerService.putFoto(this.id, this.imagen);
         break;
         case "nombre":
-          console.log(this.id);
         this.acerca_De.id=this.id;
         var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
         this.acerca_De.link_icono=auxiliar.value;
@@ -81,11 +84,9 @@ export class EditarComponent implements OnInit{
         this.acerca_De.pais=this.pais;
         this.acerca_De.provincia=this.provincia;
         this.acerca_De.acerca_de= " ";
-        console.log(this.acerca_De);
         this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
         break;
       case "experiencia":
-        console.log(this.id);
         this.experiencia.id=this.id;
         this.experiencia.desde=this.desde;
         this.experiencia.hasta=this.hasta;
@@ -93,16 +94,38 @@ export class EditarComponent implements OnInit{
         this.experiencia.provincia=this.provincia;
         var auxiliar = document.getElementById("tareas") as HTMLTextAreaElement;
         this.experiencia.texto=auxiliar.value;
-        console.log(this.id_institucion);
         this.institucion_aux.id=Number(this.id_institucion);
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.experiencia.institucion=this.institucion_aux;
-        console.log(this.experiencia);
         this.experienciaService.putExperiencia(this.id, this.experiencia);
-
         break;
-      default:
+        case "proyectos":
+          this.proyectos.id=this.id;
+          this.proyectos.desde=this.desde;
+          this.proyectos.hasta=this.hasta;
+          var auxiliar = document.getElementById("proyecto") as HTMLTextAreaElement;
+          this.proyectos.texto=auxiliar.value;
+          this.institucion_aux.id=Number(this.id_institucion);
+          this.institucion_aux.institucion=this.institucion;
+          this.institucion_aux.link_icono=this.link_icono;
+          this.proyectos.institucion=this.institucion_aux;
+          this.proyectosService.putProyectos(this.id, this.proyectos);
+          break;
+        case "educacion":
+          this.educacion.id=this.id;
+          this.educacion.desde=this.desde;
+          this.educacion.hasta=this.hasta;
+          this.institucion_aux.id=Number(this.id_institucion);
+          this.institucion_aux.institucion=this.institucion;
+          this.institucion_aux.link_icono=this.link_icono;
+          this.educacion.institucion=this.institucion_aux;
+          this.titulo_obj.id=Number(this.id_titulo);
+          this.titulo_obj.titulo=this.titulo_aux;
+          this.educacion.titulo=this.titulo_obj;
+          this.educacionService.putEducacion(this.id, this.educacion);
+          break;
+        default:
         console.log("No llego!!!");
     }
   }
@@ -132,10 +155,12 @@ cambiar_imagen(nueva_imagen: string){
 
   recibe_desde(anio_desde: string){
     console.log("desde: "+anio_desde);
+    this.desde=anio_desde;
   }
 
   recibe_hasta(anio_hasta: string){
     console.log("hasta: "+anio_hasta);
+    this.hasta=anio_hasta;
   }
 
   recibe_institucion(institucion: string){
@@ -144,12 +169,12 @@ cambiar_imagen(nueva_imagen: string){
     this.cambiar_imagen(parseado[0]);
     this.id_institucion=parseado[1];
     this.institucion=parseado[3];
-    console.log(parseado[0]);
-    console.log(parseado[1]);
   }
 
   recibe_titulo(titulo: string){
-    this.titulo=titulo;
+    var parseado = titulo.split(",",2);
+    this.titulo_aux=parseado[0];
+    this.id_titulo=parseado[1];
   }
 
 
@@ -278,7 +303,10 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService, private redesService: RedesService, private acercaDeService: AcercaDeService, private bannerService: BannerService, private experienciaService: ExperienciaService ) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService, 
+    private redesService: RedesService, private acercaDeService: AcercaDeService, 
+    private bannerService: BannerService, private experienciaService: ExperienciaService,
+    private proyectosService: ProyectosService, private educacionService: EducacionService ) {}
 
   /**
    * Write code on Method

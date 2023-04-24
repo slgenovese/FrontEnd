@@ -8,7 +8,9 @@ import { Proyectos } from '../modelos/proyectos';
   providedIn: 'root'
 })
 export class ProyectosService {
+
   status!: String;
+  postId!: String;
 
   constructor(private http: HttpClient) { }
 
@@ -21,4 +23,10 @@ export class ProyectosService {
     this.http.delete("http://localhost:8080/portfolio/v1/proyectos/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
+
+  public putProyectos(id: number, proyectos: Proyectos){
+    this.http.put<any>('http://localhost:8080/portfolio/v1/proyectos/datos/'+id, proyectos)
+    .subscribe(data => this.postId = data.id);
+  }
+
 }

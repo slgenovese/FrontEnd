@@ -10,6 +10,7 @@ import { Educacion } from '../modelos/educacion';
 export class EducacionService {
 
   status!: String;
+  postId!: String;
   
   constructor(private http: HttpClient) { }
 
@@ -22,4 +23,10 @@ export class EducacionService {
     this.http.delete("http://localhost:8080/portfolio/v1/estudios/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
+
+  public putEducacion(id: number, educacion: Educacion){
+    this.http.put<any>('http://localhost:8080/portfolio/v1/estudios/datos/'+id, educacion)
+    .subscribe(data => this.postId = data.id);
+  }
+
 }

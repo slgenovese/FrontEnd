@@ -16,6 +16,13 @@ export class TituloComponent implements OnInit{
   
   elegido(titulo: string){
     this.valueChange.emit(titulo);
+    for(let tit of this.titulo){
+      if (tit.id==Number(titulo)){
+        this.valueChange.emit(tit.titulo+","+tit.id);
+      }
+    }
+
+
   }  
 
   titulo: Titulo[]=[];
