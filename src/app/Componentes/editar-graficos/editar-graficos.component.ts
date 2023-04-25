@@ -2,7 +2,9 @@ import { Component, ViewChild, OnInit, TemplateRef, ElementRef, ViewChildren, Qu
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
-
+import { Grafico, Grafico_aux, HabilidadesDato } from 'src/app/modelos/grafico';
+import { GraficoService } from 'src/app/servicios/grafico.service';
+ 
 
 @Component({
   selector: 'app-editar-graficos',
@@ -29,6 +31,10 @@ export class EditarGraficosComponent implements AfterViewInit{
   datosIngresos!: any;
   color!: string;
   i!: number;
+
+  grafico: Grafico_aux = new Grafico_aux;
+  habilidadesDato: HabilidadesDato[] = [];
+  habilidades: HabilidadesDato = new HabilidadesDato; 
 
   @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
 
@@ -64,6 +70,19 @@ public ngAfterViewInit(): void {
 
   editar_registro(){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+    this.grafico.id=this.id;
+    var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
+    this.grafico.titulo=auxiliar.value;
+    this.graficoService.putGrafico(this.id, this.grafico);
+
+    this.habilidadesDato.splice(0); 
+    for(let x=0; x<this.etiqueta.length;++x){
+      this.habilidades= new HabilidadesDato;
+      this.habilidades.etiqueta=this.etiqueta[x];
+      this.habilidades.color=this.color_Borde[x];
+      this.habilidades.porcentaje=this.porcentaje[x];
+      this.graficoService.postGrafico(this.habilidades);
+    }
   }
 
   recibe_color(color: string, i: number ){
@@ -157,7 +176,7 @@ borrar(i: number){
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private graficoService: GraficoService) {}
 
   /**
    * Write code on Method

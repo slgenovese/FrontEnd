@@ -4,6 +4,11 @@ export class Grafico {
   n_orden!: number;
   habilidadesDatos!: HabilidadesDato[];
 }
+export class Grafico_aux {
+  id!: number;
+  titulo!: string;
+  n_orden!: number;
+}
 
 export class HabilidadesDato {
   id!: number;
