@@ -142,6 +142,9 @@ export class LoginComponent implements OnInit{
         document.getElementById("exp_Edicion-"+exp.id)!.style.display=display;
         document.getElementById("exp_Borrado-"+exp.id)!.style.display=display;
       }
+
+      document.getElementById("pro_Alta")!.style.display=display;
+
       for( let pro of this.proyectos){
         document.getElementById("pro_Edicion-"+pro.id)!.style.display=display;
         document.getElementById("pro_Borrado-"+pro.id)!.style.display=display;

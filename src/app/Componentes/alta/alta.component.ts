@@ -2,6 +2,10 @@ import { Component, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/servicios/login.service';
 import { Institucion } from 'src/app/modelos/institucion';
+import { Experiencia } from 'src/app/modelos/experiencia';
+import { ExperienciaService } from 'src/app/servicios/experiencia.service';
+import { Proyectos } from 'src/app/modelos/proyectos';
+import { ProyectosService } from 'src/app/servicios/proyectos.service';
 
 @Component({
   selector: 'app-alta',
@@ -9,6 +13,10 @@ import { Institucion } from 'src/app/modelos/institucion';
   styleUrls: ['./alta.component.css']
 })
 export class AltaComponent implements OnInit{
+
+  experiencia: Experiencia = new Experiencia;
+  institucion_aux: Institucion = new Institucion;
+  proyectos: Proyectos = new Proyectos;
 
   closeResult: string = '';
 
@@ -29,10 +37,39 @@ export class AltaComponent implements OnInit{
   password!: string;
   mail!: string;
   servidor_img!: string;
+  link_icono!: string;
 
   alta_registro(quien_llama: any){
-
-  }
+    switch (quien_llama){
+      case "experiencia":
+        this.experiencia.id=this.id;
+        this.experiencia.desde=this.desde;
+        this.experiencia.hasta=this.hasta;
+        this.experiencia.pais=this.pais;
+        this.experiencia.provincia=this.provincia;
+        var auxiliar = document.getElementById("tareas") as HTMLTextAreaElement;
+        this.experiencia.texto=auxiliar.value;
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.experiencia.institucion=this.institucion_aux;
+        this.experienciaService.postExperiencia(this.experiencia);
+        break;
+      case "proyectos":
+        this.proyectos.id=this.id;
+        this.proyectos.desde=this.desde;
+        this.proyectos.hasta=this.hasta;
+        var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
+        this.proyectos.texto=auxiliar.value;
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.proyectos.institucion=this.institucion_aux;
+        this.proyectosService.postProyectos(this.proyectos);
+        break;
+      default:
+    }
+  }  
 /*
   mostrar_servidor_img(){
     window.open( this.servidor_img);
@@ -56,16 +93,21 @@ export class AltaComponent implements OnInit{
 
   recibe_desde(anio_desde: string){
     console.log("desde: "+anio_desde);
+    this.desde=anio_desde;
   }
 
   recibe_hasta(anio_hasta: string){
     console.log("hasta: "+anio_hasta);
+    this.hasta=anio_hasta;
   }
 
   recibe_institucion(institucion: string){
-    this.institucion=institucion;
-    this.cambiar_imagen(institucion);
-  }
+    var parseado = institucion.split(",",3);
+    this.link_icono=parseado[0];
+    this.cambiar_imagen(parseado[0]);
+    this.id_institucion=parseado[1];
+    this.institucion=parseado[3];
+  }  
 
   recibe_titulo(titulo: string){
     this.titulo=titulo;
@@ -77,22 +119,9 @@ export class AltaComponent implements OnInit{
 
 
   //pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
-  pre_open_experiencia(tabla: string=""){
-  this.tabla=tabla;
-  /*this.id=id; 
-  this.imagen=imagen;
-  this.texto_aux=texto;
-  this.institucion=institucion;
-  this.id_institucion=String(id_institucion);
-  this.desde=desde;
-  this.hasta=hasta;
-  this.id_pais=id_pais;
-  this.pais=pais;
-  this.id_provincia=id_provincia;
-  this.provincia=provincia;*/
-  this.quien_llama='experiencia'
-  this.titulo = 'Área de Alta - '+ tabla;
-  console.log("Pre_Open")
+  pre_open_experiencia(){
+    this.quien_llama='experiencia'
+  this.titulo = 'Área de Alta - '+ this.quien_llama;
   this.open(this.mdl_alta );
 }
 
@@ -112,18 +141,10 @@ pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, i
 //  this.open(this.mdl_alta );
 }
 
-pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, institucion: string, id_institucion: number, desde: string, hasta: string){
-  this.tabla=tabla;
-  this.id=id; 
-  this.imagen=imagen;
-  this.titulo_aux=titulo;
-  this.institucion=institucion;
-  this.id_institucion=String(id_institucion);
-  this.desde=desde;
-  this.hasta=hasta;
+pre_open_proyectos(){
   this.quien_llama='proyectos'
-  this.titulo = 'Área de Edición - '+ tabla;
-//  this.open(this.mdl_alta );
+  this.titulo = 'Área de Edición - '+ this.quien_llama;
+  this.open(this.mdl_alta );
 }
 
 
@@ -144,7 +165,8 @@ ngOnInit(): void {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private loginService: LoginService) {}
+  constructor(private modalService: NgbModal, private loginService: LoginService,
+    private experienciaService: ExperienciaService, private proyectosService: ProyectosService) {}
 
   /**
    * Write code on Method

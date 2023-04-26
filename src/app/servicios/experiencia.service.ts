@@ -26,4 +26,9 @@ export class ExperienciaService {
     .subscribe(data => this.postId = data.id);
   }
 
+  public postExperiencia(experiencia: Experiencia){
+    this.http.post<any>("http://localhost:8080/portfolio/v1/experiencias", experiencia)
+    .subscribe(data => this.postId = data.id);
+  }
+
 }

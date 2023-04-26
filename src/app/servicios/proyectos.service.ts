@@ -24,6 +24,12 @@ export class ProyectosService {
     .subscribe(() => this.status = 'Delete successful');
   }
 
+  public postProyectos(proyectos: Proyectos){
+    this.http.post<any>("http://localhost:8080/portfolio/v1/proyectos", proyectos)
+    .subscribe(data => this.postId = data.id);
+  }
+
+
   public putProyectos(id: number, proyectos: Proyectos){
     this.http.put<any>('http://localhost:8080/portfolio/v1/proyectos/datos/'+id, proyectos)
     .subscribe(data => this.postId = data.id);

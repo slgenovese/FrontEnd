@@ -37,7 +37,7 @@
     <ng-container *ngIf = "quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Titulo: </b></label>
-        <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="titulo" cols="100" rows="1" value={{titulo_aux}}></textarea>
         <br>
       </div>
     </ng-container>
@@ -45,7 +45,7 @@
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="texto"> <b> Tareas realizadas: </b></label>
-        <textarea class="form-control" name="texto" id="" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}}></textarea>
         <br>
       </div>
     </ng-container>

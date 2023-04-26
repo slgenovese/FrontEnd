@@ -100,32 +100,32 @@ export class EditarComponent implements OnInit{
         this.experiencia.institucion=this.institucion_aux;
         this.experienciaService.putExperiencia(this.id, this.experiencia);
         break;
-        case "proyectos":
-          this.proyectos.id=this.id;
-          this.proyectos.desde=this.desde;
-          this.proyectos.hasta=this.hasta;
-          var auxiliar = document.getElementById("proyecto") as HTMLTextAreaElement;
-          this.proyectos.texto=auxiliar.value;
-          this.institucion_aux.id=Number(this.id_institucion);
-          this.institucion_aux.institucion=this.institucion;
-          this.institucion_aux.link_icono=this.link_icono;
-          this.proyectos.institucion=this.institucion_aux;
-          this.proyectosService.putProyectos(this.id, this.proyectos);
-          break;
-        case "educacion":
-          this.educacion.id=this.id;
-          this.educacion.desde=this.desde;
-          this.educacion.hasta=this.hasta;
-          this.institucion_aux.id=Number(this.id_institucion);
-          this.institucion_aux.institucion=this.institucion;
-          this.institucion_aux.link_icono=this.link_icono;
-          this.educacion.institucion=this.institucion_aux;
-          this.titulo_obj.id=Number(this.id_titulo);
-          this.titulo_obj.titulo=this.titulo_aux;
-          this.educacion.titulo=this.titulo_obj;
-          this.educacionService.putEducacion(this.id, this.educacion);
-          break;
-        default:
+      case "proyectos":
+        this.proyectos.id=this.id;
+        this.proyectos.desde=this.desde;
+        this.proyectos.hasta=this.hasta;
+        var auxiliar = document.getElementById("proyecto") as HTMLTextAreaElement;
+        this.proyectos.texto=auxiliar.value;
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.proyectos.institucion=this.institucion_aux;
+        this.proyectosService.putProyectos(this.id, this.proyectos);
+        break;
+      case "educacion":
+        this.educacion.id=this.id;
+        this.educacion.desde=this.desde;
+        this.educacion.hasta=this.hasta;
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.educacion.institucion=this.institucion_aux;
+        this.titulo_obj.id=Number(this.id_titulo);
+        this.titulo_obj.titulo=this.titulo_aux;
+        this.educacion.titulo=this.titulo_obj;
+        this.educacionService.putEducacion(this.id, this.educacion);
+        break;
+      default:
         console.log("No llego!!!");
     }
   }

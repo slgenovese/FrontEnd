@@ -3,6 +3,8 @@ import { Proyectos } from '../../modelos/proyectos';
 import { ProyectosService } from '../../servicios/proyectos.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
+import { AltaComponent } from '../alta/alta.component';
+
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
@@ -16,6 +18,7 @@ export class ProyectosComponent implements OnInit{
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarComponent;
+  @Input()  alta!: AltaComponent;
 
   ngOnInit(): void {
     this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data
