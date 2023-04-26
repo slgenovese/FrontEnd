@@ -10,13 +10,14 @@ export class InstitucionComponent implements OnInit{
 
   @ViewChild('institucion') institucion_aux!:ElementRef;
   @Input() id_institucion!: string;
-  @Output() valueChange= new EventEmitter<string>();
+  @Output() valueChange= new EventEmitter<any>();
 
   
   elegido(institucion: string){
     for(let inst of this.institucion){
       if (inst.id==Number(institucion)){
-        this.valueChange.emit(inst.link_icono+","+inst.id+","+inst.institucion);
+//        this.valueChange.emit(inst.link_icono+","+inst.id+","+inst.institucion);
+        this.valueChange.emit(inst);
       }
     }
   }  

@@ -130,6 +130,7 @@ export class LoginComponent implements OnInit{
       document.getElementById("gra_Edicion-8")!.style.display=display;
     }
     
+      document.getElementById("edu_Alta")!.style.display=display;
 
       for( let edu of this.educacion){
         document.getElementById("edu_Edicion-"+edu.id)!.style.display=display;

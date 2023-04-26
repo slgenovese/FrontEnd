@@ -29,4 +29,9 @@ export class EducacionService {
     .subscribe(data => this.postId = data.id);
   }
 
+  public postEducacion(educacion: Educacion){
+    this.http.post<any>("http://localhost:8080/portfolio/v1/estudios", educacion)
+    .subscribe(data => this.postId = data.id);
+  }
+
 }

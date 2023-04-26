@@ -74,6 +74,7 @@ export class EditarComponent implements OnInit{
         case "nombre":
         this.acerca_De.id=this.id;
         var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
+        console.log("Path: "+ auxiliar.value);
         this.acerca_De.link_icono=auxiliar.value;
         var auxiliar = document.getElementById("nombre_") as HTMLTextAreaElement;
         this.acerca_De.nombres=auxiliar.value;
@@ -163,18 +164,25 @@ cambiar_imagen(nueva_imagen: string){
     this.hasta=anio_hasta;
   }
 
-  recibe_institucion(institucion: string){
+/*  recibe_institucion(institucion: string){
     var parseado = institucion.split(",",3);
     this.link_icono=parseado[0];
     this.cambiar_imagen(parseado[0]);
     this.id_institucion=parseado[1];
     this.institucion=parseado[3];
-  }
+  }*/
 
-  recibe_titulo(titulo: string){
-    var parseado = titulo.split(",",2);
-    this.titulo_aux=parseado[0];
-    this.id_titulo=parseado[1];
+  recibe_institucion(institucion: Institucion){
+    this.link_icono= institucion.link_icono;
+    this.cambiar_imagen(this.link_icono);
+    this.id_institucion=String(institucion.id);
+    this.institucion=institucion.institucion;
+    console.log(this.institucion);
+  }  
+
+  recibe_titulo(titulo: Titulo){
+    this.titulo_aux=titulo.titulo;
+    this.id_titulo=String(titulo.id);
   }
 
 

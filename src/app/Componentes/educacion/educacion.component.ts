@@ -3,6 +3,7 @@ import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from '../../servicios/educacion.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarComponent } from '../editar/editar.component';
+import { AltaComponent } from '../alta/alta.component';
 
 @Component({
   selector: 'app-educacion',
@@ -17,6 +18,7 @@ export class EducacionComponent implements OnInit{
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarComponent;
+  @Input()  alta!: AltaComponent;
 
   ngOnInit(): void {
     this.educacionService.getEducacion().subscribe(data=>{this.educacion=data});

@@ -11,14 +11,13 @@ export class TituloComponent implements OnInit{
 
   @ViewChild('titulo') titulo_aux!:ElementRef;
   @Input() id_titulo!: string;
-  @Output() valueChange= new EventEmitter<string>();
+  @Output() valueChange= new EventEmitter<any>();
 
   
   elegido(titulo: string){
-    this.valueChange.emit(titulo);
     for(let tit of this.titulo){
       if (tit.id==Number(titulo)){
-        this.valueChange.emit(tit.titulo+","+tit.id);
+        this.valueChange.emit(tit);
       }
     }
 

@@ -6,7 +6,9 @@ import { Experiencia } from 'src/app/modelos/experiencia';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 import { Proyectos } from 'src/app/modelos/proyectos';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
-
+import { Educacion } from 'src/app/modelos/educacion';
+import { EducacionService } from 'src/app/servicios/educacion.service';
+import { Titulo } from 'src/app/modelos/titulo';
 @Component({
   selector: 'app-alta',
   templateUrl: './alta.component.html',
@@ -17,6 +19,8 @@ export class AltaComponent implements OnInit{
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
   proyectos: Proyectos = new Proyectos;
+  educacion: Educacion = new Educacion;
+  titulo_obj: Titulo = new Titulo;
 
   closeResult: string = '';
 
@@ -67,6 +71,20 @@ export class AltaComponent implements OnInit{
         this.proyectos.institucion=this.institucion_aux;
         this.proyectosService.postProyectos(this.proyectos);
         break;
+      case "educacion":
+        this.educacion.id=this.id;
+        this.educacion.desde=this.desde;
+        this.educacion.hasta=this.hasta;
+        this.institucion_aux.id=Number(this.id_institucion);
+        this.institucion_aux.institucion=this.institucion;
+        this.institucion_aux.link_icono=this.link_icono;
+        this.educacion.institucion=this.institucion_aux;
+        this.titulo_obj.id=Number(this.id_titulo);
+        this.titulo_obj.titulo=this.titulo_aux;
+        this.educacion.titulo=this.titulo_obj;
+        console.log(this.educacion);
+        this.educacionService.postEducacion(this.educacion);
+        break;  
       default:
     }
   }  
@@ -101,16 +119,26 @@ export class AltaComponent implements OnInit{
     this.hasta=anio_hasta;
   }
 
-  recibe_institucion(institucion: string){
+/*  recibe_institucion(institucion: string){
     var parseado = institucion.split(",",3);
     this.link_icono=parseado[0];
     this.cambiar_imagen(parseado[0]);
     this.id_institucion=parseado[1];
     this.institucion=parseado[3];
+    console.log(this.institucion);
+  }*/  
+
+  recibe_institucion(institucion: Institucion){
+    this.link_icono= institucion.link_icono;
+    this.cambiar_imagen(this.link_icono);
+    this.id_institucion=String(institucion.id);
+    this.institucion=institucion.institucion;
+    console.log(this.institucion);
   }  
 
-  recibe_titulo(titulo: string){
-    this.titulo=titulo;
+  recibe_titulo(titulo: Titulo){
+    this.titulo_aux=titulo.titulo;
+    this.id_titulo=String(titulo.id);
   }
 
   //Esto trae el selector #mdl_alta del archivo .html y me permite usarlo como parametro 'content'
@@ -125,20 +153,10 @@ export class AltaComponent implements OnInit{
   this.open(this.mdl_alta );
 }
 
-pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, id_titulo: number, institucion: string, id_institucion: number, desde: string, hasta: string){
-  console.log("llega a Educacion");
-  this.tabla=tabla;
-  this.id=id; 
-  this.imagen=imagen;
-  this.titulo_aux=titulo;
-  this.id_titulo=String(id_titulo);
-  this.institucion=institucion;
-  this.id_institucion=String(id_institucion);
-  this.desde=desde;
-  this.hasta=hasta;
+pre_open_educacion(){
   this.quien_llama='educacion'
-  this.titulo = 'Área de Edición - '+ tabla;
-//  this.open(this.mdl_alta );
+  this.titulo = 'Área de Edición - '+ this.quien_llama;
+  this.open(this.mdl_alta );
 }
 
 pre_open_proyectos(){
@@ -166,7 +184,8 @@ ngOnInit(): void {
   --------------------------------------------
   --------------------------------------------*/
   constructor(private modalService: NgbModal, private loginService: LoginService,
-    private experienciaService: ExperienciaService, private proyectosService: ProyectosService) {}
+    private experienciaService: ExperienciaService, private proyectosService: ProyectosService,
+    private educacionService: EducacionService) {}
 
   /**
    * Write code on Method
