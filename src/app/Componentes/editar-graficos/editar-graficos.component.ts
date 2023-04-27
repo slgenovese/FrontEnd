@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit, TemplateRef, ElementRef, ViewChildren, Qu
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
-import { Grafico, Grafico_aux, HabilidadesDato } from 'src/app/modelos/grafico';
+import { Grafico, HabilidadesDato } from 'src/app/modelos/grafico';
 import { GraficoService } from 'src/app/servicios/grafico.service';
  
 
@@ -24,6 +24,7 @@ export class EditarGraficosComponent implements AfterViewInit{
   id!: number;
   quien_llama!: string;
   titulo_aux!: string;
+  id_datos!: number[];
   etiqueta!: string[];
   porcentaje!: number[];
   color_Fondo!: string[];
@@ -32,7 +33,7 @@ export class EditarGraficosComponent implements AfterViewInit{
   color!: string;
   i!: number;
 
-  grafico: Grafico_aux = new Grafico_aux;
+  grafico: Grafico = new Grafico;
   habilidadesDato: HabilidadesDato[] = [];
   habilidades: HabilidadesDato = new HabilidadesDato; 
 
@@ -73,16 +74,16 @@ editar_registro(){
   this.grafico.id=this.id;
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;
-  this.graficoService.putGrafico(this.id, this.grafico);
-
-  this.habilidadesDato.splice(0); 
   for(let x=0; x<this.etiqueta.length;++x){
     this.habilidades= new HabilidadesDato;
+    this.habilidades.id=this.id_datos[x];
     this.habilidades.etiqueta=this.etiqueta[x];
     this.habilidades.color=this.color_Borde[x];
     this.habilidades.porcentaje=this.porcentaje[x];
-    this.graficoService.postGrafico(this.habilidades);
+    this.grafico.habilidadesDatos =[];
+    this.grafico.habilidadesDatos.push(this.habilidades);
   }
+  this.graficoService.postGrafico(this.grafico);
 }
 
   recibe_color(color: string, i: number ){
@@ -124,6 +125,10 @@ borrar(i: number){
     this.i=i;
   }
 
+  guardar_id(datos_id: number){
+
+  }
+  
   graficar(modo: string){
     if(modo==='agregar'){
       this.etiqueta[this.i+1]=" ";
@@ -144,7 +149,7 @@ borrar(i: number){
   }
 
 
-  pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
+  pre_open_grafico(tabla: string, id: number, titulo: string , id_datos: number[], etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
     this.tabla=tabla;
     this.id=id; 
     this.titulo_aux=titulo;
@@ -152,6 +157,7 @@ borrar(i: number){
     this.porcentaje=porcentaje;
     this.color_Fondo=color_Fondo;
     this.color_Borde=color_Borde;
+    this.id_datos=id_datos;
     this.quien_llama='grafico'
     this.titulo = 'Área de Edición - Hard & Soft Skills';
 

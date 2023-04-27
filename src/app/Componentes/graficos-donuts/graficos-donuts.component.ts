@@ -65,6 +65,7 @@ ngOnInit(): void {
 
         let i=0;
         for(let vectorDatos of habilidad.habilidadesDatos){
+          this.datos[habilidad.id].id_datos[i] =vectorDatos.id;
           this.datos[habilidad.id].etiqueta[i] =vectorDatos.etiqueta;
           this.datos[habilidad.id].porcentaje[i] =vectorDatos.porcentaje;
           this.datos[habilidad.id].color_Fondo[i] =vectorDatos.color;
@@ -155,6 +156,7 @@ grafico_Donut(datosIngresos: any, etiquetas: any, titulo: string, objeto: string
   export class Graficos{
     public id!: number;
     public titulo!: string;
+    public id_datos: number[]=[];
     public etiqueta: string[]=[];
     public porcentaje: number[]=[];
     public color_Fondo: string[]=[];

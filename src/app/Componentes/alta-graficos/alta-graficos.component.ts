@@ -3,7 +3,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GraficoService } from 'src/app/servicios/grafico.service';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
-import { Grafico, Grafico_aux, HabilidadesDato } from 'src/app/modelos/grafico';
+import { Grafico, Grafico_sin_ID, HabilidadesDato, HabilidadesDato_sin_ID } from 'src/app/modelos/grafico';
 
 @Component({
   selector: 'app-alta-graficos',
@@ -22,16 +22,16 @@ export class AltaGraficosComponent {
   id!: number;
   quien_llama!: string;
   titulo_aux!: string;
-  etiqueta!: string[];
-  porcentaje!: number[];
-  color_Fondo!: string[];
-  color_Borde!: string[];
+  etiqueta: string[]=[];
+  porcentaje: number[]=[];
+  color_Fondo: string[]=[];
+  color_Borde: string[]=[];
   datosIngresos!: any;
   color!: string;
   i!: number;
 
-  grafico: Grafico_aux = new Grafico_aux;
-  habilidadesDato: HabilidadesDato[] = [];
+  grafico: Grafico_sin_ID = new Grafico_sin_ID;
+  habilidadesDato: HabilidadesDato_sin_ID[] = [];
   habilidades: HabilidadesDato = new HabilidadesDato; 
 
   @ViewChild('mdl_alta', { read: TemplateRef }) mdl_alta!:TemplateRef<any>;
@@ -40,6 +40,13 @@ export class AltaGraficosComponent {
     this.quien_llama='grafico'
     this.titulo = 'Área de Alta - Hard & Soft Skills';
     this.open(this.mdl_alta );
+    this.porcentaje.splice(0);
+    this.porcentaje.push(100);
+    this.color_Fondo.splice(0);
+    this.color_Fondo.push("black");
+    this.etiqueta.splice(0);
+    this.etiqueta.push("Sin Definir");
+    this.graficar('nuevo_grafico');
   }
 
   recibe_titulo_aux(event: KeyboardEvent){
@@ -64,6 +71,7 @@ export class AltaGraficosComponent {
       borderWidth: 0,// Ancho del borde
     };
     if(modo==='primera_vez' || modo==='nuevo_grafico'){
+      console.log("Llego 1");
       this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
     }
     this.testigo=false;
@@ -83,6 +91,8 @@ recibe_etiqueta(event: KeyboardEvent, i: number){
   if(event.key=='Enter'){  
     this.i=i;  
     const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
+    console.log("Indice: "+this.i);
+    console.log("Etiqueta: "+texto.value);
     this.etiqueta[this.i]= texto.value;
     this.graficar('nuevo_grafico');
   }
@@ -126,20 +136,16 @@ borrar(i: number){
 }
 
 grabar_registro(){
-  console.log("Se grabo el nuevo registro de la tabla:" + this.tabla);
-  this.grafico.id=this.id;
+  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;
-  this.graficoService.putGrafico(this.id, this.grafico);
-
-  this.habilidadesDato.splice(0); 
   for(let x=0; x<this.etiqueta.length;++x){
     this.habilidades= new HabilidadesDato;
-    this.habilidades.etiqueta=this.etiqueta[x];
-    this.habilidades.color=this.color_Borde[x];
-    this.habilidades.porcentaje=this.porcentaje[x];
-    this.graficoService.postGrafico(this.habilidades);
+    this.grafico.habilidadesDatos[x].etiqueta=this.etiqueta[x];
+    this.grafico.habilidadesDatos[x].color=this.color_Borde[x];
+    this.grafico.habilidadesDatos[x].porcentaje=this.porcentaje[x];
   }
+  this.graficoService.postGrafico(this.grafico);
 }
 
 
