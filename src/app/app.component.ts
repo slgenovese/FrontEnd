@@ -10,7 +10,11 @@ export class AppComponent {
 
   title = 'FrontEnd';
 
-  constructor() {}
+  constructor() {
+    // Se define la variable link_Base de forma global para poder modificar la locacion del servidor
+    // en un solo lugar.
+    localStorage.setItem('link_Base', 'http://localhost:8080/');
+  }
 
 }
 

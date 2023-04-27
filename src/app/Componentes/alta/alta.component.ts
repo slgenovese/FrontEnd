@@ -155,13 +155,13 @@ export class AltaComponent implements OnInit{
 
 pre_open_educacion(){
   this.quien_llama='educacion'
-  this.titulo = 'Área de Edición - '+ this.quien_llama;
+  this.titulo = 'Área de Alta - '+ this.quien_llama;
   this.open(this.mdl_alta );
 }
 
 pre_open_proyectos(){
   this.quien_llama='proyectos'
-  this.titulo = 'Área de Edición - '+ this.quien_llama;
+  this.titulo = 'Área de Alta - '+ this.quien_llama;
   this.open(this.mdl_alta );
 }
 

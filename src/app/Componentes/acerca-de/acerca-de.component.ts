@@ -20,5 +20,6 @@ constructor(private acercaDeService: AcercaDeService) {}
 
   ngOnInit(): void {
     this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de = data});
+    console.log();
   }
 }

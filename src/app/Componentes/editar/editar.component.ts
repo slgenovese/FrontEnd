@@ -164,14 +164,6 @@ cambiar_imagen(nueva_imagen: string){
     this.hasta=anio_hasta;
   }
 
-/*  recibe_institucion(institucion: string){
-    var parseado = institucion.split(",",3);
-    this.link_icono=parseado[0];
-    this.cambiar_imagen(parseado[0]);
-    this.id_institucion=parseado[1];
-    this.institucion=parseado[3];
-  }*/
-
   recibe_institucion(institucion: Institucion){
     this.link_icono= institucion.link_icono;
     this.cambiar_imagen(this.link_icono);

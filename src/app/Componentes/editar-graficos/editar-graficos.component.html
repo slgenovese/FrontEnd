@@ -1,71 +1,71 @@
 <ng-template #mdl_editar let-modal >
-    <div class="modal-header">
-        <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">×</span>
-        </button>
-    </div>
+  <div class="modal-header">
+      <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+      </button>
+  </div>
 
-    <div class="modal-body">
+  <div class="modal-body">
 
-      <section class="row">
-        <div class="col-4">
-          <p> <b>Titulo: </b> </p>
+    <section class="row">
+      <div class="col-4">
+        <p> <b>Titulo: </b> </p>
 <!--          <textarea (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}></textarea>-->
-          <input (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}>
-        <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
-          <div id="grafico">
-              <canvas id="donut-chart"></canvas>
-          </div>
+        <input (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}>
+      <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
+        <div id="grafico">
+            <canvas id="donut-chart"></canvas>
         </div>
+      </div>
 
-        <div class="col-8">
-          <section class="row">
-            <div class="col-3">
-              <p><b> Colores:</b></p>
-            </div >
-            <div class="col-4">
-              <p> <b> Etiquetas: </b></p>
-            </div >
-            <div class="col-2">
-              <p><b> Porcentajes:</b></p>
-            </div >
-          </section>  
+      <div class="col-8">
+        <section class="row">
+          <div class="col-3">
+            <p><b> Colores:</b></p>
+          </div >
+          <div class="col-4">
+            <p> <b> Etiquetas: </b></p>
+          </div >
+          <div class="col-2">
+            <p><b> Porcentajes:</b></p>
+          </div >
+        </section>  
 
-        <div *ngFor="let etiqueta of etiqueta; let i=index" >
-          <section class="row"  >
-            <div class="col-3" >
-              <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event, i)'></app-color>
-            </div >
-            <div class="col-4">
-              <textarea (keypress) ="recibe_etiqueta($event, i)"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
-            </div >
-            <div class="col-2">
-              <app-porcentaje #appPorcentaje (valueChange)='recibe_porcentaje($event, i)' [porcentaje]=(porcentaje[i]) ></app-porcentaje>
-            </div >
-            <div class="col-1">
-              <button (click)="borrar(i)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
-                <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
-              </button>
-            </div >
-          </section>  
-          {{guardar_indice(i)}}
-        </div>  
-        <br>
-        <button class="btn btn-primary" (click)="graficar('agregar')">Agregar</button>
-        </div>
-        <br>
-      </section>  
-      
-
-
-    </div>
+      <div *ngFor="let etiqueta of etiqueta; let i=index" >
+        <section class="row"  >
+          <div class="col-3" >
+            <app-color [color]=color_Fondo[i] (valueChange)='recibe_color($event, i)'></app-color>
+          </div >
+          <div class="col-4">
+            <textarea (keypress) ="recibe_etiqueta($event, i)"  class="form-control" name="texto" id='textArea{{i}}' cols="50" rows="1" value={{etiqueta}}></textarea>
+          </div >
+          <div class="col-2">
+            <app-porcentaje #appPorcentaje (valueChange)='recibe_porcentaje($event, i)' [porcentaje]=(porcentaje[i]) ></app-porcentaje>
+          </div >
+          <div class="col-1">
+            <button (click)="borrar(i)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
+              <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
+            </button>
+          </div >
+        </section>  
+        {{guardar_indice(i)}}
+      </div>  
+      <br>
+      <button class="btn btn-primary" (click)="graficar('agregar')">Agregar</button>
+      </div>
+      <br>
+    </section>  
     
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">Cancelar</span>
-        </button>
-        <button type="button" class="btn btn-dark" (click)="editar_registro()" (click)="modal.close('Save click')">Modificar</button>
-    </div>
+
+
+  </div>
+  
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">Cancelar</span>
+      </button>
+      <button type="button" class="btn btn-dark" (click)="editar_registro()" (click)="modal.close('Save click')">Modificar</button>
+  </div>
 </ng-template>
-    
+  

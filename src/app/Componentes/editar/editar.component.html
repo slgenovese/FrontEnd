@@ -56,7 +56,7 @@
     </ng-container>
     
     <!-- Muestra y permite cambiar las imagenes -->
-    <ng-container *ngIf = "quien_llama==='foto' || quien_llama==='banner'" >
+    <ng-container *ngIf = "quien_llama==='foto' || quien_llama==='banner' || quien_llama==='nombre'" >
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>
@@ -72,7 +72,7 @@
       <hr>
     </ng-container>
 
-    <ng-container *ngIf = "quien_llama==='nombre' || quien_llama==='experiencia' || quien_llama==='educacion' || quien_llama==='proyectos'" >
+    <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion' || quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Imagen: </b></label>
         <br>

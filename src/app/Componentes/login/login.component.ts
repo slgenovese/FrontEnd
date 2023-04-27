@@ -97,6 +97,8 @@ export class LoginComponent implements OnInit{
     document.getElementById("ace_Edicion-1")!.style.display=display;
     document.getElementById("ace_Borrado-1")!.style.display=display;
 
+    document.getElementById("gra_Alta")!.style.display=display;
+
     if (document.getElementById("grafico1")!.style.display==="block"){
       document.getElementById("gra_Borrado-1")!.style.display=display;
       document.getElementById("gra_Edicion-1")!.style.display=display;
@@ -130,7 +132,7 @@ export class LoginComponent implements OnInit{
       document.getElementById("gra_Edicion-8")!.style.display=display;
     }
     
-      document.getElementById("edu_Alta")!.style.display=display;
+    document.getElementById("edu_Alta")!.style.display=display;
 
       for( let edu of this.educacion){
         document.getElementById("edu_Edicion-"+edu.id)!.style.display=display;

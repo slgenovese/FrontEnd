@@ -15,22 +15,22 @@ export class EducacionService {
   constructor(private http: HttpClient) { }
 
   public getEducacion():  Observable<Educacion[]>{
-    return this.http.get<Educacion[]>("http://localhost:8080/portfolio/v1/estudios");
+    return this.http.get<Educacion[]>(localStorage.getItem('link_Base')+"portfolio/v1/estudios");
 
   }
 
   public deleteEducacion(id: number) {
-    this.http.delete("http://localhost:8080/portfolio/v1/estudios/"+id)
+    this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/estudios/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
 
   public putEducacion(id: number, educacion: Educacion){
-    this.http.put<any>('http://localhost:8080/portfolio/v1/estudios/datos/'+id, educacion)
+    this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/estudios/datos/"+id, educacion)
     .subscribe(data => this.postId = data.id);
   }
 
   public postEducacion(educacion: Educacion){
-    this.http.post<any>("http://localhost:8080/portfolio/v1/estudios", educacion)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/estudios", educacion)
     .subscribe(data => this.postId = data.id);
   }
 

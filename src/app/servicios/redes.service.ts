@@ -11,7 +11,7 @@ export class RedesService {
   constructor(private http: HttpClient) { }
 
   public getRedes():  Observable<Redes[]>{
-    return this.http.get<Redes[]>("http://localhost:8080/portfolio/v1/redes");
+    return this.http.get<Redes[]>(localStorage.getItem('link_Base')+"portfolio/v1/redes");
 
   }
 

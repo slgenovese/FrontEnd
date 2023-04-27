@@ -29,6 +29,7 @@ import { ProyectosComponent } from './Componentes/proyectos/proyectos.component'
 import { InstitucionComponent } from './Componentes/institucion/institucion.component';
 import { TituloComponent } from './Componentes/titulo/titulo.component';
 import { AltaComponent } from './Componentes/alta/alta.component';
+import { AltaGraficosComponent } from './Componentes/alta-graficos/alta-graficos.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AltaComponent } from './Componentes/alta/alta.component';
     InstitucionComponent,
     TituloComponent,
     AltaComponent,
+    AltaGraficosComponent,
   
   ],
   imports: [

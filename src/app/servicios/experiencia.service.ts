@@ -13,21 +13,21 @@ export class ExperienciaService {
   postId!: String;
 
   public getExperiencia():  Observable<Experiencia[]>{
-    return this.http.get<Experiencia[]>("http://localhost:8080/portfolio/v1/experiencias");
+    return this.http.get<Experiencia[]>(localStorage.getItem('link_Base')+"portfolio/v1/experiencias");
   }
   
   public deleteExperiencia(id: number) {
-    this.http.delete("http://localhost:8080/portfolio/v1/experiencias/"+id)
+    this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/experiencias/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
 
   public putExperiencia(id: number, experiencia: Experiencia){
-    this.http.put<any>('http://localhost:8080/portfolio/v1/experiencias/datos/'+id, experiencia)
+    this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/experiencias/datos/"+id, experiencia)
     .subscribe(data => this.postId = data.id);
   }
 
   public postExperiencia(experiencia: Experiencia){
-    this.http.post<any>("http://localhost:8080/portfolio/v1/experiencias", experiencia)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/experiencias", experiencia)
     .subscribe(data => this.postId = data.id);
   }
 

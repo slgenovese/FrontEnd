@@ -1,18 +1,16 @@
-import { Component, ViewChild, OnInit, TemplateRef, ElementRef, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { GraficoService } from 'src/app/servicios/grafico.service';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
 import { Grafico, Grafico_aux, HabilidadesDato } from 'src/app/modelos/grafico';
-import { GraficoService } from 'src/app/servicios/grafico.service';
- 
 
 @Component({
-  selector: 'app-editar-graficos',
-  templateUrl: './editar-graficos.component.html',
-  styleUrls: ['./editar-graficos.component.css']
+  selector: 'app-alta-graficos',
+  templateUrl: './alta-graficos.component.html',
+  styleUrls: ['./alta-graficos.component.css']
 })
-
-export class EditarGraficosComponent implements AfterViewInit{
+export class AltaGraficosComponent {
 
   canvas: any;
   ctx: any;
@@ -36,54 +34,40 @@ export class EditarGraficosComponent implements AfterViewInit{
   habilidadesDato: HabilidadesDato[] = [];
   habilidades: HabilidadesDato = new HabilidadesDato; 
 
-  @ViewChild('mdl_editar', { read: TemplateRef }) mdl_editar!:TemplateRef<any>;
+  @ViewChild('mdl_alta', { read: TemplateRef }) mdl_alta!:TemplateRef<any>;
 
-
-public ngAfterViewInit(): void {
-}  
-recibe_porcentaje(porcentaje: string, i: number){
-  this.i=i;
-  let suma=0;
-
-  let indice=this.etiqueta.indexOf('Sin Definir')
-  if(indice!=-1){
-    suma = ((this.porcentaje.reduce(function (a, b) {return a + b;}, 0))- this.porcentaje[indice]) - this.porcentaje[i];
-  //  this.porcentaje[indice]=this.porcentaje[indice]-Number(porcentaje);
-  }else{
-    suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
+  pre_open_grafico(){
+    this.quien_llama='grafico'
+    this.titulo = 'Área de Alta - Hard & Soft Skills';
+    this.open(this.mdl_alta );
   }
 
-  if (suma<100){
-    if (Number(porcentaje)+suma<=100){
-      this.porcentaje[i]=Number(porcentaje);
-    }else{
-      this.porcentaje[i]=100-suma;
+  recibe_titulo_aux(event: KeyboardEvent){
+    if(event.key=='Enter'){    
+      const texto = document.getElementById('titulo') as HTMLTextAreaElement;
+      this.titulo_aux= texto.value;
+      this.graficar('nuevo_grafico');
     }
   }
-  // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
-  this.borrar(indice)
-  this.graficar('nuevo_grafico');
-  console.log("porcentaje: "+this.porcentaje[i])
-}
-
-
-
-editar_registro(){
-  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-  this.grafico.id=this.id;
-  var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
-  this.grafico.titulo=auxiliar.value;
-  this.graficoService.putGrafico(this.id, this.grafico);
-
-  this.habilidadesDato.splice(0); 
-  for(let x=0; x<this.etiqueta.length;++x){
-    this.habilidades= new HabilidadesDato;
-    this.habilidades.etiqueta=this.etiqueta[x];
-    this.habilidades.color=this.color_Borde[x];
-    this.habilidades.porcentaje=this.porcentaje[x];
-    this.graficoService.postGrafico(this.habilidades);
+  
+  graficar(modo: string){
+    if(modo==='agregar'){
+      this.etiqueta[this.i+1]=" ";
+      this.color_Borde[this.i+1]="N/A";
+      this.color_Fondo[this.i+1]="N/A";
+      this.porcentaje[this.i+1]=0;
+    }
+    var datosIngresos = {
+      data: this.porcentaje, 
+      backgroundColor: this.color_Fondo,
+      borderColor: this.color_Fondo,
+      borderWidth: 0,// Ancho del borde
+    };
+    if(modo==='primera_vez' || modo==='nuevo_grafico'){
+      this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
+    }
+    this.testigo=false;
   }
-}
 
   recibe_color(color: string, i: number ){
     if (color!='N/A'){
@@ -104,14 +88,6 @@ recibe_etiqueta(event: KeyboardEvent, i: number){
   }
 }
 
-recibe_titulo_aux(event: KeyboardEvent){
-  if(event.key=='Enter'){    
-    const texto = document.getElementById('titulo') as HTMLTextAreaElement;
-    this.titulo_aux= texto.value;
-    this.graficar('nuevo_grafico');
-  }
-}
-
 borrar(i: number){
   this.color_Fondo.splice(i,1,);
   this.color_Borde.splice(i,1,);
@@ -124,52 +100,50 @@ borrar(i: number){
     this.i=i;
   }
 
-  graficar(modo: string){
-    if(modo==='agregar'){
-      this.etiqueta[this.i+1]=" ";
-      this.color_Borde[this.i+1]="N/A";
-      this.color_Fondo[this.i+1]="N/A";
-      this.porcentaje[this.i+1]=0;
+  recibe_porcentaje(porcentaje: string, i: number){
+    this.i=i;
+    let suma=0;
+
+    let indice=this.etiqueta.indexOf('Sin Definir')
+    if(indice!=-1){
+      suma = ((this.porcentaje.reduce(function (a, b) {return a + b;}, 0))- this.porcentaje[indice]) - this.porcentaje[i];
+    //  this.porcentaje[indice]=this.porcentaje[indice]-Number(porcentaje);
+    }else{
+      suma = (this.porcentaje.reduce(function (a, b) {return a + b;}, 0)) - this.porcentaje[i];
     }
-    var datosIngresos = {
-      data: this.porcentaje, 
-      backgroundColor: this.color_Fondo,
-      borderColor: this.color_Fondo,
-      borderWidth: 0,// Ancho del borde
-    };
-    if(modo==='primera_vez' || modo==='nuevo_grafico'){
-      this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
+
+    if (suma<100){
+      if (Number(porcentaje)+suma<=100){
+        this.porcentaje[i]=Number(porcentaje);
+      }else{
+        this.porcentaje[i]=100-suma;
+      }
     }
-    this.testigo=false;
+    // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
+    this.borrar(indice)
+    this.graficar('nuevo_grafico');
+    console.log("porcentaje: "+this.porcentaje[i])
+}
+
+grabar_registro(){
+  console.log("Se grabo el nuevo registro de la tabla:" + this.tabla);
+  this.grafico.id=this.id;
+  var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
+  this.grafico.titulo=auxiliar.value;
+  this.graficoService.putGrafico(this.id, this.grafico);
+
+  this.habilidadesDato.splice(0); 
+  for(let x=0; x<this.etiqueta.length;++x){
+    this.habilidades= new HabilidadesDato;
+    this.habilidades.etiqueta=this.etiqueta[x];
+    this.habilidades.color=this.color_Borde[x];
+    this.habilidades.porcentaje=this.porcentaje[x];
+    this.graficoService.postGrafico(this.habilidades);
   }
+}
 
 
-  pre_open_grafico(tabla: string, id: number, titulo: string , etiqueta: string[], porcentaje: number[], color_Fondo: string[], color_Borde: string[]){
-    this.tabla=tabla;
-    this.id=id; 
-    this.titulo_aux=titulo;
-    this.etiqueta=etiqueta;
-    this.porcentaje=porcentaje;
-    this.color_Fondo=color_Fondo;
-    this.color_Borde=color_Borde;
-    this.quien_llama='grafico'
-    this.titulo = 'Área de Edición - Hard & Soft Skills';
-
-    var datosIngresos = {
-      data: porcentaje, 
-      backgroundColor: color_Fondo,
-      borderColor: color_Fondo,
-      borderWidth: 0,// Ancho del borde
-    };
-    this.datosIngresos=datosIngresos;
-
-    this.open(this.mdl_editar );
-    
-
-    }
-
-
-    closeResult: string = '';
+closeResult: string = '';
 
   /*------------------------------------------
   --------------------------------------------
@@ -274,4 +248,5 @@ borrar(i: number){
       });
     };
 
-  }
+ }
+

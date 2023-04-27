@@ -11,7 +11,7 @@ export class TituloService {
   constructor(private http: HttpClient) { }
 
   public getTitulo():  Observable<Titulo[]>{
-    return this.http.get<Titulo[]>("http://localhost:8080/portfolio/v1/titulos");
+    return this.http.get<Titulo[]>(localStorage.getItem('link_Base')+"portfolio/v1/titulos");
 
   }
 }

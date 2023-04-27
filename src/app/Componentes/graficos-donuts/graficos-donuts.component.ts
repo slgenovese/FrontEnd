@@ -4,6 +4,7 @@ import { Grafico } from '../../modelos/grafico';
 import { GraficoService } from '../../servicios/grafico.service';
 import { BorrarComponent } from '../borrar/borrar.component';
 import { EditarGraficosComponent } from '../editar-graficos/editar-graficos.component';
+import { AltaGraficosComponent } from '../alta-graficos/alta-graficos.component';
 
 @Component({
   selector: 'app-graficos-donuts',
@@ -29,6 +30,7 @@ export class GraficosDonutsComponent implements OnInit{
 
   @Input()  borrar!: BorrarComponent;
   @Input()  editar!: EditarGraficosComponent;
+  @Input()  alta!: AltaGraficosComponent;
 
   datos:  Graficos[] =[
     new Graficos(),

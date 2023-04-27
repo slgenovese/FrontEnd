@@ -15,23 +15,23 @@ export class ProyectosService {
   constructor(private http: HttpClient) { }
 
   public getProyectos():  Observable<Proyectos[]>{
-    return this.http.get<Proyectos[]>("http://localhost:8080/portfolio/v1/proyectos");
+    return this.http.get<Proyectos[]>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos");
 
   }
   
   public deleteProyectos(id: number) {
-    this.http.delete("http://localhost:8080/portfolio/v1/proyectos/"+id)
+    this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
 
   public postProyectos(proyectos: Proyectos){
-    this.http.post<any>("http://localhost:8080/portfolio/v1/proyectos", proyectos)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos", proyectos)
     .subscribe(data => this.postId = data.id);
   }
 
 
   public putProyectos(id: number, proyectos: Proyectos){
-    this.http.put<any>('http://localhost:8080/portfolio/v1/proyectos/datos/'+id, proyectos)
+    this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/datos/"+id, proyectos)
     .subscribe(data => this.postId = data.id);
   }
 
