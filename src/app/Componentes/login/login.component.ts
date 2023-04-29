@@ -6,8 +6,9 @@ import { Experiencia } from '../../modelos/experiencia';
 import { ExperienciaService } from '../../servicios/experiencia.service';
 import { Proyectos } from '../../modelos/proyectos';
 import { ProyectosService } from '../../servicios/proyectos.service';
-//import { Login } from '../modelo/Login';
+import { Login } from 'src/app/modelos/Login';
 import { LoginService } from '../../servicios/login.service'; 
+import { Respuesta } from 'src/app/modelos/Login';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit{
   educacion: Educacion[] =[];
   experiencia: Experiencia[] =[];
   proyectos: Proyectos[] =[];
+  login: Login = new Login;
+  respuesta: Respuesta = new Respuesta;
 
   /*------------------------------------------
   --------------------------------------------
@@ -41,15 +44,13 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
 
     this.loginService.getLogin().subscribe(data=>{
-      this.password = data.clave;
+      this.password = data.password;
       this.mail = data.usuario;
-      this.servidor_img = data.servidor_img ;
     });
 
     this.educacionService.getEducacion().subscribe(data=>{this.educacion=data});
     this.experienciaService.getExperiencia().subscribe(data=>{this.experiencia=data});
     this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data});
-
   }
 
   /**
@@ -70,15 +71,20 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  public ingreso(correo: string, palabraSecreta: string, btnlogin: any){
-    if(palabraSecreta== this.password && correo==this.mail){
-      if (btnlogin.innerText=='Login' || btnlogin.innerText=='Acceso'){
-        this.Botones(true);
-        btnlogin.innerText ='Logout';
-      }
-    }
+  public ingreso(usuario: string, palabraSecreta: string, btnlogin: any){
+    this.login.password=palabraSecreta;
+    this.login.usuario=usuario;
 
-    return;
+    this.loginService.postLogin(this.login).subscribe(async data => {this.respuesta = data
+      if(this.respuesta.respuesta== "OK"){
+        if (btnlogin.innerText=='Login' || btnlogin.innerText=='Acceso'){
+          this.Botones(true);
+          btnlogin.innerText ='Logout';
+        }else{
+          document.getElementById("mensaje")!.style.display="block";
+        }
+      }
+    });
   }
 
   Botones(mostrar: boolean){

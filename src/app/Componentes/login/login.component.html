@@ -25,7 +25,7 @@
             class="form-control" type="password"
             placeholder="Contraseña">
     </div>
-
+    <p style="display: none;" id="mensaje"> Usuario o Clave incorrecta </p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-dark" (click)="ingreso(correo.value, palabraSecreta.value, btnlogin)" (click)="modal.close('Save click')">Aceptar</button>

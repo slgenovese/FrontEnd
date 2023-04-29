@@ -74,14 +74,16 @@ editar_registro(){
   this.grafico.id=this.id;
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;
+  this.grafico.habilidadesDatos =[];
   for(let x=0; x<this.etiqueta.length;++x){
     this.habilidades= new HabilidadesDato;
     this.habilidades.id=this.id_datos[x];
     this.habilidades.etiqueta=this.etiqueta[x];
     this.habilidades.color=this.color_Borde[x];
     this.habilidades.porcentaje=this.porcentaje[x];
-    this.grafico.habilidadesDatos =[];
-    this.grafico.habilidadesDatos.push(this.habilidades);
+    if (this.etiqueta[x]!="Sin Definir"){
+      this.grafico.habilidadesDatos.push(this.habilidades);
+    }
   }
   this.graficoService.postGrafico(this.grafico);
 }

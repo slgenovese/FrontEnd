@@ -3,7 +3,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GraficoService } from 'src/app/servicios/grafico.service';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
-import { Grafico, Grafico_sin_ID, HabilidadesDato, HabilidadesDato_sin_ID } from 'src/app/modelos/grafico';
+import { Grafico_sin_ID, HabilidadesDato_sin_ID } from 'src/app/modelos/grafico';
 
 @Component({
   selector: 'app-alta-graficos',
@@ -32,7 +32,7 @@ export class AltaGraficosComponent {
 
   grafico: Grafico_sin_ID = new Grafico_sin_ID;
   habilidadesDato: HabilidadesDato_sin_ID[] = [];
-  habilidades: HabilidadesDato = new HabilidadesDato; 
+  habilidades: HabilidadesDato_sin_ID = new HabilidadesDato_sin_ID; 
 
   @ViewChild('mdl_alta', { read: TemplateRef }) mdl_alta!:TemplateRef<any>;
 
@@ -139,12 +139,18 @@ grabar_registro(){
   console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;
+  this.grafico.habilidadesDatos =[];
   for(let x=0; x<this.etiqueta.length;++x){
-    this.habilidades= new HabilidadesDato;
-    this.grafico.habilidadesDatos[x].etiqueta=this.etiqueta[x];
-    this.grafico.habilidadesDatos[x].color=this.color_Borde[x];
-    this.grafico.habilidadesDatos[x].porcentaje=this.porcentaje[x];
+    this.habilidades= new HabilidadesDato_sin_ID;
+    this.habilidades.etiqueta=this.etiqueta[x];
+    this.habilidades.color=this.color_Borde[x];
+    this.habilidades.porcentaje=this.porcentaje[x];
+    console.log(this.habilidades);
+    if (this.etiqueta[x]!="Sin Definir"){
+      this.grafico.habilidadesDatos.push(this.habilidades);
+    }
   }
+  console.log(this.grafico);
   this.graficoService.postGrafico(this.grafico);
 }
 

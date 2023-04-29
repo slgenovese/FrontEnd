@@ -15,7 +15,6 @@ export class AppComponent {
     // en un solo lugar.
     localStorage.setItem('link_Base', 'http://localhost:8080/');
   }
-
 }
 
 
