@@ -30,6 +30,7 @@ import { InstitucionComponent } from './Componentes/institucion/institucion.comp
 import { TituloComponent } from './Componentes/titulo/titulo.component';
 import { AltaComponent } from './Componentes/alta/alta.component';
 import { AltaGraficosComponent } from './Componentes/alta-graficos/alta-graficos.component';
+import { PersonasRedesComponent } from './Componentes/personas-redes/personas-redes.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AltaGraficosComponent } from './Componentes/alta-graficos/alta-graficos
     TituloComponent,
     AltaComponent,
     AltaGraficosComponent,
+    PersonasRedesComponent,
   
   ],
   imports: [

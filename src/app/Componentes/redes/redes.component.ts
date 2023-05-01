@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
-import { EditarComponent } from '../editar/editar.component';
 
 @Component({
   selector: 'app-redes',
@@ -15,13 +14,36 @@ export class RedesComponent implements OnInit{
 
   constructor(private redesService: RedesService) {}
 
-  @Input()  editar!: EditarComponent;
+  @ViewChild('redes') red_aux!:ElementRef;
+  @Input() id_redes!: string;
+  @Output() valueChange= new EventEmitter<any>();
+
+  elegido(red_aux: string){
+    for(let red of this.redes){
+      if (red.id==Number(red_aux)){
+        this.valueChange.emit(red);
+      }
+    }
+  }  
 
   ngOnInit(): void {
-    this.redesService.getRedes().subscribe(data=>{this.redes=data});
+
+    this.redesService.getRedes().subscribe(data=>{this.redes=data
+      this.procesar(this.redes);
+      this.red_aux.nativeElement.value= this.id_redes;
+      console.log(this.redes);
+    });
   }
 
-  irEnlace(link: string){
-    window.open(link);
+  procesar(red: Redes[]){
+
+    const select = document.getElementById("red");
+    for(let red_aux of red){
+      var option= document.createElement("option");
+      option.value = String(red_aux.id);
+      option.text = red_aux.nombre;
+      select?.appendChild(option);
+    }
   }
+
 }

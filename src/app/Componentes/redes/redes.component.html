@@ -1,8 +1,2 @@
 
-    <div *ngFor="let redes of redes" style="display: inline;">
-        <div *ngIf="redes.habilitado==='SI'" style="display: inline;">
-            <button (click)= "irEnlace(redes.link)" target="_blank" type="button" class="btn btn-default" >
-                <span style="font-size: 120%;">  <i class= {{redes.icono}} title= {{redes.nombre}} ></i></span>
-            </button>
-        </div> 
-    </div>
+<select #redes id="redes" class="form-select" (change)="elegido(redes.value)" > </select>
