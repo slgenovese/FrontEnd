@@ -27,7 +27,7 @@ export class ExperienciaService {
   }
 
   public postExperiencia(experiencia: Experiencia){
-    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/experiencias", experiencia)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/experiencias/"+ localStorage.getItem("persona_id"), experiencia)
     .subscribe(data => this.postId = data.id);
   }
 

@@ -19,7 +19,9 @@ constructor(private acercaDeService: AcercaDeService) {}
   @Input()  editar!: EditarComponent;
 
   ngOnInit(): void {
-    this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de = data});
+    this.acercaDeService.getAcercaDe().subscribe(data=>{this.acerca_de = data
+    localStorage.setItem("persona_id",String(this.acerca_de.id));
+    });
     console.log();
   }
 }

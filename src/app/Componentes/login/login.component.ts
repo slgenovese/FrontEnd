@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit{
   
   ngOnInit(): void {
 
-    this.loginService.getLogin().subscribe(data=>{
+  /*  this.loginService.getLogin().subscribe(data=>{
       this.password = data.password;
       this.mail = data.usuario;
     });
-
+*/
     this.educacionService.getEducacion().subscribe(data=>{this.educacion=data});
     this.experienciaService.getExperiencia().subscribe(data=>{this.experiencia=data});
     this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data});

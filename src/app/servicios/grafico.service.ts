@@ -25,7 +25,7 @@ export class GraficoService {
 
 
   public postGrafico(grafico: Grafico_sin_ID ){
-    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/habilidades", grafico)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/habilidades/"+ localStorage.getItem("persona_id"), grafico)
     .subscribe(data => this.postId = data.id);
   }
 

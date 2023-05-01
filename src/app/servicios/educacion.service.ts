@@ -30,7 +30,7 @@ export class EducacionService {
   }
 
   public postEducacion(educacion: Educacion){
-    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/estudios", educacion)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/estudios/"+ localStorage.getItem("persona_id"), educacion)
     .subscribe(data => this.postId = data.id);
   }
 

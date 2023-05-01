@@ -288,12 +288,12 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
 
   ngOnInit(): void {
   
-    this.loginService.getLogin().subscribe(data=>{
+/*    this.loginService.getLogin().subscribe(data=>{
       this.password = data.password;
       this.mail = data.usuario;
 //      this.servidor_img = data.servidor_img ;
     });
-
+*/
     this.redesService.getRedes().subscribe(data=>{this.redes=data});
 
   }

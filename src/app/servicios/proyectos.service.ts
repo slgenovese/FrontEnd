@@ -25,7 +25,7 @@ export class ProyectosService {
   }
 
   public postProyectos(proyectos: Proyectos){
-    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos", proyectos)
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/"+ localStorage.getItem("persona_id"), proyectos)
     .subscribe(data => this.postId = data.id);
   }
 
