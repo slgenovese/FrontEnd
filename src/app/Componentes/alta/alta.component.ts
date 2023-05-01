@@ -9,6 +9,7 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
+import { Redes } from 'src/app/modelos/redes';
 @Component({
   selector: 'app-alta',
   templateUrl: './alta.component.html',
@@ -21,6 +22,7 @@ export class AltaComponent implements OnInit{
   proyectos: Proyectos = new Proyectos;
   educacion: Educacion = new Educacion;
   titulo_obj: Titulo = new Titulo;
+  red: Redes = new Redes;
 
   closeResult: string = '';
 
@@ -42,6 +44,7 @@ export class AltaComponent implements OnInit{
   mail!: string;
   servidor_img!: string;
   link_icono!: string;
+  id_redes!: string;
 
   alta_registro(quien_llama: any){
     switch (quien_llama){
@@ -141,12 +144,21 @@ export class AltaComponent implements OnInit{
     this.id_titulo=String(titulo.id);
   }
 
+  recibe_red(red: Redes){
+    this.red=red;
+  }
+
   //Esto trae el selector #mdl_alta del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
   @ViewChild('mdl_alta', { read: TemplateRef }) mdl_alta!:TemplateRef<any>;
 
+  pre_open_redes(tabla: string){
+    this.tabla=tabla;
+    this.quien_llama='redes'
+    this.titulo = 'Área de Edición - '+ tabla;
+    this.open(this.mdl_alta );
+  }
 
-  //pre_open_experiencia(tabla: string, id: number, imagen: string, texto: string, institucion: string, id_institucion: number, desde: string, hasta: string, id_pais: string, pais: string, id_provincia: string, provincia: string){
   pre_open_experiencia(){
     this.quien_llama='experiencia'
   this.titulo = 'Área de Alta - '+ this.quien_llama;

@@ -7,9 +7,9 @@
   </div>
   <div class="modal-body">
 
-    <ng-container *ngIf = "quien_llama==='redes'" >
-      <div *ngFor="let redes of personasRedes" >
 
+    <ng-container *ngIf = "quien_llama==='redes'" >
+      <div *ngFor="let redes of redes">
         <section class="row">
           <div class="col-1">
             <i class={{redes.icono}} [title]=redes.nombre style="font-size:200%"></i>
@@ -18,9 +18,18 @@
           <div class="col-8">
             <label for="texto"> <b> Link: </b></label>
             <br>
-            <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{redes.link}}></textarea>
+            <div *ngFor="let per_redes of personasRedes" >
+              <ng-container *ngIf = "per_redes.nombre===redes.nombre" >
+                <ng-template #pp>
+                  <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{per_redes.link}}></textarea>
+                </ng-template>
+                <ng-template #oo>
+                  <textarea class="form-control" name="texto" id="nombre_" cols="10" rows="1" value={{nombres}}></textarea> 
+                </ng-template>
+              </ng-container>
+            </div>
           </div>
-          <div class="col-3">
+          <div class="col-3" id="" >
             <label for="texto"> <b> Estado: </b></label>
             <br>
 <!--            <app-habilitar [habilitado]= redes.habilitado (valueChange)='recibe_habilitado($event)' ></app-habilitar> -->
@@ -31,6 +40,7 @@
         </section>  
       </div>  
     </ng-container>
+
 
     <ng-container *ngIf = "quien_llama==='configurar'" >
       <div class="form-group" >

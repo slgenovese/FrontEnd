@@ -7,6 +7,13 @@
   </div>
   <div class="modal-body">
 
+    <ng-container *ngIf = "quien_llama==='redes'" >
+      <div class="form-group" >
+        <label for="texto"> <b> Redes: </b></label>
+        <app-redes [id_redes]="id_redes" (valueChange)='recibe_red($event)'></app-redes>
+        <br>
+      </div>
+    </ng-container>
 
     
     <!-- Muestra y permite cambiar las imagenes -->

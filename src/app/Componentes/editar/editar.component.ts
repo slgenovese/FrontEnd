@@ -3,6 +3,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Login } from '../../modelos/Login';
 import { LoginService } from '../../servicios/login.service'; 
 import { PersonasRedes } from '../../modelos/redes';
+import { Redes } from '../../modelos/redes';
 import { RedesService } from '../../servicios/redes.service';
 import { BannerService } from 'src/app/servicios/banner.service';
 import { Acerca_De } from 'src/app/modelos/acerca-de';
@@ -25,7 +26,9 @@ export class EditarComponent implements OnInit{
 
   closeResult: string = '';
 
+  redes: Redes[]=[]; 
   personasRedes: PersonasRedes[]=[];
+  per_redes: PersonasRedes = new PersonasRedes; 
   acerca_De: Acerca_De = new Acerca_De;
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
@@ -294,7 +297,8 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
 //      this.servidor_img = data.servidor_img ;
     });
 */
-    this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
+  this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
+  this.redesService.getRedes().subscribe(data=>{this.redes=data});
 
   }
 
