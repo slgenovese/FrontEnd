@@ -8,3 +8,8 @@ export class Acerca_De{
   pais!: string;
   acerca_de!: string;
 }
+
+export class Servidor_Imagenes{
+  id!: number;
+  link_servidor_imagenes!: string;
+}

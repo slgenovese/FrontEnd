@@ -16,6 +16,7 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
+import { Servidor_Imagenes } from 'src/app/modelos/acerca-de';
 
 @Component({
   selector: 'app-editar',
@@ -36,6 +37,7 @@ export class EditarComponent implements OnInit{
   proyectos: Proyectos = new Proyectos;
   educacion: Educacion = new Educacion;
   titulo_obj: Titulo = new Titulo;
+  servidor_img: Servidor_Imagenes = new Servidor_Imagenes; 
 
   titulo!: string;
   tabla!: string;
@@ -57,7 +59,6 @@ export class EditarComponent implements OnInit{
   id_titulo!: string;
   password!: string;
   mail!: string;
-  servidor_img!: string; 
   habilitado!: string;
   link_icono!: string;
 
@@ -154,7 +155,7 @@ export class EditarComponent implements OnInit{
   }
 
   mostrar_servidor_img(){
-    window.open( this.servidor_img);
+    window.open( this.servidor_img.link_servidor_imagenes);
 }
 
 cambiar_imagen(nueva_imagen: string){
@@ -316,6 +317,7 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
 //      this.servidor_img = data.servidor_img ;
     });
 */
+    this.acercaDeService.getServidorImagenes().subscribe(data=>{this.servidor_img=data});
     this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
     this.redesService.getRedes().subscribe(data=>{this.redes=data
       this.procesarRedes();

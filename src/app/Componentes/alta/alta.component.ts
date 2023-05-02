@@ -145,9 +145,9 @@ export class AltaComponent implements OnInit{
     this.id_titulo=String(titulo.id);
   }
 
-  recibe_red(red: Redes){
+/*  recibe_red(red: Redes){
     this.red=red;
-  }
+  }*/
 
   //Esto trae el selector #mdl_alta del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
