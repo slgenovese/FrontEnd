@@ -9,6 +9,9 @@ import { Redes } from '../modelos/redes';
 })
 export class RedesService {
 
+  status!: String;
+  postId!: String;
+
   constructor(private http: HttpClient) { }
 
   public getPersona_Redes():  Observable<PersonasRedes[]>{
@@ -20,4 +23,15 @@ export class RedesService {
     return this.http.get<Redes[]>(localStorage.getItem('link_Base')+"portfolio/v1/redes");
 
   }
+
+  public postPersonasRedes(personasRedes: PersonasRedes){
+    this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/personas_redes/"+ localStorage.getItem("persona_id"), personasRedes)
+    .subscribe(data => this.postId = data.id);
+  }
+
+  public deletePersonasRedes(id: number) {
+    this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/personas_redes/"+id)
+    .subscribe(() => this.status = 'Delete successful');
+  }
+
 }

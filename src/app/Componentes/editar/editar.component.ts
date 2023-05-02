@@ -62,6 +62,7 @@ export class EditarComponent implements OnInit{
 
   editar_registro(quien_llama: any){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
+    window.location.reload();
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
@@ -129,11 +130,28 @@ export class EditarComponent implements OnInit{
         this.educacion.titulo=this.titulo_obj;
         this.educacionService.putEducacion(this.id, this.educacion);
         break;
+      case "redes":
+        for(let per_red of this.personasRedes){
+          var auxiliar=document.getElementById("red-"+per_red.id) as HTMLTextAreaElement;
+          if(auxiliar.value!=" "){
+            console.log(per_red);
+            per_red.link=auxiliar.value;
+            this.redesService.postPersonasRedes(per_red);
+          }
+        }
+        break;
       default:
         console.log("No llego!!!");
     }
   }
-  
+
+  borrar_red(id: number){
+    console.log("id: "+id);
+    this.redesService.deletePersonasRedes(id);
+    var auxiliar=document.getElementById("red-"+id) as HTMLTextAreaElement;
+    auxiliar.value=" ";
+  }
+
   mostrar_servidor_img(){
     window.open( this.servidor_img);
 }
@@ -297,11 +315,32 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
 //      this.servidor_img = data.servidor_img ;
     });
 */
-  this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
-  this.redesService.getRedes().subscribe(data=>{this.redes=data});
+    this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
+    this.redesService.getRedes().subscribe(data=>{this.redes=data
+      this.procesarRedes();
+    });
 
   }
-
+  procesarRedes(){
+  var encontro = "No";
+    for(let red of this.redes){
+      for (let per_red of this.personasRedes){
+        if(per_red.nombre==red.nombre){
+          encontro="Si";
+          }     
+      }
+      if (encontro=="No"){
+        let perRedes = new PersonasRedes;
+        perRedes.id=red.id;
+        perRedes.icono=red.icono;
+        perRedes.nombre=red.nombre;
+        perRedes.link=" ";
+        this.personasRedes.push(perRedes);
+        }
+      encontro="No";
+    }
+  }
+  
   /*------------------------------------------
   --------------------------------------------
   Created constructor

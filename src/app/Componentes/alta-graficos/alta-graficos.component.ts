@@ -150,8 +150,8 @@ grabar_registro(){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }
   }
-  console.log(this.grafico);
   this.graficoService.postGrafico(this.grafico);
+  window.location.reload();
 }
 
 

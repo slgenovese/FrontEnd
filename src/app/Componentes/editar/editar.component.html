@@ -9,32 +9,24 @@
 
 
     <ng-container *ngIf = "quien_llama==='redes'" >
-      <div *ngFor="let redes of redes">
+      <div *ngFor="let redes of personasRedes">
         <section class="row">
+          <div class="col-1">
+          </div>
           <div class="col-1">
             <i class={{redes.icono}} [title]=redes.nombre style="font-size:200%"></i>
           </div>
 
-          <div class="col-8">
+          <div class="col-9">
             <label for="texto"> <b> Link: </b></label>
             <br>
-            <div *ngFor="let per_redes of personasRedes" >
-              <ng-container *ngIf = "per_redes.nombre===redes.nombre" >
-                <ng-template #pp>
-                  <textarea class="form-control" name="texto" id="" cols="100" rows="1" value={{per_redes.link}}></textarea>
-                </ng-template>
-                <ng-template #oo>
-                  <textarea class="form-control" name="texto" id="nombre_" cols="10" rows="1" value={{nombres}}></textarea> 
-                </ng-template>
-              </ng-container>
-            </div>
+            <textarea class="form-control" name="texto" id="red-{{redes.id}}" cols="100" rows="1" value={{redes.link}}></textarea>
           </div>
-          <div class="col-3" id="" >
-            <label for="texto"> <b> Estado: </b></label>
-            <br>
-<!--            <app-habilitar [habilitado]= redes.habilitado (valueChange)='recibe_habilitado($event)' ></app-habilitar> -->
-          </div>
-
+          <div class="col-1">
+            <button (click)="borrar_red(redes.id)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
+              <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
+            </button>
+          </div >
         <br>
         <br>
         </section>  

@@ -43,6 +43,7 @@ export class BorrarComponent {
           break;
         default:
     }
+    window.location.reload();
   }
 
 

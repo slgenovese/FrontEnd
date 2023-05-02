@@ -86,6 +86,7 @@ editar_registro(){
     }
   }
   this.graficoService.postGrafico(this.grafico);
+  window.location.reload();
 }
 
   recibe_color(color: string, i: number ){

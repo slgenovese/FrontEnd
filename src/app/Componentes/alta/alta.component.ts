@@ -90,6 +90,7 @@ export class AltaComponent implements OnInit{
         break;  
       default:
     }
+    window.location.reload();
   }  
 /*
   mostrar_servidor_img(){
