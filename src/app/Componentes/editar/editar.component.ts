@@ -16,6 +16,7 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
+
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
