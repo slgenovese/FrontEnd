@@ -17,6 +17,8 @@ import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
 import { Servidor_Imagenes } from 'src/app/modelos/acerca-de';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Usuario } from 'src/app/modelos/usuario';
 
 @Component({
   selector: 'app-editar',
@@ -38,6 +40,7 @@ export class EditarComponent implements OnInit{
   educacion: Educacion = new Educacion;
   titulo_obj: Titulo = new Titulo;
   servidor_img: Servidor_Imagenes = new Servidor_Imagenes; 
+  usuario: Usuario = new Usuario;
 
   titulo!: string;
   tabla!: string;
@@ -64,7 +67,6 @@ export class EditarComponent implements OnInit{
 
   editar_registro(quien_llama: any){
     console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
-    window.location.reload();
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
@@ -77,7 +79,7 @@ export class EditarComponent implements OnInit{
       case "foto":
         this.bannerService.putFoto(this.id, this.imagen);
         break;
-        case "nombre":
+      case "nombre":
         this.acerca_De.id=this.id;
         var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
         console.log("Path: "+ auxiliar.value);
@@ -142,9 +144,30 @@ export class EditarComponent implements OnInit{
           }
         }
         break;
+      case "configurar":
+        var auxiliar=document.getElementById("path_imagen") as HTMLTextAreaElement;
+        this.servidor_img.link_servidor_imagenes=auxiliar.value;
+        console.log(this.servidor_img);
+        this.acercaDeService.putServidorImagenes(this.id, this.servidor_img.link_servidor_imagenes);
+        break;
+      case "contraseña":
+        var pass_1 =  document.getElementById("pass_1") as HTMLInputElement;
+        var pass_2 = document.getElementById("pass_2") as HTMLInputElement;
+        var usu =document.getElementById("usuario") as HTMLInputElement;
+        if(pass_1.value==pass_2.value){
+          this.usuario.id=this.id;
+          this.usuario.password= pass_1.value;
+          this.usuario.usuario=usu.value;
+          this.usuario.persona_id= Number(localStorage.getItem("persona_id"));
+          this.usuarioService.putUsuario(this.id, this.usuario);
+        }
+        
+
+        break;
       default:
         console.log("No llego!!!");
     }
+  //  window.location.reload();
   }
 
   borrar_red(id: number){
@@ -352,7 +375,8 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
   constructor(private modalService: NgbModal, private loginService: LoginService, 
     private redesService: RedesService, private acercaDeService: AcercaDeService, 
     private bannerService: BannerService, private experienciaService: ExperienciaService,
-    private proyectosService: ProyectosService, private educacionService: EducacionService ) {}
+    private proyectosService: ProyectosService, private educacionService: EducacionService,
+    private usuarioService: UsuarioService ) {}
 
   /**
    * Write code on Method

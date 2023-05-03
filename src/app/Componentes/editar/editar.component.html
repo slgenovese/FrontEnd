@@ -38,17 +38,22 @@
       <div class="form-group" >
        
           <label for="correo">Correo / Usuario</label>
-          <input #correo name="correo"
+          <input #correo name="correo" id="usuario"
               class="form-control" type="email"
               placeholder="Correo electrónico">
           <label for="palabraSecreta">Contraseña</label>
-          <input #palabraSecreta_1 name="palabraSecreta"
+          <input #palabraSecreta_1 name="palabraSecreta" id="pass_1"
               class="form-control" type="password"
               placeholder="Contraseña">
         <label for="palabraSecreta">Reingrese la contraseña</label>
-        <input #palabraSecreta_2 name="palabraSecreta"
+        <input #palabraSecreta_2 name="palabraSecreta" id="pass_2"
             class="form-control" type="password"
             placeholder="Contraseña">
+        <br>    
+        <button type="button" class="btn btn-dark" (click)="editar_registro('contraseña')" (click)="modal.close('Save click')">Cambiar Contraseña</button>
+
+        <hr>
+      
         <label for="texto" >URL del servidor de imagenes</label>
         <br>
         <textarea (input) ="cambiar_imagen(path_imagen.value)" name="texto" #path_imagen class="form-control" id="path_imagen" cols="60" rows="1" value={{servidor_img.link_servidor_imagenes}} ></textarea>  

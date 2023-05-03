@@ -32,4 +32,11 @@ export class AcercaDeService {
     this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/personas/datos/"+id, acerca_de)
     .subscribe(data => this.postId = data.id);
   }
+
+  public putServidorImagenes(id: number, servidorImagenes: String){
+    this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/personas/servidorimagenes/"+id, servidorImagenes)
+    .subscribe(data => this.postId = data.id);
+  }
+
+
 }
