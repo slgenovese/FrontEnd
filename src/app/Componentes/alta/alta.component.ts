@@ -164,15 +164,6 @@ pre_open_proyectos(){
 
 
 ngOnInit(): void {
-  
-  this.loginService.getLogin().subscribe(data=>{
-    this.password = data.password;
-    this.mail = data.usuario;
-//    this.servidor_img = data.servidor_img ;
-  });
-
-  //this.redesService.getRedes().subscribe(data=>{this.redes=data});
-
 }
 
   /*------------------------------------------
