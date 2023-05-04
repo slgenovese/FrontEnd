@@ -71,7 +71,6 @@ export class AltaGraficosComponent {
       borderWidth: 0,// Ancho del borde
     };
     if(modo==='primera_vez' || modo==='nuevo_grafico'){
-      console.log("Llego 1");
       this.grafico_Donut(datosIngresos, this.etiqueta, this.titulo_aux, "donut-chart", "grafico")
     }
     this.testigo=false;
@@ -91,8 +90,6 @@ recibe_etiqueta(event: KeyboardEvent, i: number){
   if(event.key=='Enter'){  
     this.i=i;  
     const texto = document.getElementById('textArea'+this.i) as HTMLTextAreaElement;
-    console.log("Indice: "+this.i);
-    console.log("Etiqueta: "+texto.value);
     this.etiqueta[this.i]= texto.value;
     this.graficar('nuevo_grafico');
   }
@@ -132,11 +129,9 @@ borrar(i: number){
     // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
     this.borrar(indice)
     this.graficar('nuevo_grafico');
-    console.log("porcentaje: "+this.porcentaje[i])
 }
 
 grabar_registro(){
-  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;
   this.grafico.habilidadesDatos =[];
@@ -145,7 +140,6 @@ grabar_registro(){
     this.habilidades.etiqueta=this.etiqueta[x];
     this.habilidades.color=this.color_Borde[x];
     this.habilidades.porcentaje=this.porcentaje[x];
-    console.log(this.habilidades);
     if (this.etiqueta[x]!="Sin Definir"){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }

@@ -17,7 +17,6 @@ export class MensajeComponent {
   texto!: string;
 
   borrar_registro(){
-    console.log("Se borro el registro N°:" + this.id + " de la tabla:" + this.tabla);
   }
 
 

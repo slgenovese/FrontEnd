@@ -31,7 +31,6 @@ export class RedesComponent implements OnInit{
     this.redesService.getRedes().subscribe(data=>{this.redes=data
       this.procesar(this.redes);
       this.red_aux.nativeElement.value= this.id_redes;
-      console.log(this.redes);
     });
   }
 

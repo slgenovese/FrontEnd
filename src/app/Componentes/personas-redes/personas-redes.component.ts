@@ -18,7 +18,6 @@ export class PersonasRedesComponent {
 
   ngOnInit(): void {
     this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data
-    console.log(this.personasRedes);
     });
   }
 

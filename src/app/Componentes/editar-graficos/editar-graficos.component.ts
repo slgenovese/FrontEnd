@@ -64,13 +64,11 @@ recibe_porcentaje(porcentaje: string, i: number){
   // Borro el sector 'sin definir' para que lo calcule y lo ponga al final de la lista
   this.borrar(indice)
   this.graficar('nuevo_grafico');
-  console.log("porcentaje: "+this.porcentaje[i])
 }
 
 
 
 editar_registro(){
-  console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
   this.grafico.id=this.id;
   var auxiliar = document.getElementById("titulo") as HTMLTextAreaElement;
   this.grafico.titulo=auxiliar.value;

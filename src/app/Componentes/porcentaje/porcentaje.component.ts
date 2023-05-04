@@ -15,10 +15,8 @@ export class PorcentajeComponent implements AfterViewInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-//    console.log(changes);
     this.porcentaje = changes['porcentaje'].currentValue;
     this.porcentaje_aux.nativeElement.value= this.porcentaje;
-//    document.getElementById('porcentaje')!.setAttribute('value', this.porcentaje.toString() );
     }
     
 

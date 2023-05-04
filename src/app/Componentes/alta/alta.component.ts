@@ -85,7 +85,6 @@ export class AltaComponent implements OnInit{
         this.titulo_obj.id=Number(this.id_titulo);
         this.titulo_obj.titulo=this.titulo_aux;
         this.educacion.titulo=this.titulo_obj;
-        console.log(this.educacion);
         this.educacionService.postEducacion(this.educacion);
         break;  
       default:
@@ -98,46 +97,31 @@ export class AltaComponent implements OnInit{
   }
 */
   cambiar_imagen(nueva_imagen: string){
-    console.log(nueva_imagen);
     this.mdl_alta.elementRef.nativeElement.value=nueva_imagen;
     this.imagen= nueva_imagen;
   }
 
   recibe_pais(pais: string){
-    console.log(pais);
     this.pais=pais;
   }
 
   recibe_provincia(provincia: string){
-    console.log(provincia);
     this.provincia=provincia;
   }
 
   recibe_desde(anio_desde: string){
-    console.log("desde: "+anio_desde);
     this.desde=anio_desde;
   }
 
   recibe_hasta(anio_hasta: string){
-    console.log("hasta: "+anio_hasta);
     this.hasta=anio_hasta;
   }
-
-/*  recibe_institucion(institucion: string){
-    var parseado = institucion.split(",",3);
-    this.link_icono=parseado[0];
-    this.cambiar_imagen(parseado[0]);
-    this.id_institucion=parseado[1];
-    this.institucion=parseado[3];
-    console.log(this.institucion);
-  }*/  
 
   recibe_institucion(institucion: Institucion){
     this.link_icono= institucion.link_icono;
     this.cambiar_imagen(this.link_icono);
     this.id_institucion=String(institucion.id);
     this.institucion=institucion.institucion;
-    console.log(this.institucion);
   }  
 
   recibe_titulo(titulo: Titulo){

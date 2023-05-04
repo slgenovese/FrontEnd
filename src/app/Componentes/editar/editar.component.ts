@@ -66,7 +66,6 @@ export class EditarComponent implements OnInit{
   link_icono!: string;
 
   editar_registro(quien_llama: any){
-    console.log("Se actualizo el registro N°:" + this.id + " de la tabla:" + this.tabla);
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
@@ -82,7 +81,6 @@ export class EditarComponent implements OnInit{
       case "nombre":
         this.acerca_De.id=this.id;
         var auxiliar = document.getElementById("path_imagen") as HTMLTextAreaElement;
-        console.log("Path: "+ auxiliar.value);
         this.acerca_De.link_icono=auxiliar.value;
         var auxiliar = document.getElementById("nombre_") as HTMLTextAreaElement;
         this.acerca_De.nombres=auxiliar.value;
@@ -138,7 +136,6 @@ export class EditarComponent implements OnInit{
         for(let per_red of this.personasRedes){
           var auxiliar=document.getElementById("red-"+per_red.id) as HTMLTextAreaElement;
           if(auxiliar.value!=" "){
-            console.log(per_red);
             per_red.link=auxiliar.value;
             this.redesService.postPersonasRedes(per_red);
           }
@@ -147,7 +144,6 @@ export class EditarComponent implements OnInit{
       case "configurar":
         var auxiliar=document.getElementById("path_imagen") as HTMLTextAreaElement;
         this.servidor_img.link_servidor_imagenes=auxiliar.value;
-        console.log(this.servidor_img);
         this.acercaDeService.putServidorImagenes(this.id, this.servidor_img.link_servidor_imagenes);
         break;
       case "contraseña":
@@ -165,13 +161,11 @@ export class EditarComponent implements OnInit{
 
         break;
       default:
-        console.log("No llego!!!");
     }
-  //  window.location.reload();
+    window.location.reload();
   }
 
   borrar_red(id: number){
-    console.log("id: "+id);
     this.redesService.deletePersonasRedes(id);
     var auxiliar=document.getElementById("red-"+id) as HTMLTextAreaElement;
     auxiliar.value=" ";
@@ -186,27 +180,19 @@ cambiar_imagen(nueva_imagen: string){
   this.imagen= nueva_imagen;
 }
 
-  recibe_habilitado(habilitado: string){
-    console.log(habilitado);
-  }
-
   recibe_pais(pais: string){
-    console.log(pais);
     this.pais=pais;
   }
 
   recibe_provincia(provincia: string){
-    console.log(provincia);
     this.provincia=provincia;
   }
 
   recibe_desde(anio_desde: string){
-    console.log("desde: "+anio_desde);
     this.desde=anio_desde;
   }
 
   recibe_hasta(anio_hasta: string){
-    console.log("hasta: "+anio_hasta);
     this.hasta=anio_hasta;
   }
 
@@ -215,7 +201,6 @@ cambiar_imagen(nueva_imagen: string){
     this.cambiar_imagen(this.link_icono);
     this.id_institucion=String(institucion.id);
     this.institucion=institucion.institucion;
-    console.log(this.institucion);
   }  
 
   recibe_titulo(titulo: Titulo){
@@ -295,7 +280,6 @@ cambiar_imagen(nueva_imagen: string){
 }
 
 pre_open_educacion( tabla: string, id: number, imagen: string, titulo: string, id_titulo: number, institucion: string, id_institucion: number, desde: string, hasta: string){
-  console.log("llega a Educacion");
   this.tabla=tabla;
   this.id=id; 
   this.imagen=imagen;
@@ -334,12 +318,6 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
 
   ngOnInit(): void {
   
-/*    this.loginService.getLogin().subscribe(data=>{
-      this.password = data.password;
-      this.mail = data.usuario;
-//      this.servidor_img = data.servidor_img ;
-    });
-*/
     this.acercaDeService.getServidorImagenes().subscribe(data=>{this.servidor_img=data});
     this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
     this.redesService.getRedes().subscribe(data=>{this.redes=data

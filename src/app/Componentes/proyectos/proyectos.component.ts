@@ -21,11 +21,7 @@ export class ProyectosComponent implements OnInit{
   @Input()  alta!: AltaComponent;
 
   ngOnInit(): void {
-    this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data
-      console.log(data);
-      console.log(this.proyectos);
-
-    });
+    this.proyectosService.getProyectos().subscribe(data=>{this.proyectos=data});
   }
 
 }
