@@ -144,10 +144,18 @@ grabar_registro(){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }
   }
-  this.graficoService.postGrafico(this.grafico);
-  window.location.reload();
+  if(this.verificar_registro(this.grafico)=="OK"){
+    this.graficoService.postGrafico(this.grafico);
+  }
+//  window.location.reload();
 }
 
+verificar_registro(registro: any): string{
+  if(registro.titulo=="" || registro.habilidadesDatos.length==0){
+    return "NOP";
+  }
+  return "OK";
+}
 
 closeResult: string = '';
 
@@ -204,6 +212,7 @@ closeResult: string = '';
       datosIngresos.backgroundColor.push('black'); 
       datosIngresos.borderColor.push('black'); 
       etiquetas.push('Sin Definir'); 
+      
     }
   }
 

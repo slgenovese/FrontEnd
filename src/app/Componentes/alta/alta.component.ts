@@ -60,7 +60,10 @@ export class AltaComponent implements OnInit{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.experiencia.institucion=this.institucion_aux;
-        this.experienciaService.postExperiencia(this.experiencia);
+        console.log(this.experiencia);
+        if (this.verificar_registro(quien_llama, this.experiencia)=="OK"){
+          this.experienciaService.postExperiencia(this.experiencia);
+        }
         break;
       case "proyectos":
         this.proyectos.id=this.id;
@@ -72,7 +75,9 @@ export class AltaComponent implements OnInit{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.proyectos.institucion=this.institucion_aux;
-        this.proyectosService.postProyectos(this.proyectos);
+        if (this.verificar_registro(quien_llama, this.proyectos)=="OK"){
+          this.proyectosService.postProyectos(this.proyectos);
+        }
         break;
       case "educacion":
         this.educacion.id=this.id;
@@ -85,13 +90,43 @@ export class AltaComponent implements OnInit{
         this.titulo_obj.id=Number(this.id_titulo);
         this.titulo_obj.titulo=this.titulo_aux;
         this.educacion.titulo=this.titulo_obj;
-        this.educacionService.postEducacion(this.educacion);
+        if (this.verificar_registro(quien_llama, this.educacion)=="OK"){
+          this.educacionService.postEducacion(this.educacion);
+        }
         break;  
       default:
     }
     window.location.reload();
   }  
-/*
+
+  verificar_registro (quien_llama: string, registro: any): string{
+    switch (quien_llama){
+      case "experiencia":
+        if (registro.desde==undefined || registro.hasta == undefined || registro.pais == undefined ||
+          registro.provincia == undefined || registro.texto=="" || registro.institucion.institucion == undefined ||
+          (registro.desde>registro.hasta)){
+            return "NOP";
+          }
+      break;  
+      case "proyectos":
+        if (registro.desde==undefined || registro.hasta == undefined || 
+          registro.texto=="" || registro.institucion.institucion == undefined ||
+          (registro.desde>registro.hasta)){
+            return "NOP";
+          }
+      break;  
+    case "educacion":
+      if (registro.desde==undefined || registro.hasta == undefined || 
+        registro.institucion.institucion == undefined ||
+        registro.titulo.titulo == undefined || (registro.desde>registro.hasta)){
+          return "NOP";
+        }
+      break;  
+    default:
+    }
+    return "OK";
+  }
+  /*
   mostrar_servidor_img(){
     window.open( this.servidor_img);
   }

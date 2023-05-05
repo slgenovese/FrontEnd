@@ -69,14 +69,19 @@ export class EditarComponent implements OnInit{
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
-        this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
-        
+        if (this.verificar_registro(quien_llama, acerca_de.value)=="OK"){
+          this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
+        }
         break;
       case "banner":
-        this.bannerService.putBanner(this.id, this.imagen);
+        if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
+          this.bannerService.putBanner(this.id, this.imagen);
+        }
         break;
       case "foto":
-        this.bannerService.putFoto(this.id, this.imagen);
+        if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
+          this.bannerService.putFoto(this.id, this.imagen);
+        }
         break;
       case "nombre":
         this.acerca_De.id=this.id;
@@ -91,7 +96,9 @@ export class EditarComponent implements OnInit{
         this.acerca_De.pais=this.pais;
         this.acerca_De.provincia=this.provincia;
         this.acerca_De.acerca_de= " ";
-        this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+        if (this.verificar_registro(quien_llama, this.acerca_De)=="OK"){
+          this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+        }
         break;
       case "experiencia":
         this.experiencia.id=this.id;
@@ -105,7 +112,9 @@ export class EditarComponent implements OnInit{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.experiencia.institucion=this.institucion_aux;
-        this.experienciaService.putExperiencia(this.id, this.experiencia);
+        if (this.verificar_registro(quien_llama, this.experiencia)=="OK"){
+          this.experienciaService.putExperiencia(this.id, this.experiencia);
+        }
         break;
       case "proyectos":
         this.proyectos.id=this.id;
@@ -117,7 +126,9 @@ export class EditarComponent implements OnInit{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.proyectos.institucion=this.institucion_aux;
-        this.proyectosService.putProyectos(this.id, this.proyectos);
+        if (this.verificar_registro(quien_llama, this.proyectos)=="OK"){
+          this.proyectosService.putProyectos(this.id, this.proyectos);
+        }
         break;
       case "educacion":
         this.educacion.id=this.id;
@@ -130,7 +141,9 @@ export class EditarComponent implements OnInit{
         this.titulo_obj.id=Number(this.id_titulo);
         this.titulo_obj.titulo=this.titulo_aux;
         this.educacion.titulo=this.titulo_obj;
-        this.educacionService.putEducacion(this.id, this.educacion);
+        if (this.verificar_registro(quien_llama, this.educacion)=="OK"){
+          this.educacionService.putEducacion(this.id, this.educacion);
+        }    
         break;
       case "redes":
         for(let per_red of this.personasRedes){
@@ -142,9 +155,11 @@ export class EditarComponent implements OnInit{
         }
         break;
       case "configurar":
-        var auxiliar=document.getElementById("path_imagen") as HTMLTextAreaElement;
+          var auxiliar=document.getElementById("path_imagen") as HTMLTextAreaElement;
         this.servidor_img.link_servidor_imagenes=auxiliar.value;
-        this.acercaDeService.putServidorImagenes(this.id, this.servidor_img.link_servidor_imagenes);
+        if (this.verificar_registro(quien_llama, this.servidor_img.link_servidor_imagenes)=="OK"){
+          this.acercaDeService.putServidorImagenes(this.id, this.servidor_img.link_servidor_imagenes);
+        }  
         break;
       case "contraseña":
         var pass_1 =  document.getElementById("pass_1") as HTMLInputElement;
@@ -155,14 +170,73 @@ export class EditarComponent implements OnInit{
           this.usuario.password= pass_1.value;
           this.usuario.usuario=usu.value;
           this.usuario.persona_id= Number(localStorage.getItem("persona_id"));
-          this.usuarioService.putUsuario(this.id, this.usuario);
+          if (this.verificar_registro(quien_llama, this.usuario)=="OK"){
+            this.usuarioService.putUsuario(this.id, this.usuario);
+          }
         }
-        
-
         break;
       default:
     }
-    window.location.reload();
+//    window.location.reload();
+  }
+
+  verificar_registro (quien_llama: string, registro: any): string{
+    switch (quien_llama){
+      case "acerca_de":
+        if (registro==""){
+          return "NOP";
+        } 
+        break;
+      case "banner":
+        if (registro==""){
+          return "NOP";
+        } 
+        break;
+      case "foto":
+        if (registro==""){
+          return "NOP";
+        } 
+        break;
+      case "nombre":
+        if(registro.link_icono == "" || registro.nombres == "" || registro.apellidos == "" ||
+        registro.cargo_actual == "" || registro.pais == "" || registro.provincia == ""){
+          return "NOP";
+        }
+        break;
+      case "experiencia":
+        if (registro.desde==undefined || registro.hasta == undefined || registro.pais == undefined ||
+          registro.provincia == undefined || registro.texto=="" || registro.institucion.institucion == undefined ||
+          (registro.desde>registro.hasta)){
+            return "NOP";
+          }
+      break;  
+      case "proyectos":
+        if (registro.desde==undefined || registro.hasta == undefined || 
+          registro.texto=="" || registro.institucion.institucion == undefined ||
+          (registro.desde>registro.hasta)){
+            return "NOP";
+          }
+      break;  
+    case "educacion":
+      if (registro.desde==undefined || registro.hasta == undefined || 
+        registro.institucion.institucion == undefined ||
+        registro.titulo.titulo == undefined || (registro.desde>registro.hasta)){
+          return "NOP";
+        }
+      break;  
+    case "configurar":
+      if (registro==""){
+        return "NOP";
+      } 
+      break;
+    case "contraseña":
+      if (registro.usuario == "" || registro.password == "" || registro.password.length<8){
+        return "NOP";
+      } 
+      break;
+    default:
+    }
+    return "OK";
   }
 
   borrar_red(id: number){

@@ -7,15 +7,6 @@
   </div>
   <div class="modal-body">
 
-    <!--     <ng-container *ngIf = "quien_llama==='redes'" >
-      <div class="form-group" >
-        <label for="texto"> <b> Redes: </b></label>
-        <app-redes [id_redes]="id_redes" (valueChange)='recibe_red($event)'></app-redes>
-        <br>
-      </div>
-    </ng-container>-->
-
-    
     <!-- Muestra y permite cambiar las imagenes -->
     <ng-container *ngIf = "quien_llama==='experiencia' || quien_llama==='educacion'  || quien_llama==='proyectos'" >
       <div class="form-group" >
@@ -36,8 +27,8 @@
 
     <ng-container *ngIf = "quien_llama==='proyectos'" >
       <div class="form-group" >
-        <label for="texto"> <b> Titulo: </b></label>
-        <textarea class="form-control" name="texto" id="titulo" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <label for="texto"> <b> Proyecto: </b></label>
+        <textarea class="form-control" name="texto" id="titulo" cols="100" rows="2" value={{titulo_aux}} requerid ></textarea>
         <br>
       </div>
     </ng-container>
@@ -45,7 +36,7 @@
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="texto"> <b> Tareas realizadas: </b></label>
-        <textarea class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}} required></textarea>
         <br>
       </div>
     </ng-container>

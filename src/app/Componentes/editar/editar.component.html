@@ -41,7 +41,7 @@
           <input #correo name="correo" id="usuario"
               class="form-control" type="email"
               placeholder="Correo electrónico">
-          <label for="palabraSecreta">Contraseña</label>
+          <label for="palabraSecreta">Contraseña (No menor a 8 caracteres)</label>
           <input #palabraSecreta_1 name="palabraSecreta" id="pass_1"
               class="form-control" type="password"
               placeholder="Contraseña">
@@ -123,7 +123,7 @@
     <ng-container *ngIf = "quien_llama==='proyectos'" >
       <div class="form-group" >
         <label for="texto"> <b> Proyecto: </b></label>
-        <textarea class="form-control" name="texto" id="proyecto" cols="100" rows="1" value={{titulo_aux}}></textarea>
+        <textarea class="form-control" name="texto" id="proyecto" cols="100" rows="2" value={{titulo_aux}}></textarea>
         <br>
       </div>
     </ng-container>
