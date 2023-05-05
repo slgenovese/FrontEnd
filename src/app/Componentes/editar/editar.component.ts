@@ -177,7 +177,7 @@ export class EditarComponent implements OnInit{
         break;
       default:
     }
-//    window.location.reload();
+    window.location.reload();
   }
 
   verificar_registro (quien_llama: string, registro: any): string{

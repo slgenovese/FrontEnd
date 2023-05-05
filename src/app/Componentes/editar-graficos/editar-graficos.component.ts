@@ -83,8 +83,18 @@ editar_registro(){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }
   }
-  this.graficoService.postGrafico(this.grafico);
+  if(this.verificar_registro(this.grafico)=="OK"){
+    this.graficoService.postGrafico(this.grafico);
+  }
   window.location.reload();
+}
+
+verificar_registro(registro: any): string{
+  if(registro.titulo=="" || registro.habilidadesDatos.length==0){
+    this.graficoService.deleteGrafico(this.id);
+    return "NOP";
+  }
+  return "OK";
 }
 
   recibe_color(color: string, i: number ){

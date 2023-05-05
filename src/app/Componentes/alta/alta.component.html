@@ -35,8 +35,8 @@
 
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
-        <label for="texto"> <b> Tareas realizadas: </b></label>
-        <textarea class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}} required></textarea>
+        <label for="text" class="form-label"> <b> Tareas realizadas: </b></label>
+        <textarea type = "text" class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}} Validators.required></textarea>
         <br>
       </div>
     </ng-container>
@@ -107,6 +107,6 @@
       <span aria-hidden="true">Cancelar</span>
     </button>
     <button type="button" class="btn btn-dark" (click)="alta_registro(quien_llama)" (click)="modal.close('Save click')">Grabar</button>
-  </div>
+</div>
 </ng-template>
 

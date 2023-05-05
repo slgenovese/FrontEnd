@@ -147,7 +147,7 @@ grabar_registro(){
   if(this.verificar_registro(this.grafico)=="OK"){
     this.graficoService.postGrafico(this.grafico);
   }
-//  window.location.reload();
+  window.location.reload();
 }
 
 verificar_registro(registro: any): string{
