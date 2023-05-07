@@ -1,5 +1,5 @@
 <ng-template #mdl_editar let-modal >
-    <div class="modal-header">
+    <div class="modal-header" >
     <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
@@ -211,7 +211,14 @@
     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">Cancelar</span>
     </button>
-    <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" (click)="modal.close('Save click')">Modificar</button>
+<!--    <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" (click)="modal.close('Save click')">Modificar</button>-->
+
+    <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" >Modificar    
+      <div *ngIf ="editar_registro(quien_llama)" >  
+        Hola
+        {{modal.close('Save click')}}
+      </div>
+    </button>
   </div>
 </ng-template>
 

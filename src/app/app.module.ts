@@ -11,7 +11,7 @@ import { PiePaginaComponent } from './Componentes/pie-pagina/pie-pagina.componen
 import { RedesComponent } from './Componentes/redes/redes.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { BannerComponent } from './Componentes/banner/banner.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlert, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BorrarComponent } from './Componentes/borrar/borrar.component';
 import { EditarComponent } from './Componentes/editar/editar.component';
 import { PaisesComponent } from './Componentes/paises/paises.component';
@@ -31,7 +31,7 @@ import { TituloComponent } from './Componentes/titulo/titulo.component';
 import { AltaComponent } from './Componentes/alta/alta.component';
 import { AltaGraficosComponent } from './Componentes/alta-graficos/alta-graficos.component';
 import { PersonasRedesComponent } from './Componentes/personas-redes/personas-redes.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +67,9 @@ import { PersonasRedesComponent } from './Componentes/personas-redes/personas-re
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   //providers: [AcercaDeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

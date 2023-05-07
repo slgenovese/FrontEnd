@@ -10,6 +10,7 @@ import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
 import { Redes } from 'src/app/modelos/redes';
+import { FormBuilder, FormControl, FormGroup, Validators, FormsModule  } from '@angular/forms';
 @Component({
   selector: 'app-alta',
   templateUrl: './alta.component.html',
@@ -17,6 +18,8 @@ import { Redes } from 'src/app/modelos/redes';
 })
 export class AltaComponent implements OnInit{
 
+  registerForm!: FormGroup;
+  submitted = false;
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
   proyectos: Proyectos = new Proyectos;
@@ -199,7 +202,22 @@ pre_open_proyectos(){
 
 
 ngOnInit(): void {
+  this.registerForm = new FormGroup({
+    tareas: new FormControl("Ayuda!!!", Validators.required)
+  })
 }
+
+    onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        // display form values on success
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    }
 
   /*------------------------------------------
   --------------------------------------------
@@ -208,7 +226,7 @@ ngOnInit(): void {
   --------------------------------------------*/
   constructor(private modalService: NgbModal, private loginService: LoginService,
     private experienciaService: ExperienciaService, private proyectosService: ProyectosService,
-    private educacionService: EducacionService) {}
+    private educacionService: EducacionService, private formBuilder: FormBuilder) {}
 
   /**
    * Write code on Method

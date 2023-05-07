@@ -1,4 +1,6 @@
+
 <ng-template #mdl_alta let-modal >
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="modal-header">
     <h4  class="modal-title" id="modal-basic-title" style="text-transform: uppercase"><b> {{titulo}}</b></h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -36,7 +38,7 @@
     <ng-container *ngIf = "quien_llama==='experiencia'" >
       <div class="form-group" >
         <label for="text" class="form-label"> <b> Tareas realizadas: </b></label>
-        <textarea type = "text" class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}} Validators.required></textarea>
+        <textarea formControlName="tareas" type = "text" class="form-control" name="texto" id="tareas" cols="100" rows="4" value={{texto_aux}} Validators.required></textarea>
         <br>
       </div>
     </ng-container>
@@ -106,7 +108,8 @@
     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">Cancelar</span>
     </button>
-    <button type="button" class="btn btn-dark" (click)="alta_registro(quien_llama)" (click)="modal.close('Save click')">Grabar</button>
+<!--    <button type="button" class="btn btn-dark" (click)="alta_registro(quien_llama)" (click)="modal.close('Save click')">Grabar</button>-->
+    <button type="submit" class="btn btn-dark" >Grabar</button>
 </div>
+</form>
 </ng-template>
-

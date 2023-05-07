@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit, TemplateRef} from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Login } from '../../modelos/Login';
+//import { SweetAlertCustomClass } from './../../../../node_modules/sweetalert2/sweetalert2.d';
+import { Component, ViewChild, OnInit, TemplateRef, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../../servicios/login.service'; 
 import { PersonasRedes } from '../../modelos/redes';
 import { Redes } from '../../modelos/redes';
@@ -19,16 +19,30 @@ import { Titulo } from 'src/app/modelos/titulo';
 import { Servidor_Imagenes } from 'src/app/modelos/acerca-de';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Usuario } from 'src/app/modelos/usuario';
-
+import  Swal from "sweetalert2";
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.css']
 })
 
-export class EditarComponent implements OnInit{
+export class EditarComponent implements OnInit, AfterContentChecked{
 
   closeResult: string = '';
+  modal!: NgbModalRef;
+
+  /*
+  open(content: any) {
+    this.modalService.open(content, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then(result => {
+            this.closeResult = `Closed with: ${result}`;
+    }, reason => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  */
+  open(content: any) {
+  this.modal = this.modalService.open(content, {backdrop: 'static',size: 'lg', keyboard: false, centered: true});
+  }
 
   redes: Redes[]=[]; 
   personasRedes: PersonasRedes[]=[];
@@ -42,6 +56,7 @@ export class EditarComponent implements OnInit{
   servidor_img: Servidor_Imagenes = new Servidor_Imagenes; 
   usuario: Usuario = new Usuario;
 
+  respuesta: boolean=false;
   titulo!: string;
   tabla!: string;
   id!: number;
@@ -65,12 +80,15 @@ export class EditarComponent implements OnInit{
   habilitado!: string;
   link_icono!: string;
 
-  editar_registro(quien_llama: any){
+  editar_registro(quien_llama: any): boolean{
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
         if (this.verificar_registro(quien_llama, acerca_de.value)=="OK"){
           this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
+          this.respuesta=true;
+        }else{
+          this.respuesta=false;
         }
         break;
       case "banner":
@@ -177,13 +195,17 @@ export class EditarComponent implements OnInit{
         break;
       default:
     }
-    window.location.reload();
+//    this.modal.close;
+//    window.location.reload();
+//    console.log("Llego");
+    return this.respuesta;
   }
 
   verificar_registro (quien_llama: string, registro: any): string{
     switch (quien_llama){
       case "acerca_de":
         if (registro==""){
+//          Swal.fire("Faltan Datos");
           return "NOP";
         } 
         break;
@@ -399,6 +421,10 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
     });
 
   }
+
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
   procesarRedes(){
   var encontro = "No";
     for(let red of this.redes){
@@ -428,22 +454,16 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
     private redesService: RedesService, private acercaDeService: AcercaDeService, 
     private bannerService: BannerService, private experienciaService: ExperienciaService,
     private proyectosService: ProyectosService, private educacionService: EducacionService,
-    private usuarioService: UsuarioService ) {}
+    private usuarioService: UsuarioService, private changeDetector: ChangeDetectorRef) {}
 
   /**
    * Write code on Method
    *
    * @return response()
    */
-  open(content:any) {
-    this.modalService.open(content, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-            this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
 
-  /**
+  
+    /**
    * Write code on Method
    *
    * @return response()
