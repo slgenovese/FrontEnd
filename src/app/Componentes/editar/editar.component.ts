@@ -80,21 +80,28 @@ export class EditarComponent implements OnInit, AfterContentChecked{
   habilitado!: string;
   link_icono!: string;
 
-  editar_registro(quien_llama: any): boolean{
+  editar_registro(quien_llama: any){
+    this.respuesta=false;
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
         if (this.verificar_registro(quien_llama, acerca_de.value)=="OK"){
           this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
           this.respuesta=true;
+          console.log("verdadero: acerca_de");
+
         }else{
+          Swal.fire("Faltan Datos");
           this.respuesta=false;
+          console.log("falso: acerca_de");
         }
         break;
       case "banner":
         if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
           this.bannerService.putBanner(this.id, this.imagen);
         }
+        //this.respuesta=true;
+        console.log("Banner");
         break;
       case "foto":
         if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
@@ -196,16 +203,14 @@ export class EditarComponent implements OnInit, AfterContentChecked{
       default:
     }
 //    this.modal.close;
-//    window.location.reload();
+    if (this.respuesta) {window.location.reload()};
 //    console.log("Llego");
-    return this.respuesta;
   }
 
   verificar_registro (quien_llama: string, registro: any): string{
     switch (quien_llama){
       case "acerca_de":
         if (registro==""){
-//          Swal.fire("Faltan Datos");
           return "NOP";
         } 
         break;

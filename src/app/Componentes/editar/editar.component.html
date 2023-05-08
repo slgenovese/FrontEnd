@@ -214,7 +214,7 @@
 <!--    <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" (click)="modal.close('Save click')">Modificar</button>-->
 
     <button type="button" class="btn btn-dark" (click)="editar_registro(quien_llama)" >Modificar    
-      <div *ngIf ="editar_registro(quien_llama)" >  
+      <div *ngIf ="this.respuesta" >  
         Hola
         {{modal.close('Save click')}}
       </div>
