@@ -29,7 +29,6 @@ import  Swal from "sweetalert2";
 export class EditarComponent implements OnInit, AfterContentChecked{
 
   closeResult: string = '';
-  modal!: NgbModalRef;
 
   /*
   open(content: any) {
@@ -202,9 +201,7 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         break;
       default:
     }
-//    this.modal.close;
     if (this.respuesta) {window.location.reload()};
-//    console.log("Llego");
   }
 
   verificar_registro (quien_llama: string, registro: any): string{
