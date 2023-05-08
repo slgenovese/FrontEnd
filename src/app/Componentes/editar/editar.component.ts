@@ -40,7 +40,7 @@ export class EditarComponent implements OnInit, AfterContentChecked{
   }
   */
   open(content: any) {
-  this.modal = this.modalService.open(content, {backdrop: 'static',size: 'lg', keyboard: false, centered: true});
+    this.modalService.open(content, {backdrop: 'static',size: 'lg', keyboard: false, centered: true});
   }
 
   redes: Redes[]=[]; 
