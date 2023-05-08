@@ -20,6 +20,7 @@ import { Servidor_Imagenes } from 'src/app/modelos/acerca-de';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Usuario } from 'src/app/modelos/usuario';
 import  Swal from "sweetalert2";
+
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
@@ -80,32 +81,25 @@ export class EditarComponent implements OnInit, AfterContentChecked{
   link_icono!: string;
 
   editar_registro(quien_llama: any){
-    this.respuesta=false;
     switch (quien_llama){
       case "acerca_de":
         var acerca_de = document.getElementById("acerca") as HTMLTextAreaElement;
-        if (this.verificar_registro(quien_llama, acerca_de.value)=="OK"){
+        if (this.verificar_registro(quien_llama, acerca_de.value)){
           this.acercaDeService.putAcercaDe(this.id, acerca_de.value);
           this.respuesta=true;
-          console.log("verdadero: acerca_de");
-
-        }else{
-          Swal.fire("Faltan Datos");
-          this.respuesta=false;
-          console.log("falso: acerca_de");
         }
         break;
       case "banner":
-        if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
+        if (this.verificar_registro(quien_llama, this.imagen)){
           this.bannerService.putBanner(this.id, this.imagen);
+          this.respuesta=true;
         }
-        //this.respuesta=true;
-        console.log("Banner");
         break;
       case "foto":
-        if (this.verificar_registro(quien_llama, this.imagen)=="OK"){
+        if (this.verificar_registro(quien_llama, this.imagen)){
           this.bannerService.putFoto(this.id, this.imagen);
-        }
+          this.respuesta=true;
+        }  
         break;
       case "nombre":
         this.acerca_De.id=this.id;
@@ -120,8 +114,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         this.acerca_De.pais=this.pais;
         this.acerca_De.provincia=this.provincia;
         this.acerca_De.acerca_de= " ";
-        if (this.verificar_registro(quien_llama, this.acerca_De)=="OK"){
+        if (this.verificar_registro(quien_llama, this.acerca_De)){
           this.acercaDeService.putAcercaDeFull(this.id, this.acerca_De);
+          this.respuesta=true;
         }
         break;
       case "experiencia":
@@ -136,8 +131,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.experiencia.institucion=this.institucion_aux;
-        if (this.verificar_registro(quien_llama, this.experiencia)=="OK"){
+        if (this.verificar_registro(quien_llama, this.experiencia)){
           this.experienciaService.putExperiencia(this.id, this.experiencia);
+          this.respuesta=true;
         }
         break;
       case "proyectos":
@@ -150,8 +146,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.proyectos.institucion=this.institucion_aux;
-        if (this.verificar_registro(quien_llama, this.proyectos)=="OK"){
+        if (this.verificar_registro(quien_llama, this.proyectos)){
           this.proyectosService.putProyectos(this.id, this.proyectos);
+          this.respuesta=true;
         }
         break;
       case "educacion":
@@ -165,8 +162,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         this.titulo_obj.id=Number(this.id_titulo);
         this.titulo_obj.titulo=this.titulo_aux;
         this.educacion.titulo=this.titulo_obj;
-        if (this.verificar_registro(quien_llama, this.educacion)=="OK"){
+        if (this.verificar_registro(quien_llama, this.educacion)){
           this.educacionService.putEducacion(this.id, this.educacion);
+          this.respuesta=true;
         }    
         break;
       case "redes":
@@ -181,8 +179,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
       case "configurar":
           var auxiliar=document.getElementById("path_imagen") as HTMLTextAreaElement;
         this.servidor_img.link_servidor_imagenes=auxiliar.value;
-        if (this.verificar_registro(quien_llama, this.servidor_img.link_servidor_imagenes)=="OK"){
+        if (this.verificar_registro(quien_llama, this.servidor_img.link_servidor_imagenes)){
           this.acercaDeService.putServidorImagenes(this.id, this.servidor_img.link_servidor_imagenes);
+          this.respuesta=true;
         }  
         break;
       case "contraseña":
@@ -194,8 +193,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
           this.usuario.password= pass_1.value;
           this.usuario.usuario=usu.value;
           this.usuario.persona_id= Number(localStorage.getItem("persona_id"));
-          if (this.verificar_registro(quien_llama, this.usuario)=="OK"){
+          if (this.verificar_registro(quien_llama, this.usuario)){
             this.usuarioService.putUsuario(this.id, this.usuario);
+            this.respuesta=true;
           }
         }
         break;
@@ -204,64 +204,163 @@ export class EditarComponent implements OnInit, AfterContentChecked{
     if (this.respuesta) {window.location.reload()};
   }
 
-  verificar_registro (quien_llama: string, registro: any): string{
+  verificar_registro (quien_llama: string, registro: any): boolean{
+    this.respuesta=false;
     switch (quien_llama){
       case "acerca_de":
-        if (registro==""){
-          return "NOP";
-        } 
+        if (registro==""){this.mensaje('El campo ACERCA DE.. no puede estar vacio'); 
+        this.respuesta=false;
+        return this.respuesta;
+      } 
         break;
       case "banner":
-        if (registro==""){
-          return "NOP";
+        if (registro==""){this.mensaje('El LINK de la imagen no puede estar vacio!'); 
+          this.respuesta=false;
+          return this.respuesta;
         } 
         break;
       case "foto":
-        if (registro==""){
-          return "NOP";
+        if (registro==""){this.mensaje('El LINK de la imagen no puede estar vacio!'); 
+          this.respuesta=false;
+          return this.respuesta;
         } 
         break;
       case "nombre":
-        if(registro.link_icono == "" || registro.nombres == "" || registro.apellidos == "" ||
-        registro.cargo_actual == "" || registro.pais == "" || registro.provincia == ""){
-          return "NOP";
+        if (registro.link_icono==""){this.mensaje('El LINK de la imagen no puede estar vacio!'); 
+          this.respuesta=false;
+          return this.respuesta;
+        } 
+        if (registro.nombres==""){this.mensaje('El campo NOMBRES no puede estar vacio!'); 
+          this.respuesta=false;
+          return this.respuesta;
+        } 
+        if (registro.apellidos==""){this.mensaje('El campo APELLIDOS no puede estar vacio!'); 
+          this.respuesta=false;
+          return this.respuesta;
         }
+        if (registro.cargo_actual==""){this.mensaje('El campo CARGO ACTUAL no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.pais==undefined){this.mensaje('El campo PAIS no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.provincia==undefined){this.mensaje('El campo PROVINCIA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
         break;
       case "experiencia":
-        if (registro.desde==undefined || registro.hasta == undefined || registro.pais == undefined ||
-          registro.provincia == undefined || registro.texto=="" || registro.institucion.institucion == undefined ||
-          (registro.desde>registro.hasta)){
-            return "NOP";
-          }
-      break;  
+        if (registro.texto==""){this.mensaje('El campo TAREAS REALIZADAS no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.pais==undefined){this.mensaje('El campo PAIS no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.provincia==undefined){this.mensaje('El campo PROVINCIA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        break;  
       case "proyectos":
-        if (registro.desde==undefined || registro.hasta == undefined || 
-          registro.texto=="" || registro.institucion.institucion == undefined ||
-          (registro.desde>registro.hasta)){
-            return "NOP";
-          }
+        if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.texto==""){this.mensaje('El campo PROYECTO no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
       break;  
     case "educacion":
-      if (registro.desde==undefined || registro.hasta == undefined || 
-        registro.institucion.institucion == undefined ||
-        registro.titulo.titulo == undefined || (registro.desde>registro.hasta)){
-          return "NOP";
-        }
+      if (registro.titulo.titulo==undefined){this.mensaje('El campo TITULO no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
       break;  
-    case "configurar":
-      if (registro==""){
-        return "NOP";
+      case "configurar":
+        if (registro==""){this.mensaje('El LINK del SERVIDOR DE IMAGENES no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
       } 
       break;
     case "contraseña":
-      if (registro.usuario == "" || registro.password == "" || registro.password.length<8){
-        return "NOP";
+      if (registro.usuario==""){this.mensaje('El campo USUARIO no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.password==""){this.mensaje('El campo PASSWORD no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.password<8){this.mensaje('El PASSWORD no puede tener menos de 8 caracteres!'); 
+      this.respuesta=false;
+      return this.respuesta;
       } 
       break;
     default:
     }
-    return "OK";
+    this.respuesta=true;
+    return this.respuesta;
   }
+
+  mensaje(texto: string){
+    Swal.fire({
+      icon: 'warning',
+      title: 'Algo salio mal!!!',
+      text: texto,
+      confirmButtonColor: "black",
+      iconColor: "yellow",
+      background: "rgb(220, 231, 235)",
+    })
+}
 
   borrar_red(id: number){
     this.redesService.deletePersonasRedes(id);
