@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, TemplateRef, ElementRef, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef, ChangeDetectorRef, AfterContentChecked, AfterViewInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
@@ -12,7 +12,7 @@ import  Swal from "sweetalert2";
   styleUrls: ['./editar-graficos.component.css']
 })
 
-export class EditarGraficosComponent implements AfterViewInit{
+export class EditarGraficosComponent implements AfterViewInit, AfterContentChecked{
 
   canvas: any;
   ctx: any;
@@ -43,6 +43,11 @@ export class EditarGraficosComponent implements AfterViewInit{
 
 public ngAfterViewInit(): void {
 }  
+
+ngAfterContentChecked(): void {
+  this.changeDetector.detectChanges();
+}
+
 recibe_porcentaje(porcentaje: string, i: number){
   this.i=i;
   let suma=0;
@@ -214,7 +219,7 @@ borrar(i: number){
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private modalService: NgbModal, private graficoService: GraficoService) {}
+  constructor(private modalService: NgbModal, private graficoService: GraficoService, private changeDetector: ChangeDetectorRef) {}
 
   /**
    * Write code on Method

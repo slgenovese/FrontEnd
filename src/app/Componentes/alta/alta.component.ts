@@ -10,7 +10,6 @@ import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
 import { Redes } from 'src/app/modelos/redes';
-import { FormBuilder, FormControl, FormGroup, Validators, FormsModule  } from '@angular/forms';
 import  Swal from "sweetalert2";
 
 @Component({
@@ -20,8 +19,6 @@ import  Swal from "sweetalert2";
 })
 export class AltaComponent implements OnInit{
 
-//  registerForm!: FormGroup;
-//  submitted = false;
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
   proyectos: Proyectos = new Proyectos;
@@ -241,9 +238,6 @@ export class AltaComponent implements OnInit{
     this.id_titulo=String(titulo.id);
   }
 
-/*  recibe_red(red: Redes){
-    this.red=red;
-  }*/
 
   //Esto trae el selector #mdl_alta del archivo .html y me permite usarlo como parametro 'content'
   //de la funcion open()
@@ -288,7 +282,7 @@ ngOnInit(): void {
   --------------------------------------------*/
   constructor(private modalService: NgbModal, private loginService: LoginService,
     private experienciaService: ExperienciaService, private proyectosService: ProyectosService,
-    private educacionService: EducacionService, private formBuilder: FormBuilder) {}
+    private educacionService: EducacionService) {}
 
   /**
    * Write code on Method
