@@ -173,6 +173,7 @@ export class EditarComponent implements OnInit, AfterContentChecked{
           if(auxiliar.value!=" "){
             per_red.link=auxiliar.value;
             this.redesService.postPersonasRedes(per_red);
+            this.respuesta=true;
           }
         }
         break;

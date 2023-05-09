@@ -59,27 +59,28 @@ ngOnInit(): void {
 });
 }
   procesar(habilidades: Habilidades[]){
-    for(let habilidad of habilidades){
-      this.datos[habilidad.id].id=habilidad.id; // Falta analizar si corresponde este dato
-      this.datos[habilidad.id].titulo =habilidad.titulo;
+    var x=1;
+    for(let habilidad of habilidades ){
+      this.datos[x].id=habilidad.id; // Falta analizar si corresponde este dato
+      this.datos[x].titulo =habilidad.titulo;
 
         let i=0;
         for(let vectorDatos of habilidad.habilidadesDatos){
-          this.datos[habilidad.id].id_datos[i] =vectorDatos.id;
-          this.datos[habilidad.id].etiqueta[i] =vectorDatos.etiqueta;
-          this.datos[habilidad.id].porcentaje[i] =vectorDatos.porcentaje;
-          this.datos[habilidad.id].color_Fondo[i] =vectorDatos.color;
-          this.datos[habilidad.id].color_Borde[i] =vectorDatos.color;
+          this.datos[x].id_datos[i] =vectorDatos.id;
+          this.datos[x].etiqueta[i] =vectorDatos.etiqueta;
+          this.datos[x].porcentaje[i] =vectorDatos.porcentaje;
+          this.datos[x].color_Fondo[i] =vectorDatos.color;
+          this.datos[x].color_Borde[i] =vectorDatos.color;
           i++;
         }
       var datosIngresos = {
-        data: this.datos[habilidad.id].porcentaje, 
-        backgroundColor: this.datos[habilidad.id].color_Fondo,
-        borderColor: this.datos[habilidad.id].color_Borde,
+        data: this.datos[x].porcentaje, 
+        backgroundColor: this.datos[x].color_Fondo,
+        borderColor: this.datos[x].color_Borde,
         borderWidth: 0,// Ancho del borde
       };
-      this.grafico_Donut(datosIngresos, this.datos[habilidad.id].etiqueta, habilidad.titulo, "donut-chart"+habilidad.id, "grafico"+habilidad.id);
-  
+      this.grafico_Donut(datosIngresos, this.datos[x].etiqueta, habilidad.titulo, "donut-chart"+x, "grafico"+x);
+      x++;
     }
 }
 

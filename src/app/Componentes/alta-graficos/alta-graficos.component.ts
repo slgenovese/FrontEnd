@@ -4,6 +4,7 @@ import { GraficoService } from 'src/app/servicios/grafico.service';
 import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
 import { Grafico_sin_ID, HabilidadesDato_sin_ID } from 'src/app/modelos/grafico';
+import  Swal from "sweetalert2"; 
 
 @Component({
   selector: 'app-alta-graficos',
@@ -17,6 +18,7 @@ export class AltaGraficosComponent {
   myChart: any;
   testigo: boolean=true;
 
+  respuesta: boolean=false;
   titulo!: string;
   tabla!: string;
   id!: number;
@@ -144,17 +146,38 @@ grabar_registro(){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }
   }
-  if(this.verificar_registro(this.grafico)=="OK"){
+  if(this.verificar_registro(this.grafico)){
+    console.log("Llego a grabar");
     this.graficoService.postGrafico(this.grafico);
   }
-  window.location.reload();
+  //if (this.respuesta) {window.location.reload()};
 }
 
-verificar_registro(registro: any): string{
-  if(registro.titulo=="" || registro.habilidadesDatos.length==0){
-    return "NOP";
-  }
-  return "OK";
+verificar_registro(registro: any): boolean{
+  this.respuesta=false;
+  if (registro.titulo==""){this.mensaje('El campo TITULO no puede estar vacio!'); 
+  this.respuesta=false;
+//  this.graficoService.deleteGrafico(this.id);
+  return this.respuesta;
+} 
+  if (registro.habilidadesDatos.length==0){this.mensaje('No hay ninguna HABILIDAD dada de alta!'); 
+  this.respuesta=false;
+//  this.graficoService.deleteGrafico(this.id);
+  return this.respuesta;
+  } 
+  this.respuesta=true;
+  return this.respuesta;
+}
+
+mensaje(texto: string){
+  Swal.fire({
+    icon: 'warning',
+    title: 'Algo salio mal!!!',
+    text: texto,
+    confirmButtonColor: "black",
+    iconColor: "yellow",
+    background: "rgb(220, 231, 235)",
+  })
 }
 
 closeResult: string = '';

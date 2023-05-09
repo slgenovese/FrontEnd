@@ -91,6 +91,7 @@ editar_registro(){
 }
 
 verificar_registro(registro: any): boolean{
+  this.respuesta=false;
   if (registro.titulo==""){this.mensaje('El campo TITULO no puede estar vacio!'); 
   this.respuesta=false;
 //  this.graficoService.deleteGrafico(this.id);

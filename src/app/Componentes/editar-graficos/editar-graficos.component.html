@@ -10,7 +10,7 @@
 
     <section class="row">
       <div class="col-4">
-        <p> <b>Titulo: </b> </p>
+        <p> <b>Titulo: </b>(Enter para confirmar) </p>
 <!--          <textarea (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}></textarea>-->
         <input (keypress) ="recibe_titulo_aux($event)"  class="form-control" name="titulo" id='titulo' cols="50" rows="1" value={{titulo_aux}}>
       <div *ngIf="this.testigo"> {{graficar('primera_vez')}}></div> 
@@ -25,7 +25,7 @@
             <p><b> Colores:</b></p>
           </div >
           <div class="col-4">
-            <p> <b> Etiquetas: </b></p>
+            <p> <b> Etiquetas:</b> (Enter para confirmar) </p>
           </div >
           <div class="col-2">
             <p><b> Porcentajes:</b></p>
@@ -53,7 +53,7 @@
         {{guardar_indice(i)}}
       </div>  
       <br>
-      <button class="btn btn-primary" (click)="graficar('agregar')">Agregar</button>
+      <button class="btn btn-primary" (click)="graficar('agregar')">Agregar Habilidad</button>
       </div>
       <br>
     </section>  
@@ -73,7 +73,7 @@
           {{modal.close('Save click')}}
         </div>
       </button>
-  
+
 
 
   </div>
