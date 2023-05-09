@@ -4,7 +4,7 @@ import { Chart } from 'chart.js/auto';
 import { PorcentajeComponent } from '../porcentaje/porcentaje.component';
 import { Grafico, HabilidadesDato } from 'src/app/modelos/grafico';
 import { GraficoService } from 'src/app/servicios/grafico.service';
- 
+import  Swal from "sweetalert2"; 
 
 @Component({
   selector: 'app-editar-graficos',
@@ -19,6 +19,7 @@ export class EditarGraficosComponent implements AfterViewInit{
   myChart: any;
   testigo: boolean=true;
 
+  respuesta: boolean=false;
   titulo!: string;
   tabla!: string;
   id!: number;
@@ -83,19 +84,38 @@ editar_registro(){
       this.grafico.habilidadesDatos.push(this.habilidades);
     }
   }
-  if(this.verificar_registro(this.grafico)=="OK"){
+  if(this.verificar_registro(this.grafico)){
     this.graficoService.postGrafico(this.grafico);
   }
-  window.location.reload();
+  if (this.respuesta) {window.location.reload()};
 }
 
-verificar_registro(registro: any): string{
-  if(registro.titulo=="" || registro.habilidadesDatos.length==0){
-    this.graficoService.deleteGrafico(this.id);
-    return "NOP";
-  }
-  return "OK";
+verificar_registro(registro: any): boolean{
+  if (registro.titulo==""){this.mensaje('El campo TITULO no puede estar vacio!'); 
+  this.respuesta=false;
+//  this.graficoService.deleteGrafico(this.id);
+  return this.respuesta;
+} 
+  if (registro.habilidadesDatos.length==0){this.mensaje('No hay ninguna HABILIDAD dada de alta!'); 
+  this.respuesta=false;
+//  this.graficoService.deleteGrafico(this.id);
+  return this.respuesta;
+  } 
+  this.respuesta=true;
+  return this.respuesta;
 }
+
+mensaje(texto: string){
+  Swal.fire({
+    icon: 'warning',
+    title: 'Algo salio mal!!!',
+    text: texto,
+    confirmButtonColor: "black",
+    iconColor: "yellow",
+    background: "rgb(220, 231, 235)",
+  })
+}
+
 
   recibe_color(color: string, i: number ){
     if (color!='N/A'){

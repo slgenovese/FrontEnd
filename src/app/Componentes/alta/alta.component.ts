@@ -11,6 +11,8 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 import { Titulo } from 'src/app/modelos/titulo';
 import { Redes } from 'src/app/modelos/redes';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule  } from '@angular/forms';
+import  Swal from "sweetalert2";
+
 @Component({
   selector: 'app-alta',
   templateUrl: './alta.component.html',
@@ -18,8 +20,8 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormsModule  } from '@
 })
 export class AltaComponent implements OnInit{
 
-  registerForm!: FormGroup;
-  submitted = false;
+//  registerForm!: FormGroup;
+//  submitted = false;
   experiencia: Experiencia = new Experiencia;
   institucion_aux: Institucion = new Institucion;
   proyectos: Proyectos = new Proyectos;
@@ -29,6 +31,7 @@ export class AltaComponent implements OnInit{
 
   closeResult: string = '';
 
+  respuesta: boolean=false;
   titulo!: string;
   id_titulo!: string;
   tabla!: string;
@@ -50,6 +53,7 @@ export class AltaComponent implements OnInit{
   id_redes!: string;
 
   alta_registro(quien_llama: any){
+    this.respuesta=false;
     switch (quien_llama){
       case "experiencia":
         this.experiencia.id=this.id;
@@ -64,8 +68,9 @@ export class AltaComponent implements OnInit{
         this.institucion_aux.link_icono=this.link_icono;
         this.experiencia.institucion=this.institucion_aux;
         console.log(this.experiencia);
-        if (this.verificar_registro(quien_llama, this.experiencia)=="OK"){
+        if (this.verificar_registro(quien_llama, this.experiencia)){
           this.experienciaService.postExperiencia(this.experiencia);
+          this.respuesta=true;
         }
         break;
       case "proyectos":
@@ -78,8 +83,9 @@ export class AltaComponent implements OnInit{
         this.institucion_aux.institucion=this.institucion;
         this.institucion_aux.link_icono=this.link_icono;
         this.proyectos.institucion=this.institucion_aux;
-        if (this.verificar_registro(quien_llama, this.proyectos)=="OK"){
+        if (this.verificar_registro(quien_llama, this.proyectos)){
           this.proyectosService.postProyectos(this.proyectos);
+          this.respuesta=true;
         }
         break;
       case "educacion":
@@ -93,47 +99,115 @@ export class AltaComponent implements OnInit{
         this.titulo_obj.id=Number(this.id_titulo);
         this.titulo_obj.titulo=this.titulo_aux;
         this.educacion.titulo=this.titulo_obj;
-        if (this.verificar_registro(quien_llama, this.educacion)=="OK"){
+        if (this.verificar_registro(quien_llama, this.educacion)){
           this.educacionService.postEducacion(this.educacion);
+          this.respuesta=true;
         }
         break;  
       default:
     }
-    window.location.reload();
+    if (this.respuesta) {window.location.reload()};
   }  
 
-  verificar_registro (quien_llama: string, registro: any): string{
+  verificar_registro (quien_llama: string, registro: any): boolean{
+    this.respuesta=false;
     switch (quien_llama){
       case "experiencia":
-        if (registro.desde==undefined || registro.hasta == undefined || registro.pais == undefined ||
-          registro.provincia == undefined || registro.texto=="" || registro.institucion.institucion == undefined ||
-          (registro.desde>registro.hasta)){
-            return "NOP";
-          }
-      break;  
+        if (registro.texto==""){this.mensaje('El campo TAREAS REALIZADAS no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.pais==undefined){this.mensaje('El campo PAIS no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.provincia==undefined){this.mensaje('El campo PROVINCIA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        break;  
       case "proyectos":
-        if (registro.desde==undefined || registro.hasta == undefined || 
-          registro.texto=="" || registro.institucion.institucion == undefined ||
-          (registro.desde>registro.hasta)){
-            return "NOP";
-          }
+        if (registro.texto==""){this.mensaje('El campo PROYECTO no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
+        if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+        this.respuesta=false;
+        return this.respuesta;
+        } 
       break;  
     case "educacion":
-      if (registro.desde==undefined || registro.hasta == undefined || 
-        registro.institucion.institucion == undefined ||
-        registro.titulo.titulo == undefined || (registro.desde>registro.hasta)){
-          return "NOP";
-        }
+      if (registro.titulo.titulo==undefined){this.mensaje('El campo TITULO no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.institucion.institucion==undefined){this.mensaje('El campo INSTITUCION no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.desde==undefined){this.mensaje('El campo DESDE no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.hasta==undefined){this.mensaje('El campo HASTA no puede estar vacio!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      if (registro.desde>registro.hasta){this.mensaje('El año DESDE no puede ser mayor al año HASTA!'); 
+      this.respuesta=false;
+      return this.respuesta;
+      } 
+      break;  
+      case "configurar":
+        if (registro==""){this.mensaje('El LINK del SERVIDOR DE IMAGENES no puede estar vacio!'); 
+        this.respuesta=false;
+        return this.respuesta;
+      } 
       break;  
     default:
     }
-    return "OK";
-  }
-  /*
-  mostrar_servidor_img(){
-    window.open( this.servidor_img);
-  }
-*/
+    this.respuesta=true;
+    return this.respuesta;
+}
+
+  mensaje(texto: string){
+    Swal.fire({
+      icon: 'warning',
+      title: 'Algo salio mal!!!',
+      text: texto,
+      confirmButtonColor: "black",
+      iconColor: "yellow",
+      background: "rgb(220, 231, 235)",
+    })
+}
   cambiar_imagen(nueva_imagen: string){
     this.mdl_alta.elementRef.nativeElement.value=nueva_imagen;
     this.imagen= nueva_imagen;
@@ -202,21 +276,9 @@ pre_open_proyectos(){
 
 
 ngOnInit(): void {
-  this.registerForm = new FormGroup({
-    tareas: new FormControl("Ayuda!!!", Validators.required)
-  })
 }
 
     onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
     }
 
   /*------------------------------------------
