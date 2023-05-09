@@ -74,7 +74,6 @@ export class LoginComponent implements OnInit{
   public ingreso(usuario: string, palabraSecreta: string, btnlogin: any){
     this.login.password=palabraSecreta;
     this.login.usuario=usuario;
-
     this.loginService.postLogin(this.login).subscribe(async data => {this.respuesta = data
       if(this.respuesta.respuesta== "OK"){
         if (btnlogin.innerText=='Login' || btnlogin.innerText=='Acceso'){

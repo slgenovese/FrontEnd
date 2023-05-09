@@ -3,17 +3,20 @@
 
     <h4 class="subtitulo">Educación</h4>
 <br>
+
+<section class="row">
+    <div class="col-10">
+    </div>
+    <div class="col-2">
+        <button (click)="alta.pre_open_educacion()" type="button" class="btn btn-default exp_Edicion"  id="edu_Alta" style="display: none;">
+            <i class="bi bi-plus-square" [title]="'Alta de Nuevo Registro'"></i>
+        </button>
+    </div>
+</section>
+
+
 <div *ngFor="let educacion of educacion" >
 
-    <section class="row">
-        <div class="col-10">
-        </div>
-        <div class="col-2">
-            <button (click)="alta.pre_open_educacion()" type="button" class="btn btn-default exp_Edicion"  id="edu_Alta" style="display: none;">
-                <i class="bi bi-plus-square" [title]="'Alta de Nuevo Registro'"></i>
-            </button>
-        </div>
-    </section>
 
     <section class="row">
         <div class="col-2">
