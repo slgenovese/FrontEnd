@@ -2,24 +2,24 @@
 
 .font_Redes{
     font-size: small;
-};
+}
 .subtitulo{
     margin-top: 50px;
-};
+}
 .article_Experiencia{
     font-size: medium;
-};
+}
 .article_Educacion{
     font-size: medium;
-};
+}
 #separador{
     margin-top: 20px;
-};
+}
 .datos_Personales { 
     margin-top: 20px;
     margin-right: auto;
     margin-left: 500;
-};
+}
 .formacion_Academica{
     margin-top: 10px;
     margin-right: auto;
@@ -40,7 +40,7 @@
     height: 100%; /* Algura completa */
     overflow: auto; /* Se activará el scroll si es necesario */
     background-color: rgba(0,0,0,0.5); /* Color negro con opacidad del 50% */
-  };
+  }
   
   /* Ventana o caja modal */
   .contenido-modal {
@@ -53,11 +53,11 @@
     -webkit-animation-duration: 0.5s;
     animation-name: animarsuperior;
     animation-duration: 0.5s
-  };
+  }
 
   div #btn_Login{
     display: none;
- };
+ }
  
  div > button:before{
    display: block;
