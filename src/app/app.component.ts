@@ -13,7 +13,7 @@ export class AppComponent {
   constructor() {
     // Se define la variable link_Base de forma global para poder modificar la locacion del servidor
     // en un solo lugar.
-    localStorage.setItem('link_Base', 'http://localhost:8080/');
+    localStorage.setItem('link_Base', 'https://portfolio-final-qx8m.onrender.com/');
     localStorage.setItem('persona_id', '');
   }
 }
