@@ -17,7 +17,7 @@ export class ExperienciaService {
   }
   
   public deleteExperiencia(id: number) {
-    this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/experiencias/"+id)
+     this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/experiencias/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
 

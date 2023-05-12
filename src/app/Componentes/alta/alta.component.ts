@@ -81,7 +81,7 @@ export class AltaComponent implements OnInit{
         this.institucion_aux.link_icono=this.link_icono;
         this.proyectos.institucion=this.institucion_aux;
         if (this.verificar_registro(quien_llama, this.proyectos)){
-          this.proyectosService.postProyectos(this.proyectos);
+          this.proyectosService.postProyectos(this.proyectos) ;
           this.respuesta=true;
         }
         break;
@@ -103,7 +103,7 @@ export class AltaComponent implements OnInit{
         break;  
       default:
     }
-    if (this.respuesta) {window.location.reload()};
+//    if (this.respuesta) {window.location.reload()};
   }  
 
   verificar_registro (quien_llama: string, registro: any): boolean{

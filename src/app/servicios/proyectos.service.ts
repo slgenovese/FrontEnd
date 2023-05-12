@@ -19,20 +19,20 @@ export class ProyectosService {
 
   }
   
-  public deleteProyectos(id: number) {
+  public deleteProyectos(id: number){
     this.http.delete(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/"+id)
     .subscribe(() => this.status = 'Delete successful');
   }
 
   public postProyectos(proyectos: Proyectos){
     this.http.post<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/"+ localStorage.getItem("persona_id"), proyectos)
-    .subscribe(data => this.postId = data.id);
+    .subscribe(data => this.postId= data.id);
   }
 
 
   public putProyectos(id: number, proyectos: Proyectos){
     this.http.put<any>(localStorage.getItem('link_Base')+"portfolio/v1/proyectos/datos/"+id, proyectos)
-    .subscribe(data => this.postId = data.id);
+    .subscribe(data => this.postId= data.id);
   }
 
 }

@@ -92,7 +92,7 @@ editar_registro(){
   if(this.verificar_registro(this.grafico)){
     this.graficoService.postGrafico(this.grafico);
   }
-  if (this.respuesta) {window.location.reload()};
+//  if (this.respuesta) {window.location.reload()};
 }
 
 verificar_registro(registro: any): boolean{
