@@ -9,21 +9,21 @@
 
 
     <ng-container *ngIf = "quien_llama==='redes'" >
-      <div *ngFor="let redes of personasRedes">
+      <div *ngFor="let red of mostrarRedes">
         <section class="row">
           <div class="col-1">
           </div>
           <div class="col-1">
-            <i class={{redes.icono}} [title]=redes.nombre style="font-size:200%"></i>
+            <i class={{red.icono}} [title]=red.nombre style="font-size:200%"></i>
           </div>
 
           <div class="col-9">
             <label for="texto"> <b> Link: </b></label>
             <br>
-            <textarea class="form-control" name="texto" id="red-{{redes.id}}" cols="100" rows="1" value={{redes.link}}></textarea>
+            <textarea class="form-control" name="texto" id="red-{{red.id}}" cols="100" rows="1" value={{red.link}}></textarea>
           </div>
           <div class="col-1">
-            <button (click)="borrar_red(redes.id)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
+            <button (click)="borrar_red(red.id)" type="button" class="btn btn-default gra_Borrado" id="i" style="display: block;">
               <i class="bi bi-x-circle" [title]="'Borrar los datos'"></i>
             </button>
           </div >

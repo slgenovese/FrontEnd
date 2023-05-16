@@ -46,6 +46,7 @@ export class EditarComponent implements OnInit, AfterContentChecked{
 
   redes: Redes[]=[]; 
   personasRedes: PersonasRedes[]=[];
+  mostrarRedes: PersonasRedes[]=[];
   per_redes: PersonasRedes = new PersonasRedes; 
   acerca_De: Acerca_De = new Acerca_De;
   experiencia: Experiencia = new Experiencia;
@@ -168,7 +169,7 @@ export class EditarComponent implements OnInit, AfterContentChecked{
         }    
         break;
       case "redes":
-        for(let per_red of this.personasRedes){
+        for(let per_red of this.mostrarRedes){
           var auxiliar=document.getElementById("red-"+per_red.id) as HTMLTextAreaElement;
           if(auxiliar.value!=" "){
             per_red.link=auxiliar.value;
@@ -517,11 +518,11 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
   ngOnInit(): void {
   
     this.acercaDeService.getServidorImagenes().subscribe(data=>{this.servidor_img=data});
-    this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data});
+    this.redesService.getPersona_Redes().subscribe(data=>{this.personasRedes=data
     this.redesService.getRedes().subscribe(data=>{this.redes=data
       this.procesarRedes();
     });
-
+  });
   }
 
   ngAfterContentChecked(): void {
@@ -532,16 +533,17 @@ pre_open_proyectos( tabla: string, id: number, imagen: string, titulo: string, i
     for(let red of this.redes){
       for (let per_red of this.personasRedes){
         if(per_red.nombre==red.nombre){
+          this.mostrarRedes.push(per_red);
           encontro="Si";
           }     
       }
       if (encontro=="No"){
         let perRedes = new PersonasRedes;
         perRedes.id=red.id;
-        perRedes.icono=red.icono;
         perRedes.nombre=red.nombre;
+        perRedes.icono=red.icono;
         perRedes.link=" ";
-        this.personasRedes.push(perRedes);
+        this.mostrarRedes.push(perRedes);
         }
       encontro="No";
     }
