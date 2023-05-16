@@ -151,6 +151,9 @@ grabar_registro(){
     this.graficoService.postGrafico(this.grafico);
   }
   //if (this.respuesta) {window.location.reload()};
+  if (this.respuesta) {setTimeout(() => {location.reload()       
+  }, 1000); };
+
 }
 
 verificar_registro(registro: any): boolean{

@@ -44,6 +44,8 @@ export class BorrarComponent {
         default:
     }
 //    window.location.reload();
+    {setTimeout(() => {location.reload()}, 1000); };
+
   }
 
 

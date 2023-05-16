@@ -204,7 +204,9 @@ export class EditarComponent implements OnInit, AfterContentChecked{
       default:
     }
 //    if (this.respuesta) {window.location.reload()};
-  }
+    if (this.respuesta) {setTimeout(() => {location.reload()       
+    }, 1000); };
+}
 
   verificar_registro (quien_llama: string, registro: any): boolean{
     this.respuesta=false;
